@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit]
 
   def index
+    @events = Event.all
   end
 
   def show
@@ -18,7 +19,6 @@ class EventsController < ApplicationController
         format.html { redirect_to @event, notice: 'Event was created successfully.'}
         format.json { render action: 'show', status: :created, location: @event }
       else
-        Rails.logger.info @event.errors.full_messages
         format.html { render action: 'new' }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
