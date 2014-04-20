@@ -1,5 +1,10 @@
 class EventsController < ApplicationController
+  before_action :set_event, only[:show, :edit, :update, :destroy]
+
   def index
+  end
+
+  def show
   end
 
   def new
@@ -24,6 +29,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
   def user_params
     params.require(:event).permit(:title, :description, :creator, :category, :location, :start_time, :end_time)
