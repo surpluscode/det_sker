@@ -1,35 +1,5 @@
 <h1>Events#new</h1>
-<% if @event.errors.any? %>
-    <div id='error_explanation'>
-      <h2>
-        <%= pluralize(@event.errors.count, 'error') %>
-        prohibited this post from being saved
-      </h2>
-      <ul>
-        <% @event.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-<% end %>
-<%= form_for @event do |f| %>
-    <%= label_tag :title %>
-    <%= f.text_field :title %>
-    <%= label_tag :creator %>
-    <%= f.text_field :creator %>
-    <%= label_tag :description %>
-    <%= f.text_area :description %>
-    <%= label_tag :location %>
-    <%= f.text_field :location %>
-    <%= label_tag :category %>
-    <%= f.text_field :category %>
-    <%= label_tag :start_time %>
-    <span class='select_group'>
-    <%= f.datetime_select :start_time %>
-      </span>
-    <%= label_tag :end_time %>
-    <span class='select_group'>
-      <%= f.datetime_select :end_time %>
-    </span>
-    <%= f.submit 'Create' %>
-<% end %>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', events_path %>

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
     @events = Event.all
@@ -25,7 +25,27 @@ class EventsController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @event.update(user_params)
+        format.html { redirect_to @event, notice: 'Event updated successfully' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def edit
+  end
+
+  def destroy
+    @event.destroy
+    respond_to do |format|
+      format.html { redirect_to events_url }
+      format.json { head :no_content }
+    end
   end
 
   private
