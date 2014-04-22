@@ -1,5 +1,5 @@
 <% @events_by_date.each do |date, events| %>
-   <h2><%= date %></h2>
+   <h2><%= format_date(date) %></h2>
     <% events.each do |event| %>
       <div class='event-container'>
         <strong><%= event.title %></strong>
