@@ -9,9 +9,15 @@ class Event < ActiveRecord::Base
   def self.index
     events = self.order(:start_time)
     ordered_by_date = {}
+    ordered_by_date[:in_progress] = []
     events.each do |event|
       # skip finished events
       next if event.end_time < DateTime.now
+      # pull all the current events out into their own section
+      if (event.start_time < DateTime.now) && (event.end_time > DateTime.now)
+        ordered_by_date[:in_progress] << event
+        next
+      end
       start_date = event.start_time.to_date
       unless ordered_by_date.has_key? start_date
         ordered_by_date[start_date] = []
