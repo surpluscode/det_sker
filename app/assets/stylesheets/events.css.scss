@@ -12,3 +12,10 @@ input, textarea, .select_group {
   background-color: red;
   display: table;
 }
+.event-container {
+  cursor: pointer;
+  padding: 10px 20px
+}
+.event-details {
+  display: none;
+}
