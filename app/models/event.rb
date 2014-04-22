@@ -10,6 +10,8 @@ class Event < ActiveRecord::Base
     events = self.order(:start_time)
     ordered_by_date = {}
     events.each do |event|
+      # skip finished events
+      next if event.end_time < DateTime.now
       start_date = event.start_time.to_date
       unless ordered_by_date.has_key? start_date
         ordered_by_date[start_date] = []
