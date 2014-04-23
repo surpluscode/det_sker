@@ -1,0 +1,8 @@
+<div class="category-filter">
+  <h4>Filter by category:</h4>
+<% @categories.each do |cat, num| %>
+    <span><a href='#' data-toggle="<%= cat %>" class="filter-link"><%= cat %></a></span>
+    <span><%= num %></span>
+    <br/>
+<% end %>
+</div>

@@ -3,6 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @events_by_date = Event.index
+    @categories = Event.categories
   end
 
   def show

@@ -26,4 +26,11 @@ class Event < ActiveRecord::Base
     end
     ordered_by_date
   end
+
+  # Return a hash containing event categories
+  # with their counts as values
+  def self.categories
+    Event.select(:category).group(:category)
+    .order('count_category desc').count
+  end
 end

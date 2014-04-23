@@ -1,5 +1,5 @@
 <% events.each do |event| %>
-<div class='event-container'>
+<div class='event-container' data-category="<%= event.category       %>">
   <span class='event-category'><%= event.category %> </span><strong><%= event.title %></strong>
   <span><%= event.location %></span>
   <div class='event-details'>
