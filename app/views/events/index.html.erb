@@ -1,11 +1,15 @@
 <%= render 'category_filter' %>
 
 <% @events_by_date.each do |date, events| %>
-   <% if date == :in_progress %>
+    <% if date == :in_progress %>
      <h2>I Gang</h2>
+      <div class="events-by-date_js">
      <%= render 'event_list', events: events %>
+      </div>
    <% else %>
      <h2><%= format_date(date) %></h2>
-     <%= render 'event_list', events: events %>
+       <div class="events-by-date_js">
+       <%= render 'event_list', events: events %>
+        </div>
   <% end %>
 <% end %>

@@ -22,44 +22,81 @@ function filterCategory(){
     if (activeFilters.indexOf(filter) == -1) {
         activeFilters.push(filter);
         updateActiveFilters();
-        evaluateShown();
     }
+    evaluateShown();
     return false;
 }
 
 
 function removeFilter(event){
     var filter = $(event.target).attr('data-toggle');
+    console.log("removing filter " + filter);
     activeFilters.remove(filter);
     updateActiveFilters();
     evaluateShown();
     return false;
 }
 
-/**
- * if there is at least one active filter
- * hide all events that do not have a category matching our filters
- * else show all events
- */
+
 function evaluateShown(){
-    var events = $('div.event-container');
-    if (activeFilters.length == 0) {
-        events.show();
-        return;
+    /**
+     * if there is at least one active filter
+     * hide all events that do not have a category matching our filters
+     * else show all events
+     */
+    function evaluateEventVisibility() {
+        var events = $('div.event-container');
+        if (activeFilters.length == 0) {
+            events.show();
+        } else {
+            events.each(function (i) {
+                var categories = $(this).attr('data-category').split(';');
+                if ($(this).is(':hidden')) {
+                    if (categoriesMatchFilters(categories)) {
+                        $(this).show();
+                    }
+                } else if ($(this).is(':visible')) {
+                    if (!categoriesMatchFilters(categories)) {
+                        $(this).hide();
+                    }
+                }
+            });
+        }
     }
 
-    events.each(function(i){
-        var categories = $(this).attr('data-category').split(';');
-        if ($(this).is(':hidden')) {
-            if (categoriesMatchFilters(categories)) {
-                $(this).show();
+    /**
+     * If a date has no visible child events, hide it
+     * Otherwise, show it.
+     */
+    function evaluateDateVisibility() {
+        $('.events-by-date_js').each(function (i) {
+            var childEvents = $(this).children('div.event-container');
+            if (hasVisibleChildEvents(childEvents)) {
+                $(this).prev('h2').show();
+            } else {
+                $(this).prev('h2').hide();
             }
-        } else if ($(this).is(':visible')) {
-            if (!categoriesMatchFilters(categories)) {
-                $(this).hide();
-            }
+        });
+    }
+    evaluateEventVisibility();
+    evaluateDateVisibility();
+}
+
+/**
+ * Search all given events and return true
+ * if any of them are visible
+ * @param childEvents
+ * @returns {boolean}
+ */
+function hasVisibleChildEvents(childEvents) {
+    var visible = false;
+    $(childEvents).each(function(i) {
+        if ($(this).is(':visible')) {
+            visible = true;
+            return false; //return false to break out of the each loop
         }
     });
+    return visible;
 }
 
 /**
