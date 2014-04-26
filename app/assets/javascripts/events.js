@@ -30,7 +30,6 @@ function filterCategory(){
 
 function removeFilter(event){
     var filter = $(event.target).attr('data-toggle');
-    console.log("removing filter " + filter);
     activeFilters.remove(filter);
     updateActiveFilters();
     evaluateShown();
