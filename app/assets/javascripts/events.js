@@ -49,18 +49,33 @@ function evaluateShown(){
     }
 
     events.each(function(i){
-        var cat = $(this).attr('data-category');
+        var categories = $(this).attr('data-category').split(';');
         if ($(this).is(':hidden')) {
-            if (activeFilters.indexOf(cat) >= 0) {
+            if (categoriesMatchFilters(categories)) {
                 $(this).show();
             }
         } else if ($(this).is(':visible')) {
-            console.log( cat + "visible");
-            if (activeFilters.indexOf(cat) == -1) {
+            if (!categoriesMatchFilters(categories)) {
                 $(this).hide();
             }
         }
     });
+}
+
+/**
+ * This function checks to see if an
+ * event has all the necessary categories
+ *
+ * @param eventCategories
+ * @returns {boolean}
+ */
+function categoriesMatchFilters(eventCategories) {
+    for (var i = 0; i < activeFilters.length; i++) {
+        if (eventCategories.indexOf(activeFilters[i]) == -1) {
+            return false;
+        }
+    }
+    return true;
 }
 
 /**
