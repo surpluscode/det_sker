@@ -7,6 +7,8 @@ demo:
   location: "Kultorvet Kultorvet, 1175 København 1175 København"
   start_time:  <%= DateTime.now + 2.hours %>
   title: "Mindehøjtidelighed: ALDRIG IGEN RANA PLAZA!"
+  price: Cheaper than sweatshop labour...
+  cancelled: True
 film: 
   category: Film
   creator: "Racismefri By"
@@ -15,6 +17,7 @@ film:
   location: "Karens Minde Kulturhus Wagnersvej 18 2450 Kbh SV"
   start_time: <%= DateTime.now.next_day + 1.hours %>
   title: "Filmaften med Racismefri By"
+  price: Gratis som en glatis
 kursus1: 
   category: Kursus
   creator: "Aftenskolen Grobund"
@@ -23,6 +26,7 @@ kursus1:
   location: "Christianshavns Gymnasium Prinsessegade 35, Kbh.K, Opgang C , lokale 10 1422 København"
   start_time:  <%= DateTime.now.prev_month %>
   title: "Økonomiens marginalisering af det politiske - magtens forskydning"
+  price: 200kr
 kursus2: 
   category: Kursus
   creator: "Aftenskolen Grobund"
@@ -31,6 +35,7 @@ kursus2:
   location: "Christianshavns Gymnasium, lokale 10   Prinsessegade 35  1422  København"
   start_time: <%= DateTime.now.prev_month - 10.days %>
   title: "Latinamerikansk frigørelsesfilosofi"
+  price: 200kr
 nonsense: 
   category: Andet
   creator: "OCCUPY Copenhagen"
@@ -39,6 +44,7 @@ nonsense:
   location: "Københavns Rådhusplads 1550 København"
   start_time: <%= DateTime.now - 183.days %>
   title: "730 dages modstand // 730 days of resistance"
+  price: Free
 udstilling: 
   category: Udstilling
   creator: "Storm P. Museet"
@@ -47,6 +53,7 @@ udstilling:
   location: "Storm P. Museet Frederiksberg Runddel 2000 Frederiksberg"
   start_time: <%= DateTime.now.prev_month %>
   title: "Løgn & Latin: Spot, spe og religionssatire 1500-1900"
+  price: 50kr
 climate:
   category: Møde
   creator: Aftenskolen Grobund
@@ -55,6 +62,7 @@ climate:
   location: "Verdens kulturcenteret Nørre Alle, 7. 2200 København"
   start_time: <%= DateTime.now.next_day.next_day %>
   title: "HVAD FEJLER KLIMABEVIDSTHEDEN?"
+  price: 12kr
 colombia:
   category: Møde
   creator: Internationalt Forum
@@ -63,3 +71,4 @@ colombia:
   location: "Cafe Regnbuen Trøjborg Beboerhus Tordenskjoldsgade 31 ( baggården ) 8220 Århus N 8220 Århus"
   start_time: <%= DateTime.now.next_day.next_day.next_day %>
   title: "Filmfremvisning og foredrag om Colombia: Indtil solen går ned. Selvorganisering i den colombianske konflikt"
+  price: 32kr
