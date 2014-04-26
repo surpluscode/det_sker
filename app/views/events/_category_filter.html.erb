@@ -1,8 +1,13 @@
 <div class="category-filter">
+  <h4>Active filters:</h4>
+  <ul class="active-filters_js">
+
+
+  </ul>
   <h4>Filter by category:</h4>
+  <ul>
 <% @categories.each do |cat, num| %>
-    <span><a href='#' data-toggle="<%= cat %>" class="filter-link"><%= cat %></a></span>
-    <span><%= num %></span>
-    <br/>
+    <li><a href='#' data-toggle="<%= cat %>" class="filter-link"><%= cat %></a> (<%= num %>)</li>
 <% end %>
+  </ul>
 </div>
