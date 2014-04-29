@@ -12,4 +12,9 @@ module EventsHelper
       'cancelled'
     end
   end
+
+  def category_options
+    [['Fest / Koncert', :party], ['Demo / Action', :demo],
+     ['Talk / Seminar / Workshop', :education], ['Meeting', :meeting], ['Folkekøkken', :food], ['Andet', :other]]
+  end
 end

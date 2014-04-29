@@ -21,7 +21,7 @@
     <%= label_tag :location %>
     <%= f.text_field :location %>
     <%= label_tag :category %>
-    <%= f.text_field :category %>
+    <%= f.select(:category, category_options) %> <br/>
     <%= label_tag :start_time %>
     <span class='select_group'>
     <%= f.datetime_select :start_time %>
