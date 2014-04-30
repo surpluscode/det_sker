@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   # returns structure as follows:
   # {date1: [EventA, EventB], date2: [EventC, EventD]}
   def self.index
-    events = self.order(:start_time)
+    events = self.order(:start_time).where('end_time > ?', DateTime.now)
     ordered_by_date = {}
     ordered_by_date[:in_progress] = []
     events.each do |event|
@@ -31,7 +31,9 @@ class Event < ActiveRecord::Base
   # Return a hash containing event categories
   # with their counts as values
   def self.categories
-    Event.select(:category).group(:category)
+    Event.select(:category)
+    .where('end_time > ?', DateTime.now)
+    .group(:category)
     .order('count_category desc').count
   end
 end
