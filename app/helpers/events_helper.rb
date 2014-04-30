@@ -16,4 +16,8 @@ module EventsHelper
   def category_options
     DetSker::Application.config.possible_categories
   end
+
+  def location_options
+    DetSker::Application.config.possible_locations
+  end
 end
