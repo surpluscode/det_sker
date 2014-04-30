@@ -134,7 +134,7 @@ function updateActiveFilters(){
     for (var i = 0; i < activeFilters.length; i++) {
         var filterName = activeFilters[i];
         var removeLink = ' <a href="" class="remove-filter" data-toggle="' + filterName + '"> [X] </a>';
-        filterHTML += '<li>' + filterName + removeLink + '</li>';
+        filterHTML += '<li>' + filterName.titleize() + removeLink + '</li>';
     }
     $('ul.active-filters_js').html(filterHTML);
 }

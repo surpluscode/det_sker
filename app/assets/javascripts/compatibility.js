@@ -45,3 +45,13 @@ Array.prototype.remove = function() {
     }
     return this;
 };
+
+
+/**
+ * Return string with first letter in uppercase
+ * @returns {string}
+ */
+String.prototype.titleize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
