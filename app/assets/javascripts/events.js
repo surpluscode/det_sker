@@ -77,8 +77,18 @@ function evaluateShown(){
             }
         });
     }
+
+    function evaluateActiveFilterHeader() {
+        var header =  $('.active-filter-header_js');
+        if (activeFilters.length == 0) {
+           header.hide();
+        } else {
+            header.show();
+        }
+    }
     evaluateEventVisibility();
     evaluateDateVisibility();
+    evaluateActiveFilterHeader();
 }
 
 /**
