@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     @event = Event.new(user_params)
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was created successfully.'}
+        format.html { redirect_to root_path, notice: 'Event was created successfully.'}
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(user_params)
-        format.html { redirect_to @event, notice: 'Event updated successfully' }
+        format.html { redirect_to root_path, notice: 'Event updated successfully' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
