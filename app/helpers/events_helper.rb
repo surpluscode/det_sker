@@ -14,7 +14,6 @@ module EventsHelper
   end
 
   def category_options
-    [['Fest / Koncert', :party], ['Demo / Action', :demo],
-     ['Talk / Seminar / Workshop', :education], ['Meeting', :meeting], ['Folkekøkken', :food], ['Andet', :other]]
+    DetSker::Application.config.possible_categories
   end
 end
