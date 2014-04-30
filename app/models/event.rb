@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
   validates :title, :description, :location, :start_time, :end_time, :category, :creator, presence: true
+  validates_inclusion_of :category, in: DetSker::Application.config.possible_categories
+  validates_inclusion_of :location, in: DetSker::Application.config.possible_locations
 
   # This method returns the index view
   # used by EventController to list all events
