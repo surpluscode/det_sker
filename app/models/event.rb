@@ -18,6 +18,7 @@ class Event < ActiveRecord::Base
         ordered_by_date[:in_progress] << event
         next
       end
+      # all other events are grouped by their date
       start_date = event.start_time.to_date
       unless ordered_by_date.has_key? start_date
         ordered_by_date[start_date] = []
