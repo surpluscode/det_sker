@@ -5,6 +5,6 @@ Feature: The index page
 
 Scenario: The application has an index page
   When a user visits the home page
-  Then they should see events
-  And they should see event descriptions
+  Then event title should be visible
+  But event description should be hidden
   But event details should be hidden

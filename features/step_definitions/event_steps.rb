@@ -6,10 +6,14 @@ Then(/^they should see events$/) do
   page.has_selector?('.event-container')
 end
 
-And(/^they should see event descriptions$/) do
-  page.has_selector?('event-description')
+And(/^(.*) should be visible$/) do |classname|
+  page.has_selector?(convert_to_selector(classname), visible: true)
 end
 
-But(/^event details should be hidden$/) do
-  page.has_selector?('.event-details', visible: false)
+But(/^(.*) should be hidden$/) do |classname|
+  page.has_selector?(convert_to_selector(classname), visible: false)
+end
+
+def convert_to_selector(text)
+  '.' + text.gsub(' ', '-')
 end
