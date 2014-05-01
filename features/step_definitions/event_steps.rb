@@ -4,5 +4,12 @@ end
 
 Then(/^they should see events$/) do
   page.has_selector?('.event-container')
-  page.has_selector?('.event-details')
+end
+
+And(/^they should see event descriptions$/) do
+  page.has_selector?('event-description')
+end
+
+But(/^event details should be hidden$/) do
+  page.has_selector?('.event-details', visible: false)
 end

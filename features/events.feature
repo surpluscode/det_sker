@@ -6,3 +6,5 @@ Feature: The index page
 Scenario: The application has an index page
   When a user visits the home page
   Then they should see events
+  And they should see event descriptions
+  But event details should be hidden
