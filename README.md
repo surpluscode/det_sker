@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/ronan-mch/det_sker.svg?branch=master)](https://travis-ci.org/ronan-mch/det_sker)
 det_sker
 ========
 
