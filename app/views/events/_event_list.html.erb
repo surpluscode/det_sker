@@ -1,6 +1,8 @@
 <% events.each do |event| %>
 <div class='event-container <%= event_cancelled? event %>' data-category="<%= event.category %>">
-  <span class='event-category'><%= event.category.titleize %> </span><strong class="event-title"><%= event.title %></strong>
+  <%= format_starttime(event.start_time) %>
+  <span class='event-category'><%= event.category.titleize %> </span>
+  <strong class="event-title"><%= event.title %></strong>
   <span><%= event.location %></span>
   <div class='event-details'>
     <p class="event-description"><%= event.description %></p>

@@ -3,6 +3,10 @@ module EventsHelper
     dt.strftime("%a d. %d %b %Y %H:%M")
   end
 
+  def format_starttime(dt)
+    dt.strftime('%H:%M')
+  end
+
   def format_date(d)
     d.strftime("%a d. %d %b %Y")
   end
