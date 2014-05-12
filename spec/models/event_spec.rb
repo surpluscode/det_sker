@@ -19,7 +19,7 @@ describe Event do
     @party_details.delete(:location)
     Event.create(@party_details).valid?.should_not be_true
   end
-  it 'should not save an event without a description' do
+  it 'should not save an event without a short description' do
     @party_details.delete(:short_description)
     Event.create(@party_details).valid?.should_not be_true
   end
