@@ -16,8 +16,10 @@
     <%= f.text_field :title %>
     <%= label_tag :creator %>
     <%= f.text_field :creator %>
-    <%= label_tag :description %>
-    <%= f.text_area :description %>
+    <%= label_tag :short_description %>
+    <%= f.text_area :short_description, maxlength: 200 %>
+    <%= label_tag :long_description %>
+    <%= f.text_area :long_description %>
     <%= label_tag :location %>
     <%= f.select(:location, location_options) %>
     <%= label_tag :category %>

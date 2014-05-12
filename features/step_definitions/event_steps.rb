@@ -1,10 +1,10 @@
 When(/^a user visits the home page$/) do
   visit root_path
 end
-Given (/^an event with title "(.*)" and description "(.*)" has been created$/) do |title, description|
+Given (/^an event with title "(.*)" and short description "(.*)" has been created$/) do |title, description|
   @event_details = { title: title,
                     creator: 'FestAbe99',
-                    description: description,
+                    short_description: description,
                     location: 'ungdomshuset',
                     start_time: DateTime.new,
                     end_time: DateTime.new,
@@ -37,7 +37,7 @@ When(/^they fill in the form$/) do
   within '#new_event' do
     fill_in 'event_title', with: 'Sample title'
     fill_in 'event_creator', with: 'Sample creator'
-    fill_in 'event_description', with: 'Some gibberish'
+    fill_in 'event_short_description', with: 'Some gibberish'
     select 'folkets', from: 'event_location'
     select 'party', from: 'event_category'
     now = DateTime.now
