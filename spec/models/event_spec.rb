@@ -2,7 +2,7 @@ require 'spec_helper'
 #TODO - consider moving validation test into integration test - it slows down unit tests
 describe Event do
   before(:each) do
-    @party_details = {title: 'Massive party', creator: 'FestAbe99', description: 'The Best Party Ever!',
+    @party_details = {title: 'Massive party', creator: 'FestAbe99', short_description: 'The Best Party Ever!',
                    location: 'ungdomshuset', start_time: DateTime.new, end_time: DateTime.new,
                    category: 'party'}
   end
@@ -20,7 +20,7 @@ describe Event do
     Event.create(@party_details).valid?.should_not be_true
   end
   it 'should not save an event without a description' do
-    @party_details.delete(:description)
+    @party_details.delete(:short_description)
     Event.create(@party_details).valid?.should_not be_true
   end
   it 'should not save an event without a category' do
