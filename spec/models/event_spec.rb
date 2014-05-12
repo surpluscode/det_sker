@@ -1,5 +1,5 @@
 require 'spec_helper'
-#TODO - consider moving validation test into integration test - it slows down unit tests
+
 describe Event do
   before(:each) do
     @party_details = {title: 'Massive party', creator: 'FestAbe99', short_description: 'The Best Party Ever!',
