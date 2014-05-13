@@ -1,16 +1,6 @@
 When(/^a user visits the home page$/) do
   visit root_path
 end
-Given (/^an event with title "(.*)" and short description "(.*)" has been created$/) do |title, description|
-  @event_details = { title: title,
-                    creator: 'FestAbe99',
-                    short_description: description,
-                    location: 'ungdomshuset',
-                    start_time: DateTime.new,
-                    end_time: DateTime.new,
-                    category: 'party' }
-  Event.create(@event_details)
-end
 
 Then(/^they should see events$/) do
   page.has_selector?('.event-container')
@@ -54,5 +44,12 @@ When(/^they fill in the form$/) do
     select now.minute, from: 'event_end_time_5i'
 
     click_button 'Create'
+  end
+end
+
+Given(/^the following event:$/) do |table|
+  # table is a table.hashes.keys # => [:title, :creator, :short_description, :long_description, :location, :start_time, :end_time, :category]
+  table.hashes.each do |attributes|
+    Event.create(attributes)
   end
 end
