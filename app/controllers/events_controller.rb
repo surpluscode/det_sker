@@ -15,7 +15,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(user_params)
+    # add the user id if we've got one
+    if user_signed_in?
+      user_params.merge!(user_id: current_user.id)
+    end
+    @event = Event.new(params)
     respond_to do |format|
       if @event.save
         format.html { redirect_to root_path, notice: 'Event was created successfully.'}
@@ -57,6 +61,8 @@ class EventsController < ApplicationController
   end
 
   def user_params
-    params.require(:event).permit(:title, :short_description, :long_description, :creator, :category, :location, :start_time, :end_time)
+    params.require(:event).permit(:title, :short_description, :long_description,
+                                  :creator, :category, :location,
+                                  :start_time, :end_time)
   end
 end
