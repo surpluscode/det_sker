@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :authorised_user?, only: [:edit, :update, :destroy]
 
   def index
     @events_by_date = Event.index
@@ -58,6 +59,12 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def authorised_user?
+    unless current_user.can_edit? @event
+      redirect_to root_path, alert: 'Only authorised users can edit events!'
+    end
   end
 
   def user_params

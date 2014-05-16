@@ -9,7 +9,9 @@
     <p><strong>Starter: </strong><%= format_datetime(event.start_time) %></p>
     <p><strong>Slutter: </strong><%= format_datetime(event.end_time) %></p>
     <p class="event-price"><strong>Pris: </strong><%= event.price %></p>
-    <p><%= link_to 'Edit', edit_event_path(event) %></p>
+    <% if current_user && current_user.can_edit?(event) %>
+        <p><%= link_to 'Edit', edit_event_path(event) %></p>
+    <% end %>
   </div>
 </div>
 <% end %>

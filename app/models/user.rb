@@ -4,4 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :events
+
+  # ensure user is permitted to edit event
+  def can_edit?(event)
+    id == event.user_id
+  end
 end
