@@ -20,7 +20,8 @@ class EventsController < ApplicationController
     if user_signed_in?
       user_params.merge!(user_id: current_user.id)
     end
-    @event = Event.new(params)
+
+    @event = Event.new(user_params)
     respond_to do |format|
       if @event.save
         format.html { redirect_to root_path, notice: 'Event was created successfully.'}
