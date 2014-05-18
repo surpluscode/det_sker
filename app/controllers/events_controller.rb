@@ -16,12 +16,11 @@ class EventsController < ApplicationController
   end
 
   def create
+    event_params = user_params
     # add the user id if we've got one
-    if user_signed_in?
-      user_params.merge!(user_id: current_user.id)
-    end
+    event_params.merge!(user_id: current_user.id) if user_signed_in?
 
-    @event = Event.new(user_params)
+    @event = Event.new(event_params)
     respond_to do |format|
       if @event.save
         format.html { redirect_to root_path, notice: 'Event was created successfully.'}
