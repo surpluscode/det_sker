@@ -4,7 +4,7 @@ describe Event do
   before(:each) do
     @party_details = {title: 'Massive party', creator: 'FestAbe99', short_description: 'The Best Party Ever!',
                    location: 'ungdomshuset', start_time: DateTime.new, end_time: DateTime.new,
-                   category: 'party'}
+                   category: 'party', user_id: '1'}
   end
   it 'should create an event' do
     event = Event.create(@party_details)
