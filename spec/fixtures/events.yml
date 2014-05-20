@@ -9,6 +9,7 @@ demo:
   title: "Mindehøjtidelighed: ALDRIG IGEN RANA PLAZA!"
   price: Cheaper than sweatshop labour...
   cancelled: True
+  user_id: 2
 film: 
   category: meeting
   creator: "Racismefri By"
@@ -18,6 +19,7 @@ film:
   start_time: <%= DateTime.now.next_day + 1.hours %>
   title: "Filmaften med Racismefri By"
   price: Gratis som en glatis
+  user_id: 3
 kursus1: 
   category: talk
   creator: "Aftenskolen Grobund"
@@ -27,6 +29,7 @@ kursus1:
   start_time:  <%= DateTime.now.prev_month %>
   title: "Økonomiens marginalisering af det politiske - magtens forskydning"
   price: 200kr
+  user_id: 4
 kursus2: 
   category: talk
   creator: "Aftenskolen Grobund"
@@ -36,6 +39,7 @@ kursus2:
   start_time: <%= DateTime.now.prev_month - 10.days %>
   title: "Latinamerikansk frigørelsesfilosofi"
   price: 200kr
+  user_id: 4
 nonsense: 
   category: demo
   creator: "OCCUPY Copenhagen"
@@ -45,15 +49,17 @@ nonsense:
   start_time: <%= DateTime.now - 183.days %>
   title: "730 dages modstand // 730 days of resistance"
   price: Free
+  user_id: 2
 udstilling: 
-  category: other
+  category: meeting
   creator: "Storm P. Museet"
-  short_description: "Hvem gør grin med hvem? Kan man gøre grin med magthaverne? Kan man gøre grin med kirken? Ja, mon ikke – og jo grovere, jo bedre – sådan tænkte og gjorde man i hvert fald tidligere, da kirken var en vigtig magtfaktor i Europa. Her udfoldede satiren sig til et fantastisk, fabulerende, grovkornet og billedrigt univers. Katolikker og protestanter holdt sig ikke tilbage for at udstille modpartens svagheder og dobbeltmoral - med motiver som djævle, der æder munke, paver med æselører og gedebukkeben og lystne og grådige præster. På Storm P. Museets særudstilling om religionssatire kan du komme helt tæt på populærkulturen fra årene 1500-1900 og få et indblik i denne særlige del af vores fælles billedverden og historiske kulturbaggrund."
+  short_description: "Come and hear about this important thing that we are doing that is the most important thing that you have ever heard of but we cannot tell you about."
   end_time: <%= DateTime.now.next_month %>
-  location: "Storm P. Museet Frederiksberg Runddel 2000 Frederiksberg"
+  location: "An abandoned warehouse"
   start_time: <%= DateTime.now.prev_month %>
-  title: "Løgn & Latin: Spot, spe og religionssatire 1500-1900"
-  price: 50kr
+  title: "A very serious meeting"
+  price: 0kr
+  user_id: 1
 climate:
   category: meeting
   creator: Aftenskolen Grobund
@@ -63,6 +69,7 @@ climate:
   start_time: <%= DateTime.now.next_day.next_day %>
   title: "HVAD FEJLER KLIMABEVIDSTHEDEN?"
   price: 12kr
+  user_id: 2
 colombia:
   category: meeting
   creator: Internationalt Forum
@@ -72,3 +79,4 @@ colombia:
   start_time: <%= DateTime.now.next_day.next_day.next_day %>
   title: "Filmfremvisning og foredrag om Colombia: Indtil solen går ned. Selvorganisering i den colombianske konflikt"
   price: 32kr
+  user_id: 2

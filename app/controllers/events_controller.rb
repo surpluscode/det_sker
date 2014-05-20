@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :authorised_user?, only: [:edit, :update, :destroy]
 
   def index
     @events_by_date = Event.index
@@ -14,7 +16,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(user_params)
+    event_params = user_params
+    # add the user id if we've got one
+    event_params.merge!(user_id: current_user.id) if user_signed_in?
+
+    @event = Event.new(event_params)
     respond_to do |format|
       if @event.save
         format.html { redirect_to root_path, notice: 'Event was created successfully.'}
@@ -55,7 +61,15 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def authorised_user?
+    unless current_user.can_edit? @event
+      redirect_to root_path, alert: 'Only authorised users can edit events!'
+    end
+  end
+
   def user_params
-    params.require(:event).permit(:title, :short_description, :long_description, :creator, :category, :location, :start_time, :end_time)
+    params.require(:event).permit(:title, :short_description, :long_description,
+                                  :creator, :category, :location,
+                                  :start_time, :end_time)
   end
 end

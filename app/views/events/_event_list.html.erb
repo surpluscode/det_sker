@@ -5,11 +5,16 @@
   <strong class="event-title"><%= event.title %></strong>
   <span><%= event.location %></span>
   <div class='event-details'>
+    <% unless event.user.nil? %>
+      <p>Oprettet af: <%= event.user.username %></p>
+    <% end %>
     <p class="event-description"><%= event.short_description %></p>
     <p><strong>Starter: </strong><%= format_datetime(event.start_time) %></p>
     <p><strong>Slutter: </strong><%= format_datetime(event.end_time) %></p>
     <p class="event-price"><strong>Pris: </strong><%= event.price %></p>
-    <p><%= link_to 'Edit', edit_event_path(event) %></p>
+    <% if current_user && current_user.can_edit?(event) %>
+        <p><%= link_to 'Edit', edit_event_path(event) %></p>
+    <% end %>
   </div>
 </div>
 <% end %>
