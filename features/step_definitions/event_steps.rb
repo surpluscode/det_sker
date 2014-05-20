@@ -1,3 +1,6 @@
+include Warden::Test::Helpers
+Warden.test_mode!
+
 When(/^a user visits the home page$/) do
   visit root_path
 end
@@ -14,7 +17,7 @@ But(/^the text "(.*)" should be hidden$/) do |text|
   page.has_text?(text, visible: false)
 end
 
-And(/^they click on the (.*) link$/) do |name|
+And(/^I click on the (.*) link$/) do |name|
   click_link(name)
 end
 
@@ -23,7 +26,7 @@ Then(/^the form "([^"]*)" should be visible$/) do |id|
   page.has_selector?(selector, visible: true)
 end
 
-When(/^they fill in the form$/) do
+When(/^I fill in the form$/) do
   within '#new_event' do
     fill_in 'event_title', with: 'Sample title'
     fill_in 'event_creator', with: 'Sample creator'
@@ -52,4 +55,9 @@ Given(/^the following event:$/) do |table|
   table.hashes.each do |attributes|
     Event.create(attributes)
   end
+end
+
+Given(/^I am a logged in user$/) do
+  user = FactoryGirl.create(:user)
+  login_as(user, scope: :user)
 end
