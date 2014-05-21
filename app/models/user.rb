@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
 
   # ensure user is permitted to edit event
   def can_edit?(event)
-    id == event.user_id
+    self.is_admin? || id == event.user_id
   end
 end
