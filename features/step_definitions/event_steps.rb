@@ -1,6 +1,3 @@
-include Warden::Test::Helpers
-Warden.test_mode!
-
 When(/^a user visits the home page$/) do
   visit root_path
 end
@@ -58,6 +55,13 @@ Given(/^the following event:$/) do |table|
 end
 
 Given(/^I am a logged in user$/) do
-  user = FactoryGirl.create(:user)
-  login_as(user, scope: :user)
+  username = 'test_user'
+  email = 'test@example.com'
+  password = 'secretpass'
+  User.create(username: username, email: email,
+                     password: password, confirmed_at: DateTime.now)
+  visit user_session_path
+  fill_in 'user_email', with: email
+  fill_in 'user_password', with: password
+  click_button 'user_sign_in'
 end
