@@ -155,6 +155,7 @@ function toggleContent() {
     }
 }
 function toggleLongDescription() {
-    console.log('getting here');
+    $(this).hide();
+    $(this).siblings('.long-description').slideToggle();
     return false;
 }
