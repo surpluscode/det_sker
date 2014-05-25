@@ -1,11 +1,13 @@
 var activeFilters = [];
 
+
 $(document).ready(function() {
-    $('div.event-container').click(toggleContent);
+    $('span.event-topbar_js').click(toggleContent);
     $('a.filter-link').click(filterCategory);
     //we need to handle the click on the ul level,
     // because the li elements aren't generated  yet
     $('ul.active-filters_js').click(removeFilter);
+    $('.show-long-description_js').click(toggleLongDescription);
 
 });
 
@@ -145,10 +147,15 @@ function updateActiveFilters(){
  *   current container's details div.
  */
 function toggleContent() {
-    if  ($(this).children('.event-details').hasClass('revealed')) {
-        $(this).children('.event-details').removeClass('revealed').slideToggle();
+    console.log('toggle content');
+    if  ($(this).parent('.event-container').children('.event-details').hasClass('revealed')) {
+        $(this).parent('.event-container').children('.event-details').removeClass('revealed').slideToggle();
     } else {
         $('.revealed').removeClass('revealed').slideToggle();
-        $(this).children('.event-details').addClass('revealed').slideToggle();
+        $(this).parent('event-container').children('.event-details').addClass('revealed').slideToggle();
     }
+}
+function toggleLongDescription() {
+    console.log('getting here');
+    return false;
 }
