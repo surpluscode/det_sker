@@ -1,7 +1,6 @@
 --- 
 demo: 
   category: demo
-
   short_description: "På årsdagen for Rana Plaza Katastrofen, den 24. april mellem 20.00-22.00 håber vi, at du vil være med til at sende et signal til omverdenen: Aldrig igen Rana Plaza - kompensation nu! Mød op og læg en blomst eller tænd et lys for Rana Plaza ofrene. På den måde er du med til at vise dem, at de ikke er glemt. Samtidig sender vi sammen et stærkt signal til tøjvirksomhederne om, at de skal betale kompensation til Rana Plaza ofrene. "
   end_time: <%= DateTime.now + 4.hours %>
   location: "Kultorvet Kultorvet, 1175 København 1175 København"
@@ -39,7 +38,8 @@ kursus2:
   user_id: 4
 nonsense: 
   category: demo
-  short_description: "Under parolerne \"Vi er de 99%\" samt \"Vi er ikke handelsvarer i hænderne på politikere og bankfolk!\" samledes den 15. oktober 2011 hundredevis af indignerede godtfolk på Københavns Rådhusplads som en del af et verdensomspændende oprør mod finansverdenens og storindustriens rovdriftspolitik og disses håndlangere i det politiske maskineri. På to-årdagen for occupylejrens og Occupy Copenhagens opståen, belejrer vi Rådhuspladsen igen og udråber den til midlertidig autonom zone."
+  short_description: "Under parolerne \"Vi er de 99%\" samt \"Vi er ikke handelsvarer i hænderne på politikere og bankfolk!\" samledes den 15. oktober 2011 hundredevis af indignerede godtfolk på Københavns Rådhusplads som en del af et verdensomspændende oprør mod finansverdenens og storindustriens rovdriftspolitik og disses håndlangere i det politiske maskineri."
+  long_description: "På to-årdagen for occupylejrens og Occupy Copenhagens opståen, belejrer vi Rådhuspladsen igen og udråber den til midlertidig autonom zone."
   end_time: <%= DateTime.now + 182.days %>
   location: "Københavns Rådhusplads 1550 København"
   start_time: <%= DateTime.now - 183.days %>
