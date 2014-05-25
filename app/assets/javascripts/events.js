@@ -147,12 +147,11 @@ function updateActiveFilters(){
  *   current container's details div.
  */
 function toggleContent() {
-    console.log('toggle content');
-    if  ($(this).parent('.event-container').children('.event-details').hasClass('revealed')) {
-        $(this).parent('.event-container').children('.event-details').removeClass('revealed').slideToggle();
+    if  ($(this).siblings('.event-details').hasClass('revealed')) {
+        $(this).siblings('.event-details').removeClass('revealed').slideToggle();
     } else {
         $('.revealed').removeClass('revealed').slideToggle();
-        $(this).parent('event-container').children('.event-details').addClass('revealed').slideToggle();
+        $(this).siblings('.event-details').addClass('revealed').slideToggle();
     }
 }
 function toggleLongDescription() {
