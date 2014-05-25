@@ -26,7 +26,6 @@ end
 When(/^I fill in the form$/) do
   within '#new_event' do
     fill_in 'event_title', with: 'Sample title'
-    fill_in 'event_creator', with: 'Sample creator'
     fill_in 'event_short_description', with: 'Some gibberish'
     select 'folkets', from: 'event_location'
     select 'party', from: 'event_category'
