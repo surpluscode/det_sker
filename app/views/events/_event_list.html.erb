@@ -12,8 +12,8 @@
     <% end %>
     <p class="event-description"><%= event.short_description %></p>
     <%  if event.long_description? %>
-        <a href="#" class="show_long_description_js">More information...</a>
-        <p class="long_description"><%= event.long_description %></p>
+        <a href="#" class="show-long-description_js">More information...</a>
+        <p class="long-description"><%= event.long_description %></p>
     <% end %>
     <p><strong>Starter: </strong><%= format_datetime(event.start_time) %></p>
     <p><strong>Slutter: </strong><%= format_datetime(event.end_time) %></p>
