@@ -13,5 +13,5 @@
 
   <div><%= f.submit "Sign in", id: 'user_sign_in' %></div>
 <% end %>
-
+<%= link_to "Create event anonymously", controller: '/anonymous_user', action: 'new'  %>
 <%= render "devise/shared/links" %>

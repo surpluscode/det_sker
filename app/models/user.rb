@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :events
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
 
   # ensure user is permitted to edit event
   def can_edit?(event)
