@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140602201446) do
+ActiveRecord::Schema.define(version: 20140602204114) do
 
   create_table "categories", force: true do |t|
     t.string   "key"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 20140602201446) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "categories_events", id: false, force: true do |t|
+    t.integer "event_id"
+    t.integer "category_id"
+  end
+
+  add_index "categories_events", ["category_id"], name: "index_categories_events_on_category_id"
+  add_index "categories_events", ["event_id"], name: "index_categories_events_on_event_id"
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -35,14 +43,6 @@ ActiveRecord::Schema.define(version: 20140602201446) do
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id"
-
-  create_table "events_categories", id: false, force: true do |t|
-    t.integer "event_id"
-    t.integer "category_id"
-  end
-
-  add_index "events_categories", ["category_id"], name: "index_events_categories_on_category_id"
-  add_index "events_categories", ["event_id"], name: "index_events_categories_on_event_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
