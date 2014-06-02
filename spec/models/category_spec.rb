@@ -5,7 +5,6 @@ describe Category do
     c = Category.new(key: :party, description: 'Fun fun fun!')
     c.save.should be_true
     c.key.should eql :party
-    puts c.inspect
   end
 
 end
