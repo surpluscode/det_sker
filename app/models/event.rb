@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
   validates :title, :short_description, :location, :start_time, :end_time, :user_id, presence: true
   validates_inclusion_of :location, in: DetSker::Application.config.possible_locations
   belongs_to :user
+  has_and_belongs_to_many :categories
 
 
   # This method returns the index view
