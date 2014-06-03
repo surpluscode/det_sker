@@ -1,8 +1,8 @@
 <div class="category-filter">
   <h4>Filter by category:</h4>
   <ul>
-    <% @categories.each do |cat, num| %>
-        <li><a href='#' data-toggle="<%= cat %>" class="filter-link"><%= cat.key.titleize %></a> (<%= cat.events.length %>)</li>
+    <% @categories.each do |cat| %>
+        <li><a href='#' data-toggle="<%= cat['key'] %>" class="filter-link"><%= cat['key'].titleize %></a> (<%= cat['num'] %>)</li>
     <% end %>
   </ul>
 
