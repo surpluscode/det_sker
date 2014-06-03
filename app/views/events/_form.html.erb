@@ -1,34 +1,16 @@
-<%= form_for @event do |f| %>
-    <% if @event.errors.any? %>
-        <div id='error_explanation'>
-          <h2>
-            <%= pluralize(@event.errors.count, 'error') %>
-            prohibited this post from being saved
-          </h2>
-          <ul>
-            <% @event.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-    <%= label_tag :title %>
-    <%= f.text_field :title %>
-    <%= label_tag :short_description %>
-    <%= f.text_area :short_description, maxlength: 200 %>
-    <%= label_tag :long_description %>
-    <%= f.text_area :long_description %>
-    <%= label_tag :location %>
-    <%= f.select(:location, location_options) %>
-    <%= label_tag :category %>
-    <%= f.select(:category, category_options) %> <br/>
-    <%= label_tag :start_time %>
+<%= simple_form_for @event do |f| %>
+    <%= f.input :title %>
+    <%= f.input :short_description, maxlength: 200 %>
+    <%= f.input :long_description, required: false %>
+    <%= f.association :categories, label_method: :key, as: :check_boxes %>
+    <%= f.input :location, collection: location_options, prompt: 'Choose location' %>
+
     <span class='select_group'>
-    <%= f.datetime_select :start_time %>
+    <%= f.input :start_time %>
       </span>
     <%= label_tag :end_time %>
     <span class='select_group'>
-      <%= f.datetime_select :end_time %>
+      <%= f.input :end_time %>
     </span>
-    <%= f.submit 'Create' %>
+    <%= f.button :submit %>
 <% end %>
