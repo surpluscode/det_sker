@@ -2,7 +2,7 @@
   <h4>Filter by category:</h4>
   <ul>
     <% @categories.each do |cat, num| %>
-        <li><a href='#' data-toggle="<%= cat %>" class="filter-link"><%= cat.titleize %></a> (<%= num %>)</li>
+        <li><a href='#' data-toggle="<%= cat %>" class="filter-link"><%= cat.key.titleize %></a> (<%= cat.events.length %>)</li>
     <% end %>
   </ul>
 

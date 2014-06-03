@@ -6,7 +6,7 @@ class EventsController < ApplicationController
 
   def index
     @events_by_date = Event.index
-    @categories = Event.categories
+    @categories = Category.current_categories
   end
 
   def show
