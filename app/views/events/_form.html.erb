@@ -2,7 +2,7 @@
     <%= f.input :title %>
     <%= f.input :short_description, maxlength: 200 %>
     <%= f.input :long_description, required: false %>
-    <%= f.association :categories, label_method: :key, as: :check_boxes %>
+    <%= f.association :categories, label_method: :key %>
     <%= f.input :location, collection: location_options, prompt: 'Choose location' %>
 
     <span class='select_group'>
