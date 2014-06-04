@@ -1,11 +1,12 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  #TODO: shouldn't we authenticate the user before the create action also?
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :authorised_user?, only: [:edit, :update, :destroy]
 
   def index
     @events_by_date = Event.index
-    @categories = Event.categories
+    @categories = Category.current_categories
   end
 
   def show
@@ -69,6 +70,6 @@ class EventsController < ApplicationController
 
   def user_params
     params.require(:event).permit(:title, :short_description, :long_description,
-                                  :category, :location, :start_time, :end_time)
+                                  :location, :start_time, :end_time, category_ids: [])
   end
 end

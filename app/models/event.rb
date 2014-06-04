@@ -1,8 +1,9 @@
 class Event < ActiveRecord::Base
-  validates :title, :short_description, :location, :start_time, :end_time, :category, :user_id, presence: true
-  validates_inclusion_of :category, in: DetSker::Application.config.possible_categories
+  validates :title, :short_description, :location, :start_time, :end_time, :user_id, presence: true
   validates_inclusion_of :location, in: DetSker::Application.config.possible_locations
   belongs_to :user
+  has_and_belongs_to_many :categories
+
 
   # This method returns the index view
   # used by EventController to list all events
@@ -10,10 +11,9 @@ class Event < ActiveRecord::Base
   # returns structure as follows:
   # {date1: [EventA, EventB], date2: [EventC, EventD]}
   def self.index
-    events = self.joins(:user).order(:start_time).where('end_time > ?', DateTime.now)
     ordered_by_date = {}
     ordered_by_date[:in_progress] = []
-    events.each do |event|
+    current_events.each do |event|
       # skip finished events
       next if event.end_time < DateTime.now
       # pull all the current events out into their own section
@@ -31,12 +31,8 @@ class Event < ActiveRecord::Base
     ordered_by_date
   end
 
-  # Return a hash containing event categories
-  # with their counts as values
-  def self.categories
-    Event.select(:category)
-    .where('end_time > ?', DateTime.now)
-    .group(:category)
-    .order('count_category desc').count
+  def self.current_events
+    self.includes(:user).order(:start_time).where('end_time > ?', DateTime.now)
   end
+
 end

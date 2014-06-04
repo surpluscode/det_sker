@@ -1,6 +1,7 @@
 --- 
 demo: 
-  category: demo
+  categories:
+    - demo
   short_description: "På årsdagen for Rana Plaza Katastrofen, den 24. april mellem 20.00-22.00 håber vi, at du vil være med til at sende et signal til omverdenen: Aldrig igen Rana Plaza - kompensation nu! Mød op og læg en blomst eller tænd et lys for Rana Plaza ofrene. På den måde er du med til at vise dem, at de ikke er glemt. Samtidig sender vi sammen et stærkt signal til tøjvirksomhederne om, at de skal betale kompensation til Rana Plaza ofrene. "
   end_time: <%= DateTime.now + 4.hours %>
   location: "Kultorvet Kultorvet, 1175 København 1175 København"
@@ -10,7 +11,8 @@ demo:
   cancelled: True
   user_id: 2
 film: 
-  category: meeting
+  categories:
+     - meeting
   short_description: "Racismefri By inviterer interesserede til Filmaften - hvor vi skal se filmen This is England, som omhandler nogle af de farer, som mange unge konfronteres med: Mobning, marginalisering, racisme og gruppepres. Der vil være mulighed for at købe sodavand og vi har chip m.v :) Bagefter filmen vil der være tid til en debat"
   end_time: <%= DateTime.now.next_day + 3.hours %>
   location: "Karens Minde Kulturhus Wagnersvej 18 2450 Kbh SV"
@@ -19,7 +21,8 @@ film:
   price: Gratis som en glatis
   user_id: 3
 kursus1: 
-  category: talk
+  categories:
+     - seminar
   short_description: "Kurset beskriver virkningerne af den blanding af kapitalisme og markedsøkonomi som har ført til en dramatisk reduktion af det politiske råderum og en samfundsudvikling der er overladt til de private koncerner. Vi ser på hvordan den økonomiske dominans har udviklet sig gennem de sidste 250 år, - hvordan den private virksomhed er blevet den centrale aktør i udviklingen med profit og økonomisk vækst som mål og på mulighederne for at føre magten tilbage fra kapitalen til mennesket."
   end_time: <%= DateTime.now.next_month %>
   location: "Christianshavns Gymnasium Prinsessegade 35, Kbh.K, Opgang C , lokale 10 1422 København"
@@ -28,7 +31,8 @@ kursus1:
   price: 200kr
   user_id: 4
 kursus2: 
-  category: talk
+  categories:
+     - seminar
   short_description: "Hvornår træder filosofferne i karakter og går op imod nyliberalismen? Den argentinsk/mexicanske filosof Enrique Dussel påpeger ved hjælp af frigørelsesfilosofien sammenhængen mellem nyliberalismen, globaliseringen og eurocentrismen. På kurset tager vi udgangspunkt i Dussel og læser blandt andet manifestet. På hjemmesiden ligger en artikel, som giver baggrund for Dussels filosofi. Ved filosof Gitte Pedersen"
   end_time: <%= DateTime.now.next_month.next_month %>
   location: "Christianshavns Gymnasium, lokale 10   Prinsessegade 35  1422  København"
@@ -37,7 +41,8 @@ kursus2:
   price: 200kr
   user_id: 4
 nonsense: 
-  category: demo
+  categories:
+     - demo
   short_description: "Under parolerne \"Vi er de 99%\" samt \"Vi er ikke handelsvarer i hænderne på politikere og bankfolk!\" samledes den 15. oktober 2011 hundredevis af indignerede godtfolk på Københavns Rådhusplads som en del af et verdensomspændende oprør mod finansverdenens og storindustriens rovdriftspolitik og disses håndlangere i det politiske maskineri."
   long_description: "På to-årdagen for occupylejrens og Occupy Copenhagens opståen, belejrer vi Rådhuspladsen igen og udråber den til midlertidig autonom zone."
   end_time: <%= DateTime.now + 182.days %>
@@ -47,7 +52,8 @@ nonsense:
   price: Free
   user_id: 2
 udstilling: 
-  category: meeting
+  categories:
+     - meeting
   short_description: "Come and hear about this important thing that we are doing that is the most important thing that you have ever heard of but we cannot tell you about."
   end_time: <%= DateTime.now.next_month %>
   location: "An abandoned warehouse"
@@ -56,7 +62,8 @@ udstilling:
   price: 0kr
   user_id: 1
 climate:
-  category: meeting
+  categories:
+     - meeting
   short_description: "Det alternative topmøde 'System Change, not climate change' i København 2009 gav anledning til at spørge, hvad årsagerne var hhv. er for den fortsatte klimakrise. Er det klimakapitalismens skyld? Er det politikernes hhv. det interstatslige systems skyld? Eller forbrugernes? Vi prøver at finde fem fejl. Som oplægsholdere: økonom prof.Kirsten Halsnæs,DTU, medarbejder i FNs klimapanel; lektor John Holten Andersen og vid.ass. Bente Hessellund, begge Aalborg Universitet/København og aktive i NOAH."
   end_time: <%= DateTime.now.next_day.next_day + 3.hours %>
   location: "Verdens kulturcenteret Nørre Alle, 7. 2200 København"
@@ -65,7 +72,8 @@ climate:
   price: 12kr
   user_id: 2
 colombia:
-  category: meeting
+  categories:
+     - meeting
   short_description: "Den 27. april fra kl 16-18 inviterer Internationalt Forum Århus, alle interesserede til filmfremvisning af filmen - Indtil solen slukker, og foredag med ntropologen og filmskaberen Monica Orjuela fra Colombia, der gennem sit mangeårige arbejde for bondemediet Agencia Prensa Rural har opnået et indgående kendskab til de colombianske bondeorganisationer og deres kamp for jord og rettigheder. Hun er i Danmark fra d. 22. til d. 28. april 2014 for at præsentere sin seneste film om bondeorganisationen ASCAMCAT fra regionen Catatumbo. Hvis du/I har lyst til at afholde et arrangement i din/jeres by så kontakt oplysning@internationaltforum.dk"
   end_time: <%= DateTime.now.next_day.next_day.next_day + 3.hours %>
   location: "Cafe Regnbuen Trøjborg Beboerhus Tordenskjoldsgade 31 ( baggården ) 8220 Århus N 8220 Århus"

@@ -28,7 +28,7 @@ When(/^I fill in the form$/) do
     fill_in 'event_title', with: 'Sample title'
     fill_in 'event_short_description', with: 'Some gibberish'
     select 'folkets', from: 'event_location'
-    select 'party', from: 'event_category'
+    select 'party', from: 'event_category_ids'
     now = DateTime.now
     select now.year, from: 'event_start_time_1i'
     select now.strftime('%B'), from: 'event_start_time_2i'
@@ -63,4 +63,8 @@ Given(/^I am a logged in user$/) do
   fill_in 'user_email', with: email
   fill_in 'user_password', with: password
   click_button 'user_sign_in'
+end
+
+And(/^the category '(.+)' exists$/) do |key|
+  Category.create(key: key)
 end

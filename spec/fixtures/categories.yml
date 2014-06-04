@@ -1,0 +1,14 @@
+---
+party:
+  key: party
+seminar:
+  key: seminar
+meeting:
+  key: meeting
+demo:
+  key: demo
+concert:
+  key: concert
+exercise:
+  key: exercise
+
