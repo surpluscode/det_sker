@@ -2,7 +2,7 @@
 <div class='event-container <%= event_cancelled? event %>' data-category="<%= event.categories %>">
   <span class="event-topbar_js">
   <%= format_starttime(event.start_time) %>
-  <span class='event-category'> </span>
+  <span class='event-category'><%= categories_as_string(event.categories) %> </span>
   <strong class="event-title"><%= event.title %></strong>
   <span><%= event.location %></span>
    </span>

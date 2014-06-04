@@ -17,6 +17,13 @@ module EventsHelper
     end
   end
 
+  # Given an array of Category objects
+  # return a string of their keys
+  # separated by space
+  def categories_as_string(categories)
+    categories.map { |e| e.key }.join(' ')
+  end
+
   def category_options
     DetSker::Application.config.possible_categories
   end
