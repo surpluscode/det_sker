@@ -3,7 +3,7 @@
     <%= f.input :short_description, maxlength: 200 %>
     <%= f.input :long_description, required: false %>
     <%= f.association :categories, label_method: :key %>
-    <%= f.input :location, collection: location_options, prompt: 'Choose location' %>
+    <%= f.association :location, prompt: 'Choose location' %>
 
     <span class='select_group'>
     <%= f.input :start_time %>
