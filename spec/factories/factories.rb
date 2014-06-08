@@ -3,6 +3,7 @@ FactoryGirl.define do
     email 'test@example.com'
     password 'f4k3p455w0rd'
     username 'f4kIr'
+    confirmed_at DateTime.now
   end
 
   factory :event do

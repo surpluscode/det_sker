@@ -19,6 +19,10 @@ describe LocationsController do
   end
 
   describe 'POST#create' do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      sign_in @user
+    end
     it 'should create a location' do
       expect {
         post :create, location: FactoryGirl.attributes_for(:location)
@@ -34,6 +38,8 @@ describe LocationsController do
   describe 'PUT#update' do
     before :each do
       @location = FactoryGirl.create(:location)
+      @user = FactoryGirl.create(:user)
+      sign_in @user
     end
     it 'should assign the correct location' do
       put :update, id: @location, location: FactoryGirl.attributes_for(:location)
@@ -51,6 +57,8 @@ describe LocationsController do
   describe 'DELETE#destroy' do
     before :each do
       @location = FactoryGirl.create(:location)
+      @user = FactoryGirl.create(:user)
+      sign_in @user
     end
 
     it 'deletes the location' do
