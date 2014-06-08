@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140602204114) do
+ActiveRecord::Schema.define(version: 20140608110228) do
 
   create_table "categories", force: true do |t|
     t.string   "key"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20140602204114) do
   create_table "events", force: true do |t|
     t.string   "title"
     t.text     "short_description"
-    t.text     "location"
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "created_at"
@@ -40,9 +39,21 @@ ActiveRecord::Schema.define(version: 20140602204114) do
     t.boolean  "cancelled"
     t.text     "long_description"
     t.integer  "user_id"
+    t.integer  "location_id"
   end
 
+  add_index "events", ["location_id"], name: "index_events_on_location_id"
   add_index "events", ["user_id"], name: "index_events_on_user_id"
+
+  create_table "locations", force: true do |t|
+    t.string  "name"
+    t.string  "street_address"
+    t.string  "postcode"
+    t.string  "town"
+    t.text    "description"
+    t.decimal "latitude"
+    t.decimal "longitude"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

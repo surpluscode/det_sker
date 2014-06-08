@@ -14,3 +14,9 @@ intellectual:
   id: 4
   username: kautskys_renegade
   email: haventyouevenread@marx.com
+admin:
+  id: 5
+  username: admin
+  email: ronan@admin.com
+  encrypted_password: $2a$10$I9bw0h2KTX0GtjLf1/4OauVqGFVt32X9AXLjse/V4r9eiU7MyZWeu
+  confirmed_at: <%= DateTime.now %>
