@@ -1,5 +1,5 @@
 <% events.each do |event| %>
-<div class='event-container <%= event_cancelled? event %>' data-category="<%= event.categories %>">
+<div class='event-container <%= event_cancelled? event %>' data-category="<%= categories_as_string(event.categories) %>">
   <span class="event-topbar_js">
   <%= format_starttime(event.start_time) %>
   <span class='event-category'><%= categories_as_string(event.categories) %> </span>

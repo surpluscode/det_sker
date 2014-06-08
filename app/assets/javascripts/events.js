@@ -51,7 +51,7 @@ function evaluateShown(){
             events.show();
         } else {
             events.each(function (i) {
-                var categories = $(this).attr('data-category').split(';');
+                var categories = $(this).attr('data-category').split(' ');
                 if ($(this).is(':hidden')) {
                     if (categoriesMatchFilters(categories)) {
                         $(this).show();
