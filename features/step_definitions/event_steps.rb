@@ -64,7 +64,3 @@ Given(/^I am a logged in user$/) do
   fill_in 'user_password', with: password
   click_button 'user_sign_in'
 end
-
-And(/^the category '(.+)' exists$/) do |key|
-  Category.create(key: key)
-end
