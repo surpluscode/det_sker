@@ -37,10 +37,18 @@ rescue NameError
 end
 
 # delete all data in the db and load our seed data before running tests
-(ActiveRecord::Base.connection.tables - ['schema_migrations', 'categories_events']).each do |table|
-  table.classify.constantize.destroy_all
+def truncate_tables
+  (ActiveRecord::Base.connection.tables - ['schema_migrations', 'categories_events']).each do |table|
+    table.classify.constantize.destroy_all
+  end
 end
+truncate_tables
 load File.join(Rails.root, 'db', 'seeds.rb')
+
+at_exit do
+  truncate_tables
+end
+
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
