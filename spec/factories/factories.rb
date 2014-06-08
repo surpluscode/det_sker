@@ -9,9 +9,9 @@ FactoryGirl.define do
     title 'Fun party'
     short_description 'really fun party'
     long_description "I'm telling you it's going to be fun!"
-    location 'ungdomshuset'
     start_time DateTime.now
     end_time DateTime.now + 5.hours
+    location_id 1
     user_id 1
   end
 

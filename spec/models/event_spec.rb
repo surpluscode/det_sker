@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Event do
   before(:each) do
     @party_details = {title: 'Massive party', short_description: 'The Best Party Ever!',
-                   location: 'ungdomshuset', start_time: DateTime.new, end_time: DateTime.new,
+                   start_time: DateTime.new, end_time: DateTime.new, location_id: '1',
                   user_id: '1'}
   end
   it 'should create an event' do
@@ -16,7 +16,7 @@ describe Event do
     Event.create(@party_details).valid?.should_not be_true
   end
   it 'should not save an event without a location' do
-    @party_details.delete(:location)
+    @party_details.delete(:location_id)
     Event.create(@party_details).valid?.should_not be_true
   end
   it 'should not save an event without a short description' do
@@ -31,11 +31,6 @@ describe Event do
 
   it 'should not save an event without an end_time' do
     @party_details.delete(:end_time)
-    Event.create(@party_details).valid?.should_not be_true
-  end
-
-  it 'should not save an event with an invalid location' do
-    @party_details[:location] = 'Some invalid location'
     Event.create(@party_details).valid?.should_not be_true
   end
 

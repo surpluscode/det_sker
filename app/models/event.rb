@@ -1,7 +1,8 @@
 class Event < ActiveRecord::Base
-  validates :title, :short_description, :location, :start_time, :end_time, :user_id, presence: true
-  validates_inclusion_of :location, in: DetSker::Application.config.possible_locations
+  validates :title, :short_description, :start_time, :end_time, :location_id, :user_id, presence: true
+
   belongs_to :user
+  belongs_to :location
   has_and_belongs_to_many :categories
 
 
