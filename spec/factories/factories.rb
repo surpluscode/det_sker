@@ -14,6 +14,18 @@ FactoryGirl.define do
     end_time DateTime.now + 5.hours
     location_id 1
     user_id 1
+
+    factory :event_yesterday do
+      title 'This happened yesterday'
+      start_time {DateTime.now - 1.days - 2.hours}
+      end_time {DateTime.now - 1.days}
+    end
+
+    factory :event_tomorrow do
+      title 'This will happen tomorrow'
+      start_time {DateTime.now + 1.day}
+      end_time {DateTime.now + 1.day + 2.hours}
+    end
   end
 
   factory :category do
