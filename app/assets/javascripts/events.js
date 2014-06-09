@@ -111,19 +111,19 @@ function hasVisibleChildEvents(childEvents) {
 }
 
 /**
- * This function checks to see if an
- * event has all the necessary categories
+ * This function checks if an event
+ * has any of the specified categories
  *
  * @param eventCategories
  * @returns {boolean}
  */
 function categoriesMatchFilters(eventCategories) {
     for (var i = 0; i < activeFilters.length; i++) {
-        if (eventCategories.indexOf(activeFilters[i]) == -1) {
-            return false;
+        if (eventCategories.indexOf(activeFilters[i]) >= 0) {
+            return true;
         }
     }
-    return true;
+    return false;
 }
 
 /**
