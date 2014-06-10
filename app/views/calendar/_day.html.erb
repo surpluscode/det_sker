@@ -1,0 +1,12 @@
+<div class="day">
+<h2>
+  <%= format_date(day.date) %>
+  (<%= day.events.length %>)
+</h2>
+<div class="events-by-date_js">
+ <% day.events.each do |event| %>
+  <%= render partial: 'events/event', object: event %>
+<% end %>
+</div>
+
+</div>
