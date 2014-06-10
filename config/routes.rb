@@ -4,6 +4,7 @@ DetSker::Application.routes.draw do
   resources :events
   resources :categories
   resources :locations
+  get ':controller/(:action)'
   get 'anonymous_user#new' => 'anonymous_user#new'
   match '/anonymous_user/create' => 'anonymous_user#create', via: :post
   # The priority is based upon order of creation: first created -> highest priority.
