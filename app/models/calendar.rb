@@ -1,9 +1,9 @@
 class Calendar
 
-  def initialize(type = 'coming')
+  def initialize(type = :coming)
     @days = {}
     @dates = []
-    if type == 'coming'
+    if type == :coming
       get_coming_events
     end
   end
