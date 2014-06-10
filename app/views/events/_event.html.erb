@@ -1,0 +1,25 @@
+
+<div class='event-container <%= event_cancelled? event %>' data-category="<%= categories_as_string(event.categories) %>">
+  <span class="event-topbar_js">
+  <%= format_starttime(event.start_time) %>
+    <span class='event-category'><%= categories_as_string(event.categories) %> </span>
+  <strong class="event-title"><%= event.title %></strong>
+  <span><%= link_to(event.location.name, event.location) if event.location %></span>
+   </span>
+  <div class='event-details'>
+    <% unless event.user.nil? %>
+        <p>Oprettet af: <%= event.user.username %></p>
+    <% end %>
+    <p class="event-description"><%= event.short_description %></p>
+    <%  if event.long_description? %>
+        <a href="#" class="show-long-description_js">More information...</a>
+        <p class="long-description"><%= event.long_description %></p>
+    <% end %>
+    <p><strong>Starter: </strong><%= format_datetime(event.start_time) %></p>
+    <p><strong>Slutter: </strong><%= format_datetime(event.end_time) %></p>
+    <p class="event-price"><strong>Pris: </strong><%= event.price %></p>
+    <% if current_user && current_user.can_edit?(event) %>
+        <p><%= link_to 'Edit', edit_event_path(event) %></p>
+    <% end %>
+  </div>
+</div>
