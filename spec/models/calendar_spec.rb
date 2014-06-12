@@ -4,8 +4,8 @@ describe Calendar do
 
   describe 'Calendar.new(:coming)' do
     before(:each) do
-      FactoryGirl.create(:event)
-      @event_tomorrow = FactoryGirl.create(:event_tomorrow)
+      FactoryGirl.create(:event, categories: [FactoryGirl.create(:category)])
+      @event_tomorrow = FactoryGirl.create(:event_tomorrow, categories: [FactoryGirl.create(:category, key: :demo)])
       FactoryGirl.create(:event_yesterday)
       @cal = Calendar.new(:coming)
     end
@@ -22,6 +22,19 @@ describe Calendar do
 
     it 'should not return past events' do
       @cal.days.should_not include(@event_tomorrow)
+    end
+
+    it 'should return a hash of categories and their values' do
+      @cal.categories.should be_a Hash
+      expect(@cal.categories.length).to eq(2)
+    end
+
+    it 'should return the category contained in the Event object' do
+      @cal.categories.keys.should include(:party)
+    end
+
+    it 'should return a number of events for each category' do
+      @cal.categories.values.first.should be_a Fixnum
     end
 
   end
