@@ -1,3 +1,5 @@
+<%= render partial: 'filter_categories', object: @calendar.filter_categories %>
+
 <% @calendar.days.each do |day| %>
     <%= render partial: 'day', object: day  %>
 <% end %>

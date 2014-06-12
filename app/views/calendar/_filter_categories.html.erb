@@ -1,0 +1,17 @@
+<div class="category-filter">
+  <h4>Filter by category:</h4>
+  <ul>
+    <% filter_categories.each_pair do |key, num| %>
+        <li>
+          <a href='#' data-toggle="<%= key %>" class="filter-link">
+            <%= key.to_s.titleize  %>
+          </a>
+          (<%= num %>)
+        </li>
+    <% end %>
+  </ul>
+
+  <h4 class="active-filter-header_js" style="display: none;">Active filters:</h4>
+  <ul class="active-filters_js">
+  </ul>
+</div>
