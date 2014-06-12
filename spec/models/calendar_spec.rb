@@ -25,16 +25,16 @@ describe Calendar do
     end
 
     it 'should return a hash of categories and their values' do
-      @cal.categories.should be_a Hash
-      expect(@cal.categories.length).to eq(2)
+      @cal.filter_categories.should be_a Hash
+      expect(@cal.filter_categories.length).to eq(2)
     end
 
     it 'should return the category contained in the Event object' do
-      @cal.categories.keys.should include(:party)
+      @cal.filter_categories.keys.should include(:party)
     end
 
     it 'should return a number of events for each category' do
-      @cal.categories.values.first.should be_a Fixnum
+      @cal.filter_categories.values.first.should be_a Fixnum
     end
 
   end

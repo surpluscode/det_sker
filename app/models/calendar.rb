@@ -1,10 +1,10 @@
 class Calendar
 
-  attr_reader :categories
+  attr_reader :filter_categories
 
   def initialize(type = :coming)
     @days = {}
-    @categories = {}
+    @filter_categories = {}
     if type == :coming
       get_coming_events
       get_coming_categories
@@ -16,7 +16,7 @@ class Calendar
   # category keys and number of occurrences
   def get_coming_categories
     Category.current_categories.each do |cat|
-     @categories.store(cat['key'].to_sym, cat['num'])
+     @filter_categories.store(cat['key'].to_sym, cat['num'])
     end
   end
 
