@@ -1,5 +1,4 @@
 <%= link_to 'New Event', new_event_path %>
-<%= render 'category_filter' %>
 <% @events_by_date.each do |date, events| %>
     <% if date == :in_progress %>
      <h2>I Gang</h2>

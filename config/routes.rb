@@ -1,6 +1,6 @@
 DetSker::Application.routes.draw do
   devise_for :users
-  root 'events#index'
+  root 'calendar#index'
   resources :events
   resources :categories
   resources :locations
