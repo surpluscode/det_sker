@@ -1,0 +1,4 @@
+<div>
+  <p><%= link_to(user.username, user_path(user)) %></p>
+  <p><%= link_to('Edit', edit_user_path(user)) if current_user && current_user.is_admin? %></p>
+</div>
