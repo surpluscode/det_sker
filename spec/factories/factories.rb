@@ -4,6 +4,12 @@ FactoryGirl.define do
     password 'f4k3p455w0rd'
     username 'f4kIr'
     confirmed_at DateTime.now
+
+    factory :admin_user do
+      email 'admin@user.com'
+      username 'admin'
+      is_admin true
+    end
   end
 
   factory :event do
