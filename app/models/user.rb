@@ -4,10 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :events
+  alias_method :user_id, :id
+
   validates :username, presence: true, uniqueness: true
 
-  # ensure user is permitted to edit event
-  def can_edit?(event)
-    self.is_admin? || id == event.user_id
+  # ensure user is permitted to edit object
+  def can_edit?(object)
+    self.is_admin? || id == object.user_id
   end
+
 end
