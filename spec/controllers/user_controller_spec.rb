@@ -30,17 +30,29 @@ describe UserController do
       @user = FactoryGirl.create(:user)
     end
 
-    it 'should not permit normal users to edit' do
+    it 'should not permit non-logged in users to edit' do
       get :edit, id: @user
       response.should redirect_to new_user_session_path
     end
 
-    it 'should permit admin users to edit' do
-      pending
+    it 'should not permit normal users to edit other users' do
+      diff_user = FactoryGirl.create(:different_user)
+      sign_in diff_user
+      get :edit, id: @user
+      response.should redirect_to users_path
     end
 
-    it 'should permit the user themself to edit' do
-      pending
+    it 'should permit admin users to edit' do
+      admin = FactoryGirl.create(:admin_user)
+      sign_in admin
+      get :edit, id: @user
+      response.should render_template :edit
+    end
+
+    it 'should permit a logged in user to edit their own profile' do
+      sign_in @user
+      get :edit, id: @user
+      response.should render_template :edit
     end
 
   end

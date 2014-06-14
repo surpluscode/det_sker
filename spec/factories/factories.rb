@@ -10,6 +10,11 @@ FactoryGirl.define do
       username 'admin'
       is_admin true
     end
+
+    factory :different_user do
+      email 'different@user.com'
+      username 'different'
+    end
   end
 
   factory :event do
