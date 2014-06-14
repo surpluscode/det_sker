@@ -1,9 +1,10 @@
 DetSker::Application.routes.draw do
-  devise_for :users
+  devise_for :user
   root 'calendar#index'
   resources :events
   resources :categories
   resources :locations
+  resources :users, controller: :user
   get ':controller/(:action)'
   get 'anonymous_user#new' => 'anonymous_user#new'
   match '/anonymous_user/create' => 'anonymous_user#create', via: :post
