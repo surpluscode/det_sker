@@ -13,4 +13,9 @@ class User < ActiveRecord::Base
     self.is_admin? || id == object.user_id
   end
 
+  def make_admin
+    self.is_admin = true
+    self.save
+  end
+
 end

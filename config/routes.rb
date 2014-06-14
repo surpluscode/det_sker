@@ -4,7 +4,10 @@ DetSker::Application.routes.draw do
   resources :events
   resources :categories
   resources :locations
-  resources :users, controller: :user
+  resources :users, controller: :user do
+    patch 'make_admin', on: :member
+  end
+
   get ':controller/(:action)'
   get 'anonymous_user#new' => 'anonymous_user#new'
   match '/anonymous_user/create' => 'anonymous_user#create', via: :post

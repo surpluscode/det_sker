@@ -57,6 +57,27 @@ describe UserController do
 
   end
 
+  describe 'patch#make_admin' do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+    end
+
+    it 'should not permit non-admin users to make a user admin' do
+      diff_user = FactoryGirl.create(:different_user)
+      sign_in diff_user
+      patch :make_admin, id: @user
+      response.should redirect_to users_path
+    end
+
+    it 'should allow admin users to make the relevant user an admin user' do
+      admin = FactoryGirl.create(:admin_user)
+      sign_in admin
+      patch :make_admin, id: @user
+      user = User.find(@user)
+      expect(user.is_admin?).to be_true
+    end
+  end
+
   describe 'post#update/:id' do
     it 'should not permit normal users to update' do
       pending
