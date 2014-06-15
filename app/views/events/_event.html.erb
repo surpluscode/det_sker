@@ -7,9 +7,7 @@
   <span><%= link_to(event.location.name, event.location) if event.location %></span>
    </span>
   <div class='event-details'>
-    <% unless event.user.nil? %>
-        <p><%= link_to event.user.username, event.user %></p>
-    <% end %>
+    <p><%= link_to event.user.username, event.user  if event.user%></p>
     <p class="event-description"><%= event.short_description %></p>
     <%  if event.long_description? %>
         <a href="#" class="show-long-description_js">More information...</a>
