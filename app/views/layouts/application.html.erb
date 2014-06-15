@@ -7,6 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<%= render partial: 'layouts/lang_selector' %>
+
 <div class="login-buttons">
   <% if current_user %>
       <%= link_to t('.logout'), destroy_user_session_path, method: :delete %>

@@ -1,0 +1,5 @@
+<% if I18n.locale == :en %>
+    <%= link_to 'Dansk', url_for(locale: :da) %>
+<% else %>
+    <%= link_to 'English', url_for(locale: :en) %>
+<% end %>
