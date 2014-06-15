@@ -8,7 +8,8 @@ module EventsHelper
   end
 
   def format_date(d)
-    d.strftime("%a d. %d %b %Y")
+    I18n.localize(d, format: :short)
+    #d.strftime("%a d. %d %b %Y")
   end
 
   def event_cancelled?(event)
