@@ -8,7 +8,7 @@
    </span>
   <div class='event-details'>
     <% unless event.user.nil? %>
-        <p>Oprettet af: <%= event.user.username %></p>
+        <p><%= link_to event.user.username, event.user %></p>
     <% end %>
     <p class="event-description"><%= event.short_description %></p>
     <%  if event.long_description? %>
