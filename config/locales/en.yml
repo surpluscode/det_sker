@@ -28,3 +28,6 @@ en:
   calendar:
     index:
       new_event: "New Event"
+    filter_categories:
+      active_filters: "Active filters"
+      filter_header: "Filter by category"

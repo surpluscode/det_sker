@@ -28,3 +28,6 @@ da:
   calendar:
     index:
       new_event: "Opret ny begivenhed"
+    filter_categories:
+      active_filters: "Afgrænsninger"
+      filter_header: "Vis kun"
