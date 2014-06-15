@@ -4,11 +4,6 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :authorised_user?, only: [:edit, :update, :destroy]
 
-  def index
-    @events_by_date = Event.index
-    @categories = Category.current_categories
-  end
-
   def show
   end
 

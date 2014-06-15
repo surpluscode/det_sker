@@ -1,7 +1,7 @@
 DetSker::Application.routes.draw do
   devise_for :user
   root 'calendar#index'
-  resources :events
+  resources :events, except: [:index]
   resources :categories
   resources :locations
   resources :users, controller: :user do
@@ -11,6 +11,7 @@ DetSker::Application.routes.draw do
   get ':controller/(:action)'
   get 'anonymous_user#new' => 'anonymous_user#new'
   match '/anonymous_user/create' => 'anonymous_user#create', via: :post
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
