@@ -1,4 +1,4 @@
-<%= link_to 'New Event', new_event_path %>
+<%= link_to t('.new_event'), new_event_path %>
 <%= render partial: 'filter_categories', object: @calendar.filter_categories %>
 
 <% @calendar.days.each do |day| %>
