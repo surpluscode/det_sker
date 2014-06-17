@@ -31,3 +31,4 @@ da:
     filter_categories:
       active_filters: "Afgrænsninger"
       filter_header: "Vis kun"
+  coming_events: "Kommende begivenheder"

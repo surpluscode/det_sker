@@ -31,3 +31,4 @@ en:
     filter_categories:
       active_filters: "Active filters"
       filter_header: "Filter by category"
+  coming_events: "Coming Events"
