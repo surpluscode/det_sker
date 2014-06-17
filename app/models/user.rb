@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
+  include HasEvents
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :events
   alias_method :user_id, :id
 
   validates :username, presence: true, uniqueness: true
@@ -16,10 +17,6 @@ class User < ActiveRecord::Base
   def make_admin
     self.is_admin = true
     self.save
-  end
-
-  def coming_events
-    events.where('end_time > ?', DateTime.now)
   end
 
 end
