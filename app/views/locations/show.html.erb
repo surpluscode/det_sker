@@ -10,7 +10,7 @@
 
 <div>
   <h2><%= t :coming_events %></h2>
-  <% @location.events.each do |event| %>
+  <% @location.coming_events.each do |event| %>
       <%= render partial: 'events/event', object: event, locals: {show_date: true} %>
   <% end %>
 </div>
