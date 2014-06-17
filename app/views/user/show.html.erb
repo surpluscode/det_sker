@@ -9,7 +9,7 @@
 <hr/>
 <div>
   <h2><%= t :coming_events %></h2>
-  <% @user.events.each do |event| %>
+  <% @user.coming_events.each do |event| %>
     <%= render partial: 'events/event', object: event, locals: { show_date: true } %>
   <% end %>
 </div>
