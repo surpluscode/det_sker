@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
     self.save
   end
 
+  def coming_events
+    events.where('end_time > ?', DateTime.now)
+  end
+
 end

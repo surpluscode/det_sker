@@ -21,4 +21,14 @@ describe User do
       expect(admin.can_edit? @user).to be_true
     end
   end
+
+  describe 'coming events' do
+    it 'shows the users coming events only' do
+      u = FactoryGirl.create(:user)
+      u.events << FactoryGirl.create(:event_yesterday)
+      u.events << FactoryGirl.create(:event_tomorrow)
+      u.events.length.should be_eql 2
+      u.coming_events.length.should be_eql 1
+    end
+  end
 end
