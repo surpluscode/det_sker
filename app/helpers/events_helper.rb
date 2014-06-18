@@ -22,7 +22,7 @@ module EventsHelper
   # return a string of their keys
   # separated by space
   def categories_as_string(categories)
-    categories.map { |e| e.key }.join(' ')
+    categories.map { |e| e.key.titleize }.join(' ')
   end
 
   def category_options
