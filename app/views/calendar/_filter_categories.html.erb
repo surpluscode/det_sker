@@ -1,6 +1,6 @@
 <div class="category-filter">
   <h4><%= t '.filter_header' %>:</h4>
-  <ul>
+  <ul id="filter-list_js">
     <% filter_categories.each_pair do |key, num| %>
         <li>
           <a href='#' data-toggle="<%= key %>" class="filter-link">

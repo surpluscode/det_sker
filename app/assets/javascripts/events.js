@@ -128,17 +128,33 @@ function categoriesMatchFilters(eventCategories) {
 
 /**
 * Given a change in filter state
-* Ensure that currently active filters
- * are represented in the DOM
+* Run through the list of active filters
+* and insert html elements to represent them.
 */
 function updateActiveFilters(){
+    refreshFilterView();
     var filterHTML = '';
     for (var i = 0; i < activeFilters.length; i++) {
         var filterName = activeFilters[i];
         var removeLink = ' <a href="" class="remove-filter" data-toggle="' + filterName + '"> [X] </a>';
         filterHTML += '<li>' + filterName.titleize() + removeLink + '</li>';
     }
+   // $('ul#filter-list_js').prepend(filterHTML);
     $('ul.active-filters_js').html(filterHTML);
+}
+/**
+ * Given a change in filter state
+ * add classes to change display of
+ * active filters in the view.
+ */
+function refreshFilterView(){
+    console.log('refreshFilterView');
+    $('a.filter-link').each(function(){
+        var filter = $(this).attr('data-toggle');
+        if (activeFilters.indexOf(filter) >= 0) {
+            $(this).addClass('active');
+        }
+    })
 }
 
 /**

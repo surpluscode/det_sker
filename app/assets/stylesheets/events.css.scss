@@ -32,3 +32,11 @@ input, textarea, .select_group {
 .long-description {
   display: none;
 }
+
+ul#filter-list_js {
+  .active {
+    color: whitesmoke;
+    background-color: darkblue;
+    padding: 2px;
+  }
+}
