@@ -1,5 +1,6 @@
 /**
- * Created by ROMC on 24-04-14.
+ * Utility and compatibility functions
+ * to make javascript less horrible.
  */
 /**
  * Array.indexOf for older Internet Explorers
