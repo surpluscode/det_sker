@@ -6,7 +6,6 @@ $(document).ready(function() {
     $('a.filter-link').click(filterCategory);
     //we need to handle the click on the ul level,
     // because the li elements aren't generated  yet
-    $('ul.active-filters_js').click(removeFilter);
     $('.show-long-description_js').click(toggleLongDescription);
 
 });
@@ -23,21 +22,13 @@ function filterCategory(){
     var filter = $(this).attr('data-toggle');
     if (activeFilters.indexOf(filter) == -1) {
         activeFilters.push(filter);
-        updateActiveFilters();
+    } else if ($(this).hasClass('active')){
+        activeFilters.remove(filter);
     }
+    refreshFilterView();
     evaluateShown();
     return false;
 }
-
-
-function removeFilter(event){
-    var filter = $(event.target).attr('data-toggle');
-    activeFilters.remove(filter);
-    updateActiveFilters();
-    evaluateShown();
-    return false;
-}
-
 
 function evaluateShown(){
     /**
@@ -80,17 +71,8 @@ function evaluateShown(){
         });
     }
 
-    function evaluateActiveFilterHeader() {
-        var header =  $('.active-filter-header_js');
-        if (activeFilters.length == 0) {
-           header.hide();
-        } else {
-            header.show();
-        }
-    }
     evaluateEventVisibility();
     evaluateDateVisibility();
-    evaluateActiveFilterHeader();
 }
 
 /**
@@ -144,15 +126,16 @@ function updateActiveFilters(){
 }
 /**
  * Given a change in filter state
- * add classes to change display of
- * active filters in the view.
+ * add or remove active class from filters
+ * to change display of active filters in the view.
  */
 function refreshFilterView(){
-    console.log('refreshFilterView');
     $('a.filter-link').each(function(){
         var filter = $(this).attr('data-toggle');
         if (activeFilters.indexOf(filter) >= 0) {
             $(this).addClass('active');
+        } else if ($(this).hasClass('active')) {
+            $(this).removeClass('active')
         }
     })
 }
