@@ -21,8 +21,11 @@ module EventsHelper
   # Given an array of Category objects
   # return a string of their keys
   # separated by space
-  def categories_as_string(categories)
-    categories.map { |e| e.key.titleize }.join(' ')
+  def categories_as_string(categories, title = false)
+    string = categories.map do |e|
+      title ? e.key.titleize : e.key
+    end
+    string.join(' ')
   end
 
   def category_options

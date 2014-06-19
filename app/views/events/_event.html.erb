@@ -7,7 +7,7 @@
     <% else %>
         <%= format_starttime(event.start_time) %>
     <% end %>
-    <span class='event-category'><%= categories_as_string(event.categories) %> </span>
+    <span class='event-category'><%= categories_as_string(event.categories, title = true) %> </span>
   <strong class="event-title"><%= event.title %></strong>
   <span><%= link_to(event.location.name, event.location) if event.location %></span>
    </span>
