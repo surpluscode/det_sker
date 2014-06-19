@@ -52,5 +52,13 @@ FactoryGirl.define do
     description 'Folkets Hus er et lokalt, social og politisk brugerstyret hus i hjertet af Nørrebro.'
     latitude 12.554228
     longitude 55.687301
+
+    factory :other_location do
+      name 'BolsjeFabrikken'
+      street_address 'Ragnhildgade 1'
+      postcode '2100 Ø'
+      description 'warehouse! joints! reggae!'
+    end
   end
+
 end

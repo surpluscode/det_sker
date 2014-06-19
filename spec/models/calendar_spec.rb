@@ -4,9 +4,12 @@ describe Calendar do
 
   describe 'Calendar.new(:coming)' do
     before(:each) do
-      FactoryGirl.create(:event, categories: [FactoryGirl.create(:category)])
-      @event_tomorrow = FactoryGirl.create(:event_tomorrow, categories: [FactoryGirl.create(:category, key: :demo)])
-      FactoryGirl.create(:event_yesterday)
+      l1 =  FactoryGirl.create(:location)
+      l2 = FactoryGirl.create(:other_location)
+      FactoryGirl.create(:event, categories: [FactoryGirl.create(:category)], location: l1)
+      @event_tomorrow = FactoryGirl.create(:event_tomorrow, categories: [FactoryGirl.create(:category, key: :demo)],
+                                           location: l2)
+      FactoryGirl.create(:event_yesterday, location: l2)
       @cal = Calendar.new(:coming)
     end
 
@@ -35,6 +38,11 @@ describe Calendar do
 
     it 'should return a number of events for each category' do
       @cal.filter_categories.values.first.should be_a Fixnum
+    end
+
+    it 'should return a hash of locations and their values' do
+      @cal.filter_locations.should be_a Hash
+      expect(@cal.filter_locations.length).to eq(2)
     end
 
   end
