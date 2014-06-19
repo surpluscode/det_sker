@@ -33,7 +33,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.current_events
-    self.includes(:user).order(:start_time).where('end_time > ?', DateTime.now)
+    self.includes(:user, :location).order(:start_time).where('end_time > ?', DateTime.now)
   end
 
 end
