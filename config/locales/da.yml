@@ -28,6 +28,6 @@ da:
   calendar:
     index:
       new_event: "Opret ny begivenhed"
-    filter_categories:
+    filter_options:
       filter_header: "Vis kun"
   coming_events: "Kommende begivenheder"

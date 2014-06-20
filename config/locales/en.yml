@@ -28,6 +28,6 @@ en:
   calendar:
     index:
       new_event: "New Event"
-    filter_categories:
+    filter_options:
       filter_header: "Filter by category"
   coming_events: "Coming Events"
