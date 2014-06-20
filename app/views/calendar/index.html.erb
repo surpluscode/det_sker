@@ -1,5 +1,8 @@
 <%= link_to t('.new_event'), new_event_path %>
-<%= render partial: 'filter_categories', object: @calendar.filter_categories %>
+<%= render partial: 'filter_options',
+           locals: {filter_categories: @calendar.filter_categories,
+                    filter_locations: @calendar.filter_locations }
+%>
 
 <% @calendar.days.each do |day| %>
     <%= render partial: 'day', object: day  %>

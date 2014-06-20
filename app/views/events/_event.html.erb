@@ -1,5 +1,6 @@
 
-<div class='event-container <%= event_cancelled? event %>' data-category="<%= categories_as_string(event.categories) %>">
+<div class='event-container <%= event_cancelled? event %>'
+     data-toggle="<%= categories_as_string(event.categories) %> <%= event.location.name %>">
   <span class="event-topbar_js">
     <%# In the frontpage context we don't show a date, otherwise, do. %>
     <% if defined? show_date %>

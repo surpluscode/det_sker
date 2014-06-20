@@ -1,0 +1,9 @@
+<div class="category-filter">
+  <h4><%= t '.filter_header' %>:</h4>
+  <dl id="filter-list_js">
+  <dt>Categories</dt>
+  <%= render partial: 'filter_list', locals: {filter_objects: filter_categories} %>
+  <dt>Locations</dt>
+  <%= render partial: 'filter_list', locals: {filter_objects: filter_locations} %>
+  </dl>
+</div>

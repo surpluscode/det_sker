@@ -42,13 +42,13 @@ function evaluateShown(){
             events.show();
         } else {
             events.each(function (i) {
-                var categories = $(this).attr('data-category').split(' ');
+                var attributes = $(this).attr('data-toggle').split(' ');
                 if ($(this).is(':hidden')) {
-                    if (categoriesMatchFilters(categories)) {
+                    if (attributesMatchFilters(attributes)) {
                         $(this).show();
                     }
                 } else if ($(this).is(':visible')) {
-                    if (!categoriesMatchFilters(categories)) {
+                    if (!attributesMatchFilters(attributes)) {
                         $(this).hide();
                     }
                 }
@@ -99,7 +99,7 @@ function hasVisibleChildEvents(childEvents) {
  * @param eventCategories
  * @returns {boolean}
  */
-function categoriesMatchFilters(eventCategories) {
+function attributesMatchFilters(eventCategories) {
     for (var i = 0; i < activeFilters.length; i++) {
         if (eventCategories.indexOf(activeFilters[i]) >= 0) {
             return true;

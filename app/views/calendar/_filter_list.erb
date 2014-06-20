@@ -1,0 +1,8 @@
+<% filter_objects.each_pair do |name, num| %>
+    <dd>
+      <a href='#' data-toggle="<%= name %>" class="filter-link">
+        <%= name.to_s.titleize  %>
+      </a>
+      (<%= num %>)
+    </dd>
+<% end %>
