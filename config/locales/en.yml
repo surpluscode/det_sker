@@ -30,4 +30,5 @@ en:
       new_event: "New Event"
     filter_options:
       filter_header: "Filter by category"
+      category_filter_heading: "Event Types"
   coming_events: "Coming Events"
