@@ -11,5 +11,5 @@
 // about supported directives.
 //
 
-
+//= require 'angular.min'
 //= require_tree .
