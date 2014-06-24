@@ -1,0 +1,11 @@
+<% content_for(:head) do %>
+    <script>
+        window.app = window.app || {};
+        window.app.data = window.app.data || {};
+        window.app.data.days = [
+            <% @calendar.days.each do |day| %>
+                <%= raw(day.to_json) %>,
+            <% end %>
+        ];
+    </script>
+<% end %>

@@ -1,9 +1,20 @@
+<%= render 'head_data' %>
+
 <%= link_to t('.new_event'), new_event_path %>
 <%= render partial: 'filter_options',
            locals: {filter_categories: @calendar.filter_categories,
                     filter_locations: @calendar.filter_locations }
 %>
 
+
+<div ng-app="calendarApp" ng-controller="CalendarCtrl">
+    <div ng-repeat="day in days">
+        <h3>{{ day.date }} ({{ day.events.length}})</h3>
+      <div ng-repeat="event in day.events">
+        <p>{{ event.title }}</p>
+      </div>
+    </div>
+</div>
 <% @calendar.days.each do |day| %>
     <%= render partial: 'day', object: day  %>
 <% end %>
