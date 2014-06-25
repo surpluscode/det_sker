@@ -11,8 +11,10 @@
     <div ng-repeat="day in days">
         <h3>{{ day.date }} ({{ day.events.length}})</h3>
       <div ng-repeat="event in day.events">
-        <p>{{ event.title }}</p>
+        <p>{{ event.start_time }} {{ event.title }}</p>
+        <p>{{ event.short_description }}</p>
       </div>
+      <hr/>
     </div>
 </div>
 <% @calendar.days.each do |day| %>
