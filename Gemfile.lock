@@ -102,6 +102,8 @@ GEM
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
     polyglot (0.3.4)
+    rabl (0.10.1)
+      activesupport (>= 2.3.14)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -185,6 +187,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   launchy
+  rabl
   rails (= 4.0.3)
   rspec-rails
   sass-rails (~> 4.0.0)
