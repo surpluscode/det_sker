@@ -3,7 +3,9 @@ object @calendar
   child :days, object_root: false do
     attributes :date
     child :events, object_root: false do
-      attributes :title, :start_time, :end_time, :short_description, :long_description, :cancelled, :price
+      attributes :title, :short_description, :long_description, :cancelled, :price
+      node(:start_time) {|event| format_starttime(event.start_time)}
+      node(:end_time) {|event| format_starttime(event.end_time)}
       glue :user do
         attributes :username => :creator
         node(:creator_link) {|user| user_path(user)}

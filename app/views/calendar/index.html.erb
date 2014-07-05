@@ -13,6 +13,9 @@
         <p>{{ event.start_time }} {{ event.title }}</p>
         <p><a href="{{ event.creator_link }}">{{ event.creator }}</a></p>
         <p>{{ event.short_description }}</p>
+        <button ng-click="showLong = ! showLong" ng-init="showLong=false" ng-show="!showLong">More</button>
+        <p ng-show="showLong">{{ event.long_description }}</p>
+        <button ng-click="showLong = ! showLong" ng-show="showLong">Less</button>
       </div>
       <hr/>
     </div>
