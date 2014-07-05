@@ -1,5 +1,10 @@
 var calendarApp = angular.module('calendarApp', []);
 
-calendarApp.controller('CalendarCtrl', function($scope){
-    $scope.days = window.app.data.days;
+calendarApp.controller('CalendarCtrl', function($scope, $http){
+    $scope.days = [];
+    $http.get('/calendar/index?format=json')
+            .then(function(result){
+                $scope.days = result.data.calendar.days;
+            });
 });
+
