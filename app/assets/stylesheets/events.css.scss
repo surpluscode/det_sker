@@ -13,8 +13,15 @@ input, textarea, .select_group {
   display: table;
 }
 .event-container {
-  cursor: pointer;
   padding: 10px 20px
+}
+
+.event-topbar_js {
+  cursor: pointer;
+
+  &:hover {
+    background-color: yellow;
+  }
 }
 .event-details {
   display: none;
