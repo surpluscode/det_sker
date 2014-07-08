@@ -30,4 +30,6 @@ da:
       new_event: "Opret ny begivenhed"
     filter_options:
       filter_header: "Vis kun"
+      category_filter_heading: "Typer"
+      location_filter_heading: "Steder"
   coming_events: "Kommende begivenheder"
