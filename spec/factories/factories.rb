@@ -61,4 +61,8 @@ FactoryGirl.define do
     end
   end
 
+  factory :comment do
+    content 'bla bla bla'
+  end
+
 end
