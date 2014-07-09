@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
   belongs_to :user
   belongs_to :location
   has_and_belongs_to_many :categories
+  has_many :comments
 
 
   # This method returns the index view
