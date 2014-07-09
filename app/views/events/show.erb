@@ -13,7 +13,7 @@
 
 <p>
   <strong>Location:</strong>
-  <%= link_to @event.location.name, location_path(@event.location) %>
+  <%= link_to(@event.location.name, location_path(@event.location)) %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
