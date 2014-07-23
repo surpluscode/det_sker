@@ -15,6 +15,12 @@ FactoryGirl.define do
       email 'different@user.com'
       username 'different'
     end
+
+    factory :anonymous_user do
+      email 'anon@secrets.org'
+      username 'anon'
+      is_anonymous true
+    end
   end
 
   factory :event do

@@ -27,6 +27,15 @@ describe CommentsController do
         post :create, comment: FactoryGirl.attributes_for(:comment, event_id: @event.id)
       }.to_not change(Comment, :count).by(1)
     end
+
+    it 'should not allow anonymous users to leave comments' do
+      sign_out @user
+      sign_in FactoryGirl.create(:anonymous_user)
+
+      expect {
+        post :create, comment: FactoryGirl.attributes_for(:comment, event_id: @event.id)
+      }.to_not change(Comment, :count).by(1)
+    end
   end
 
 end
