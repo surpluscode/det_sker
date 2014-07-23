@@ -20,6 +20,13 @@ describe CommentsController do
         post :create, comment: FactoryGirl.attributes_for(:comment)
       }.to_not change(Comment, :count).by(1)
     end
+
+    it 'should not create a comment object without a logged in user' do
+      sign_out @user
+      expect {
+        post :create, comment: FactoryGirl.attributes_for(:comment, event_id: @event.id)
+      }.to_not change(Comment, :count).by(1)
+    end
   end
 
 end
