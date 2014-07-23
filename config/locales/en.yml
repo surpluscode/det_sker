@@ -36,3 +36,5 @@ en:
   events:
     comments:
       title: "Comments"
+    form:
+      enable_comments: "Allow comments?"

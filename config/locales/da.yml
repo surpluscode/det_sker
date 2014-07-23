@@ -36,3 +36,5 @@ da:
   events:
     comments:
       title: "Kommentar"
+    form:
+      enable_comments: "Tillad kommentar på din begivenhed?"
