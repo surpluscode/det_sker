@@ -2,7 +2,7 @@ DetSker::Application.routes.draw do
   devise_for :user
   root 'calendar#index'
   resources :events, except: [:index] do
-    resources :comments
+    resources :comments, only: [:create, :update, :destroy]
   end
   resources :categories
   resources :locations
