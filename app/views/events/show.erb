@@ -15,6 +15,6 @@
   <strong>Location:</strong>
   <%= link_to(@event.location.name, location_path(@event.location)) %>
 </p>
-
+<%= render partial: 'comments', object: @event.comments %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

@@ -33,3 +33,6 @@ da:
       category_filter_heading: "Typer"
       location_filter_heading: "Steder"
   coming_events: "Kommende begivenheder"
+  events:
+    comments:
+      title: "Kommentar"

@@ -33,3 +33,6 @@ en:
       category_filter_heading: "Event Types"
       location_filter_heading: "Locations"
   coming_events: "Coming Events"
+  events:
+    comments:
+      title: "Comments"
