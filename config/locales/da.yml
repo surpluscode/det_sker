@@ -36,5 +36,7 @@ da:
   events:
     comments:
       title: "Kommentar"
+      new:
+        writing_as: "Skriver som"
     form:
       enable_comments: "Tillad kommentar på din begivenhed?"

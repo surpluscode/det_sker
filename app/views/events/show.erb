@@ -15,6 +15,9 @@
   <strong>Location:</strong>
   <%= link_to(@event.location.name, location_path(@event.location)) %>
 </p>
-<%= render partial: 'comments', object: @event.comments %>
+<% if @event.comments_enabled? %>
+ <%= render partial: 'events/comments/list', locals: {comments: @event.comments} %>
+ <%= render partial: 'events/comments/new' %>
+<% end %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

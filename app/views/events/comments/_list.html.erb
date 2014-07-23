@@ -1,0 +1,9 @@
+<hr/>
+<% if comments.length > 0 %>
+ <h4><%= t '.title' %></h4>
+
+ <% comments.each do |comment| %>
+     <p><b> <%= comment.user.username %></b>  <%= comment.content %></p>
+ <% end %>
+<% end %>
+

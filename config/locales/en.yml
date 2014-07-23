@@ -36,5 +36,7 @@ en:
   events:
     comments:
       title: "Comments"
+      new:
+        writing_as: "Writing as"
     form:
       enable_comments: "Allow comments?"
