@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
 
   # ensure user is permitted to edit object
+  # either if the user is an admin or if
+  # the user has created the object
   def can_edit?(object)
     self.is_admin? || id == object.user_id
   end
