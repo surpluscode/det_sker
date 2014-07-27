@@ -43,23 +43,31 @@ describe CommentsController do
       @user = FactoryGirl.create(:user)
       sign_in @user
       @event = FactoryGirl.create(:event)
-      @comment = FactoryGirl.create(:comment, event_id: @event.id)
+      @comment = FactoryGirl.create(:comment, event_id: @event.id, user_id: @user.id)
+      @modified_comment = FactoryGirl.attributes_for(:comment,
+        content: 'Actually, I reconsider...', comment_id: @comment.id)
     end
 
     it 'should allow a user to update their comment' do
-      mod = FactoryGirl.attributes_for(:comment,
-        content: 'Actually, I reconsider...', comment_id: @comment.id)
-      patch :update, id: @comment, comment: mod
+      patch :update, id: @comment, comment: @modified_comment
       @comment.reload
       @comment.content.should eql 'Actually, I reconsider...'
     end
 
     it "should not allow a user to update another user's comment" do
-      pending 'needs to be implemented'
+      sign_out @user
+      sign_in FactoryGirl.create(:different_user)
+      patch :update, id: @comment, comment: @modified_comment
+      @comment.reload
+      @comment.content.should_not eql 'Actually, I reconsider...'
     end
 
     it "should allow an admin user to update another user's comment" do
-      pending 'needs to be implemented'
+      sign_out @user
+      sign_in FactoryGirl.create(:admin_user)
+      patch :update, id: @comment, comment: @modified_comment
+      @comment.reload
+      @comment.content.should eql 'Actually, I reconsider...'
     end
 
   end

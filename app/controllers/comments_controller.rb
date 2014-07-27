@@ -2,6 +2,10 @@ class CommentsController < ApplicationController
 
   before_action :set_comment, only: [:update]
   before_action :authenticate_user!
+  before_action only: [:update] do
+    user_can_edit? @comment
+  end
+
 
   def create
     comment_params = user_params
@@ -22,9 +26,9 @@ class CommentsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @comment.update(user_params)
+      if @comment.update(user_params.except(:comment_id))
         format.html { redirect_to event_path(@comment.event_id), notice: 'Comment updated successfully'}
-        format.json { head :no_content }
+        format.json { render json: @comment }
       else
         format.html { redirect_to event_path(user_params[:event_id]), notice: 'Comment could not be updated'}
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -41,7 +45,7 @@ class CommentsController < ApplicationController
   # we want this:
   # {"event_id"=>"989132030", "content"=>"first comment!"}
   def user_params
-    params.permit(:id, :event_id, comment: [:content, :event_id]).tap do |list|
+    params.permit(:id, :event_id, comment: [:content, :event_id, :comment_id]).tap do |list|
       list.merge!(list.delete(:comment))
     end
   end
