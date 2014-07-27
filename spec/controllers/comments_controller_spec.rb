@@ -38,4 +38,30 @@ describe CommentsController do
     end
   end
 
+  describe 'PATCH#Update' do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      sign_in @user
+      @event = FactoryGirl.create(:event)
+      @comment = FactoryGirl.create(:comment, event_id: @event.id)
+    end
+
+    it 'should allow a user to update their comment' do
+      mod = FactoryGirl.attributes_for(:comment,
+        content: 'Actually, I reconsider...', comment_id: @comment.id)
+      patch :update, id: @comment, comment: mod
+      @comment.reload
+      @comment.content.should eql 'Actually, I reconsider...'
+    end
+
+    it "should not allow a user to update another user's comment" do
+      pending 'needs to be implemented'
+    end
+
+    it "should allow an admin user to update another user's comment" do
+      pending 'needs to be implemented'
+    end
+
+  end
+
 end

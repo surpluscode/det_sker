@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :set_comment, only: [:update]
+
   def create
     comment_params = user_params
     # add the user id if we've got one
@@ -18,6 +20,18 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @comment.update(user_params)
+        format.html { redirect_to event_path(@comment.event_id), notice: 'Comment updated successfully'}
+        format.json { head :no_content }
+      else
+        format.html { redirect_to event_path(user_params[:event_id]), notice: 'Comment could not be updated'}
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   # Little bit hacky - since we need params from both the nested
@@ -27,9 +41,13 @@ class CommentsController < ApplicationController
   # we want this:
   # {"event_id"=>"989132030", "content"=>"first comment!"}
   def user_params
-    params.permit(:event_id, comment: [:content]).tap do |list|
+    params.permit(:id, :event_id, comment: [:content]).tap do |list|
       list[:content] = list[:comment][:content]
       list.delete(:comment)
     end
   end
+
+    def set_comment
+      @comment = Comment.find(user_params[:id])
+    end
 end
