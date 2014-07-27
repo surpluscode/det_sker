@@ -4,8 +4,10 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    comment_params = user_params
     # add the user id if we've got one
     comment_params.merge!(user_id: current_user.id) if user_signed_in?
+
     @comment = Comment.new(comment_params)
     respond_to do |format|
       if @comment.save
