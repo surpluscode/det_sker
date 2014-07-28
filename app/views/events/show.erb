@@ -17,7 +17,7 @@
 </p>
 <% if @event.comments_enabled? %>
  <%= render partial: 'events/comments/list', locals: {comments: @event.comments} %>
- <%= render partial: 'events/comments/new' if user_signed_in? %>
+ <%= render partial: 'comments/form' if user_signed_in? %>
 <% end %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
