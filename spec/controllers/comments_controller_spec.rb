@@ -72,4 +72,25 @@ describe CommentsController do
 
   end
 
+  describe 'GET#Edit' do
+
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      sign_in @user
+      @event = FactoryGirl.create(:event)
+      @comment = FactoryGirl.create(:comment, event_id: @event.id, user_id: @user.id)
+    end
+
+    it 'should return a comment object' do
+      get :edit, id: @comment
+      assigns(:comment).should eql @comment
+      puts assigns(:comment).inspect
+    end
+
+    it 'should not respond to an unauthorized user' do
+      pending 'needs implementing'
+    end
+
+  end
+
 end

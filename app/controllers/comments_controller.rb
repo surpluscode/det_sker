@@ -49,7 +49,7 @@ class CommentsController < ApplicationController
   # {"event_id"=>"989132030", "content"=>"first comment!"}
   def user_params
     params.permit(:id, :event_id, comment: [:content, :event_id, :comment_id]).tap do |list|
-      list.merge!(list.delete(:comment))
+      list.merge!(list.delete(:comment)) if list[:comment]
     end
   end
 
