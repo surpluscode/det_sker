@@ -35,8 +35,10 @@ da:
   coming_events: "Kommende begivenheder"
   events:
     comments:
-      title: "Kommentar"
-      new:
-        writing_as: "Skriver som"
+      list:
+        title: "Kommentar"
     form:
       enable_comments: "Tillad kommentar på din begivenhed?"
+  comments:
+    form:
+      writing_as: "Skriver som"

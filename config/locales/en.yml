@@ -35,8 +35,10 @@ en:
   coming_events: "Coming Events"
   events:
     comments:
-      title: "Comments"
-      new:
-        writing_as: "Writing as"
+      list:
+        title: "Comments"
     form:
       enable_comments: "Allow comments?"
+  comments:
+    form:
+      writing_as: "Writing as"
