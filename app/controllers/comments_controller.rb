@@ -1,9 +1,8 @@
 class CommentsController < ApplicationController
 
-  before_action :set_comment, only: [:update]
   before_action :authenticate_user!
-  before_action only: [:update] do
-    user_can_edit? @comment
+  before_action only: [:edit, :update] do
+    user_can_edit? set_comment
   end
 
 
@@ -23,6 +22,10 @@ class CommentsController < ApplicationController
       end
     end
   end
+
+  def edit
+  end
+
 
   def update
     respond_to do |format|
