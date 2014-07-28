@@ -3,7 +3,18 @@
  <h4><%= t '.title' %></h4>
 
  <% comments.each do |comment| %>
-     <p><b> <%= comment.user.username %></b>  <%= comment.content %></p>
+    <div class="comment-container_js" id=<%="comment-container_#{comment.id}" %> >
+    <span>
+      <%= link_to(t('.edit'), edit_event_comment_path(comment.event.id, comment.id),
+                  class: 'edit-comment_js', id: "edit-link_#{comment.id}") %>
+    </span>
+    <p>
+      <b> <%= comment.user.username %></b>
+      <%= comment.content %>
+    </p>
+    </div>
+     <%= content_tag 'div', "Data loading...", class: 'hidden data-response_js',
+                     id: "comment-data_#{comment.id}" %>
  <% end %>
 <% end %>
 

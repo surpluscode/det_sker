@@ -37,6 +37,7 @@ da:
     comments:
       list:
         title: "Kommentar"
+        edit: "Rediger"
     form:
       enable_comments: "Tillad kommentar på din begivenhed?"
   comments:

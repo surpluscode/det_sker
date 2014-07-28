@@ -37,6 +37,7 @@ en:
     comments:
       list:
         title: "Comments"
+        edit: "Edit"
     form:
       enable_comments: "Allow comments?"
   comments:

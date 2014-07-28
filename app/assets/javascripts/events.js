@@ -1,16 +1,28 @@
 var activeFilters = [];
 
-
 $(document).ready(function() {
     $('span.event-topbar_js').click(toggleContent);
     $('a.filter-link').click(filterCategory);
     //we need to handle the click on the ul level,
     // because the li elements aren't generated  yet
     $('.show-long-description_js').click(toggleLongDescription);
+    $('.edit-comment_js').click(showEditCommentForm);
 
 });
 
 
+function showEditCommentForm() {
+    var url = $(this).attr('href');
+    var comment_id = this.id.split('_')[1];
+    var data_parent = $(this).parents('#comment-container_' + comment_id);
+    $.get(url, function(data){
+        var data_target = $("#comment-data_" + comment_id);
+        data_target.html(data);
+        data_parent.hide();
+        data_target.show();
+    });
+    return false;
+}
 
 /**
  * When a user clicks on a filter-link
