@@ -84,11 +84,20 @@ describe CommentsController do
     it 'should return a comment object' do
       get :edit, id: @comment
       assigns(:comment).should eql @comment
-      puts assigns(:comment).inspect
     end
 
     it 'should not respond to an unauthorized user' do
-      pending 'needs implementing'
+      sign_out @user
+      sign_in FactoryGirl.create(:different_user)
+      get :edit, id: @comment
+      response.should redirect_to root_path
+    end
+
+    it "should allow an admin user to edit another user's comment" do
+      sign_out @user
+      sign_in FactoryGirl.create(:admin_user)
+      get :edit, id: @comment
+      assigns(:comment).should eql @comment
     end
 
   end
