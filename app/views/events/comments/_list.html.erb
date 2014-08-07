@@ -6,8 +6,7 @@
     <div class="comment-container_js">
     <span>
       <%= link_to(t('.edit'), edit_event_comment_path(comment.event.id, comment.id),
-                  remote: true, class: 'edit-comment_js', id: "edit-link_#{comment.id}",
-                  data: {target: "comment-data_#{comment.id}"} )
+                  remote: true, data: {target: "comment-data_#{comment.id}"} )
       %>
     </span>
     <p>
