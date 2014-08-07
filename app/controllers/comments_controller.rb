@@ -23,7 +23,10 @@ class CommentsController < ApplicationController
     end
   end
 
+  # since this action is called via ajax,
+  # we don't want to show the standard layout
   def edit
+    render layout: nil
   end
 
 
