@@ -9,7 +9,7 @@ describe Calendar do
       FactoryGirl.create(:event, categories: [FactoryGirl.create(:category)], location: l1)
       @event_tomorrow = FactoryGirl.create(:event_tomorrow, categories: [FactoryGirl.create(:category, key: :demo)],
                                            location: l2)
-      FactoryGirl.create(:event_yesterday, location: l2)
+      @event_yesterday = FactoryGirl.create(:event_yesterday, location: l2)
       @cal = Calendar.new(:coming)
     end
 
@@ -24,8 +24,13 @@ describe Calendar do
     end
 
     it 'should not return past events' do
-      @cal.days.should_not include(@event_tomorrow)
+      @cal.events.should_not include(@event_yesterday)
     end
+
+    it 'should include future events' do
+      @cal.events.should include(@event_tomorrow)
+    end
+
 
     it 'should return a hash of categories and their values' do
       @cal.filter_categories.should be_a Hash

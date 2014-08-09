@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :username
   end
+
+  def user_can_edit?(object)
+    unless current_user.can_edit? object
+      redirect_to root_path, alert: 'Only authorised users can edit events!'
+    end
+  end
 end

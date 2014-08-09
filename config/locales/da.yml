@@ -33,3 +33,13 @@ da:
       category_filter_heading: "Typer"
       location_filter_heading: "Steder"
   coming_events: "Kommende begivenheder"
+  events:
+    comments:
+      list:
+        title: "Kommentar"
+        edit: "Rediger"
+    form:
+      enable_comments: "Tillad kommentar på din begivenhed?"
+  comments:
+    form:
+      writing_as: "Skriver som"

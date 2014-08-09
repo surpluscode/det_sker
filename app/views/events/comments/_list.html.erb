@@ -1,0 +1,23 @@
+<hr/>
+<% if comments.length > 0 %>
+ <h4><%= t '.title' %></h4>
+
+ <% comments.each do |comment| %>
+    <div class="comment-container_js">
+    <span>
+      <% if current_user && current_user.can_edit?(comment) %>
+      <%= link_to(t('.edit'), edit_event_comment_path(comment.event.id, comment.id),
+                  remote: true, data: {target: "comment-data_#{comment.id}"} )
+      %>
+      <% end %>
+    </span>
+    <p>
+      <b> <%= comment.user.username %></b>
+      <%= comment.content %>
+    </p>
+    </div>
+     <%= content_tag 'div', "Data loading...", class: 'hidden',
+                     id: "comment-data_#{comment.id}" %>
+ <% end %>
+<% end %>
+

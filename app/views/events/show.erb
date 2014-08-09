@@ -7,13 +7,17 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @event.description %>
+  <%= @event.short_description %>
+  <%= @event.long_description %>
 </p>
 
 <p>
   <strong>Location:</strong>
-  <%= @event.location %>
+  <%= link_to(@event.location.name, location_path(@event.location)) %>
 </p>
-
+<% if @event.comments_enabled? %>
+ <%= render partial: 'events/comments/list', locals: {comments: @event.comments} %>
+ <%# render partial: 'comments/form' if user_signed_in? %>
+<% end %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

@@ -33,3 +33,13 @@ en:
       category_filter_heading: "Event Types"
       location_filter_heading: "Locations"
   coming_events: "Coming Events"
+  events:
+    comments:
+      list:
+        title: "Comments"
+        edit: "Edit"
+    form:
+      enable_comments: "Allow comments?"
+  comments:
+    form:
+      writing_as: "Writing as"

@@ -1,16 +1,28 @@
 var activeFilters = [];
 
-
 $(document).ready(function() {
     $('span.event-topbar_js').click(toggleContent);
     $('a.filter-link').click(filterCategory);
     //we need to handle the click on the ul level,
     // because the li elements aren't generated  yet
     $('.show-long-description_js').click(toggleLongDescription);
+    $('a[data-target]').on("ajax:success", showEditCommentForm);
 
 });
 
-
+/**
+ * Hide content box and show the form
+ * retrieved from the web request
+ * @param event
+ * @param xhr
+ */
+function showEditCommentForm(event, xhr){
+    //target div has id equal to the clicked link's data target attr
+    var target = $('#' + $(this).attr('data-target'));
+    target.html(xhr);
+    target.show();
+    $(this).parents('div.comment-container_js').hide();
+}
 
 /**
  * When a user clicks on a filter-link

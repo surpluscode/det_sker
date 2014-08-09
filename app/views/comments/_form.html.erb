@@ -1,0 +1,5 @@
+<%= simple_form_for @comment, url: url_for([@comment.event, @comment]) do |f| %>
+    <%= f.input :content, as: :text %>
+    <%= t('.writing_as') %> <b><%= current_user.username %></b>
+    <%= f.button :submit %>
+<% end %>

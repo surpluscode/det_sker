@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
   belongs_to :user
   belongs_to :location
   has_and_belongs_to_many :categories
+  has_many :comments
 
 
   # This method returns the index view
@@ -33,7 +34,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.current_events
-    self.includes(:user, :location).order(:start_time).where('end_time > ?', DateTime.now)
+    self.includes(:user, :location, :comments).order(:start_time).where('end_time > ?', DateTime.now)
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608110228) do
+ActiveRecord::Schema.define(version: 20140723202134) do
 
   create_table "categories", force: true do |t|
     t.string   "key"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20140608110228) do
   add_index "categories_events", ["category_id"], name: "index_categories_events_on_category_id"
   add_index "categories_events", ["event_id"], name: "index_categories_events_on_event_id"
 
+  create_table "comments", force: true do |t|
+    t.text    "content"
+    t.boolean "hidden"
+    t.integer "event_id"
+    t.integer "user_id"
+  end
+
+  add_index "comments", ["event_id"], name: "index_comments_on_event_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
   create_table "events", force: true do |t|
     t.string   "title"
     t.text     "short_description"
@@ -40,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140608110228) do
     t.text     "long_description"
     t.integer  "user_id"
     t.integer  "location_id"
+    t.boolean  "comments_enabled",  default: false
   end
 
   add_index "events", ["location_id"], name: "index_events_on_location_id"
