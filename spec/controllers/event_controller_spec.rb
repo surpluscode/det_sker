@@ -12,8 +12,7 @@ describe EventsController do
 
     it 'should return all the events comments' do
       event = FactoryGirl.create(:event)
-      c = FactoryGirl.create(:comment)
-      event.comments << c
+      c = FactoryGirl.create(:comment, event: event)
       get :show, id: event
 
       assigns(:event).comments.first.should eql c
