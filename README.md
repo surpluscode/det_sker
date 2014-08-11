@@ -28,6 +28,6 @@ To create content you will need an admin user, this is defined in one of the fix
 
 # Testing
 We use rspec for model and controller tests and FactoryGirl for stubbing.
-We have a couple of Cucumber integration tests, but we're not entirely sure if they're worth the hassle.
 Travis is running Continuous Integration and giving us pleasant/unpleasant news about our test suite.
+We are currently investigating using Codeship/Heroku to do Continuous Deployment to a staging environment.
 We need tests for our JS functionality, not quite sure what the best way to do this is though.
