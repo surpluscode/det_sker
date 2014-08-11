@@ -40,7 +40,7 @@ class Calendar
   # category keys and number of occurrences
   def get_coming_categories
     Category.current_categories.each do |cat|
-     @filter_categories.store(cat['key'].to_sym, cat['num'])
+     @filter_categories.store(cat['key'].to_sym, cat['num'].to_i)
     end
   end
 
