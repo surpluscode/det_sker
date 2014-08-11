@@ -1,5 +1,4 @@
 [ ![Codeship Status for ronan-mch/det_sker](https://www.codeship.io/projects/efb8ed90-03c6-0132-4808-06cd9fe8c123/status)](https://www.codeship.io/projects/30535)
-[![Build Status](https://travis-ci.org/ronan-mch/det_sker.svg?branch=master)](https://travis-ci.org/ronan-mch/det_sker)
 det_sker
 ========
 
