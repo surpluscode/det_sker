@@ -1,4 +1,5 @@
-<%= simple_form_for @event do |f| %>
+<%= simple_form_for @event, html: { class: 'form-horizontal' }, defaults: {
+                            wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' } } do |f| %>
     <%= f.input :title %>
     <%= f.input :short_description, maxlength: 200 %>
     <%= f.input :long_description, required: false %>
@@ -12,7 +13,9 @@
     <span class='select_group'>
       <%= f.input :end_time %>
     </span>
-
-    <%= f.input :comments_enabled, label: t('.enable_comments') %>
+    <%= f.input :comments_enabled, label: t('.enable_comments'),
+                wrapper_html: { class: 'checkbox' }, input_html: { class: 'checkbox'},
+                label_html: { class: 'override'}
+    %>
     <%= f.button :submit %>
 <% end %>
