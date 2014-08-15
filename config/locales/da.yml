@@ -28,6 +28,7 @@ da:
   calendar:
     index:
       new_event: "Opret ny begivenhed"
+      in_progress: "I gang"
     filter_options:
       filter_header: "Vis kun"
       category_filter_heading: "Typer"
