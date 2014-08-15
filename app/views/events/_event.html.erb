@@ -1,33 +1,40 @@
 
 <div class='event-container <%= event_cancelled? event %>'
-     data-toggle="<%= "#{categories_as_string(event.categories)} #{event.location.name}" %>">
-  <span class="event-topbar_js">
-    <%# In the frontpage context we don't show a date, otherwise, do. %>
-    <% if defined? show_date %>
-        <%= format_datetime(event.start_time)  %>
-    <% else %>
-        <%= format_starttime(event.start_time) %>
-    <% end %>
-    <span class='event-category'><%= categories_as_string(event.categories, title = true) %> </span>
-  <strong class="event-title"><%= event.title %></strong>
-  <span><%= link_to(event.location.name, event.location) if event.location %></span>
-   </span>
-  <div class='event-details'>
-    <p><%= link_to event.user.username, event.user  if event.user%></p>
-    <p class="event-description"><%= event.short_description %></p>
-    <%  if event.long_description? %>
-        <a href="#" class="show-long-description_js">More information...</a>
-	<p class="long-description"><%= event.long_description %></p>
-<% end %>
-<button type="button" class="btn btn-default">Default</button>
-    <p><strong>Starter: </strong><%= format_datetime(event.start_time) %></p>
-    <p><strong>Slutter: </strong><%= format_datetime(event.end_time) %></p>
-    <% if event.comments.size > 0 %>
-        <%= link_to event_path event do %>
-          <p><strong>Comments: </strong><%= event.comments.size %></p>
-        <% end %>
-    <% end %>
-    <p class="event-price"><strong>Pris: </strong><%= event.price %></p>
+     data-toggle="<%= categories_as_string(event.categories) %> <%= event.location.name %>">
+	 <span class="event-topbar_js">
+	     <div class="row">
+    		<%# In the frontpage context we don't show a date, otherwise, do. %>
+    		<% if defined? show_date %>
+     	  	 	<%= format_datetime(event.start_time)  %>
+    		<% else %>
+        		<%= format_starttime(event.start_time) %>
+    		<% end %>
+    		<span class='event-category'><%= categories_as_string(event.categories, title = true) %> </span>
+  			<strong class="event-title"><%= event.title %></strong>
+  			<span><%= link_to(event.location.name, event.location) if event.location %></span>
+  		</div>
+   	</span>
+  	<div class='event-details'>
+  		<div class="row">
+    		<p><%= link_to event.user.username, event.user  if event.user%></p>
+    	</div>
+    	<div class="row">
+    		<p class="event-description"><%= event.short_description %></p>
+    		<%  if event.long_description? %>
+        	<a href="#" class="show-long-description_js">More information...</a>
+			<p class="long-description"><%= event.long_description %></p>
+			<% end %>
+		</div>
+		<div class="row">
+	    	<p><strong>Starter: </strong><%= format_datetime(event.start_time) %></p>
+    		<p><strong>Slutter: </strong><%= format_datetime(event.end_time) %></p>
+    		<% if event.comments.size > 0 %>
+        		<%= link_to event_path event do %>
+          		<p><strong>Comments: </strong><%= event.comments.size %></p>
+        	<% end %>
+    	<% end %>
+    	<p class="event-price"><strong>Pris: </strong><%= event.price %></p>
+    	</div>
     <% if current_user && current_user.can_edit?(event) %>
         <p><%= link_to 'Edit', edit_event_path(event) %></p>
     <% end %>

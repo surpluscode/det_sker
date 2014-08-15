@@ -1,13 +1,13 @@
-<div class="row">
-	<div class="day">
-	<h2>
-  	<%= format_date(day.date) %>
-  	<span>(<%= day.events.length %>)</span>
-	</h2>
-		<div class="events-by-date_js">
- 			<% day.events.each do |event| %>
-  			<%= render partial: 'events/event', object: event %>
-			<% end %>
-		</div>
+<div class="day">
+	<div class="row">
+		<h2>
+			<%= format_date(day.date) %>
+  			(<%= day.events.length %>)
+		</h2>
+	</div>
+	<div class="events-by-date_js">
+ 		<% day.events.each do |event| %>
+  		<%= render partial: 'events/event', object: event %>
+		<% end %>
 	</div>
 </div>
