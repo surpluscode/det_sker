@@ -26,4 +26,10 @@ describe Day do
     expect { @day.add_event(e) }.to raise_error
   end
 
+  it 'should sort by date ascending' do
+    e = FactoryGirl.create(:event_tomorrow)
+    tomorrow = Day.new(e)
+    [tomorrow, @day].sort.first.should eql @day
+  end
+
 end
