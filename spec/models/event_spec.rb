@@ -61,4 +61,11 @@ describe Event do
     end
   end
 
+  it 'should sort by start time ascending' do
+    today = FactoryGirl.create(:event)
+    tomorrow = FactoryGirl.create(:event_tomorrow)
+    [tomorrow, today].sort.first.should eql today
+  end
+
+
 end

@@ -10,6 +10,10 @@ class Event < ActiveRecord::Base
     start_time < DateTime.now && end_time > DateTime.now
   end
 
+  def <=>(other)
+    start_time <=> other.start_time
+  end
+
   def self.current_events
     self.includes(:user, :location, :comments).order(:start_time).where('end_time > ?', DateTime.now)
   end
