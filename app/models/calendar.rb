@@ -1,11 +1,12 @@
 class Calendar
 
-  attr_reader :filter_categories, :filter_locations, :events
+  attr_reader :filter_categories, :filter_locations, :events, :in_progress
 
   def initialize(type = :coming)
     @days = {}
     @filter_categories = {}
     @filter_locations = {}
+    @in_progress = EventContainer.new
     if type == :coming
       get_coming_events
       get_coming_categories
@@ -52,12 +53,18 @@ class Calendar
   def get_coming_events
     @events = Event.current_events
     @events.each do |e|
-      start_date = e.start_time.to_date
-      if @days.has_key? start_date
-        @days[start_date].add_event(e)
+      # if event has a start time < now
+      # add to current event container
+      if e.in_progress?
+        @in_progress.add_event(e)
       else
-        d = Day.new(e)
-        @days.store(d.date, d)
+        start_date = e.start_time.to_date
+        if @days.has_key? start_date
+          @days[start_date].add_event(e)
+        else
+          d = Day.new(e)
+          @days.store(d.date, d)
+        end
       end
     end
     self

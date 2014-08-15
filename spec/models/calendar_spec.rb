@@ -6,7 +6,9 @@ describe Calendar do
     before(:each) do
       l1 =  FactoryGirl.create(:location)
       l2 = FactoryGirl.create(:other_location)
-      FactoryGirl.create(:event, categories: [FactoryGirl.create(:category)], location: l1)
+      @event_now = FactoryGirl.create(:event, categories: [FactoryGirl.create(:category)], location: l1)
+      FactoryGirl.create(:event, start_time: DateTime.now + 1.hour,
+                         categories: [FactoryGirl.create(:category)], location: l1)
       @event_tomorrow = FactoryGirl.create(:event_tomorrow, categories: [FactoryGirl.create(:category, key: :demo)],
                                            location: l2)
       @event_yesterday = FactoryGirl.create(:event_yesterday, location: l2)
@@ -29,6 +31,10 @@ describe Calendar do
 
     it 'should include future events' do
       @cal.events.should include(@event_tomorrow)
+    end
+
+    it 'should return in progress events' do
+      @cal.in_progress.first.should eql @event_now
     end
 
 

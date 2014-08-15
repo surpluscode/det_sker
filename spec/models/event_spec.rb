@@ -44,4 +44,28 @@ describe Event do
     end
   end
 
+  describe 'Event.in_progress?' do
+    it 'should return true when an event is in progress' do
+      e = FactoryGirl.create(:event)
+      e.in_progress?.should be_true
+    end
+
+    it 'should return false when an event has already finished' do
+      e = FactoryGirl.create(:event_yesterday)
+      e.in_progress?.should be_false
+    end
+
+    it 'should return false when an event has not started' do
+      e = FactoryGirl.create(:event_tomorrow)
+      e.in_progress?.should be_false
+    end
+  end
+
+  it 'should sort by start time ascending' do
+    today = FactoryGirl.create(:event)
+    tomorrow = FactoryGirl.create(:event_tomorrow)
+    [tomorrow, today].sort.first.should eql today
+  end
+
+
 end

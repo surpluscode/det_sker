@@ -1,6 +1,5 @@
-class Day
+class Day < EventContainer
   attr_reader :date
-  attr_reader :events
 
   # Given an event object
   # we create an array of event objects
@@ -16,9 +15,13 @@ class Day
   # throw an Exception
   def add_event(event)
     if event.start_time.to_date == @date
-      @events.append(event)
-    else raise 'Invalid event supplied'
+      super(event)
+    else raise 'Event supplied'
     end
+  end
+
+  def <=>(other)
+    @date <=> other.date
   end
 
 end

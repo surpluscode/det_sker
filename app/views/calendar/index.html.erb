@@ -4,6 +4,11 @@
                     filter_locations: @calendar.filter_locations }
 %>
 
+<h2><%= "#{t '.in_progress'} (#{@calendar.in_progress.events.length})" %></h2>
+<% @calendar.in_progress.each do |event| %>
+    <%= render partial: 'events/event', object: event  %>
+<% end %>
+
 <% @calendar.days.each do |day| %>
     <%= render partial: 'day', object: day  %>
 <% end %>
