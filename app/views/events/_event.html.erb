@@ -2,7 +2,7 @@
 <div class='event-container <%= event_cancelled? event %>'
      data-toggle="<%= categories_as_string(event.categories) %> <%= event.location.name %>">
 	 <span class="event-topbar_js">
-	     <div class="row">
+	     <div class="col-xs-12">
     		<%# In the frontpage context we don't show a date, otherwise, do. %>
     		<% if defined? show_date %>
      	  	 	<%= format_datetime(event.start_time)  %>
@@ -15,17 +15,17 @@
   		</div>
    	</span>
   	<div class='event-details'>
-  		<div class="row">
+  		<div class="col-xs-12">
     		<p><%= link_to event.user.username, event.user  if event.user%></p>
     	</div>
-    	<div class="row">
+    	<div class="col-xs-12">
     		<p class="event-description"><%= event.short_description %></p>
     		<%  if event.long_description? %>
         	<a href="#" class="show-long-description_js">More information...</a>
 			<p class="long-description"><%= event.long_description %></p>
 			<% end %>
 		</div>
-		<div class="row">
+		<div class="col-xs-12">
 	    	<p><strong>Starter: </strong><%= format_datetime(event.start_time) %></p>
     		<p><strong>Slutter: </strong><%= format_datetime(event.end_time) %></p>
     		<% if event.comments.size > 0 %>

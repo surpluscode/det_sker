@@ -7,24 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-<%= render partial: 'layouts/lang_selector' %>
+		<div class="col-xs-12">
+			<%= render partial: 'layouts/lang_selector' %>
+		</div>
+		<div class="login-buttons col-xs-12">
+	  		<% if current_user %>
+    	  		<%= link_to t('.logout'), destroy_user_session_path, method: :delete %>
+  	  		<% else %>
+      	  		<%= link_to t('.login'), user_session_path %>
+  	  		<% end %>
+		</div>
 	</div>
 
-<div class="row">
-<div class="login-buttons">
-  <% if current_user %>
-      <%= link_to t('.logout'), destroy_user_session_path, method: :delete %>
-  <% else %>
-      <%= link_to t('.login'), user_session_path %>
-  <% end %>
-</div>
-</div>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
 
-<%= yield %>
+	<%= yield %>
+		</div>
+	</div>
 </div>
 </body>
 </html>
