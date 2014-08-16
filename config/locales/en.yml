@@ -41,6 +41,10 @@ en:
         edit: "Edit"
     form:
       enable_comments: "Allow comments?"
+    event:
+      price: "Price"
+      start_time: "Starts"
+      end_time: "Ends"
   comments:
     form:
       writing_as: "Writing as"

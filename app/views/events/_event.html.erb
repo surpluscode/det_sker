@@ -20,14 +20,14 @@
 	<p class="long-description"><%= event.long_description %></p>
 <% end %>
 <button type="button" class="btn btn-default">Default</button>
-    <p><strong>Starter: </strong><%= format_datetime(event.start_time) %></p>
-    <p><strong>Slutter: </strong><%= format_datetime(event.end_time) %></p>
+    <p><strong><%= t '.start_time' %>: </strong><%= format_datetime(event.start_time) %></p>
+    <p><strong><%= t '.end_time' %>: </strong><%= format_datetime(event.end_time) %></p>
     <% if event.comments.size > 0 %>
         <%= link_to event_path event do %>
           <p><strong>Comments: </strong><%= event.comments.size %></p>
         <% end %>
     <% end %>
-    <p class="event-price"><strong>Pris: </strong><%= event.price %></p>
+    <p class="event-price"><strong><%= t '.price' %>: </strong><%= event.price %></p>
     <% if current_user && current_user.can_edit?(event) %>
         <p><%= link_to 'Edit', edit_event_path(event) %></p>
     <% end %>

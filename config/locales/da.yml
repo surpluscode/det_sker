@@ -41,6 +41,10 @@ da:
         edit: "Rediger"
     form:
       enable_comments: "Tillad kommentar på din begivenhed?"
+    event:
+      price: "Pris"
+      start_time: "Starter"
+      end_time: "Slutter"
   comments:
     form:
       writing_as: "Skriver som"
