@@ -11,7 +11,14 @@
     <span class='event-category'><%= categories_as_string(event.categories, title = true) %> </span>
   <strong class="event-title"><%= event.title %></strong>
   <span><%= link_to(event.location.name, event.location) if event.location %></span>
-   </span>
+
+    <% if user_signed_in? %>
+        <%= link_to event_path event do %>
+            <span class="glyphicon glyphicon-comment"></span>
+            <%= event.comments.size %>
+        <% end %>
+    <% end %>
+  </span>
   <div class='event-details'>
     <p><%= link_to event.user.username, event.user  if event.user%></p>
     <p class="event-description"><%= event.short_description %></p>
@@ -22,11 +29,6 @@
 <button type="button" class="btn btn-default">Default</button>
     <p><strong><%= t '.start_time' %>: </strong><%= format_datetime(event.start_time) %></p>
     <p><strong><%= t '.end_time' %>: </strong><%= format_datetime(event.end_time) %></p>
-    <% if event.comments.size > 0 %>
-        <%= link_to event_path event do %>
-          <p><strong>Comments: </strong><%= event.comments.size %></p>
-        <% end %>
-    <% end %>
     <p class="event-price"><strong><%= t '.price' %>: </strong><%= event.price %></p>
     <% if current_user && current_user.can_edit?(event) %>
         <p><%= link_to 'Edit', edit_event_path(event) %></p>
