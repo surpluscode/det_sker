@@ -9,7 +9,8 @@ demo:
   title: "Mindehøjtidelighed: ALDRIG IGEN RANA PLAZA!"
   price: Cheaper than sweatshop labour...
   cancelled: True
-  user_id: 2
+  comments_enabled: True
+  user: hippy
 film: 
   categories:
      - meeting
@@ -19,7 +20,8 @@ film:
   start_time: <%= DateTime.now.next_day + 1.hours %>
   title: "Filmaften med Racismefri By"
   price: Gratis som en glatis
-  user_id: 3
+  comments_enabled: True
+  user: hippy
 kursus1: 
   categories:
      - seminar
@@ -29,7 +31,8 @@ kursus1:
   start_time:  <%= DateTime.now.prev_month %>
   title: "Økonomiens marginalisering af det politiske - magtens forskydning"
   price: 200kr
-  user_id: 4
+  comments_enabled: True
+  user: intellectual
 kursus2: 
   categories:
      - seminar
@@ -39,7 +42,8 @@ kursus2:
   start_time: <%= DateTime.now.prev_month - 10.days %>
   title: "Latinamerikansk frigørelsesfilosofi"
   price: 200kr
-  user_id: 4
+  comments_enabled: True
+  user: intellectual
 nonsense: 
   categories:
      - demo
@@ -50,7 +54,8 @@ nonsense:
   start_time: <%= DateTime.now - 183.days %>
   title: "730 dages modstand // 730 days of resistance"
   price: Free
-  user_id: 2
+  comments_enabled: True
+  user: hippy
 udstilling: 
   categories:
      - meeting
@@ -60,7 +65,8 @@ udstilling:
   start_time: <%= DateTime.now.prev_month %>
   title: "Come and witness the fall of capital!"
   price: 0kr
-  user_id: 1
+  comments_enabled: True
+  user: autonome
 climate:
   categories:
      - meeting
@@ -69,8 +75,9 @@ climate:
   location_id: <%= Location.where(name: 'Kafa-X').first.id %>
   start_time: <%= DateTime.now.next_day.next_day %>
   title: "HVAD FEJLER KLIMABEVIDSTHEDEN?"
+  comments_enabled: True
   price: 12kr
-  user_id: 2
+  user: punk
 colombia:
   categories:
      - meeting
@@ -80,4 +87,5 @@ colombia:
   start_time: <%= DateTime.now.next_day.next_day.next_day %>
   title: "Filmfremvisning og foredrag om Colombia: Indtil solen går ned. Selvorganisering i den colombianske konflikt"
   price: 32kr
-  user_id: 2
+  comments_enabled: True
+  user: hippy
