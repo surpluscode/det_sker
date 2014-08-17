@@ -5,7 +5,7 @@
     <%= f.input :long_description, required: false %>
     <%= f.association :categories, label_method: :key %>
     <%= f.association :location, prompt: 'Choose location' %>
-
+    <%= f.input :price, placeholder: t('.price_prompt') %>
     <span class='select_group'>
     <%= f.input :start_time %>
       </span>

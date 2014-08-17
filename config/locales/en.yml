@@ -41,6 +41,7 @@ en:
         edit: "Edit"
     form:
       enable_comments: "Allow comments?"
+      price_prompt: "How much does your event cost?"
     event:
       price: "Price"
       start_time: "Starts"
