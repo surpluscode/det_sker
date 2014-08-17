@@ -1,0 +1,16 @@
+happy:
+  content: 'Ih hvor jeg glæder mig!'
+  event: film
+  user: hippy
+cross:
+  content: 'Ih hvor er jeg sur!'
+  event: demo
+  user: punk
+traitor:
+  content: Splitters!
+  event: nonsense
+  user: intellectual
+cake:
+  content: Der bliver kage...
+  event: film
+  user: autonome
