@@ -20,8 +20,8 @@ function showEditCommentForm(event, xhr){
     //target div has id equal to the clicked link's data target attr
     var target = $('#' + $(this).attr('data-target'));
     target.html(xhr);
-    target.show();
     $(this).parents('div.comment-container_js').hide();
+    target.removeClass('hidden');
 }
 
 /**
