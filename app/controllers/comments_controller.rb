@@ -55,8 +55,11 @@ class CommentsController < ApplicationController
     end
   end
 
-    def set_comment_and_event
+  # Set up the params. Note that the order is important here
+  # as it is returning the comment object for the can_edit method.
+  def set_comment_and_event
+      @event = Event.find(user_params[:event_id]) if user_params[:event_id]
       @comment = Comment.find(user_params[:id])
-      @event = Event.find(user_params[:event_id])
-    end
+  end
+
 end
