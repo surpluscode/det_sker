@@ -1,6 +1,6 @@
 
 <div class='event-container <%= event_cancelled? event %>'
-     data-toggle="<%= categories_as_string(event.categories) %> <%= event.location.name %>">
+     data-toggle="<%= "#{categories_as_string(event.categories)} #{event.location.name}" %>">
   <span class="event-topbar_js">
     <%# In the frontpage context we don't show a date, otherwise, do. %>
     <% if defined? show_date %>
@@ -10,15 +10,20 @@
     <% end %>
     <span class='event-category'><%= categories_as_string(event.categories, title = true) %> </span>
   <strong class="event-title"><%= event.title %></strong>
-  <span><%= link_to(event.location.name, event.location) if event.location %></span>
-
     <% if user_signed_in? %>
         <%= link_to event_path event do %>
             <span class="glyphicon glyphicon-comment"></span>
             <%= event.comments.size %>
         <% end %>
     <% end %>
+    <a href="<%= url_for(event.location) %>" class="btn btn-default"
+            target="_blank" title="<%= event.location.description.truncate(120) %>"
+            data-toggle='popover' data-placement='right' data-trigger="click hover focus"
+            data-html="true">
+      <%= event.location.name %>
+    </a>
   </span>
+
   <div class='event-details'>
     <p><%= link_to event.user.username, event.user  if event.user%></p>
     <p class="event-description"><%= event.short_description %></p>

@@ -7,6 +7,7 @@ $(document).ready(function() {
     // because the li elements aren't generated  yet
     $('.show-long-description_js').click(toggleLongDescription);
     $('a[data-target]').on("ajax:success", showEditCommentForm);
+    $('[data-toggle="popover"]').popover();
 
 });
 
