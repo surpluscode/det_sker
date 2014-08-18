@@ -14,5 +14,8 @@ class EventContainer
     @events.each {|event| block.call(event)}
   end
 
+  def size
+    @events.size
+  end
 
 end
