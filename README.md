@@ -2,13 +2,13 @@
 det_sker
 ========
 
-DetSker is a Rails based crowd-sourced calendar.
+DetSker is a Rails based crowd-sourced calendar. You can see a sample app running [on Heroku](http://thawing-dawn-8343.herokuapp.com/).
 
 # The project
-It is been developed for the evenio project. It is not to be confused with IT-Kollektivets Evenio, which was created
-for the same purpose but was never completed. The Issue Tracker should give a good picture of the current development status.
-The evenio project group defines user stories and priorities. There is a mailing list for issues and discussion.
-You can see the Roadmap to see our vision for the full release.
+It is been developed for the evenio project with a scheduled release date of January.
+You can see the Roadmap to see our vision for the full release while the [Issue Tracker](https://github.com/ronan-mch/det_sker/issues)
+ should give a good picture of the current development status.
+
 
 # Try it out
 If you want to try it out, you will need a ruby 2.0 development environment, rails 4 and git.
@@ -28,5 +28,4 @@ To create content you will need an admin user, this is defined in one of the fix
 
 # Testing
 We use rspec for model and controller tests and FactoryGirl for stubbing.
-Travis is running Continuous Integration and giving us pleasant/unpleasant news about our test suite.
-We are currently investigating using Codeship/Heroku to do Continuous Deployment to a staging environment. It is proving troublesome.
+[Codeship](https://www.codeship.io/projects/30535) is running Continuous Integration and Continuous Deployment of the master branch to [staging](http://thawing-dawn-8343.herokuapp.com/).
