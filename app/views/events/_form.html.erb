@@ -3,19 +3,38 @@
     <%= f.input :title %>
     <%= f.input :short_description, maxlength: 200 %>
     <%= f.input :long_description, required: false %>
-    <%= f.association :categories, label_method: :key %>
-    <%= f.association :location, prompt: 'Choose location' %>
+    <div class="row">
+        <div class="col-xs-12 col-sm-5">
+            <%= f.association :categories, label_method: :key %>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+            <%= f.association :location, prompt: 'Choose location' %>
+        </div>
+    </div>
     <%= f.input :price, placeholder: t('.price_prompt') %>
-    <span class='select_group'>
-    <%= f.input :start_time %>
-      </span>
-    <%= label_tag :end_time %>
-    <span class='select_group'>
-      <%= f.input :end_time %>
-    </span>
-    <%= f.input :comments_enabled, label: t('.enable_comments'),
-                wrapper_html: { class: 'checkbox' }, input_html: { class: 'checkbox'},
-                label_html: { class: 'override'}
-    %>
-    <%= f.button :submit %>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <span class='select_group'>
+             <%= f.input :start_time %>
+             </span>
+            <%= label_tag :end_time %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <span class='select_group'>
+            <%= f.input :end_time %>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <%= f.input :comments_enabled, label: t('.enable_comments'),
+                  wrapper_html: { class: 'checkbox' }, input_html: { class: 'checkbox'},
+                 label_html: { class: 'override'}
+            %>
+            <%= f.button :submit %>
+        </div>
+    </div>
 <% end %>

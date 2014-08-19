@@ -1,0 +1,78 @@
+.event_start_time select {
+	display:inline;
+}
+
+.event_end_time select {
+	display:inline;
+}
+
+#new_event {
+	max-width:500px;
+}
+
+#event_short_description {
+	height:100px;
+}
+
+#event_long_description {
+	height:100px;
+}
+
+#event_category_ids {
+}
+
+#event_location_id {
+}
+
+#event_start_time_5i {
+	width: 50px;
+}
+
+#event_start_time_4i {
+	width: 50px;
+}
+
+#event_start_time_3i {
+	width: 50px;
+}
+
+#event_start_time_2i {
+	width: 100px;
+}
+
+#event_start_time_1i {
+	width: 70px;
+}
+
+#event_end_time_5i {
+	width: 50px;
+}
+
+#event_end_time_4i {
+	width: 50px;
+}
+
+#event_end_time_3i {
+	width: 50px;
+}
+
+#event_end_time_2i {
+	width: 100px;
+}
+
+#event_end_time_1i {
+	width: 70px;
+}
+
+.control-label {
+	text-align:left !important;
+	display:block;
+}
+
+.required abbr {
+	color:#ff0000;
+	font-size:18px;
+	position:relative;
+	top:4px;
+	border:none;
+}
