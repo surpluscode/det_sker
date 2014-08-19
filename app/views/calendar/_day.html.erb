@@ -1,7 +1,7 @@
 <div class="day">
 <h2>
   <%= format_date(day.date) %>
-  (<%= day.events.length %>)
+  <span>(<%= day.events.length %>)</span>
 </h2>
 <div class="events-by-date_js">
  <% day.events.each do |event| %>

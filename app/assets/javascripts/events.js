@@ -76,8 +76,11 @@ function evaluateShown(){
     function evaluateDateVisibility() {
         $('.events-by-date_js').each(function (i) {
             var childEvents = $(this).children('div.event-container');
-            if (hasVisibleChildEvents(childEvents)) {
+            var numVisible = numVisibleChildEvents(childEvents);
+            if (numVisible > 0) {
                 $(this).prev('h2').show();
+                // update the number contained within the header
+                $(this).prev('h2').children('span').text('(' + numVisible + ')');
             } else {
                 $(this).prev('h2').hide();
             }
@@ -89,17 +92,17 @@ function evaluateShown(){
 }
 
 /**
- * Search all given events and return true
- * if any of them are visible
+ * Search all given events and returns
+ * the number that are visible.
  * @param childEvents
- * @returns {boolean}
+ * @returns {Integer}
  */
-function hasVisibleChildEvents(childEvents) {
-    var visible = false;
+function numVisibleChildEvents(childEvents) {
+    var visible = 0;
     $(childEvents).each(function(i) {
         if ($(this).is(':visible')) {
-            visible = true;
-            return false; //return false to break out of the each loop
+            visible += 1;
+            //return false; //return false to break out of the each loop
         }
     });
     return visible;
