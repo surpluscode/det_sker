@@ -141,7 +141,6 @@ function updateActiveFilters(){
         var removeLink = ' <a href="" class="remove-filter" data-toggle="' + filterName + '"> [X] </a>';
         filterHTML += '<li>' + filterName.titleize() + removeLink + '</li>';
     }
-   // $('ul#filter-list_js').prepend(filterHTML);
     $('ul.active-filters_js').html(filterHTML);
 }
 /**
