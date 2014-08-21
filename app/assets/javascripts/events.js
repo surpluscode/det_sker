@@ -50,15 +50,19 @@ function evaluateShown(){
      * else show all events
      */
     function evaluateEventVisibility() {
-        var events = $('div.event-container');
+        var events = $('[data-role="event"]');
+
         if (activeFilters.length == 0) {
             events.show();
+            $('[data-role="day"]').show();
         } else {
             events.each(function (i) {
                 var attributes = $(this).attr('data-toggle').split(' ');
+                var parentId = '#' + $(this).attr('data-parent');
                 if ($(this).is(':hidden')) {
                     if (attributesMatchFilters(attributes)) {
                         $(this).show();
+                        $(parentId).show();
                     }
                 } else if ($(this).is(':visible')) {
                     if (!attributesMatchFilters(attributes)) {
@@ -74,15 +78,15 @@ function evaluateShown(){
      * Otherwise, show it.
      */
     function evaluateDateVisibility() {
-        $('.events-by-date_js').each(function (i) {
-            var childEvents = $(this).children('div.event-container');
+        $('[data-role="day"]').each(function (i) {
+            var childEvents = $(this).find('[data-role="event"]');
             var numVisible = numVisibleChildEvents(childEvents);
             if (numVisible > 0) {
-                $(this).prev('h2').show();
+                $(this).show();
                 // update the number contained within the header
-                $(this).prev('h2').children('span').text('(' + numVisible + ')');
+                $(this).find('[data-role="day-event-count"]').text('(' + numVisible + ')');
             } else {
-                $(this).prev('h2').hide();
+                $(this).hide();
             }
         });
     }

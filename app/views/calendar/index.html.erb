@@ -5,9 +5,9 @@
 %>
 
 <% if @calendar.in_progress.size > 0 %>
-    <%= render partial: 'day', object: @calendar.in_progress %>
+    <%= render partial: 'day', object: @calendar.in_progress, locals: { id: 'inProgress' } %>
 <% end %>
 
 <% @calendar.days.each do |day| %>
-    <%= render partial: 'day', object: day  %>
+    <%= render partial: 'day', object: day, locals: { id: day.date}  %>
 <% end %>
