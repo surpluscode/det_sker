@@ -28,11 +28,12 @@ da:
   calendar:
     index:
       new_event: "Opret ny begivenhed"
-      in_progress: "I gang"
     filter_options:
       filter_header: "Vis kun"
       category_filter_heading: "Typer"
       location_filter_heading: "Steder"
+    day:
+      in_progress: "I gang"
   coming_events: "Kommende begivenheder"
   events:
     comments:

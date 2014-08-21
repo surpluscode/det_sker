@@ -5,17 +5,7 @@
 %>
 
 <% if @calendar.in_progress.size > 0 %>
-    <h2>
-      <%= t '.in_progress' %>
-      <span>
-        (<%= @calendar.in_progress.events.length %>)
-      </span>
-    </h2>
-    <div class="events-by-date_js">
-        <% @calendar.in_progress.each do |event| %>
-            <%= render partial: 'events/event', object: event  %>
-        <% end %>
-    </div>
+    <%= render partial: 'day', object: @calendar.in_progress %>
 <% end %>
 
 <% @calendar.days.each do |day| %>

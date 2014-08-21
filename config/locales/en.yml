@@ -28,11 +28,12 @@ en:
   calendar:
     index:
       new_event: "New Event"
-      in_progress: "In Progress"
     filter_options:
       filter_header: "Filter by category"
       category_filter_heading: "Event Types"
       location_filter_heading: "Locations"
+    day:
+      in_progress: "In progress"
   coming_events: "Coming Events"
   events:
     comments:

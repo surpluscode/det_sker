@@ -1,8 +1,12 @@
 		<div class="day row">
 			<div class="col-xs-12">
 				<h2>
-					<%= format_date(day.date) %>
-  					(<%= day.events.length %>)
+                    <% if defined? day.date %>
+					    <%= format_date(day.date) %>
+                    <% else %>
+                        <%= t '.in_progress' %>
+                    <% end %>
+  					<span>(<%= day.events.length %>)</span>
 				</h2>
 			</div>
 			<div class="row">
