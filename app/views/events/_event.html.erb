@@ -3,20 +3,19 @@
      data-toggle="<%= categories_as_string(event.categories) %> <%= event.location.name %>"
      data-role="event" data-parent="<%= parent_id %>">
 	 <span class="event-topbar_js">
-	     <div class="col-xs-12 col-md-8 col-md-push-1">
+	     <span class="col-xs-12 col-md-8 col-md-push-1">
 	     	<strong class="event-title"><%= event.title %></strong>
-	     </div>
-	     <div class="col-xs-1 col-md-1 col-md-pull-8">
+	     </span>
+	     <span class="col-xs-1 col-md-1 col-md-pull-8">
     		<%# In the frontpage context we don't show a date, otherwise, do. %>
     		<% if defined? show_date %>
      	  	 	<%= format_datetime(event.start_time)  %>
     		<% else %>
         		<%= format_starttime(event.start_time) %>
     		<% end %>
-    	</div>
+    	</span>
     	<span class="event-category col-xs-2 col-md-1"><%= categories_as_string(event.categories, title = true) %> </span>
   		<span class="col-xs-2 col-md-2"><%= link_to(event.location.name, event.location) if event.location %></span>
-
    	</span>
   	<div class='event-details'>
   		<div class="col-xs-12 col-md-11 col-md-offset-1">

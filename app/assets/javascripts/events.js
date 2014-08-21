@@ -166,10 +166,10 @@ function refreshFilterView(){
  */
 function toggleContent() {
     if  ($(this).siblings('.event-details').hasClass('revealed')) {
-        $(this).siblings('.event-details').removeClass('revealed').slideToggle();
+        $(this).siblings('.event-details').removeClass('revealed').slideToggle('fast');
     } else {
         $('.revealed').removeClass('revealed').slideToggle();
-        $(this).siblings('.event-details').addClass('revealed').slideToggle();
+        $(this).siblings('.event-details').addClass('revealed').slideToggle('fast');
     }
 }
 function toggleLongDescription() {
