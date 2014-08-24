@@ -14,8 +14,16 @@
         		<%= format_starttime(event.start_time) %>
     		<% end %>
     	</span>
-    	<span class="event-category col-xs-2 col-md-1"><%= categories_as_string(event.categories, title = true) %> </span>
-  		<span class="col-xs-2 col-md-2"><%= link_to(event.location.name, event.location) if event.location %></span>
+    	<span class="event-category col-xs-2 col-md-1">
+          <%= categories_as_string(event.categories, title = true) %>
+        </span>
+  		<span class="col-xs-2 col-md-2">
+          <a href="<%= url_for(event.location) %>" target="_blank"
+             title="<%= event.location.description.truncate(120) %>" data-toggle='popover'
+             data-placement='top' data-trigger="click hover focus" data-html="true">
+            <%= event.location.name %>
+          </a>
+        </span>
    	</span>
   	<div class='event-details'>
   		<div class="col-xs-12 col-md-11 col-md-offset-1">
