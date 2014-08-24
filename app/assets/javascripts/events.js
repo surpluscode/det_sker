@@ -1,6 +1,7 @@
 var activeFilters = [];
 
 $(document).ready(function() {
+    hideEventDetails();
     $('span.event-topbar_js').click(toggleContent);
     $('a.filter-link').click(filterCategory);
     //we need to handle the click on the ul level,
@@ -10,6 +11,20 @@ $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 
 });
+
+/**
+ *  Because of a jQuery bug, we need to inform
+ *  jQuery of the event-detail's height so that
+ *  the slideToggle doesn't "jump".
+ *  See https://coderwall.com/p/r855xw for details.
+ */
+function hideEventDetails() {
+    $('.event-details').each(function(){
+        $height = $(this).height();
+        $(this).css('height', $height);
+        $(this).hide();
+    })
+}
 
 /**
  * Hide content box and show the form
@@ -172,6 +187,8 @@ function toggleContent() {
         $(this).siblings('.event-details').addClass('revealed').slideToggle('fast');
     }
 }
+
+
 function toggleLongDescription() {
     $(this).hide();
     $(this).siblings('.long-description').slideToggle();
