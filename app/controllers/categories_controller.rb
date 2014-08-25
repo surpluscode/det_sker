@@ -36,6 +36,12 @@ class CategoriesController < ApplicationController
   def destroy
   end
 
+  def search
+    term = params[:q]
+    results = Category.where('key LIKE ?', "#{term}%")
+    render json: results.to_json, status: 200
+  end
+
   private
   def whitelist_params
     params.require(:category).permit(:key, :description)

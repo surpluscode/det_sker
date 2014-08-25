@@ -4,7 +4,9 @@ DetSker::Application.routes.draw do
   resources :events, except: [:index] do
     resources :comments, except: [:index, :new, :delete]
   end
-  resources :categories
+  resources :categories do
+    get 'search', on: :collection
+  end
   resources :locations
   resources :users, controller: :user do
     patch 'make_admin', on: :member
