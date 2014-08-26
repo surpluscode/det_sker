@@ -36,10 +36,13 @@ class CategoriesController < ApplicationController
   def destroy
   end
 
-  def search
-    term = params[:q]
-    results = Category.where('key LIKE ?', "#{term}%")
-    render json: results.to_json, status: 200
+  # This method is used in the typeahead to retrieve
+  # an array of categories
+  def data
+    @categories = Category.all.map{|e| e.key}
+    respond_to do |format|
+      format.json { render json: @categories}
+    end
   end
 
   private

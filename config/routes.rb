@@ -5,7 +5,7 @@ DetSker::Application.routes.draw do
     resources :comments, except: [:index, :new, :delete]
   end
   resources :categories do
-    get 'search', on: :collection
+    get 'data', on: :collection
   end
   resources :locations
   resources :users, controller: :user do

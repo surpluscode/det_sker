@@ -6,11 +6,11 @@ describe CategoriesController do
     FactoryGirl.create(:category)
   end
 
-  describe 'GET#search' do
-    it 'should retrieve a list of search results' do
-      xhr(:get, 'search', {q: 'p'})
+  describe 'GET#data' do
+    it 'should retrieve a list of categories' do
+      xhr(:get, 'data')
       body = JSON.parse(response.body)
-      body.first.should include "key" => 'party'
+      body.should include 'party'
     end
   end
 end
