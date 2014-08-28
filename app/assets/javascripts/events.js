@@ -1,6 +1,14 @@
 var activeFilters = [];
 
-$(document).ready(function() {
+/**
+ * Little hack to ensure turbolink compatibility
+ * See http://stackoverflow.com/a/17600195/1031478
+ * for details.
+ */
+$(document).ready(run);
+$(document).on('page:load', run);
+
+var run = function() {
     hideEventDetails();
     $('span.event-topbar_js').click(toggleContent);
     $('a.filter-link').click(filterCategory);
@@ -10,7 +18,7 @@ $(document).ready(function() {
     $('a[data-target]').on("ajax:success", showEditCommentForm);
     $('[data-toggle="popover"]').popover();
 
-});
+};
 
 /**
  *  Because of a jQuery bug, we need to inform
