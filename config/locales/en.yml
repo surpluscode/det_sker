@@ -47,6 +47,7 @@ en:
       price: "Price"
       start_time: "Starts"
       end_time: "Ends"
+      comments: "Comments"
   comments:
     form:
       writing_as: "Writing as"

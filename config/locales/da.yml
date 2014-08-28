@@ -47,6 +47,7 @@ da:
       price: "Pris"
       start_time: "Starter"
       end_time: "Slutter"
+      comments: "Kommentar"
   comments:
     form:
       writing_as: "Skriver som"
