@@ -9,8 +9,10 @@ $(document).ready(function() {
     $('.show-long-description_js').click(toggleLongDescription);
     $('a[data-target]').on("ajax:success", showEditCommentForm);
     $('[data-toggle="popover"]').popover();
-
-    initCategoryTypeahead();
+    $('.combobox').combobox();
+    $('.combobox').click(function(){
+        $(this).siblings('.dropdown-toggle').click();
+    });
 });
 
 /**
@@ -194,41 +196,4 @@ function toggleLongDescription() {
     $(this).hide();
     $(this).siblings('.long-description').slideToggle();
     return false;
-}
-
-/**
- * More or less a copy paste from
- * http://twitter.github.io/typeahead.js/examples/#prefetch
- * Prefetch a json file representing all categories and use this
- * for our typeahead.
- */
-function initCategoryTypeahead() {
-    var categories = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        limit: 10,
-        prefetch: {
-            // url points to a json file that contains an array of categories
-            url: '<%= Rails.application.routes.url_helpers.data_categories_path %>.json',
-            // the json file contains an array of strings, but the Bloodhound
-            // suggestion engine expects JavaScript objects so this converts all of
-            // those strings
-            filter: function (list) {
-                return $.map(list, function (category) {
-                    return { name: category };
-                });
-            }
-        }
-    });
-    // kicks off the loading/processing of `local` and `prefetch`
-    categories.initialize();
-    // passing in `null` for the `options` arguments will result in the default
-    // options being used
-    $('#category-typeahead').typeahead(null, {
-        name: 'categories',
-        displayKey: 'name',
-        // `ttAdapter` wraps the suggestion engine in an adapter that
-        // is compatible with the typeahead jQuery plugin
-        source: categories.ttAdapter()
-    });
 }

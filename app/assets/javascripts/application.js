@@ -13,5 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
-//= require typeahead.bundle.min
+//= require bootstrap-combobox
 //= require_tree .
