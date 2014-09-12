@@ -13,7 +13,36 @@ $(document).ready(function() {
     $('.combobox').click(function(){
         $(this).siblings('.dropdown-toggle').click();
     });
+    $('.category-combobox').change(function(){
+         addToTarget('selected-categories', $(this).val());
+         $(this).val('');
+    });
+
 });
+
+/**
+ * Append the selected value to the correct target.
+ * Ensure that the value is not already present and that
+ * it is not an array or a number.
+ * @param target
+ * @param val
+ */
+function addToTarget(target, val) {
+    var data_target = $('[data-role="' + target + '"]');
+    if (val) {
+        if (!Array.isArray(val) && data_target.html().indexOf(val) == -1 && !val.isNumeric()) {
+            data_target.append('<span class="label label-primary">' + val + '</span> ');
+        } else {
+            // we put the numbers in a specially created input
+            // to enable multiple values
+            // and clear the default one to prevent duplicates
+            data_target.append('<input name="event[category_ids][]" ' +
+                'class="hidden" value="' + val + '"/>');
+            $('#event-category-dummy').val('')
+        }
+    }
+
+}
 
 /**
  *  Because of a jQuery bug, we need to inform

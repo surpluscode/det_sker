@@ -54,5 +54,9 @@ Array.prototype.remove = function() {
  */
 String.prototype.titleize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
-}
+};
+
+String.prototype.isNumeric = function() {
+    return !isNaN(parseFloat(this)) && isFinite(this);
+};
 

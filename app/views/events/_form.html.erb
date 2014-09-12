@@ -5,10 +5,16 @@
     <%= f.input :long_description, required: false %>
     <div class="row">
         <div class="col-xs-12 col-sm-5">
-            <%= f.association :categories, label_method: :key, input_html: { class: 'combobox category-combobox' } %>
+            <%= f.association :categories, label_method: :key, input_html: {
+                    id: 'event-category-dummy',
+                    class: 'combobox category-combobox', data: { target: 'selected-categories'}
+            } %>
+          <div data-role="selected-categories"></div>
+          <input name="event[category_ids][]" id="category-ids" class="hidden" value=""/>
         </div>
         <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-            <%= f.association :location, prompt: 'Choose location', input_html: { class: 'combobox location-combo' } %>
+            <%= f.association :location, prompt: 'Choose location', input_html: { class: 'combobox location-combobox' } %>
+          <ul data-role="selected-locations"></ul>
         </div>
     </div>
     <%= f.input :price, placeholder: t('.price_prompt') %>
