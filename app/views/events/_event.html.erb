@@ -37,13 +37,13 @@
 			<% end %>
 		</div>
 		<div class="col-xs-12 col-md-8 col-md-offset-1">
-	    	<p><strong>Starter: </strong><%= format_datetime(event.start_time) %></p>
-    		<p><strong>Slutter: </strong><%= format_datetime(event.end_time) %></p>
-    		<% if event.comments.size > 0 %>
-        		<%= link_to event_path event do %>
-          		<p><strong>Comments: </strong><%= event.comments.size %></p>
-        	<% end %>
-    	<% end %>
+	      <p><strong>Starter: </strong><%= format_datetime(event.start_time) %></p>
+    	  <p><strong>Slutter: </strong><%= format_datetime(event.end_time) %></p>
+          <% if event.comments_enabled? %>
+            <%= link_to event_path event do %>
+              <p><%= t '.comments' %>: <%= event.comments.size %></p>
+            <% end %>
+          <% end %>
     	<p class="event-price"><strong>Pris: </strong><%= event.price %></p>
     	</div>
     <% if current_user && current_user.can_edit?(event) %>

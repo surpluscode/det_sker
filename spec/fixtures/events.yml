@@ -9,7 +9,7 @@ demo:
   title: "Mindehøjtidelighed: ALDRIG IGEN RANA PLAZA!"
   price: Cheaper than sweatshop labour...
   cancelled: True
-  comments_enabled: True
+  comments_enabled: false
   user: hippy
 film: 
   categories:
@@ -20,7 +20,7 @@ film:
   start_time: <%= DateTime.now.next_day + 1.hours %>
   title: "Filmaften med Racismefri By"
   price: Gratis som en glatis
-  comments_enabled: True
+  comments_enabled: true
   user: hippy
 kursus1: 
   categories:
@@ -31,7 +31,7 @@ kursus1:
   start_time:  <%= DateTime.now.prev_month %>
   title: "Økonomiens marginalisering af det politiske - magtens forskydning"
   price: 200kr
-  comments_enabled: True
+  comments_enabled: true
   user: intellectual
 kursus2: 
   categories:
@@ -42,7 +42,7 @@ kursus2:
   start_time: <%= DateTime.now.prev_month - 10.days %>
   title: "Latinamerikansk frigørelsesfilosofi"
   price: 200kr
-  comments_enabled: True
+  comments_enabled: false
   user: intellectual
 nonsense: 
   categories:
@@ -65,7 +65,7 @@ udstilling:
   start_time: <%= DateTime.now.prev_month %>
   title: "Come and witness the fall of capital!"
   price: 0kr
-  comments_enabled: True
+  comments_enabled: false
   user: autonome
 climate:
   categories:
