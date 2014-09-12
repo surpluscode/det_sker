@@ -36,15 +36,6 @@ class CategoriesController < ApplicationController
   def destroy
   end
 
-  # This method is used in the typeahead to retrieve
-  # an array of categories
-  def data
-    @categories = Category.all.map{|e| e.key}
-    respond_to do |format|
-      format.json { render json: @categories}
-    end
-  end
-
   private
   def whitelist_params
     params.require(:category).permit(:key, :description)
