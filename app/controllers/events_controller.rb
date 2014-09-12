@@ -62,7 +62,6 @@ class EventsController < ApplicationController
       redirect_to root_path, alert: 'Only authorised users can edit events!'
     end
   end
-  Array
 
   def user_params
     params.require(:event).permit(:title, :short_description, :long_description,
