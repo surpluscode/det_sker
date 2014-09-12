@@ -66,6 +66,8 @@ class EventsController < ApplicationController
   def user_params
     params.require(:event).permit(:title, :short_description, :long_description,
                                  :start_time, :end_time,  :location_id, :comments_enabled,
-                                 :price, category_ids: [])
+                                 :price, category_ids: []).tap do |list|
+      list[:category_ids].uniq!
+    end
   end
 end
