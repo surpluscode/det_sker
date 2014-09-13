@@ -1,4 +1,5 @@
 var activeFilters = [];
+var categoryHash;
 
 $(document).ready(function() {
     hideEventDetails();
@@ -7,18 +8,40 @@ $(document).ready(function() {
     //we need to handle the click on the ul level,
     // because the li elements aren't generated  yet
     $('.show-long-description_js').click(toggleLongDescription);
-    $('a[data-target]').on("ajax:success", showEditCommentForm);
+    $('a[data-target]').on("ajax:success", showAjaxResponse);
     $('[data-toggle="popover"]').popover();
+    createCategoryHash();
     $('.combobox').combobox();
     $('.combobox').click(function(){
         $(this).siblings('.dropdown-toggle').click();
     });
+    $('input.category-combobox').keyup(function(){
+       var numSuggestions = $('ul.typeahead li').length;
+       var menuHidden = $('.event_categories ul.typeahead').is(':hidden');
+       if (numSuggestions == 1 && menuHidden) {
+           var create_link = 'No suggestions left; create category ' + $(this).val() + ' instead?';
+           $('#new-category-box').text(create_link);
+           $('#new-category-box').removeClass('hidden');
+       }
+
+    });
     $('.category-combobox').change(function(){
-         addToTarget('selected-categories', $(this).val());
+        addToTarget('selected-categories', this.value);
          $(this).val('');
     });
 
 });
+
+/**
+ * Build a hash of categories with their ids as
+ * keys and their names as values.
+ */
+function createCategoryHash(){
+    categoryHash = {};
+    $('select#event-category-dummy option').map(function() {
+        categoryHash[$(this).val()] = $(this).text();
+    });
+}
 
 /**
  * Append the selected value to the correct target.
@@ -28,19 +51,17 @@ $(document).ready(function() {
  * @param val
  */
 function addToTarget(target, val) {
-    var data_target = $('[data-role="' + target + '"]');
-    if (val) {
-        if (!Array.isArray(val) && data_target.html().indexOf(val) == -1 && !val.isNumeric()) {
-            data_target.append('<span class="label label-primary">' + val + '</span> ');
-        } else {
-            // we put the numbers in a specially created input
-            // to enable multiple values
-            // and clear the default one to prevent duplicates
-            data_target.append('<input name="event[category_ids][]" ' +
-                'class="hidden" value="' + val + '"/>');
-            $('#event-category-dummy').val('')
-        }
-    }
+    if (val in categoryHash) {
+        var data_target = $('[data-role="' + target + '"]');
+        data_target.append('<span class="label label-primary">' + categoryHash[val] + '</span> ');
+        // we put the numbers in a specially created input
+        // to enable multiple values
+        // and clear the default one to prevent duplicates
+        data_target.append('<input name="event[category_ids][]" ' +
+            'class="hidden" value="' + val + '"/>');
+        $('#event-category-dummy').val('')
+     }
+
 
 }
 
@@ -59,12 +80,13 @@ function hideEventDetails() {
 }
 
 /**
- * Hide content box and show the form
- * retrieved from the web request
+ * Upon completing an AJAX request
+ * show the result in an element based
+ * on the calling object's data-target attribute
  * @param event
  * @param xhr
  */
-function showEditCommentForm(event, xhr){
+function showAjaxResponse(event, xhr){
     //target div has id equal to the clicked link's data target attr
     var target = $('#' + $(this).attr('data-target'));
     target.html(xhr);
