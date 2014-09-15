@@ -14,7 +14,7 @@ describe CategoriesController do
     end
 
     it 'should return a hash containing the id and the category name when queried via javascript' do
-      post :create, category: { key: 'queer' }, format: :js
+      post :create, category: { key: 'queer' }, format: :json
       body = JSON.parse(response.body)
       expect(body['key']).to eql 'queer'
     end
