@@ -12,13 +12,12 @@ class CategoriesController < ApplicationController
   def show
   end
 
-
   def create
     @category = Category.new(whitelist_params)
     respond_to do |format|
       if @category.save
         format.html { redirect_to root_path, notice: 'Category created successfully' }
-        format.json { render_action 'show', status: :created, location: @category}
+        format.json { render json: @category }
       else
         format.html { render_action 'new' }
         format.json { render json: @category.errors, status: :unprocessable_entity }

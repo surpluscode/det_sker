@@ -1,4 +1,6 @@
+<% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
 var activeFilters = [];
+var categoryHash;
 
 $(document).ready(function() {
     hideEventDetails();
@@ -7,18 +9,72 @@ $(document).ready(function() {
     //we need to handle the click on the ul level,
     // because the li elements aren't generated  yet
     $('.show-long-description_js').click(toggleLongDescription);
-    $('a[data-target]').on("ajax:success", showEditCommentForm);
+    $('a[data-target]').on("ajax:success", showAjaxResponse);
     $('[data-toggle="popover"]').popover();
+    createCategoryHash();
     $('.combobox').combobox();
     $('.combobox').click(function(){
         $(this).siblings('.dropdown-toggle').click();
     });
+    $('input.category-combobox').keyup(function(){
+       if (!suggestionsAvailable()) {
+           createSuggestionLink.call(this);
+       }
+
+    });
+
+    $('input.category-combobox').blur(function(){
+        //$('#new-category-box').html('');
+    });
     $('.category-combobox').change(function(){
-         addToTarget('selected-categories', $(this).val());
+        addToTarget('selected-categories', this.value);
          $(this).val('');
     });
 
 });
+
+/**
+ * Give the user a link to create a category
+ * and handle clicks on this link
+ */
+function createSuggestionLink() {
+    // add the created category to the view
+    function createCategory(data) {
+        categoryHash[data.id] = data.key;
+        addToTarget('selected-categories', data.id);
+        $('#create-new-category').remove();
+    }
+
+    var text = i18n.events.form.new_category;
+    text = text.replace('<category>', this.value);
+    var create_link = '<a id="create-new-category" href="#" data-value="' + this.value + '">' + text + '</a>';
+    $('#new-category-box').html(create_link);
+    $('#new-category-box').removeClass('hidden');
+    $('#create-new-category').click(function () {
+        // post create to our category controller and update the category hash with the values returned
+        $.post('<%= categories_path %>', { 'category[key]': $(this).attr('data-value')}, createCategory, 'json');
+        return false;
+    });
+}
+
+
+/**
+ * Check to see if popup suggestions are available
+ * @returns {*|jQuery}
+ */
+function suggestionsAvailable(){
+    return $('input.category-combobox').is(':focus') && $('.event_categories ul.typeahead').is(':visible');
+}
+/**
+ * Build a hash of categories with their ids as
+ * keys and their names as values.
+ */
+function createCategoryHash(){
+    categoryHash = {};
+    $('select#event-category-dummy option').map(function() {
+        categoryHash[$(this).val()] = $(this).text();
+    });
+}
 
 /**
  * Append the selected value to the correct target.
@@ -28,19 +84,17 @@ $(document).ready(function() {
  * @param val
  */
 function addToTarget(target, val) {
-    var data_target = $('[data-role="' + target + '"]');
-    if (val) {
-        if (!Array.isArray(val) && data_target.html().indexOf(val) == -1 && !val.isNumeric()) {
-            data_target.append('<span class="label label-primary">' + val + '</span> ');
-        } else {
-            // we put the numbers in a specially created input
-            // to enable multiple values
-            // and clear the default one to prevent duplicates
-            data_target.append('<input name="event[category_ids][]" ' +
-                'class="hidden" value="' + val + '"/>');
-            $('#event-category-dummy').val('')
-        }
-    }
+    if (val in categoryHash) {
+        var data_target = $('[data-role="' + target + '"]');
+        data_target.append('<span class="label label-primary">' + categoryHash[val] + '</span> ');
+        // we put the numbers in a specially created input
+        // to enable multiple values
+        // and clear the default one to prevent duplicates
+        data_target.append('<input name="event[category_ids][]" ' +
+            'class="hidden" value="' + val + '"/>');
+        $('#event-category-dummy').val('')
+     }
+
 
 }
 
@@ -59,12 +113,13 @@ function hideEventDetails() {
 }
 
 /**
- * Hide content box and show the form
- * retrieved from the web request
+ * Upon completing an AJAX request
+ * show the result in an element based
+ * on the calling object's data-target attribute
  * @param event
  * @param xhr
  */
-function showEditCommentForm(event, xhr){
+function showAjaxResponse(event, xhr){
     //target div has id equal to the clicked link's data target attr
     var target = $('#' + $(this).attr('data-target'));
     target.html(xhr);
