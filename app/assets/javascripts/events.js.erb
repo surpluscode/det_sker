@@ -1,3 +1,4 @@
+<% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
 var activeFilters = [];
 var categoryHash;
 
@@ -16,14 +17,14 @@ $(document).ready(function() {
         $(this).siblings('.dropdown-toggle').click();
     });
     $('input.category-combobox').keyup(function(){
-       var numSuggestions = $('ul.typeahead li').length;
-       var menuHidden = $('.event_categories ul.typeahead').is(':hidden');
-       if (numSuggestions == 1 && menuHidden) {
-           var create_link = 'No suggestions left; create category ' + $(this).val() + ' instead?';
-           $('#new-category-box').text(create_link);
-           $('#new-category-box').removeClass('hidden');
+       if (!suggestionsAvailable()) {
+           createSuggestionLink.call(this);
        }
 
+    });
+
+    $('input.category-combobox').blur(function(){
+        //$('#new-category-box').html('');
     });
     $('.category-combobox').change(function(){
         addToTarget('selected-categories', this.value);
@@ -32,6 +33,38 @@ $(document).ready(function() {
 
 });
 
+/**
+ * Give the user a link to create a category
+ * and handle clicks on this link
+ */
+function createSuggestionLink() {
+    // add the created category to the view
+    function createCategory(data) {
+        categoryHash[data.id] = data.key;
+        addToTarget('selected-categories', data.id);
+        $('#create-new-category').remove();
+    }
+
+    var text = i18n.events.form.new_category;
+    text = text.replace('<category>', this.value);
+    var create_link = '<a id="create-new-category" href="#" data-value="' + this.value + '">' + text + '</a>';
+    $('#new-category-box').html(create_link);
+    $('#new-category-box').removeClass('hidden');
+    $('#create-new-category').click(function () {
+        // post create to our category controller and update the category hash with the values returned
+        $.post('<%= categories_path %>', { 'category[key]': $(this).attr('data-value')}, createCategory, 'json');
+        return false;
+    });
+}
+
+
+/**
+ * Check to see if popup suggestions are available
+ * @returns {*|jQuery}
+ */
+function suggestionsAvailable(){
+    return $('input.category-combobox').is(':focus') && $('.event_categories ul.typeahead').is(':visible');
+}
 /**
  * Build a hash of categories with their ids as
  * keys and their names as values.
