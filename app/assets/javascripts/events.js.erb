@@ -88,13 +88,21 @@ function createCategoryHash(){
 function addToTarget(target, val) {
     if (val in categoryHash) {
         var data_target = $('[data-role="' + target + '"]');
-        data_target.append('<span class="label label-primary">' + categoryHash[val] + '</span> ');
+        var label = '<span id="label_' + val + '" class="tag label label-primary">';
+        label += categoryHash[val];
+        label += ' <a id="remove_' + val +'"><span class="remove glyphicon glyphicon-remove glyphicon-white"></span></a>';
+        label += '</span>';
+        data_target.append(label);
         // we put the numbers in a specially created input
         // to enable multiple values
         // and clear the default one to prevent duplicates
-        data_target.append('<input name="event[category_ids][]" ' +
+        data_target.append('<input id="input_' + val + '" name="event[category_ids][]" ' +
             'class="hidden" value="' + val + '"/>');
-        $('#event-category-dummy').val('')
+        $('#event-category-dummy').val('');
+        $('#remove_' + val).click(function(){
+            $('#input_' + val).remove();
+            $('#label_' + val).remove();
+        })
      }
 
 
