@@ -42,13 +42,15 @@ function createSuggestionLink() {
     function createCategory(data) {
         categoryHash[data.id] = data.key;
         addToTarget('selected-categories', data.id);
-        $('#create-new-category').remove();
+        $('#create-category-alert').remove();
     }
 
     var text = i18n.events.form.new_category;
     text = text.replace('<category>', this.value);
-    var create_link = '<a id="create-new-category" href="#" data-value="' + this.value + '">' + text + '</a>';
-    $('#new-category-box').html(create_link);
+    var create_link = '<a id="create-new-category" class="alert-link" href="#" data-value="' + this.value + '">' + text + '</a>';
+
+    alert = '<div class="alert alert-info alert-dismissible" id="create-category-alert" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> ' +  create_link + '</div>';
+    $('#new-category-box').html(alert);
     $('#new-category-box').removeClass('hidden');
     $('#create-new-category').click(function () {
         // post create to our category controller and update the category hash with the values returned
