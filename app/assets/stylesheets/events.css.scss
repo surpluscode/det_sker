@@ -69,3 +69,9 @@ dl#filter-list_js {
   color: #fff;
   margin-bottom: 2px;
 }
+
+.combobox-container {
+  .input-group-addon {
+    display: none;
+  }
+}
