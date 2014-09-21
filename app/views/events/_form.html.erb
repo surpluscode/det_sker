@@ -19,7 +19,7 @@
           <ul data-role="selected-locations"></ul>
         </div>
     </div>
-    <%= f.input :price, placeholder: t('.price_prompt') %>
+
 
     <div class="row">
         <div class="col-xs-12">
@@ -33,6 +33,7 @@
                     function: 'datetime-picker', 'date-format' => 'DD/MM/YYYY HH:mm' }} %>
         </div>
     </div>
+    <%= f.input :price, placeholder: t('.price_prompt') %>
     <div class="row">
         <div class="col-xs-12">
             <%= f.input :comments_enabled, label: t('.enable_comments'),
