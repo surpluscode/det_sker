@@ -110,6 +110,7 @@ function addToTarget(target, val) {
         $('#remove_' + val).click(function(){
             $('#input_' + val).remove();
             $('#label_' + val).remove();
+            $('.combobox-container').find('input').filter(':first').val('');
         })
      }
 
