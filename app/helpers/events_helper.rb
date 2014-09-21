@@ -23,7 +23,7 @@ module EventsHelper
   # separated by space
   def categories_as_string(categories, title = false)
     string = categories.map do |e|
-      title ? e.key.titleize : e.key
+      title ? e.key.titleize : e.key.parameterize('_')
     end
     string.join(' ')
   end
