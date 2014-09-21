@@ -49,6 +49,10 @@ da:
       start_time: "Starter"
       end_time: "Slutter"
       comments: "Kommentar"
+    edit:
+      edit_event: "Redigerer begivenhed"
+    new:
+      new_event: "Opret begivenhed"
   comments:
     form:
       writing_as: "Skriver som"

@@ -49,6 +49,10 @@ en:
       start_time: "Starts"
       end_time: "Ends"
       comments: "Comments"
+    edit:
+      edit_event: "Editing event"
+    new:
+      new_event: "New event"
   comments:
     form:
       writing_as: "Writing as"
