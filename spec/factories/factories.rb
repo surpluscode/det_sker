@@ -50,6 +50,11 @@ FactoryGirl.define do
     description 'Fun things with hats and glasses'
   end
 
+  factory :demo_cat, class: Category do
+    key :demo
+  end
+
+
   factory :location do
     name 'Folkets Hus'
     street_address 'Stengade 50'

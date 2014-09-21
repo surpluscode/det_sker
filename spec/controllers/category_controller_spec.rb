@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe CategoriesController do
 
-  before :each do
-    FactoryGirl.create(:category)
-  end
-
   describe 'create' do
     it 'should create a category' do
       expect {

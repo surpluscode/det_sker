@@ -4,7 +4,7 @@ describe LocationsController do
 
   describe 'GET#index' do
     it 'creates an array of locations' do
-      location = FactoryGirl.create(:location)
+      location = FactoryGirl.create(:other_location)
       get :index
       assigns(:locations).should eq([location])
     end
@@ -12,7 +12,7 @@ describe LocationsController do
 
   describe 'GET#show' do
     it 'assigns the correct location' do
-      l = FactoryGirl.create(:location)
+      l = FactoryGirl.create(:other_location)
       get :show, id: l
       assigns(:location).should eq l
     end
