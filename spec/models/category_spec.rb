@@ -7,4 +7,12 @@ describe Category do
     c.key.should eql :party
   end
 
+  it 'should reject duplicate categories' do
+    Category.create(key: :queer)
+    c2 = Category.new(key: :queer)
+    expect(c2.save).to be_false
+    c3 = Category.new(key: :Queer)
+    expect(c3.save).to be_false
+  end
+
 end
