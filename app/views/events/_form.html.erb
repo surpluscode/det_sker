@@ -23,16 +23,14 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <span class='select_group'>
-             <%= f.input :start_time %>
-             </span>
+          <%= f.input :start_time, as: :string, input_html: { data:{
+                  function: 'datetime-picker', 'date-format' => 'DD/MM/YYYY HH:mm' }} %>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <span class='select_group'>
-            <%= f.input :end_time %>
-            </span>
+            <%= f.input :end_time, as: :string, input_html: { data: {
+                    function: 'datetime-picker', 'date-format' => 'DD/MM/YYYY HH:mm' }} %>
         </div>
     </div>
     <div class="row">

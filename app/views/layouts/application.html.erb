@@ -6,8 +6,13 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <script type="text/javascript">
-    <%# Make our translations accessible to javascript #%>
+    <%#
+    Make our translations accessible to javascript
+    Note that it needs to be here rather than in javascript
+    as javascript will be precompiled makings its variables static.
+    #%>
     window.i18n = <%= current_translations.to_json.html_safe %>;
+    window.locale = '<%= I18n.locale %>';
   </script>
 </head>
 <body>
