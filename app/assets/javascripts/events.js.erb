@@ -1,11 +1,13 @@
 <% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
 var activeFilters = [];
+var activeCategories = [];
+var activeLocations = [];
 var categoryHash;
 
 $(document).ready(function() {
     hideEventDetails();
     $('span.event-topbar_js').click(toggleContent);
-    $('a.filter-link').click(filterCategory);
+    $('a[data-role="filter-link"]').click(filterCategory);
     //we need to handle the click on the ul level,
     // because the li elements aren't generated  yet
     $('.show-long-description_js').click(toggleLongDescription);
@@ -153,11 +155,21 @@ function showAjaxResponse(event, xhr){
  * @returns {boolean}
  */
 function filterCategory(){
-    var filter = $(this).attr('data-toggle');
+    var $this = $(this);
+    var filter = $this.attr('data-toggle');
+    var type = $this.attr('data-filter-type');
+    var filterArray;
+    if (type == 'category') {
+        filterArray = activeCategories;
+    } else if (type == 'location') {
+        filterArray = activeLocations;
+    }
     if (activeFilters.indexOf(filter) == -1) {
         activeFilters.push(filter);
-    } else if ($(this).hasClass('active')){
+        filterArray.push(filter);
+    } else if ($this.hasClass('active')){
         activeFilters.remove(filter);
+        filterArray.remove(filter);
     }
     refreshFilterView();
     evaluateShown();
@@ -212,8 +224,59 @@ function evaluateShown(){
         });
     }
 
+    /**
+     * Create a description of the currently active filters based on
+     * the filter lists. This description includes text and a set of tags
+     * which are rendered with links and listeners allowing them to be
+     * removed again.
+     */
+    function evaluateFilterDescription(){
+        //Create a nice html tag for a given filter type
+        // including the correct data-attributes to enable
+        // it to function to remove things
+        function createTagLink(name, type){
+            var label_type;
+            if (type == 'category'){
+                label_type = 'label-primary';
+            } else if (type == 'location') {
+                label_type = 'label-success';
+            }
+            tag = "<span class='tag label " + label_type + "'>";
+            tag += name;
+            tag += "<a class='active' data-role='filter-link' data-filter-type='" + type + "' data-toggle='" + name + "'>";
+            tag += "<span class=\"remove glyphicon glyphicon-remove glyphicon-white\"></span></a></span>";
+            return tag;
+        }
+
+        var text = i18n.calendar.index.describe_filters.base;
+        if (activeCategories.length > 0 ){
+            text += i18n.calendar.index.describe_filters.categories;
+            var categories = $.map(activeCategories, function(name, i){
+                return createTagLink(name, 'category');
+            });
+            text += categories.join(' ');
+        }
+        if (activeLocations.length > 0 ){
+            text += i18n.calendar.index.describe_filters.locations;
+            var locations = $.map(activeLocations, function(name, i){
+                return createTagLink(name, 'location');
+            });
+            text += locations.join(' ');
+        }
+
+        var $description = $('[data-role="filter-description"]');
+        $description.html(text)
+        if (activeCategories.length > 0 || activeLocations > 0) {
+            $description.removeClass('hidden');
+        } else {
+            $description.addClass('hidden');
+        }
+        $('a[data-role="filter-link"]').unbind().click(filterCategory);
+    }
+
     evaluateEventVisibility();
     evaluateDateVisibility();
+    evaluateFilterDescription();
 }
 
 /**

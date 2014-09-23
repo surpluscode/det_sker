@@ -28,6 +28,7 @@ en:
   calendar:
     index:
       new_event: "New Event"
+      describe_filters: "Showing events of type <categories> in <locations>"
     filter_options:
       filter_header: "Filter by category"
       category_filter_heading: "Event Types"

@@ -7,7 +7,9 @@
            locals: {filter_categories: @calendar.filter_categories,
                     filter_locations: @calendar.filter_locations }
 %>
-
+<div class="row hidden center-block" data-role="filter-description">
+  <%= t '.describe_filters' %>
+</div>
 <% if @calendar.in_progress.size > 0 %>
     <%= render partial: 'day', object: @calendar.in_progress, locals: { id: 'inProgress' } %>
 <% end %>

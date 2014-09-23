@@ -28,6 +28,10 @@ da:
   calendar:
     index:
       new_event: "Opret ny begivenhed"
+      describe_filters:
+        base: Viser begivenheder
+        categories: " med kategorier "
+        locations: " i "
     filter_options:
       filter_header: "Vis kun"
       category_filter_heading: "Typer"
