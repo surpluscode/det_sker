@@ -6,8 +6,9 @@
 	display:inline;
 }
 
-#new_event {
+.event_form {
 	max-width:500px;
+	margin: 0 auto;
 }
 
 #event_short_description {
