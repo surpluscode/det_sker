@@ -18,10 +18,10 @@
 <body>
 <div class="container">
 	<div class="row">
-		<div class="col-xs-4 col-xs-offset-4 col-md-1 col-md-offset-0">
+		<div class="lang-selection col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-8">
 			<%= render partial: 'layouts/lang_selector' %>
 		</div>
-		<div class="login-buttons col-xs-4 col-xs-offset-4 col-md-1 col-md-offset-0">
+		<div class="login-buttons col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-0">
 	  		<% if current_user %>
     	  		<%= link_to t('.logout'), destroy_user_session_path, method: :delete %>
   	  		<% else %>
@@ -31,10 +31,18 @@
 
 
 	</div>
-    <%= link_to 'Home', root_path %>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-
+  <div class="row">
+    <div class="header-text col-xs-12">
+        <%= link_to 'Evenio', root_path %>
+    </div>
+    <div class="tagline-text">
+      <p>Tagline, tagline and more tagline!</p>
+    </div>
+  </div>
+  <div class="row">
+	 <span class="notice"><%= notice %></span>
+	 <span class="alert"><%= alert %></span>
+  </div>
 	<%= yield %>
 		</div>
 	</div>

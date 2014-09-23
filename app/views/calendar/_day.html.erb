@@ -1,5 +1,5 @@
 		<div class="day row" id="<%= id %>" data-role="day">
-			<div class="col-xs-12 headline-day">
+			<div class="col-xs-12">
 
 				<h2>
                     <% if defined? day.date %>
@@ -8,7 +8,7 @@
                         <%= t '.in_progress' %>
                     <% end %>
 
-  					<span class="event-count" data-role="day-event-count">(<%= day.events.length %>)</span>
+  					<span data-role="day-event-count">(<%= day.events.length %>)</span>
 				</h2>
 			</div>
 			<div class="row">
