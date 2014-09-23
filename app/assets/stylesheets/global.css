@@ -2,10 +2,17 @@
 	max-width:960px;
 }
 
-.headline-day {
-	background-color: red;
+.header-text {
+	text-align: center;
+	font-size: 60px;
 }
 
-.event-count {
-	
+.tagline-text {
+	text-align: center;
+	font-size: 10px;
+	text-transform: uppercase;
+}
+
+.create-link a  {
+	color: #FFF !important
 }
