@@ -10,7 +10,7 @@ class Category < ActiveRecord::Base
      ActiveRecord::Base.connection.execute(
          "SELECT c.key, COUNT(*) AS num from categories_events AS ce, events AS e, categories AS c
           WHERE ce.event_id = e.id AND ce.category_id = c.id
-          AND e.end_time > now()
+          AND e.end_time > DATETIME('now')
           GROUP BY c.key"
      )
   end
