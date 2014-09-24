@@ -34,16 +34,6 @@ describe Event do
     Event.create(@party_details).valid?.should_not be_true
   end
 
-  describe 'Event.current_events' do
-    it 'should include number of comments for the event' do
-      e = FactoryGirl.create(:event)
-      c = FactoryGirl.create(:comment, event: e)
-      events = Event.current_events
-      events.should include e
-      events.first.comments.first.should eql c
-    end
-  end
-
   describe 'Event.in_progress?' do
     it 'should return true when an event is in progress' do
       e = FactoryGirl.create(:event)

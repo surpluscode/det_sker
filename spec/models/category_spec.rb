@@ -2,17 +2,16 @@ require 'spec_helper'
 
 describe Category do
   it 'should create a category with a key and a description' do
-    c = Category.new(key: :party, description: 'Fun fun fun!')
-    c.save.should be_true
-    c.key.should eql :party
+    c = FactoryGirl.build(:category)
+    expect(c).to be_valid
   end
 
   it 'should reject duplicate categories' do
-    Category.create(key: :queer)
-    c2 = Category.new(key: :queer)
-    expect(c2.save).to be_false
-    c3 = Category.new(key: :Queer)
-    expect(c3.save).to be_false
+    FactoryGirl.create(:category, key: :queer)
+    c2 = FactoryGirl.build(:category, key: :queer)
+    expect(c2).to_not be_valid
+    c3 = FactoryGirl.build(:category, key: :queer)
+    expect(c3).to_not be_valid
   end
 
 end

@@ -29,7 +29,7 @@ FactoryGirl.define do
     long_description "I'm telling you it's going to be fun!"
     start_time DateTime.now
     end_time DateTime.now + 5.hours
-    location_id 1
+    location
     user_id 1
 
     factory :event_yesterday do

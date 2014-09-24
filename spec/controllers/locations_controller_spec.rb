@@ -6,7 +6,7 @@ describe LocationsController do
     it 'creates an array of locations' do
       location = FactoryGirl.create(:other_location)
       get :index
-      assigns(:locations).should eq([location])
+      assigns(:locations).should include(location)
     end
   end
 
