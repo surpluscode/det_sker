@@ -48,6 +48,7 @@ da:
       enable_comments: "Tillad kommentar på din begivenhed?"
       price_prompt: "Hvor meget koster det?"
       new_category: "Kategori <category> findes ikke, vil du tilføj det?"
+      location_created: "Sted oprettet!"
     event:
       price: "Pris"
       start_time: "Starter"
@@ -60,3 +61,6 @@ da:
   comments:
     form:
       writing_as: "Skriver som"
+  locations:
+    form:
+      new_location: 'Opret nyt sted'

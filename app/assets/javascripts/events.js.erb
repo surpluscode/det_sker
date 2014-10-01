@@ -25,9 +25,6 @@ $(document).ready(function() {
 
     });
 
-    $('input.category-combobox').blur(function(){
-        //$('#new-category-box').html('');
-    });
     $('.category-combobox').change(function(){
         addToTarget('selected-categories', this.value);
          $(this).val('');
@@ -40,8 +37,46 @@ $(document).ready(function() {
     $('#event_start_time').on('dp.change', function(e){
         $('#event_end_time').data("DateTimePicker").setMinDate(e.date);
         $('#event_end_time').data("DateTimePicker").setDate(e.date);
-    })
+    });
+
+    $('#location-modal').unbind().on('ajax:success', loadRemoteModal);
+
 });
+
+/**
+ * Populate a Bootstrap modal with our
+ * ajax response and activate it.
+ * @param event
+ * @param xhr
+ */
+function loadRemoteModal(event, xhr) {
+    // listeners to be attached dynamically to
+    // the loaded modal object
+    // in the event of success we receive a json object
+    // which we use to update the form after writing
+    // a success message
+    // in case of failure, we receive back html which
+    // we put back into the modal
+    function handleSuccess(event, xhr) {
+        var alert = '<div class="alert alert-success" role="alert" style="margin-bottom: 0px;">';
+        alert += i18n.events.form.location_created;
+        alert += '</div>';
+        $target.find('.modal-body').html(alert);
+        var update_field = $this.attr('data-update-field');
+        $(update_field).val(xhr.id);
+    }
+    function handleFailure(event, xhr) {
+        $target.find('.modal-body').html(xhr.responseText);
+    }
+    $this = $(this);
+    var title = $this.attr('data-modal-title');
+    var $target = $('#' + $this.attr('data-target'));
+    $target.find('.modal-body').html(xhr);
+    $target.find('.modal-title').text(title);
+    $('form#new_location').on('ajax:success', handleSuccess);
+    $('form#new_location').on('ajax:error', handleFailure);
+    $target.modal();
+}
 
 /**
  * Give the user a link to create a category

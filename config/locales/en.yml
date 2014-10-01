@@ -45,6 +45,7 @@ en:
       enable_comments: "Allow comments?"
       price_prompt: "How much does your event cost?"
       new_category: "<category> not found, will you create a new category?"
+      location_created: "Location created successfully!"
     event:
       price: "Price"
       start_time: "Starts"
@@ -57,3 +58,6 @@ en:
   comments:
     form:
       writing_as: "Writing as"
+  locations:
+    form:
+      new_location: 'Create new location'

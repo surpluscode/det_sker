@@ -9,16 +9,17 @@ class LocationsController < ApplicationController
 
   def new
     @location = Location.new
+    render layout: nil
   end
 
   def create
     @location = Location.new(location_whitelist)
     respond_to do |format|
       if @location.save
+        format.json { render json: @location, status: :created}
         format.html { redirect_to @location, notice: 'Location saved successfully' }
-        format.json { render action: :show, status: :created, location: @location }
       else
-        format.html { render action: :new }
+        format.html { render action: :new, status: :unprocessable_entity, layout: nil }
         format.json { render json: @location.errors, status: :unprocessable_entity }
       end
     end
