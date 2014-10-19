@@ -16,3 +16,9 @@
 .create-link a  {
 	color: #FFF !important
 }
+
+/* Bootstrap overrides */
+
+.form-horizontal .form-group {
+	margin: 0;
+}
