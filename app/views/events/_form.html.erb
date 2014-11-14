@@ -26,10 +26,10 @@
         <div class="col-xs-12 col-sm-5 col-sm-offset-1">
             <%= f.association :location, prompt: 'Choose location', input_html: { class: 'combobox location-combobox' } %>
           <ul data-role="selected-locations"></ul>
-          <a href="<%= new_location_path %>" id="location-modal" class="btn btn-primary btn-lg"
+          <a href="<%= new_location_path %>" id="location-modal" class="btn btn-primary hidden"
              data-function="remote-modal" data-remote="true" data-target='new_location_modal'
              data-modal-title="<%= t 'locations.form.new_location' %>" data-update-field='[name="event[location_id]"]'>
-            Launch modal
+            Create location
           </a>
         </div>
     </div>

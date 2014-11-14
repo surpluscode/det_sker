@@ -19,10 +19,15 @@ $(document).ready(function() {
         $(this).siblings('.dropdown-toggle').click();
     });
     $('input.category-combobox').keyup(function(){
-       if (!suggestionsAvailable()) {
+       if (!suggestionsAvailable(this, '.event_categories ul.typeahead')) {
            createSuggestionLink.call(this);
        }
+    });
 
+    $('input.location-combobox').keyup(function(){
+        if (!suggestionsAvailable(this, '.event_location ul.typeahead')){
+            $('#location-modal').removeClass('hidden');
+        }
     });
 
     $('.category-combobox').change(function(){
@@ -107,10 +112,13 @@ function createSuggestionLink() {
 
 /**
  * Check to see if popup suggestions are available
+ * @params input - the current input form
+ * @params typeahead_selector - a selector to find
+ * the current typeahead
  * @returns {*|jQuery}
  */
-function suggestionsAvailable(){
-    return $('input.category-combobox').is(':focus') && $('.event_categories ul.typeahead').is(':visible');
+function suggestionsAvailable(input, typeahead_selector){
+    return $(input).is(':focus') && $(typeahead_selector).is(':visible');
 }
 /**
  * Build a hash of categories with their ids as
