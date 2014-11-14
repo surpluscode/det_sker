@@ -26,7 +26,7 @@ $(document).ready(function() {
 
     $('input.location-combobox').keyup(function(){
         if (!suggestionsAvailable(this, '.event_location ul.typeahead')){
-            $('#location-modal').removeClass('hidden');
+            createLocationSuggestionLink.call(this);
         }
     });
 
@@ -83,7 +83,12 @@ function loadRemoteModal(event, xhr) {
     $target.modal();
 }
 
-/**
+function createAlertBox(create_link) {
+    this.id = 'x' + Date.now();
+    this.html = '<div class="alert alert-info alert-dismissible" id="' + this.id
+            + '" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> '
+            + create_link + '</div>';
+} /**
  * Give the user a link to create a category
  * and handle clicks on this link
  */
@@ -92,15 +97,15 @@ function createSuggestionLink() {
     function createCategory(data) {
         categoryHash[data.id] = data.key;
         addToTarget('selected-categories', data.id);
-        $('#create-category-alert').remove();
+        $('#' + alertbox.id).remove();
     }
 
     var text = i18n.events.form.new_category;
     text = text.replace('<category>', this.value);
     var create_link = '<a id="create-new-category" class="alert-link" href="#" data-value="' + this.value + '">' + text + '</a>';
 
-    alert = '<div class="alert alert-info alert-dismissible" id="create-category-alert" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> ' +  create_link + '</div>';
-    $('#new-category-box').html(alert);
+    var alertbox = new createAlertBox(create_link);
+    $('#new-category-box').html(alertbox.html);
     $('#new-category-box').removeClass('hidden');
     $('#create-new-category').click(function () {
         // post create to our category controller and update the category hash with the values returned
