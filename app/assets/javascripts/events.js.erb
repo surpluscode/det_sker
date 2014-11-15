@@ -98,7 +98,15 @@ function createAlertBox(value, text) {
             + '" role="alert"><button type="button" class="close" data-dismiss="alert">'
             + '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> '
             + create_link + '</div>';
-} /**
+}
+
+function createLocationSuggestionLink(){
+    var alertbox = new createAlertBox(this.value, i18n.events.form.new_location);
+    $('#new-location-box').html(alertbox.html);
+    $('#new-location-box').removeClass('hidden');
+}
+
+/**
  * Give the user a link to create a category
  * and handle clicks on this link
  */

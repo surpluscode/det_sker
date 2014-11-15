@@ -45,6 +45,7 @@ en:
       enable_comments: "Allow comments?"
       price_prompt: "How much does your event cost?"
       new_category: "<value> not found, will you create a new category?"
+      new_location: "<value> not found, will you create a new location?"
       location_created: "Location created successfully!"
     event:
       price: "Price"
