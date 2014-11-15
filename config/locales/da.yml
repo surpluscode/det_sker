@@ -47,7 +47,7 @@ da:
     form:
       enable_comments: "Tillad kommentar på din begivenhed?"
       price_prompt: "Hvor meget koster det?"
-      new_category: "Kategori <category> findes ikke, vil du tilføj det?"
+      new_category: "Kategori <value> findes ikke, vil du tilføj det?"
       location_created: "Sted oprettet!"
     event:
       price: "Pris"

@@ -83,10 +83,20 @@ function loadRemoteModal(event, xhr) {
     $target.modal();
 }
 
-function createAlertBox(create_link) {
-    this.id = 'x' + Date.now();
-    this.html = '<div class="alert alert-info alert-dismissible" id="' + this.id
-            + '" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> '
+/**
+ * Reusable function to create alert boxes with link texts
+ * returns an object with attributes link_id, html_id, and html.
+* */
+function createAlertBox(value, text) {
+    text = text.replace('<value>', value);
+    this.link_id = 'y' + Date.now();
+    var create_link = '<a id="' + this.link_id
+            + '" class="alert-link" href="#" data-value="'
+            + value + '">' + text + '</a>';
+    this.html_id = 'x' + Date.now();
+    this.html = '<div class="alert alert-info alert-dismissible" id="' + this.html_id
+            + '" role="alert"><button type="button" class="close" data-dismiss="alert">'
+            + '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> '
             + create_link + '</div>';
 } /**
  * Give the user a link to create a category
@@ -97,17 +107,13 @@ function createSuggestionLink() {
     function createCategory(data) {
         categoryHash[data.id] = data.key;
         addToTarget('selected-categories', data.id);
-        $('#' + alertbox.id).remove();
+        $('#' + alertbox.html_id).remove();
     }
 
-    var text = i18n.events.form.new_category;
-    text = text.replace('<category>', this.value);
-    var create_link = '<a id="create-new-category" class="alert-link" href="#" data-value="' + this.value + '">' + text + '</a>';
-
-    var alertbox = new createAlertBox(create_link);
+    var alertbox = new createAlertBox(this.value, i18n.events.form.new_category);
     $('#new-category-box').html(alertbox.html);
     $('#new-category-box').removeClass('hidden');
-    $('#create-new-category').click(function () {
+    $('#' + alertbox.link_id).click(function () {
         // post create to our category controller and update the category hash with the values returned
         $.post('<%= categories_path %>', { 'category[key]': $(this).attr('data-value')}, createCategory, 'json');
         return false;
