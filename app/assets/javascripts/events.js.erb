@@ -26,7 +26,9 @@ $(document).ready(function() {
 
     $('input.location-combobox').keyup(function(){
         if (!suggestionsAvailable(this, '.event_location ul.typeahead')){
-            createLocationSuggestionLink.call(this);
+            createLocationSuggestionLink(this.value, '#new-location-box',
+                    i18n.events.form.new_location, '<%= new_location_path %>'
+            );
         }
     });
 
@@ -43,8 +45,6 @@ $(document).ready(function() {
         $('#event_end_time').data("DateTimePicker").setMinDate(e.date);
         $('#event_end_time').data("DateTimePicker").setDate(e.date);
     });
-
-    $('#location-modal').unbind().on('ajax:success', loadRemoteModal);
 
 });
 
@@ -87,12 +87,12 @@ function loadRemoteModal(event, xhr) {
  * Reusable function to create alert boxes with link texts
  * returns an object with attributes link_id, html_id, and html.
 * */
-function createAlertBox(value, text) {
+function createAlertBox(value, text, link) {
     text = text.replace('<value>', value);
     this.link_id = 'y' + Date.now();
     var create_link = '<a id="' + this.link_id
-            + '" class="alert-link" href="#" data-value="'
-            + value + '">' + text + '</a>';
+            + '" class="alert-link" href="' + link + '" data-value="'
+            + value + '" data-remote="true">' + text + '</a>';
     this.html_id = 'x' + Date.now();
     this.html = '<div class="alert alert-info alert-dismissible" id="' + this.html_id
             + '" role="alert"><button type="button" class="close" data-dismiss="alert">'
@@ -100,10 +100,11 @@ function createAlertBox(value, text) {
             + create_link + '</div>';
 }
 
-function createLocationSuggestionLink(){
-    var alertbox = new createAlertBox(this.value, i18n.events.form.new_location);
-    $('#new-location-box').html(alertbox.html);
-    $('#new-location-box').removeClass('hidden');
+function createLocationSuggestionLink(value, target, text, link){
+    var alertbox = new createAlertBox(value, text, link);
+    $(target).html(alertbox.html);
+    $(target).removeClass('hidden');
+    $('#' + alertbox.link_id).unbind().on('ajax:success', loadRemoteModal);
 }
 
 /**
