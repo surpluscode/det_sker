@@ -26,8 +26,11 @@ $(document).ready(function() {
 
     $('input.location-combobox').keyup(function(){
         if (!suggestionsAvailable(this, '.event_location ul.typeahead')){
-            createLocationSuggestionLink(this.value, '#new-location-box',
-                    i18n.events.form.new_location, '<%= new_location_path %>'
+            createLocationSuggestionLink(this.value,
+                    '#new-location-box',
+                    '<%= new_location_path %>',
+                    i18n.events.form.new_location,
+                    i18n.events.form.new_location_title
             );
         }
     });
@@ -73,9 +76,9 @@ function loadRemoteModal(event, xhr) {
     function handleFailure(event, xhr) {
         $target.find('.modal-body').html(xhr.responseText);
     }
-    $this = $(this);
+    var $this = $(this);
     var title = $this.attr('data-modal-title');
-    var $target = $('#' + $this.attr('data-target'));
+    var $target = $('#remote_form_modal');
     $target.find('.modal-body').html(xhr);
     $target.find('.modal-title').text(title);
     $('form#new_location').on('ajax:success', handleSuccess);
@@ -87,12 +90,15 @@ function loadRemoteModal(event, xhr) {
  * Reusable function to create alert boxes with link texts
  * returns an object with attributes link_id, html_id, and html.
 * */
-function createAlertBox(value, text, link) {
+function createAlertBox(value, text, link, title) {
     text = text.replace('<value>', value);
     this.link_id = 'y' + Date.now();
     var create_link = '<a id="' + this.link_id
-            + '" class="alert-link" href="' + link + '" data-value="'
-            + value + '" data-remote="true">' + text + '</a>';
+            + '" class="alert-link" href="' + link
+            + '" data-value="' + value
+            + '" data-remote="true"'
+            + 'data-modal-title="' + title + '">'
+            + text + '</a>';
     this.html_id = 'x' + Date.now();
     this.html = '<div class="alert alert-info alert-dismissible" id="' + this.html_id
             + '" role="alert"><button type="button" class="close" data-dismiss="alert">'
@@ -100,8 +106,8 @@ function createAlertBox(value, text, link) {
             + create_link + '</div>';
 }
 
-function createLocationSuggestionLink(value, target, text, link){
-    var alertbox = new createAlertBox(value, text, link);
+function createLocationSuggestionLink(value, target, link, text, title){
+    var alertbox = new createAlertBox(value, text, link, title);
     $(target).html(alertbox.html);
     $(target).removeClass('hidden');
     $('#' + alertbox.link_id).unbind().on('ajax:success', loadRemoteModal);

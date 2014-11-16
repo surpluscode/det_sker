@@ -46,6 +46,7 @@ en:
       price_prompt: "How much does your event cost?"
       new_category: "<value> not found, will you create a new category?"
       new_location: "<value> not found, will you create a new location?"
+      new_location_title: "New location"
       location_created: "Location created successfully!"
     event:
       price: "Price"
