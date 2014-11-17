@@ -22,4 +22,16 @@ describe Location do
     l = Location.new(@location)
     l.valid?.should be_false
   end
+
+  describe 'display name' do
+    it 'should eql name when this is present' do
+      l = Location.new(@location.merge(name: 'Fancy Place'))
+      expect(l.display_name).to eql 'Fancy Place'
+    end
+
+    it 'should be the street address when no name is present' do
+      l = Location.new(@location.merge(name: '', street_address: 'Nørrebrogade 22'))
+      expect(l.display_name).to eql 'Nørrebrogade 22'
+    end
+  end
 end
