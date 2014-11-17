@@ -48,6 +48,7 @@ en:
       new_location: "<value> not found, will you create a new location?"
       new_location_title: "New location"
       location_created: "Location created successfully!"
+      choose_location: "Choose location"
     event:
       price: "Price"
       start_time: "Starts"

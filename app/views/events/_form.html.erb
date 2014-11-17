@@ -24,7 +24,10 @@
           <input name="event[category_ids][]" id="category-ids" class="hidden" value=""/>
         </div>
         <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-            <%= f.association :location, prompt: 'Choose location', input_html: { class: 'combobox location-combobox' } %>
+            <%= f.association :location, collection: Location.all.sort,
+                              label_method: :display_name, prompt: t('.choose_location'),
+                              input_html: { class: 'combobox location-combobox' }
+            %>
           <span id="new-location-box"></span>
         </div>
     </div>
