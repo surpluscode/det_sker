@@ -31,7 +31,8 @@ $(document).ready(function() {
                     '<%= new_location_path %>',
                     i18n.events.form.new_location,
                     i18n.events.form.new_location_title,
-                    "event[location_id]"
+                    "event[location_id]",
+                    'input.location-combobox'
             );
         }
     });
@@ -74,8 +75,12 @@ function loadRemoteModal(event, xhr) {
             text: i18n.events.form.location_created
         });
         $target.find('.modal-body').html($alert);
+        // put the id into the correct field
         var update_field = '[name="' + $this.attr('data-update-field') + '"]';
         $(update_field).val(xhr.id);
+        // put the name into the input field and disable it
+        var update_val = $this.attr('data-update-val');
+        $(update_val).val(xhr.name).attr('disabled', true);
     }
     function handleFailure(event, xhr) {
         $target.find('.modal-body').html(xhr.responseText);
@@ -94,15 +99,16 @@ function loadRemoteModal(event, xhr) {
  * Reusable function to create alert boxes with link texts
  * returns an object with attributes link_id, html_id, and html.
 * */
-function createAlertBox(value, text, link, title, update_field) {
+function createAlertBox(value, text, link, title, update_field, update_val) {
     text = text.replace('<value>', value);
     this.link_id = 'y' + Date.now();
-    var create_link = '<a id="' + this.link_id
-            + '" class="alert-link" href="' + link
-            + '" data-value="' + value
-            + '" data-remote="true"'
-            + 'data-modal-title="' + title
-            + '" data-update-field="' + update_field + '">'
+    var create_link = '<a id="' + this.link_id + '" '
+            + 'class="alert-link" href="' + link + '" '
+            + 'data-value="' + value + '" '
+            + 'data-remote="true"'
+            + 'data-modal-title="' + title + '" ' +
+            + 'data-update-field="' + update_field + '" '
+            + 'data-update-val="' + update_val + '">'
             + text + '</a>';
     this.html_id = 'x' + Date.now();
     this.html = '<div class="alert alert-info alert-dismissible" id="' + this.html_id
@@ -111,8 +117,8 @@ function createAlertBox(value, text, link, title, update_field) {
             + create_link + '</div>';
 }
 
-function createLocationSuggestionLink(value, target, link, text, title, update_field){
-    var alertbox = new createAlertBox(value, text, link, title, update_field);
+function createLocationSuggestionLink(value, target, link, text, title, update_field, update_val){
+    var alertbox = new createAlertBox(value, text, link, title, update_field, update_val);
     $(target).html(alertbox.html);
     $(target).removeClass('hidden');
     $('#' + alertbox.link_id).unbind().on('ajax:success', loadRemoteModal);
