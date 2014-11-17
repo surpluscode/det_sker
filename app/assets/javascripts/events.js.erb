@@ -26,13 +26,14 @@ $(document).ready(function() {
 
     $('input.location-combobox').keyup(function(){
         if (!suggestionsAvailable(this, '.event_location ul.typeahead')){
-            createLocationSuggestionLink(this.value,
+            createLocationSuggestionLink(this,
                     '#new-location-box',
                     '<%= new_location_path %>',
                     i18n.events.form.new_location,
                     i18n.events.form.new_location_title,
                     "event[location_id]",
-                    'input.location-combobox'
+                    'input.location-combobox',
+                    '.event_location ul.typeahead'
             );
         }
     });
@@ -59,7 +60,7 @@ $(document).ready(function() {
  * @param event
  * @param xhr
  */
-function loadRemoteModal(event, xhr) {
+function loadRemoteModal(context, event, xhr) {
     // listeners to be attached dynamically to
     // the loaded modal object
     // in the event of success we receive a json object
@@ -85,7 +86,7 @@ function loadRemoteModal(event, xhr) {
     function handleFailure(event, xhr) {
         $target.find('.modal-body').html(xhr.responseText);
     }
-    var $this = $(this);
+    var $this = $(context);
     var title = $this.attr('data-modal-title');
     var $target = $('#remote_form_modal');
     $target.find('.modal-body').html(xhr);
@@ -117,11 +118,20 @@ function createAlertBox(value, text, link, title, update_field, update_val) {
             + create_link + '</div>';
 }
 
-function createLocationSuggestionLink(value, target, link, text, title, update_field, update_val){
-    var alertbox = new createAlertBox(value, text, link, title, update_field, update_val);
+function createLocationSuggestionLink(input, target, link, text, title, update_field, update_val, typeahead){
+    var alertbox = new createAlertBox(input.value, text, link, title, update_field, update_val);
     $(target).html(alertbox.html);
     $(target).removeClass('hidden');
-    $('#' + alertbox.link_id).unbind().on('ajax:success', loadRemoteModal);
+    $('#' + alertbox.link_id).unbind().on('ajax:success', function(event, xhr){
+        loadRemoteModal(this, event, xhr);
+        $('#' + alertbox.html_id).remove();
+
+    });
+    $(update_val).keyup(function(){
+        if (suggestionsAvailable(this, typeahead)){
+            $('#' + alertbox.html_id).remove();
+        }
+    });
 }
 
 /**
