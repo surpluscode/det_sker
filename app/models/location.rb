@@ -8,6 +8,6 @@ class Location < ActiveRecord::Base
   end
 
   def <=>(other)
-    display_name <=> other.display_name
+    display_name.downcase <=> other.display_name.downcase
   end
 end

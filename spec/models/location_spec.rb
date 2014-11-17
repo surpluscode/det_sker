@@ -37,10 +37,10 @@ describe Location do
 
   describe 'sort' do
     it 'should order by display name' do
-      f = FactoryGirl.create(:location)
-      b = FactoryGirl.create(:other_location)
+      b = FactoryGirl.create(:other_location, name: 'B')
+      a = FactoryGirl.create(:location, name: 'a')
       locs = Location.all.sort
-      expect(locs.first).to eql b
+      expect(locs.first).to eql a
     end
   end
 end
