@@ -34,4 +34,13 @@ describe Location do
       expect(l.display_name).to eql 'Nørrebrogade 22'
     end
   end
+
+  describe 'sort' do
+    it 'should order by display name' do
+      f = FactoryGirl.create(:location)
+      b = FactoryGirl.create(:other_location)
+      locs = Location.all.sort
+      expect(locs.first).to eql b
+    end
+  end
 end
