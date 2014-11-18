@@ -45,10 +45,6 @@ describe Calendar do
       expect(@cal.filter_categories.length).to eq(2)
     end
 
-    it 'should return the category contained in the Event object' do
-      @cal.filter_categories.keys.should include(:party)
-    end
-
     it 'should return a number of events for each category' do
       @cal.filter_categories.values.first.should be_a Fixnum
     end
