@@ -3,6 +3,7 @@ var activeFilters = [];
 var activeCategories = [];
 var activeLocations = [];
 var categoryHash;
+var cat_typeahead_selector = '.event_categories ul.typeahead';
 
 $(document).ready(function() {
     hideEventDetails();
@@ -19,7 +20,11 @@ $(document).ready(function() {
         $(this).siblings('.dropdown-toggle').click();
     });
     $('input.category-combobox').keyup(function(){
-       if (!suggestionsAvailable(this, '.event_categories ul.typeahead')) {
+        // if suggestions are available, remove the create box
+        // if no suggestions are available, suggest category creation
+        if (suggestionsAvailable(this, cat_typeahead_selector)) {
+            $('#new-category-box').find('div').remove();
+        } else {
            createSuggestionLink.call(this);
        }
     });
