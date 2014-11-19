@@ -40,7 +40,7 @@ $(document).ready(function() {
 
     $('.category-combobox').change(function(){
         addToTarget('selected-categories', this.value);
-         $(this).val('');
+        $(this).val('');
     });
 
     $('[data-function="datetime-picker"]').datetimepicker({
@@ -142,7 +142,7 @@ function createSuggestionLink() {
     // add the created category to the view
     function createCategory(data) {
         categoryHash[data.id] = data.key;
-        addToTarget('selected-categories', data.id);
+        if (!alreadyAdded(data.id)) addToTarget('selected-categories', data.id);
         $('#' + alertbox.html_id).remove();
     }
 
@@ -186,25 +186,42 @@ function createCategoryHash(){
  * @param val
  */
 function addToTarget(target, val) {
-    if (val in categoryHash) {
-        var data_target = $('[data-role="' + target + '"]');
-        var label = '<span id="label_' + val + '" class="tag label label-primary">';
-        label += categoryHash[val];
-        label += ' <a id="remove_' + val +'"><span class="remove glyphicon glyphicon-remove glyphicon-white"></span></a>';
-        label += '</span>';
-        data_target.append(label);
-        // we put the numbers in a specially created input
-        // to enable multiple values
-        // and clear the default one to prevent duplicates
-        data_target.append('<input id="input_' + val + '" name="event[category_ids][]" ' +
-            'class="hidden" value="' + val + '"/>');
-        $('#event-category-dummy').val('');
-        $('#remove_' + val).click(function(){
-            $('#input_' + val).remove();
-            $('#label_' + val).remove();
-            $('.combobox-container').find('input').filter(':first').val('');
-        })
-     }
+    // check to see if category already added
+    function alreadyAdded(val){
+        // need to convert from a jquery object to an Array
+        var $vals_obj = $('[data-role="category_value"]').map(function(){
+            return this.value
+        });
+        var vals = $.makeArray($vals_obj);
+        return (vals.indexOf(val) >= 0)
+    }
+    // guard clauses to make sure we're only dealing
+    // with valid ids that haven't already been added
+    if (!val.isNumeric()) return;
+    if (!val in categoryHash) return;
+    if (alreadyAdded(val)) return;
+    var data_target = $('[data-role="' + target + '"]');
+    // create the category label and add to form
+    var label = '<span id="label_' + val + '" class="tag label label-primary">';
+    label += categoryHash[val];
+    label += ' <a id="remove_' + val +'"><span class="remove glyphicon glyphicon-remove glyphicon-white"></span></a>';
+    label += '</span>';
+    data_target.append(label);
+    // we put the numbers in a specially created input
+    // to enable multiple values
+    // and clear the default one to prevent duplicates
+    var input_field = '<input id="input_' + val + '" '
+            + 'name="event[category_ids][]" '
+            + 'data-role="category_value" '
+            + 'class="hidden" value="' + val + '"/>';
+    data_target.append(input_field);
+    $('#event-category-dummy').val('');
+    $('#remove_' + val).click(function(){
+        $('#input_' + val).remove();
+        $('#label_' + val).remove();
+        $('.combobox-container').find('input').filter(':first').val('');
+    })
+
 
 
 }
