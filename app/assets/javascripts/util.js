@@ -60,3 +60,7 @@ String.prototype.isNumeric = function() {
     return !isNaN(parseFloat(this)) && isFinite(this);
 };
 
+Number.prototype.isNumeric = function() {
+    return true
+};
+

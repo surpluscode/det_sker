@@ -142,7 +142,7 @@ function createSuggestionLink() {
     // add the created category to the view
     function createCategory(data) {
         categoryHash[data.id] = data.key;
-        if (!alreadyAdded(data.id)) addToTarget('selected-categories', data.id);
+        addToTarget('selected-categories', data.id);
         $('#' + alertbox.html_id).remove();
     }
 
@@ -197,8 +197,8 @@ function addToTarget(target, val) {
     }
     // guard clauses to make sure we're only dealing
     // with valid ids that haven't already been added
-    if (!val.isNumeric()) return;
     if (!val in categoryHash) return;
+    if (!val.isNumeric()) return;
     if (alreadyAdded(val)) return;
     var data_target = $('[data-role="' + target + '"]');
     // create the category label and add to form
