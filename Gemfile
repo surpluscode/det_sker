@@ -41,6 +41,11 @@ group :test do
   gem 'factory_girl_rails'
 end
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
