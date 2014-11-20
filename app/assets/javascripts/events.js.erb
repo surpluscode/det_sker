@@ -377,8 +377,8 @@ function evaluateShown(){
         }
 
         var $description = $('[data-role="filter-description"]');
-        $description.html(text)
-        if (activeCategories.length > 0 || activeLocations > 0) {
+        $description.html(text);
+        if (activeCategories.length > 0 || activeLocations.length > 0) {
             $description.removeClass('hidden');
         } else {
             $description.addClass('hidden');
