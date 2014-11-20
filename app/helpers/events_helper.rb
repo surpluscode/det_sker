@@ -27,4 +27,15 @@ module EventsHelper
     end
     string.join(' ')
   end
+
+  # This function is to be shared between html and js views
+  # In the case of js views, we can't pass the variables, therefore
+  # we give a default value which can be overwritten.
+  def bootstrap_label(id = '<id>', value = '<value>')
+    label = '<span id="label_' + id + '" class="tag label label-primary"> '
+    label += value
+    label += '<a id="remove_' + id + '"><span class="remove glyphicon glyphicon-remove glyphicon-white"></span></a>'
+    label += '</span>'
+    label.html_safe
+  end
 end

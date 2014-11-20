@@ -1,4 +1,5 @@
 <% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
+<% environment.context_class.instance_eval { include EventsHelper } %>
 var activeFilters = [];
 var activeCategories = [];
 var activeLocations = [];
@@ -202,12 +203,10 @@ function addToTarget(target, val) {
     }
 
     // create bootstrap styled label with remove icon
-    function createLabel(value) {
-        var label = '<span id="label_' + value + '" class="tag label label-primary">';
-        label += categoryHash[value];
-        label += ' <a id="remove_' + value + '"><span class="remove glyphicon glyphicon-remove glyphicon-white"></span></a>';
-        label += '</span>';
-        return label;
+    function createLabel(id) {
+        var val = categoryHash[id];
+        var label = '<%= bootstrap_label %>';
+        return label.replace('<id>', id).replace('<value>', val);
     }
     // we put the numbers in a specially created input
     // to enable multiple values
