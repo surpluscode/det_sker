@@ -19,6 +19,9 @@
                     class: 'combobox category-combobox', data: { target: 'selected-categories'}
             } %>
           <span id="new-category-box">
+            <% @event.categories.each do |cat| %>
+              <%= bootstrap_label(cat.id, cat.key) %>
+            <% end %>
           </span>
           <div data-role="selected-categories"></div>
           <input name="event[category_ids][]" id="category-ids" class="hidden" value=""/>

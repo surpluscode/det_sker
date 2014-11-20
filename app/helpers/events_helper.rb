@@ -32,10 +32,15 @@ module EventsHelper
   # In the case of js views, we can't pass the variables, therefore
   # we give a default value which can be overwritten.
   def bootstrap_label(id = '<id>', value = '<value>')
-    label = '<span id="label_' + id + '" class="tag label label-primary"> '
-    label += value
-    label += '<a id="remove_' + id + '"><span class="remove glyphicon glyphicon-remove glyphicon-white"></span></a>'
-    label += '</span>'
-    label.html_safe
+    # we create the content in two steps to make the nested value
+    # output correctly
+    content = value
+    content << content_tag(:a, id: "remove_#{id}") do
+      content_tag(:span, '', class: 'remove glyphicon glyphicon-remove glyphicon-white')
+    end
+
+    content_tag(:span, id: "label_#{id}", class: 'tag label label-primary') do
+      content.html_safe
+    end
   end
 end
