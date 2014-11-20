@@ -200,35 +200,44 @@ function addToTarget(target, val) {
         var vals = $.makeArray($vals_obj);
         return (vals.indexOf(val) >= 0)
     }
+
+    // create bootstrap styled label with remove icon
+    function createLabel(value) {
+        var label = '<span id="label_' + value + '" class="tag label label-primary">';
+        label += categoryHash[value];
+        label += ' <a id="remove_' + value + '"><span class="remove glyphicon glyphicon-remove glyphicon-white"></span></a>';
+        label += '</span>';
+        return label;
+    }
+    // we put the numbers in a specially created input
+    // to enable multiple values
+    // and clear the default one to prevent duplicates
+    function createInputField(value) {
+        return '<input id="input_' + value + '" '
+                + 'name="event[category_ids][]" '
+                + 'data-role="category_value" '
+                + 'class="hidden" value="' + value + '"/>';
+    }
+    // append a label and input to the form
+    // and add a click listener to remove them again
+    function appendCategoryLabel(value) {
+        var $data_target = $('[data-role="' + target + '"]');
+        // create the category label and add to form
+        $data_target.append(createLabel(value));
+        $data_target.append(createInputField(value));
+        $('#event-category-dummy').val('');
+        $('#remove_' + value).click(function () {
+            $('#input_' + value).remove();
+            $('#label_' + value).remove();
+            $('.combobox-container').find('input').filter(':first').val('');
+        })
+    }
     // guard clauses to make sure we're only dealing
     // with valid ids that haven't already been added
     if (!val in categoryHash) return;
     if (!val.isNumeric()) return;
     if (alreadyAdded(val)) return;
-    var data_target = $('[data-role="' + target + '"]');
-    // create the category label and add to form
-    var label = '<span id="label_' + val + '" class="tag label label-primary">';
-    label += categoryHash[val];
-    label += ' <a id="remove_' + val +'"><span class="remove glyphicon glyphicon-remove glyphicon-white"></span></a>';
-    label += '</span>';
-    data_target.append(label);
-    // we put the numbers in a specially created input
-    // to enable multiple values
-    // and clear the default one to prevent duplicates
-    var input_field = '<input id="input_' + val + '" '
-            + 'name="event[category_ids][]" '
-            + 'data-role="category_value" '
-            + 'class="hidden" value="' + val + '"/>';
-    data_target.append(input_field);
-    $('#event-category-dummy').val('');
-    $('#remove_' + val).click(function(){
-        $('#input_' + val).remove();
-        $('#label_' + val).remove();
-        $('.combobox-container').find('input').filter(':first').val('');
-    })
-
-
-
+    appendCategoryLabel(val);
 }
 
 /**
