@@ -57,8 +57,21 @@ $(document).ready(function() {
         $('#event_end_time').data("DateTimePicker").setMinDate(e.date);
         $('#event_end_time').data("DateTimePicker").setDate(e.date);
     });
-
+    categoryTagListener();
 });
+
+/**
+ * Attached to click on category tags X icon
+ * remove whole tag and input target when clicked.
+ */
+function categoryTagListener(){
+    $('[data-function="remove_category"]').click(function(){
+        var id = $(this).attr('data-target');
+        $('#' + id).remove();
+        $(this).parent('.tag').remove();
+        return false;
+    })
+}
 
 /**
  * Populate a Bootstrap modal with our
@@ -202,34 +215,20 @@ function addToTarget(target, val) {
         return (vals.indexOf(val) >= 0)
     }
 
-    // create bootstrap styled label with remove icon
-    function createLabel(id) {
+    // create label and input using Rails helper
+    function createTag(id) {
         var val = categoryHash[id];
-        var label = '<%= bootstrap_label %>';
-        return label.replace('<id>', id).replace('<value>', val);
+        var tag = '<%= category_tag %>';
+        return tag.replace('_id_', id, 'gm')
+                .replace('_value_', val, 'gm');
     }
-    // we put the numbers in a specially created input
-    // to enable multiple values
-    // and clear the default one to prevent duplicates
-    function createInputField(value) {
-        return '<input id="input_' + value + '" '
-                + 'name="event[category_ids][]" '
-                + 'data-role="category_value" '
-                + 'class="hidden" value="' + value + '"/>';
-    }
+
     // append a label and input to the form
-    // and add a click listener to remove them again
     function appendCategoryLabel(value) {
         var $data_target = $('[data-role="' + target + '"]');
         // create the category label and add to form
-        $data_target.append(createLabel(value));
-        $data_target.append(createInputField(value));
+        $data_target.append(createTag(value));
         $('#event-category-dummy').val('');
-        $('#remove_' + value).click(function () {
-            $('#input_' + value).remove();
-            $('#label_' + value).remove();
-            $('.combobox-container').find('input').filter(':first').val('');
-        })
     }
     // guard clauses to make sure we're only dealing
     // with valid ids that haven't already been added
@@ -237,6 +236,7 @@ function addToTarget(target, val) {
     if (!val.isNumeric()) return;
     if (alreadyAdded(val)) return;
     appendCategoryLabel(val);
+    categoryTagListener();
 }
 
 /**

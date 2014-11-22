@@ -1,4 +1,5 @@
 module EventsHelper
+  include ActionView::Context
   def format_datetime(dt)
     dt.strftime("%a d. %d %b %Y %H:%M")
   end
@@ -28,18 +29,32 @@ module EventsHelper
     string.join(' ')
   end
 
+  # A category tag is composed of two elements
+  # a hidden input field and a bootstrap label
+  # The input is connected to the label via a
+  # javascript listener, so that it will be removed
+  # when the label is removed.
   # This function is to be shared between html and js views
   # In the case of js views, we can't pass the variables, therefore
   # we give a default value which can be overwritten.
-  def bootstrap_label(id = '<id>', value = '<value>')
+  def category_tag(cat_id = '_id_', value = '_value_')
+    bootstrap_label(cat_id, value) + category_input(cat_id)
+  end
+
+  def category_input(val)
+    hidden_field_tag(val, val, name: 'event[category_ids][]', data: { role: 'category_value' } )
+  end
+
+
+  def bootstrap_label(id, value)
     # we create the content in two steps to make the nested value
     # output correctly
     content = value
-    content << content_tag(:a, id: "remove_#{id}") do
+    content << content_tag(:a, data: { function: 'remove_category', target: id }) do
       content_tag(:span, '', class: 'remove glyphicon glyphicon-remove glyphicon-white')
     end
 
-    content_tag(:span, id: "label_#{id}", class: 'tag label label-primary') do
+    content_tag(:span, class: 'tag label label-primary') do
       content.html_safe
     end
   end
