@@ -1,5 +1,10 @@
 module EventsHelper
+  # included to fix bug in content_tag generation
   include ActionView::Context
+  # necessary as events.js.erb will call this
+  # Helper during precompile
+  include ActionView::Helpers::FormHelper
+
   def format_datetime(dt)
     dt.strftime("%a d. %d %b %Y %H:%M")
   end
