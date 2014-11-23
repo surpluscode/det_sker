@@ -46,12 +46,10 @@ da:
         edit: "Rediger"
     form:
       enable_comments: "Tillad kommentar på din begivenhed?"
-      price_prompt: "Hvor meget koster det?"
       new_category: "Kategori <value> findes ikke, vil du tilføj det?"
       new_location: "Lokation <value> findes ikke, vil du tilføj det?"
       new_location_title: "Ny lokation"
       location_created: "Sted oprettet!"
-      choose_location: "Vælg lokation"
     event:
       price: "Pris"
       start_time: "Starter"
@@ -67,3 +65,28 @@ da:
   locations:
     form:
       new_location: 'Opret nyt sted'
+  simple_form:
+    labels:
+      event:
+        title: Titel
+        short_description: Beskrivelse
+        categories: Kategorier
+        location: Sted
+        start_time: Starter
+        end_time: Slutter
+        price: Pris
+      location:
+        name: Navn
+        street_address: Gadeadress
+        postcode: Postnummer
+        town: By
+        description: Beskrivelse
+    placeholders:
+      event:
+        title: Navnet af begivenheden
+        short_description: En kort beskrivelse af din begivenhed...
+        categories: Hvordan kan din begivenhed beskrives?
+        location: Hvor finder det sted?
+        start_time: Hvornår starter det?
+        end_time: Hvornår slutter det?
+        price: Hvor meget koster det?

@@ -64,3 +64,15 @@ en:
   locations:
     form:
       new_location: 'Create new location'
+  simple_form:
+    labels:
+      event:
+        short_description: Description
+    placeholders:
+      event:
+        title: The event's name
+        short_description: A short description of your event
+        location: Where is it happening?
+        start_time: When does it start?
+        end_time: When does it finish?
+        price: How much does it cost?

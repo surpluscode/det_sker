@@ -28,7 +28,7 @@
         </div>
         <div class="col-xs-12 col-sm-5 col-sm-offset-1">
             <%= f.association :location, collection: Location.all.sort,
-                              label_method: :display_name, prompt: t('.choose_location'),
+                              label_method: :display_name,
                               input_html: { class: 'combobox location-combobox' }
             %>
           <span id="new-location-box"></span>
@@ -48,7 +48,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <%= f.input :price, placeholder: t('.price_prompt') %>
+        <%= f.input :price %>
       </div>
     </div>
     <div class="row">
