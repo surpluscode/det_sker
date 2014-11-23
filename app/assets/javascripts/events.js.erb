@@ -34,7 +34,8 @@ $(document).ready(function() {
         if (!suggestionsAvailable(this, '.event_location ul.typeahead')){
             createLocationSuggestionLink(this,
                     '#new-location-box',
-                    '<%= new_location_path %>',
+                    '<%= new_location_path %>'
+                    + '?locale=' + window.locale,
                     i18n.events.form.new_location,
                     i18n.events.form.new_location_title,
                     "event[location_id]",
