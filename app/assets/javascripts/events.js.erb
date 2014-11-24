@@ -297,6 +297,10 @@ function filterCategory(){
     return false;
 }
 
+/**
+ * Decide what events and dates to show,
+ * and how to display the filter text.
+ */
 function evaluateShown(){
     /**
      * if there is at least one active filter
@@ -311,16 +315,18 @@ function evaluateShown(){
             $('[data-role="day"]').show();
         } else {
             events.each(function (i) {
-                var attributes = $(this).attr('data-toggle').split(' ');
-                var parentId = '#' + $(this).attr('data-parent');
-                if ($(this).is(':hidden')) {
-                    if (attributesMatchFilters(attributes)) {
-                        $(this).show();
+                var $this = $(this);
+                var categories = $this.attr('data-categories').split(' ');
+                var location = $this.attr('data-location');
+                var parentId = '#' + $this.attr('data-parent');
+                if ($this.is(':hidden')) {
+                    if (attributesMatchFilters(categories, location)) {
+                        $this.show();
                         $(parentId).show();
                     }
-                } else if ($(this).is(':visible')) {
-                    if (!attributesMatchFilters(attributes)) {
-                        $(this).hide();
+                } else if ($this.is(':visible')) {
+                    if (!attributesMatchFilters(categories, location)) {
+                        $this.hide();
                     }
                 }
             });
@@ -419,18 +425,28 @@ function numVisibleChildEvents(childEvents) {
 
 /**
  * This function checks if an event
- * has any of the specified categories
+ * has any of the requested categories
+ * or takes place in any of the requested locations.
  *
  * @param eventCategories
  * @returns {boolean}
  */
-function attributesMatchFilters(eventCategories) {
-    for (var i = 0; i < activeFilters.length; i++) {
-        if (eventCategories.indexOf(activeFilters[i]) >= 0) {
-            return true;
-        }
+function attributesMatchFilters(eventCategories, eventLocation) {
+    function matchingLocation(location){
+        if (activeLocations.length == 0) return true;
+        return (activeLocations.indexOf(location) >= 0);
     }
-    return false;
+
+    function matchingCategories(categories) {
+        if (activeCategories.length == 0) return true;
+        for (var i = 0; i < activeCategories.length; i++) {
+            if (eventCategories.indexOf(activeCategories[i]) >= 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+    return (matchingCategories(eventCategories) && matchingLocation(eventLocation));
 }
 
 /**

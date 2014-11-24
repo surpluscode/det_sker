@@ -1,6 +1,7 @@
 
 <div class='event-container <%= event_cancelled? event %>'
-     data-toggle="<%= categories_as_string(event.categories) %> <%= event.location.name.parameterize('_') %>"
+     data-categories="<%= categories_as_string(event.categories) %>"
+     data-location="<%= event.location.name.parameterize('_') %>"
      data-role="event" data-parent="<%= parent_id if defined? parent_id%>">
 	 <span class="event-topbar_js">
 	     <span class="col-xs-12 col-md-8 col-md-push-1">
