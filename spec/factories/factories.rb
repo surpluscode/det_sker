@@ -54,6 +54,10 @@ FactoryGirl.define do
     key :demo
   end
 
+  factory :random_category, class: Category do
+    key { (0...8).map { (65 + rand(26)).chr }.join }
+  end
+
 
   factory :location do
     name 'Folkets Hus'
