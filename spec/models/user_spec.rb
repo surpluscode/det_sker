@@ -27,8 +27,8 @@ describe User do
       u = FactoryGirl.create(:user)
       u.events << FactoryGirl.create(:event_yesterday)
       u.events << FactoryGirl.create(:event_tomorrow)
-      u.events.length.should be_eql 2
-      u.coming_events.length.should be_eql 1
+      expect(u.events.length).to eql 2
+      expect(u.coming_events.length).to eql 1
     end
   end
 end
