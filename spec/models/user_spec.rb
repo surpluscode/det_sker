@@ -25,6 +25,7 @@ describe User do
   describe 'coming events' do
     it 'shows the users coming events only' do
       u = FactoryGirl.create(:user)
+      u.events.clear
       u.events << FactoryGirl.create(:event_yesterday)
       u.events << FactoryGirl.create(:event_tomorrow)
       expect(u.events.length).to eql 2
