@@ -21,9 +21,9 @@
 /* Bootstrap overrides */
 
 h2 {
-	font-size: 26px;
-	font-weight: bold;
+	font-size: 18px;
 	color: #5e9397;
+	margin-bottom: 0px;
 }
 
 .form-horizontal .form-group {
@@ -67,7 +67,16 @@ h2 {
 
 
 
-/* Mia+Toke css */
+
+/* calender index */
+
+.title-event {
+
+	color: red;
+}
+
+
+/* filter-kategorier */
 .filter-cat, .filter-location {
 	font-family: Helvetica, Sans-Serif;
 	line-height: 24px;

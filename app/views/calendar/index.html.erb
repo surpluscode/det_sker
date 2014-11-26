@@ -2,6 +2,7 @@
 		<span class="create-link">
 			+ <%= link_to t('.new_event'), new_event_path %>
 		</span>
+
 	</div>
 <%= render partial: 'filter_options',
            locals: {filter_categories: @calendar.filter_categories,
@@ -10,6 +11,7 @@
 <div class="row hidden center-block" data-role="filter-description">
   <%= t '.describe_filters' %>
 </div>
+
 <% if @calendar.in_progress.size > 0 %>
     <%= render partial: 'day', object: @calendar.in_progress, locals: { id: 'inProgress' } %>
 <% end %>

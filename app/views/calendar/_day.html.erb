@@ -8,15 +8,18 @@
                         <%= t '.in_progress' %>
                     <% end %>
 
-  					<span data-role="day-event-count">(<%= day.events.length %>)</span>
+  					<span data-role="day-event-count"></span>
 				</h2>
 			</div>
+
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="row">
+						<div class="title-event">
  						<% day.events.each do |event| %>
   						<%= render partial: 'events/event', object: event, locals: { parent_id: id } %>
 						<% end %>
+						</div>
 					</div>
 				</div>
 			</div>
