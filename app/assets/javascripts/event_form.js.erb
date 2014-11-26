@@ -4,29 +4,33 @@ var categoryHash;
 var cat_typeahead_selector = '.event_categories ul.typeahead';
 
 $(document).ready(function() {
-    $('a[data-target]').on("ajax:success", showAjaxResponse);
-    $('[data-toggle="popover"]').popover();
+    activateFormPlugins();
+    activateFormListeners();
     createCategoryHash();
-    $('.combobox').combobox();
+});
+
+function activateFormListeners() {
+    $('a[data-target]').on("ajax:success", showAjaxResponse);
     $('.combobox').click(function(){
         $(this).siblings('.dropdown-toggle').click();
     });
+
     $('input.category-combobox').keyup(function(){
         // if suggestions are available, remove the create box
         // if no suggestions are available, suggest category creation
         if (suggestionsAvailable(this, cat_typeahead_selector)) {
             $('#new-category-box').find('div').remove();
-        } else {
-           createSuggestionLink.call(this);
-       }
+        } else if (this.value.length > 1) {
+            createSuggestionLink.call(this);
+        }
     });
-
     $('input.location-combobox').keyup(function(){
-        if (!suggestionsAvailable(this, '.event_location ul.typeahead')){
+        if (!suggestionsAvailable(this, '.event_location ul.typeahead')
+                && (this.value.length > 1)) {
             createLocationSuggestionLink(this,
                     '#new-location-box',
-                    '<%= new_location_path %>'
-                    + '?locale=' + window.locale,
+                            '<%= new_location_path %>'
+                            + '?locale=' + window.locale,
                     i18n.events.form.new_location,
                     i18n.events.form.new_location_title,
                     "event[location_id]",
@@ -35,22 +39,24 @@ $(document).ready(function() {
             );
         }
     });
-
     $('.category-combobox').change(function(){
         addToTarget('selected-categories', this.value);
         $(this).val('');
-    });
-
-    $('[data-function="datetime-picker"]').datetimepicker({
-        language: locale,
-        minuteStepping: 5
     });
     $('#event_start_time').on('dp.change', function(e){
         $('#event_end_time').data("DateTimePicker").setMinDate(e.date);
         $('#event_end_time').data("DateTimePicker").setDate(e.date);
     });
     categoryTagListener();
-});
+}
+function activateFormPlugins() {
+    $('[data-toggle="popover"]').popover();
+    $('.combobox').combobox();
+    $('[data-function="datetime-picker"]').datetimepicker({
+        language: locale,
+        minuteStepping: 5
+    });
+}
 
 /**
  * Attached to click on category tags X icon
