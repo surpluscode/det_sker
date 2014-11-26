@@ -20,12 +20,13 @@ function activateFormListeners() {
         // if no suggestions are available, suggest category creation
         if (suggestionsAvailable(this, cat_typeahead_selector)) {
             $('#new-category-box').find('div').remove();
-        } else {
+        } else if (this.value.length > 1) {
             createSuggestionLink.call(this);
         }
     });
     $('input.location-combobox').keyup(function(){
-        if (!suggestionsAvailable(this, '.event_location ul.typeahead')){
+        if (!suggestionsAvailable(this, '.event_location ul.typeahead')
+                && (this.value.length > 1)) {
             createLocationSuggestionLink(this,
                     '#new-location-box',
                             '<%= new_location_path %>'
