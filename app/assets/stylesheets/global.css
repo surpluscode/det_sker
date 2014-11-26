@@ -17,8 +17,86 @@
 	color: #FFF !important
 }
 
+
 /* Bootstrap overrides */
+
+h2 {
+	font-size: 26px;
+	font-weight: bold;
+	color: #5e9397;
+}
 
 .form-horizontal .form-group {
 	margin: 0;
+}
+
+
+.label-primary {
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 24px;
+	text-transform: capitalize;
+	text-decoration: none;
+	color: #fff;
+	background: #8dc4c6;
+	padding: 2px 5px;
+	border-radius: 5px;
+
+}
+
+
+.label-success {
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 24px;
+	text-transform: capitalize;
+	text-decoration: none;
+	color: #fff;
+	background: #5e9397;
+	padding: 2px 5px;
+	border-radius: 5px;
+	}
+
+.tag a {
+	opacity: 1;
+}
+
+.tag a .glyphicon-white	{
+	margin-bottom: 6px;
+}
+
+
+
+/* Mia+Toke css */
+.filter-cat, .filter-location {
+	font-family: Helvetica, Sans-Serif;
+	line-height: 24px;
+	font-size: 13px;
+	color: #ababab;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.filter-cat a, .filter-location a {
+	font-family: Helvetica, Sans-Serif;
+	line-height: 24px;
+	color: #ababab;
+}
+
+.filter-cat a:hover{
+	color: #fff;
+	background: #8dc4c6;
+	padding: 2px 5px;
+	border-radius: 5px;
+	line-height: 24px;
+	text-decoration: none;
+}
+
+.filter-location a:hover{
+	color: #fff;
+	background: #5e9397;
+	padding: 2px 5px;
+	border-radius: 5px;
+	line-height: 24px;
+	text-decoration: none;
 }
