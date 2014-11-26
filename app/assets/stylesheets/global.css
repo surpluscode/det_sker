@@ -70,11 +70,14 @@ h2 {
 
 /* calender index */
 
-.title-event {
-
-	color: red;
+.event-title {
+	font-weight: bold;
 }
 
+
+.event-time {
+	background: red;
+}
 
 /* filter-kategorier */
 .filter-cat, .filter-location {
