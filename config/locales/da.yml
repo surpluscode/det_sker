@@ -65,6 +65,9 @@ da:
   locations:
     form:
       new_location: 'Opret nyt sted'
+    show:
+      edit_location: "Rediger"
+      delete_location: "Slet"
   simple_form:
     labels:
       event:

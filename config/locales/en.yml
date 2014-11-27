@@ -64,6 +64,9 @@ en:
   locations:
     form:
       new_location: 'Create new location'
+    show:
+      edit_location: "Edit"
+      delete_location: "Delete"
   simple_form:
     labels:
       event:
