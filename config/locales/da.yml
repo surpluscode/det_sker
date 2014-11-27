@@ -25,6 +25,7 @@ da:
     application:
       login: "Log ind"
       logout: "Log ud"
+      about: "Om"
   calendar:
     index:
       new_event: "Opret ny begivenhed"

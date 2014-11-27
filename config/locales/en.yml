@@ -25,6 +25,7 @@ en:
     application:
       login: "Log in"
       logout: "Log out"
+      about: "About"
   calendar:
     index:
       new_event: "New Event"

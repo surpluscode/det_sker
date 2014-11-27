@@ -28,15 +28,14 @@
       			<%= link_to t('.login'), user_session_path %>
   	  		<% end %>
 		</div>
-
-
+        <%= link_to(t('.about'), page_path('about')) %>
 	</div>
   <div class="row">
     <div class="header-text col-xs-12">
-        <%= link_to image_tag("dukopheader.png", href:"www.bareentest.dk", alt:"Dukop logo", width:"80%", height:"80%"), root_path %>
+        <%= link_to image_tag("dukopheader.png", alt:"DukOp logo", width:"80%", height:"80%"), root_path %>
     </div>
     <div class="tagline-text">
-      <p>Tagline, tagline and more tagline!</p>
+      <p>Duk dig ikke, duk op!</p>
     </div>
   </div>
   <div class="row">
