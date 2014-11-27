@@ -1,7 +1,7 @@
 
 <div class='event-container <%= event_cancelled? event %>'
      data-categories="<%= categories_as_string(event.categories) %>"
-     data-location="<%= event.location.name.parameterize('_') %>"
+     data-location="<%= event.location.display_name.parameterize('_') %>"
      data-role="event" data-parent="<%= parent_id if defined? parent_id%>">
 	 <span class="event-topbar_js">
 	     
@@ -29,7 +29,7 @@
           <a href="<%= url_for(event.location) %>" target="_blank"
              title="<%= event.location.description.truncate(120) %>" data-toggle='popover'
              data-placement='top' data-trigger="click hover focus" data-html="true">
-            <%= event.location.name %>
+            <%= event.location.display_name %>
           </a>
         </span>
    	</span>
