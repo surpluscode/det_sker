@@ -10,4 +10,10 @@ class Location < ActiveRecord::Base
   def <=>(other)
     display_name.downcase <=> other.display_name.downcase
   end
+
+  # need to overwrite this method to show display_name
+  # in json response
+  def as_json(opts)
+    super(methods: [:display_name])
+  end
 end

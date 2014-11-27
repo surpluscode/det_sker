@@ -98,7 +98,7 @@ function loadRemoteModal(context, event, xhr) {
         $(update_field).val(xhr.id);
         // put the name into the input field and disable it
         var update_val = $this.attr('data-update-val');
-        $(update_val).val(xhr.name).attr('disabled', true);
+        $(update_val).val(xhr.display_name).attr('disabled', true);
     }
     function handleFailure(event, xhr) {
         $target.find('.modal-body').html(xhr.responseText);
@@ -123,8 +123,8 @@ function createAlertBox(value, text, link, title, update_field, update_val) {
     var create_link = '<a id="' + this.link_id + '" '
             + 'class="alert-link" href="' + link + '" '
             + 'data-value="' + value + '" '
-            + 'data-remote="true"'
-            + 'data-modal-title="' + title + '" ' +
+            + 'data-remote="true" '
+            + 'data-modal-title="' + title + '" '
             + 'data-update-field="' + update_field + '" '
             + 'data-update-val="' + update_val + '">'
             + text + '</a>';
