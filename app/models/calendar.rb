@@ -28,10 +28,10 @@ class Calendar
   # their count
   def get_coming_locations
     @events.each do |e|
-      if @filter_locations.has_key? e.location.name
-        @filter_locations[e.location.name] += 1
+      if @filter_locations.has_key? e.location.display_name
+        @filter_locations[e.location.display_name] += 1
       else
-        @filter_locations.store(e.location.name, 1)
+        @filter_locations.store(e.location.display_name, 1)
       end
     end
   end

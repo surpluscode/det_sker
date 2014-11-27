@@ -5,7 +5,7 @@ describe Calendar do
   describe 'Calendar.new(:coming)' do
     before(:all) do
       l1 =  FactoryGirl.create(:location)
-      l2 = FactoryGirl.create(:other_location)
+      l2 = FactoryGirl.create(:other_location, name: nil, street_address: 'Strandvejen 49')
       cat = FactoryGirl.create(:random_category)
       other_cat = FactoryGirl.create(:random_category)
       @event_now = FactoryGirl.create(:event, categories: [cat], location: l1)
@@ -48,9 +48,15 @@ describe Calendar do
       @cal.filter_categories.values.first.should be_a Fixnum
     end
 
-    it 'should return a hash of locations and their values' do
-      @cal.filter_locations.should be_a Hash
-      expect(@cal.filter_locations.length).to eq(2)
+    describe 'filter_locations' do
+      it 'should return a hash of locations and their values' do
+        @cal.filter_locations.should be_a Hash
+        expect(@cal.filter_locations.length).to eq(2)
+      end
+
+      it 'uses the street address when no name is present' do
+        expect(@cal.filter_locations).to include 'Strandvejen 49'
+      end
     end
   end
 end
