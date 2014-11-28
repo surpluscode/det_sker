@@ -1,7 +1,7 @@
 
 <h1><%= t '.title' %></h1>
 
-<%= simple_form_for @user, url: url_for(controller: 'anonymous_user', action: 'create' ) do |f| %>
+<%= simple_form_for @user, url: url_for(controller: 'anonymous_user') do |f| %>
     <%= f.input :username %>
     <%= f.input :password, as: :hidden %>
     <%= f.submit %>
