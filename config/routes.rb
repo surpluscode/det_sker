@@ -12,6 +12,7 @@ DetSker::Application.routes.draw do
   resources :users, controller: :user do
     patch 'make_admin', on: :member
   end
+  resources :comments
 
   get 'anonymous_user/new' => 'anonymous_user#new'
   match '/anonymous_user' => 'anonymous_user#create', via: :post
