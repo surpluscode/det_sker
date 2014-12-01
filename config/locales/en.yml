@@ -55,6 +55,7 @@ en:
       start_time: "Starts"
       end_time: "Ends"
       comments: "Comments"
+      cancelled: "Cancelled"
     edit:
       edit_event: "Editing event"
     new:
