@@ -4,6 +4,8 @@ DetSker::Application.routes.draw do
   resources :events, except: [:index] do
     resources :comments, except: [:index, :new, :delete]
   end
+  # events has no index - instead it should redirect to calendar index with params
+  get 'events', to: redirect(path: '/')
 
   resources :categories
   resources :locations
