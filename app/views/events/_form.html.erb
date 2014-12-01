@@ -6,7 +6,15 @@
       <div class="col-xs-12">
         <%= f.input :title %>
       </div>
-    </div>
+      </div>
+      <% if @event.persisted? %>
+      <div class="row">
+          <div class="col-xs-12">
+            <%= f.input :cancelled, wrapper_html: { class: 'checkbox' },
+                        input_html: { class: 'checkbox'}, label_html: { class: 'override'} %>
+          </div>
+      </div>
+      <% end %>
     <div class="row">
       <div class="col-xs-12">
         <%= f.input :short_description, maxlength: 200 %>

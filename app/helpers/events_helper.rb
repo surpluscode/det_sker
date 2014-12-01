@@ -18,9 +18,11 @@ module EventsHelper
     #d.strftime("%a d. %d %b %Y")
   end
 
-  def event_cancelled?(event)
-    if event.cancelled
-      'cancelled'
+  def title_display(event)
+    if event.cancelled?
+      "<s>#{event.title}</s> - #{I18n.t('events.event.cancelled')}".html_safe
+    else
+      event.title
     end
   end
 

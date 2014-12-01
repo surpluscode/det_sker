@@ -1,16 +1,16 @@
 
-<div class='event-container <%= event_cancelled? event %>'
+<div class='event-container'
      data-categories="<%= categories_as_string(event.categories) %>"
      data-location="<%= event.location.display_name.parameterize('_') %>"
      data-role="event" data-parent="<%= parent_id if defined? parent_id%>">
 	 <span class="event-topbar_js">
 	     
        <span class="col-xs-12 col-md-8 col-md-push-1">
-       	<div class="event-title"><%= event.title %></div>
-	     </span>
+       	<div class="event-title"><%= title_display(event) %></div>
+	   </span>
 
 
-	     <span class="col-xs-1 col-md-1 col-md-pull-8">
+	    <span class="col-xs-1 col-md-1 col-md-pull-8">
         <div class="event-time">
     		<%# In the frontpage context we don't show a date, otherwise, do. %>
     		<% if defined? show_date %>
@@ -18,14 +18,14 @@
     		<% else %>
         		<%= format_starttime(event.start_time) %>
     		<% end %>
-      </div>
-    	</span>
+        </div>
+        </span>
 
 
-    	<span class="event-category col-xs-2 col-md-1">
+        <span class="event-category col-xs-2 col-md-1">
           <%= categories_as_string(event.categories, title = true) %>
         </span>
-  		<span class="col-xs-2 col-md-2">
+        <span class="col-xs-2 col-md-2">
           <a href="<%= url_for(event.location) %>" target="_blank"
              title="<%= event.location.description.truncate(120) %>" data-toggle='popover'
              data-placement='top' data-trigger="click hover focus" data-html="true">
