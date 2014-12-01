@@ -39,13 +39,15 @@ describe Calendar do
       @cal.in_progress.first.should eql @event_now
     end
 
-    it 'should return a hash of categories and their values' do
-      @cal.filter_categories.should be_a Hash
-      expect(@cal.filter_categories.length).to eq(2)
-    end
+    describe 'filter_categories' do
+      it 'should return a hash of categories and their values' do
+        @cal.filter_categories.should be_a Hash
+        expect(@cal.filter_categories.length).to eq(2)
+      end
 
-    it 'should return a number of events for each category' do
-      @cal.filter_categories.values.first.should be_a Fixnum
+      it 'should return a number of events for each category' do
+        @cal.filter_categories.values.first.should be_a Fixnum
+      end
     end
 
     describe 'filter_locations' do
