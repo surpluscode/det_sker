@@ -19,9 +19,7 @@ module EventsHelper
   end
 
   def event_cancelled?(event)
-    if event.cancelled
-      'cancelled'
-    end
+    'cancelled' if event.cancelled?
   end
 
   # Given an array of Category objects
