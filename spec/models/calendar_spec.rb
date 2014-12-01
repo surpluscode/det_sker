@@ -6,11 +6,11 @@ describe Calendar do
     before(:all) do
       l1 =  FactoryGirl.create(:location)
       l2 = FactoryGirl.create(:other_location, name: nil, street_address: 'Strandvejen 49')
-      cat = FactoryGirl.create(:random_category)
+      @cat = FactoryGirl.create(:random_category)
       other_cat = FactoryGirl.create(:random_category)
-      @event_now = FactoryGirl.create(:event, categories: [cat], location: l1)
+      @event_now = FactoryGirl.create(:event, categories: [@cat], location: l1)
       FactoryGirl.create(:event, start_time: DateTime.now + 1.hour,
-                         categories: [cat], location: l1)
+                         categories: [@cat], location: l1)
       @event_tomorrow = FactoryGirl.create(:event_tomorrow, categories: [other_cat],
                                            location: l2)
       @event_yesterday = FactoryGirl.create(:event_yesterday, location: l2)
@@ -37,6 +37,11 @@ describe Calendar do
 
     it 'should return in progress events' do
       @cal.in_progress.first.should eql @event_now
+    end
+
+    it 'should not crash if an event does not have a location' do
+      Event.new(start_time: DateTime.now + 1.hour, end_time: DateTime.now + 2.hour).save(validate: false)
+      expect { Calendar.new(:coming) }.not_to raise_exception
     end
 
     describe 'filter_categories' do

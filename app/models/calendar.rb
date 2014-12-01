@@ -28,6 +28,7 @@ class Calendar
   # their count
   def get_coming_locations
     @events.each do |e|
+      next unless e.location.present?
       if @filter_locations.has_key? e.location.display_name
         @filter_locations[e.location.display_name] += 1
       else
