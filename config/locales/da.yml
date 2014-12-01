@@ -73,6 +73,7 @@ da:
     labels:
       event:
         title: Titel
+        cancelled: Aflys begivenhed?
         short_description: Beskrivelse
         categories: Kategorier
         location: Sted

@@ -72,6 +72,7 @@ en:
     labels:
       event:
         short_description: Description
+        cancelled: Cancel event?
     placeholders:
       event:
         title: The event's name
