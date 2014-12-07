@@ -21,6 +21,12 @@
 
 en:
   hello: "Hello world"
+  date:
+    formats:
+      header: ! '%a %e. %b'
+  time:
+    formats:
+      calendar: ! '%a %e. %b %H:%M'
   layouts:
     application:
       login: "Log in"
@@ -31,7 +37,7 @@ en:
       new_event: "New Event"
       describe_filters: "Showing events of type <categories> in <locations>"
     filter_options:
-      filter_header: "Filter by category"
+      filter_header: "Show only:"
       category_filter_heading: "Event Types"
       location_filter_heading: "Locations"
     day:

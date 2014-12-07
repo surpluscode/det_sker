@@ -6,7 +6,7 @@ module EventsHelper
   include ActionView::Helpers::FormHelper
 
   def format_datetime(dt)
-    dt.strftime("%a d. %d %b %Y %H:%M")
+    I18n.localize(dt, format: :calendar)
   end
 
   def format_starttime(dt)
@@ -14,8 +14,7 @@ module EventsHelper
   end
 
   def format_date(d)
-    I18n.localize(d, format: :short)
-    #d.strftime("%a d. %d %b %Y")
+    I18n.localize(d, format: :header)
   end
 
   def title_display(event)

@@ -21,6 +21,12 @@
 
 da:
   hello: "Hello world"
+  date:
+    formats:
+      header: ! '%a d. %e. %b'
+  time:
+    formats:
+      calendar: ! '%a d. %e. %b %H:%M'
   layouts:
     application:
       login: "Log ind"
