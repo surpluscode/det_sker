@@ -67,6 +67,8 @@ en:
       edit_event: "Editing event"
     new:
       new_event: "New event"
+    event_updated: "Event updated"
+    event_created: "Event created"
   comments:
     form:
       writing_as: "Writing as"
@@ -94,3 +96,5 @@ en:
       title: "Create a one time account"
       explanation: "You are creating a single use account. This means that a user will be created with the username you supply. No additional identifying information will be stored. Since this account does not have an email attached, you cannot login to it again.  Therefore, you will be unable to edit or delete any information you enter while logged into this account after you have logged out, or the session expires."
   member_since: "Member since"
+  general:
+    permission_denied: "You are not authorized to access this page."

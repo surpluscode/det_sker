@@ -68,6 +68,8 @@ da:
       edit_event: "Redigerer begivenhed"
     new:
       new_event: "Opret begivenhed"
+    event_updated: "Opdatering fuldført"
+    event_created: "Begivenhed oprettet"
   comments:
     form:
       writing_as: "Skriver som"
@@ -108,3 +110,5 @@ da:
       title: "Opret engangskonto"
       explanation: "You are creating a single use account. This means that a user will be created with the username you supply. No additional identifying information will be stored. Since this account does not have an email attached, you cannot login to it again.  Therefore, you will be unable to edit or delete any information you enter while logged into this account after you have logged out, or the session expires."
   member_since: "Medlem siden"
+  general:
+    permission_denied: "Du er ikke tilladt at bruge denne side."

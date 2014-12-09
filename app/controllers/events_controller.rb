@@ -19,7 +19,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     respond_to do |format|
       if @event.save
-        format.html { redirect_to root_path, notice: 'Event was created successfully.'}
+        format.html { redirect_to root_path, notice: I18n.t('events.event_created')}
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
@@ -31,7 +31,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(user_params)
-        format.html { redirect_to root_path, notice: 'Event updated successfully' }
+        format.html { redirect_to root_path, notice: I18n.t('events.event_updated')}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -59,7 +59,7 @@ class EventsController < ApplicationController
 
   def authorised_user?
     unless current_user.can_edit? @event
-      redirect_to root_path, alert: 'Only authorised users can edit events!'
+      redirect_to root_path, alert: I18n.t('general.permission_denied')
     end
   end
 
