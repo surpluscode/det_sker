@@ -32,6 +32,7 @@ en:
       login: "Log in"
       logout: "Log out"
       about: "About"
+      my_page: "My events"
   calendar:
     index:
       new_event: "New Event"
@@ -92,3 +93,4 @@ en:
     new:
       title: "Create a one time account"
       explanation: "You are creating a single use account. This means that a user will be created with the username you supply. No additional identifying information will be stored. Since this account does not have an email attached, you cannot login to it again.  Therefore, you will be unable to edit or delete any information you enter while logged into this account after you have logged out, or the session expires."
+  member_since: "Member since"
