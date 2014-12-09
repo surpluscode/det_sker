@@ -33,6 +33,7 @@ en:
       logout: "Log out"
       about: "About"
       my_page: "My events"
+      calendar: "Calendar"
   calendar:
     index:
       new_event: "New Event"
