@@ -43,8 +43,12 @@
     <%= link_to(t('.about'), page_path('about')) %>
   </div>
   <div class="row">
-	 <span class="notice"><%= notice %></span>
-	 <span class="alert"><%= alert %></span>
+     <% if notice.present? %>
+        <div class="alert alert-success" role="alert"><%= notice %></div>
+     <% end %>
+    <% if alert.present? %>
+        <div class="alert alert-danger"><%= alert %></div>
+    <% end %>
   </div>
 	<%= yield %>
 		</div>
