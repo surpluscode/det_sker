@@ -18,17 +18,20 @@
 <body>
 <div class="container">
 	<div class="row">
-		<div class="lang-selection col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-8">
+		<div class="lang-selection col-xs-4 col-sm-2">
 			<%= render partial: 'layouts/lang_selector' %>
 		</div>
-		<div class="login-buttons col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-0">
+		<div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-8">
 	  		<% if current_user %>
+                <%= link_to 'Min side', current_user %>
+              <span class="login-buttons">
     	  		<%= link_to t('.logout'), destroy_user_session_path, method: :delete %>
+              </span>
   	  		<% else %>
       			<%= link_to t('.login'), user_session_path %>
   	  		<% end %>
 		</div>
-        <%= link_to(t('.about'), page_path('about')) %>
+
 	</div>
   <div class="row">
     <div class="header-text col-xs-12">
@@ -37,6 +40,9 @@
     <div class="tagline-text">
       <p>Duk dig ikke, duk op!</p>
     </div>
+  </div>
+  <div class="row">
+    <%= link_to(t('.about'), page_path('about')) %>
   </div>
   <div class="row">
 	 <span class="notice"><%= notice %></span>
