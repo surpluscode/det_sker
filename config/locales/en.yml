@@ -64,6 +64,9 @@ en:
       end_time: "Ends"
       comments: "Comments"
       cancelled: "Cancelled"
+      edit: "Edit"
+      delete: "Delete"
+      confirm_delete: "Are you sure you want to delete this event?"
     edit:
       edit_event: "Editing event"
     new:

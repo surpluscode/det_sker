@@ -65,6 +65,9 @@ da:
       end_time: "Slutter"
       comments: "Kommentar"
       cancelled: Aflyst!
+      edit: "Rediger"
+      delete: "Slet"
+      confirm_delete: "Er du sikker på du vil slette denne begivenhed?"
     edit:
       edit_event: "Redigerer begivenhed"
     new:
