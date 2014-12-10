@@ -19,7 +19,7 @@ module EventsHelper
 
   def title_display(event)
     if event.cancelled?
-      "<s>#{event.title}</s> - #{I18n.t('events.event.cancelled')}".html_safe
+      "<s>#{event.title}</s> - <span class='text-danger'>#{I18n.t('events.event.cancelled')}</span>".html_safe
     else
       event.title
     end
