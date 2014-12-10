@@ -45,24 +45,30 @@ describe Calendar do
     end
 
     describe 'filter_categories' do
-      it 'should return a hash of categories and their values' do
-        @cal.filter_categories.should be_a Hash
-        expect(@cal.filter_categories.length).to eq(2)
+      it 'should return an array of arrays' do
+        expect(@cal.filter_categories).to be_an Array
+        expect(@cal.filter_categories.first).to be_an Array
       end
 
       it 'should return a number of events for each category' do
-        @cal.filter_categories.values.first.should be_a Fixnum
+        expect(@cal.filter_categories.first.last).to be_a Fixnum
+      end
+
+      it 'should order the categories by the number of events descending' do
+        first = @cal.filter_categories.first
+        last = @cal.filter_categories.last
+        expect(first.last).to be > last.last
       end
     end
 
     describe 'filter_locations' do
-      it 'should return a hash of locations and their values' do
-        @cal.filter_locations.should be_a Hash
-        expect(@cal.filter_locations.length).to eq(2)
+      it 'should return an array of arrays' do
+        expect(@cal.filter_locations).to be_an Array
+        expect(@cal.filter_locations.first).to be_an Array
       end
 
       it 'uses the street address when no name is present' do
-        expect(@cal.filter_locations).to include 'Strandvejen 49'
+        expect(@cal.filter_locations.flatten).to include 'Strandvejen 49'
       end
     end
   end

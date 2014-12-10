@@ -1,10 +1,10 @@
-<% filter_objects.each_pair do |name, num| %>
+<% filter_objects.each do |arr| %>
    
     <dd>
-      <a href='#' data-toggle="<%= name.to_s.parameterize('_') %>"
+      <a href='#' data-toggle="<%= arr.first.to_s.parameterize('_') %>"
          data-filter-type="<%= data_type %>" data-role="filter-link">
-        <%= name.to_s.titleize  %>
-      (<%= num %>)
+        <%= arr.first.to_s.titleize  %>
+      (<%= arr.last %>)
       </a>
       
     </dd>

@@ -4,13 +4,11 @@ class Calendar
 
   def initialize(type = :coming)
     @days = {}
-    @filter_categories = {}
-    @filter_locations = {}
     @in_progress = EventContainer.new
     if type == :coming
       get_coming_events
-      get_coming_categories
-      get_coming_locations
+      get_filter_categories
+      get_filter_locations
     end
   end
 
@@ -23,27 +21,31 @@ class Calendar
 
   private
 
-  # Create a hash consisting of the locations
+  # Create an Array of Arrays consisting of the locations
   # present within this calendar, together with
-  # their count
-  def get_coming_locations
+  # their count e.g. [[myplace, 2], [yours, 1]]
+  def get_filter_locations
+    locations = {}
     @events.each do |e|
       next unless e.location.present?
-      if @filter_locations.has_key? e.location.display_name
-        @filter_locations[e.location.display_name] += 1
+      if locations.has_key? e.location.display_name
+        locations[e.location.display_name] += 1
       else
-        @filter_locations.store(e.location.display_name, 1)
+        locations[e.location.display_name] = 1
       end
     end
+    @filter_locations = locations.sort_by(&:last).reverse
   end
 
-  # Convert the Active Relation returned from
-  # the categories query into a hash containing
-  # category keys and number of occurrences
-  def get_coming_categories
+  # Create an Array of Arrays consisting of the locations
+  # present within this calendar, together with
+  # their count e.g. [[party, 2], [demo, 1]]
+  def get_filter_categories
+    categories = {}
     Category.current_categories.each do |cat|
-     @filter_categories.store(cat['key'].to_sym, cat['num'].to_i)
+     categories[cat['key'].to_sym] = cat['num'].to_i
     end
+    @filter_categories = categories.sort_by(&:last).reverse
   end
 
   # Based on the dates of the events given
