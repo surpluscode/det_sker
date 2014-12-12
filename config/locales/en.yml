@@ -68,6 +68,7 @@ en:
       delete: "Delete"
       confirm_delete: "Are you sure you want to delete this event?"
       see_more: "Read more..."
+      posted_by: "Posted by"
     edit:
       edit_event: "Editing event"
     new:

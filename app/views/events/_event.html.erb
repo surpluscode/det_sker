@@ -47,21 +47,20 @@
   <% end %>
   	<div class='event-details'>
   		<div class="col-xs-12 col-md-11 col-md-offset-1">
-    		<p><%= link_to event.user.username, event.user  if event.user%></p>
+    		<p><%= "#{t('.posted_by')} #{link_to(event.user.username, event.user)  if event.user}".html_safe %></p>
     	</div>
     	<div class="col-xs-12 col-md-8 col-md-offset-1">
-    		<p class="event-description"> <%= event.short_description.truncate(160, separator: ' ') %></p>
+    		<p> <%= event.short_description.truncate(160, separator: ' ') %></p>
             <p><%= link_to t('.see_more'), event %> </p>
         </div>
-		<div class="col-xs-12 col-md-8 col-md-offset-1">
-	      <p><strong>Starter: </strong><%= format_datetime(event.start_time) %></p>
-    	  <p><strong>Slutter: </strong><%= format_datetime(event.end_time) %></p>
-          <% if event.comments_enabled? %>
-            <%= link_to event_path event do %>
-              <p><%= t '.comments' %>: <%= event.comments.size %></p>
-            <% end %>
+		<div class="col-xs-12 col-md-5 col-md-offset-1">
+	      <p><strong><%= t('.start_time') %> </strong><%= format_datetime(event.start_time) %></p>
+    	  <p><strong><%= t('.end_time') %> </strong><%= format_datetime(event.end_time) %></p>
+          <p><strong><%= event.location.street_address %></strong></p>
+          <p><strong><%= event.location.town %></strong></p>
+          <% if event.price.present? %>
+            <p><strong>Pris: </strong><%= event.price %></p>
           <% end %>
-    	<p class="event-price"><strong>Pris: </strong><%= event.price %></p>
-    	</div>
-  </div>
+        </div>
+    </div>
 </div>
