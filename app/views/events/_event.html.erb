@@ -50,12 +50,9 @@
     		<p><%= link_to event.user.username, event.user  if event.user%></p>
     	</div>
     	<div class="col-xs-12 col-md-8 col-md-offset-1">
-    		<p class="event-description"><%= event.short_description %></p>
-    		<%  if event.long_description? %>
-        	<a href="#" class="show-long-description_js">More information...</a>
-			<p class="long-description"><%= event.long_description %></p>
-			<% end %>
-		</div>
+    		<p class="event-description"> <%= event.short_description.truncate(160, separator: ' ') %></p>
+            <p><%= link_to t('.see_more'), event %> </p>
+        </div>
 		<div class="col-xs-12 col-md-8 col-md-offset-1">
 	      <p><strong>Starter: </strong><%= format_datetime(event.start_time) %></p>
     	  <p><strong>Slutter: </strong><%= format_datetime(event.end_time) %></p>

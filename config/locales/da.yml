@@ -68,6 +68,7 @@ da:
       edit: "Rediger"
       delete: "Slet"
       confirm_delete: "Er du sikker på du vil slette denne begivenhed?"
+      see_more: "Læs mere..."
     edit:
       edit_event: "Redigerer begivenhed"
     new:
