@@ -38,6 +38,7 @@ en:
     index:
       new_event: "New Event"
       describe_filters: "Showing events of type <categories> in <locations>"
+      end_of_events: "No more events"
     filter_options:
       filter_header: "Show only:"
       category_filter_heading: "Event Types"

@@ -41,6 +41,7 @@ da:
         base: Viser begivenheder
         categories: " med kategorier "
         locations: " i "
+      end_of_events: "Ikke flere begivenheder"
     filter_options:
       filter_header: "Vis kun"
       category_filter_heading: "Typer"
