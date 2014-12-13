@@ -66,6 +66,7 @@ function refreshFilterView(){
 function filterCategory(){
     var $this = $(this);
     var filter = $this.attr('data-toggle');
+    var $allMatching = $('[data-toggle="' + filter + '"]');
     var type = $this.attr('data-filter-type');
     var filterArray;
     if (type == 'category') {
@@ -74,9 +75,11 @@ function filterCategory(){
         filterArray = activeLocations;
     }
     if (activeFilters.indexOf(filter) == -1) {
+        $this.addClass('active tag label label-primary');
         activeFilters.push(filter);
         filterArray.push(filter);
     } else if ($this.hasClass('active')){
+        $allMatching.removeClass('active tag label label-primary');
         activeFilters.remove(filter);
         filterArray.remove(filter);
     }

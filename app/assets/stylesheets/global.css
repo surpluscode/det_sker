@@ -65,6 +65,13 @@ h2 {
 	margin-bottom: 6px;
 }
 
+.label-primary[href]:focus {
+    background-color: #5e9397;
+}
+
+.label-primary[href]:hover {
+    background-color: #ababab;
+}
 
 
 
