@@ -13,13 +13,10 @@
 			</div>
 
 			<div class="row">
-				<div class="col-xs-12">
-					<div class="row">
-						
+				<div class="col-xs-12">						
  						<% day.events.each do |event| %>
   						<%= render partial: 'events/event', object: event, locals: { parent_id: id } %>
 						<% end %>
-						</div>
 				</div>
 			</div>
 		</div>
