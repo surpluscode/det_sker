@@ -30,6 +30,10 @@ h2 {
 	margin: 0;
 }
 
+form {
+	padding: 10;
+}
+
 
 .label-primary {
 	font-size: 13px;
