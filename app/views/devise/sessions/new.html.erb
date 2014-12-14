@@ -1,17 +1,31 @@
 <h2>Sign in</h2>
 
+</br>
+
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div>
+  	<%= f.label :email %>
+  	<br />
+  	<%= f.email_field :email, :autofocus => true %>
+  </div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+</br>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+  <div>
+  	<%= f.label :password %>
+  	<br />
+  	<%= f.password_field :password %>
+  </div>
+</br>
+  <div>
+  	<%= f.submit "Sign in", id: 'user_sign_in' %>
+  	<% if devise_mapping.rememberable? -%>
+    <div>
+    	<%= f.check_box :remember_me %> <%= f.label :remember_me %>
+    </div>
   <% end -%>
-
-  <div><%= f.submit "Sign in", id: 'user_sign_in' %></div>
+  </div>
+</br>
 <% end %>
 <%= link_to "Create event anonymously", controller: '/anonymous_user', action: 'new'  %>
 <%= render "devise/shared/links" %>
