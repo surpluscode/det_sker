@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 form {
-  padding-right:10px;
-  padding-left:10px;
+  padding-right:0px;
+  padding-left:0px;
 }
 
 .hidden { display: none; }
@@ -38,6 +38,10 @@ dl#filter-list_js {
   .active {
     color: #fff;
   }
+}
+
+#user_remember_me {
+  display: inline;
 }
 
 /* adapted from http://maxwells.github.io/bootstrap-tags.html */
