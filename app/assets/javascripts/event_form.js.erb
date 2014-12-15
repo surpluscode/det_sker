@@ -48,6 +48,12 @@ function activateFormListeners() {
         $('#event_end_time').data("DateTimePicker").setDate(e.date);
     });
     categoryTagListener();
+    $('[data-function="show"]').change(function(){
+        var show_target = $(this).attr('data-target');
+        $(show_target).removeClass('hidden');
+        var hide_target = $(this).attr('data-hide');
+        $(hide_target).addClass('hidden');
+    });
 }
 function activateFormPlugins() {
     $('[data-toggle="popover"]').popover();

@@ -54,9 +54,23 @@
                 function: 'datetime-picker', 'date-format' => 'DD/MM/YYYY HH:mm' }} %>
         </div>
     </div>
+    <%# event price field should only be shown a) if there is already a price
+    or b) if the user has checked this box to say that there is a price
+    Note the javascript hooks on the data elements. %>
+    <% if @event.price.blank? %>
+    <div class="input boolean optional event_price_enabled checkbox">
+      <label class="boolean optional control-label override checkbox" for="event_price_enabled">
+        <input class="boolean optional checkbox" id="event_price_enabled"
+               name="event[price_enabled]" value="1" type="checkbox"
+               data-function="show" data-target=".event_price" data-hide=".event_price_enabled">
+        <%= t '.enable_price' %>
+      </label>
+    </div>
+    <% end %>
     <div class="row">
       <div class="col-xs-12">
-        <%= f.input :price %>
+        <% is_visible =  @event.price.present? ? ' ' : 'hidden' %>
+        <%= f.input :price, wrapper_html: { class: is_visible } %>
       </div>
     </div>
   </br>

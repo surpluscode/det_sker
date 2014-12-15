@@ -59,6 +59,7 @@ en:
       new_location_title: "New location"
       location_created: "Location created successfully!"
       choose_location: "Choose location"
+      enable_price: "Does your event have a price?"
     event:
       price: "Price"
       start_time: "Starts"

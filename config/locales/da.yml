@@ -60,6 +60,7 @@ da:
       new_location: "Lokation <value> findes ikke, vil du tilføj det?"
       new_location_title: "Ny lokation"
       location_created: "Sted oprettet!"
+      enable_price: "Koster din begivenhed noget?"
     event:
       price: "Pris"
       start_time: "Starter"
