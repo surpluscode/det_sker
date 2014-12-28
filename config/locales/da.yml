@@ -56,8 +56,8 @@ da:
         edit: "Rediger"
     form:
       enable_comments: "Tillad kommentar på din begivenhed?"
-      new_category: "Kategori <value> findes ikke, vil du tilføj det?"
-      new_location: "Lokation <value> findes ikke, vil du tilføj det?"
+      new_category: "Kategori <value> findes ikke, vil du tilføje det?"
+      new_location: "Lokation <value> findes ikke, vil du tilføje det?"
       new_location_title: "Ny lokation"
       location_created: "Sted oprettet!"
       enable_price: "Koster din begivenhed noget?"
