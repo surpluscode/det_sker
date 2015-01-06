@@ -89,6 +89,8 @@ da:
       delete_location: "Slet"
   simple_form:
     labels:
+      defaults:
+        username: Brugernavn
       event:
         title: Titel
         cancelled: Aflys begivenhed?
@@ -116,7 +118,14 @@ da:
   anonymous_user:
     new:
       title: "Opret engangskonto"
-      explanation: "You are creating a single use account. This means that a user will be created with the username you supply. No additional identifying information will be stored. Since this account does not have an email attached, you cannot login to it again.  Therefore, you will be unable to edit or delete any information you enter while logged into this account after you have logged out, or the session expires."
+      explanation: "Du er ved at oprette en engangskonto. \
+      Det vil sige at en bruger oprettes med den brugernavn du giver. \
+      Der bliver ikke gemt mere oplysning end det. \
+      Da kontoen ikke er forbundet nogle email adress, \
+      kan du ikke logge ind til den igen.  \
+      Derfor, kan du ikke redigere eller slette indhold \
+      du opretter mens du er logget ind til denne konto efter du er logget ud."
+      create: "Opret konto"
   member_since: "Medlem siden"
   general:
     permission_denied: "Du er ikke tilladt at bruge denne side."

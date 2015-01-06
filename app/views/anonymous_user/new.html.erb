@@ -4,7 +4,7 @@
 <%= simple_form_for @user, url: url_for(controller: 'anonymous_user', action: 'create') do |f| %>
     <%= f.input :username %>
     <%= f.input :password, as: :hidden %>
-    <%= f.submit %>
+    <%= f.submit t('.create') %>
 <% end %>
 
 <div class="row col-sm-8">
