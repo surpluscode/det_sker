@@ -120,3 +120,8 @@ da:
   member_since: "Medlem siden"
   general:
     permission_denied: "Du er ikke tilladt at bruge denne side."
+  devise:
+    sessions:
+      new:
+        sign_in: "Log ind"
+        remember_me: "Husk mig"

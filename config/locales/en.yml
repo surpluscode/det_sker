@@ -106,3 +106,8 @@ en:
   member_since: "Member since"
   general:
     permission_denied: "You are not authorized to access this page."
+  devise:
+    sessions:
+      new:
+        sign_in: "Sign in"
+        remember_me: "Remember me"
