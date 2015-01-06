@@ -111,3 +111,10 @@ en:
       new:
         sign_in: "Sign in"
         remember_me: "Remember me"
+    registrations:
+      new: "Sign up"
+    shared:
+      links:
+        forgot_password: "Forgot your password?"
+        new_instructions: "Didn't receive confirmation instructions?"
+        create_account: "Create account"

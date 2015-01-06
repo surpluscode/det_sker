@@ -125,3 +125,8 @@ da:
       new:
         sign_in: "Log ind"
         remember_me: "Husk mig"
+    shared:
+      links:
+        forgot_password: "Glemt din password?"
+        new_instructions: "Har du ikke modtaget anmodning om bekræftelse?"
+        create_account: "Opret konto"
