@@ -139,3 +139,8 @@ da:
         forgot_password: "Glemt din password?"
         new_instructions: "Har du ikke modtaget anmodning om bekræftelse?"
         create_account: "Opret konto"
+  helpers:
+    label:
+      user:
+       username: Brugernavn
+       password_confirmation: Password igen
