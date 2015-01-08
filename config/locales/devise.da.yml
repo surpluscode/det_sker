@@ -16,11 +16,23 @@ da:
       unconfirmed: "Du skal bekræfte din konto for at kunne fortsætte."
     mailer:
       confirmation_instructions:
+        greeting: Velkommen %{username}!
+        instructions_body: Bekræft din konto gennem nedenstående link
         subject: "Bekræft din konto"
+        link_text: "Bekræft min konto"
+      standard:
+        greeting: "Hej %{username}!"
       reset_password_instructions:
         subject: "Nulstilling af password"
+        body: "Nogen har bedt om et link til at ændre din password. Det kan du gøre ved at klikke på nedenstående link"
+        link_text: "Ændre min password"
+        ignore_disclaimer: "Hvis du ikke har bedt om at ændre din password, venligst se bort fra denne besked."
+        no_change: "Din password ændres ikke før du har klikket på ovenstående link og har lavet en ny."
       unlock_instructions:
         subject: "Genåbning af konto"
+        explanation: "Din konto er blevet låst grundet for mange mislykkede log ind forsøgYour account has been locked due to an excessive number of unsuccessful sign in attempts."
+        instructions: "Klik på nedenstående link for at låse din konto op:"
+        link_text: "Lås min konto op"
     omniauth_callbacks:
       failure: "Du kunne ikke logges ind med din %{kind} konto: \"%{reason}\"."
       success: "Du er nu logget ind med din %{kind} konto."
