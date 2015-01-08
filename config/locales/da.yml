@@ -144,3 +144,7 @@ da:
       user:
        username: Brugernavn
        password_confirmation: Password igen
+  devise:
+    confirmations:
+      new:
+        header: "Send bekræftelses instruktioner igen"
