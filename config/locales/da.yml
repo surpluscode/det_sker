@@ -148,3 +148,8 @@ da:
     confirmations:
       new:
         header: "Send bekræftelses instruktioner igen"
+  devise:
+    sessions:
+      new:
+        sign_in: "Log ind"
+        remember_me: "Husk mig"
