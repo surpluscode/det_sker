@@ -61,6 +61,7 @@ da:
       new_location_title: "Ny lokation"
       location_created: "Sted oprettet!"
       enable_price: "Koster din begivenhed noget?"
+      new_cat_button: "Opret ny kategori"
     event:
       price: "Pris"
       start_time: "Starter"

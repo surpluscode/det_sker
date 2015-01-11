@@ -10,6 +10,9 @@ $(document).ready(function() {
 });
 
 function activateFormListeners() {
+    $('a[data-target="remote_form_modal"]').on("ajax:success", function(event, xhr){
+       loadRemoteModal(this, event, xhr);
+    });
     $('a[data-target]').on("ajax:success", showAjaxResponse);
     $('.combobox').click(function(){
         $(this).siblings('.dropdown-toggle').click();
@@ -251,10 +254,10 @@ function addToTarget(target, val) {
  * @param xhr
  */
 function showAjaxResponse(event, xhr){
+    console.log("getting here");
+    console.log(xhr);
     //target div has id equal to the clicked link's data target attr
     var target = $('#' + $(this).attr('data-target'));
-    target.html(xhr);
-    $(this).parents('div.comment-container_js').hide();
-    target.removeClass('hidden');
+   // target.html(xhr);
 }
 

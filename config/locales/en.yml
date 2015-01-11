@@ -60,6 +60,7 @@ en:
       location_created: "Location created successfully!"
       choose_location: "Choose location"
       enable_price: "Does your event have a price?"
+      new_cat_button: "Create new category"
     event:
       price: "Price"
       start_time: "Starts"
