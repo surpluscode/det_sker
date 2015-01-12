@@ -1,4 +1,4 @@
-<%= simple_form_for @category do |f| %>
+<%= simple_form_for(@category, data: { remote: true}) do |f| %>
     <%= f.input :key %>
     <%= f.input :description %>
     <%= f.button :submit %>
