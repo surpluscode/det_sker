@@ -13,7 +13,7 @@ function activateFormListeners() {
     $('a[data-target="remote_form_modal"]').on("ajax:success", function(event, xhr){
        loadRemoteModal(this, event, xhr);
     });
-    $('a[data-target]').on("ajax:success", showAjaxResponse);
+    //$('a[data-target]').on("ajax:success", showAjaxResponse);
     $('.combobox').click(function(){
         $(this).siblings('.dropdown-toggle').click();
     });
@@ -117,8 +117,12 @@ function loadRemoteModal(context, event, xhr) {
     var $target = $('#remote_form_modal');
     $target.find('.modal-body').html(xhr);
     $target.find('.modal-title').text(title);
-    $('form#new_location').on('ajax:success', handleSuccess);
-    $('form#new_location').on('ajax:error', handleFailure);
+    // parse the xhr response and get the form object
+    // in order to attach listeners
+    var xml = $.parseXML(xhr);
+    var $form = $(xml).find('form');
+    $form.on('ajax:success', handleSuccess);
+    $form.on('ajax:error', handleFailure);
     $target.modal();
 }
 
