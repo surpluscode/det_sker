@@ -107,6 +107,10 @@ da:
         postcode: Postnummer
         town: By
         description: Beskrivelse
+      category:
+        key: Navn
+        description: Beskrivelse
+        submit: ajkldfjklajdfl
     placeholders:
       event:
         title: Navnet af begivenheden
@@ -141,6 +145,10 @@ da:
         new_instructions: "Har du ikke modtaget anmodning om bekræftelse?"
         create_account: "Opret konto"
   helpers:
+    submit:
+      category:
+        create: "Opret kategori"
+        update: "Gem ændringer"
     label:
       user:
        username: Brugernavn
