@@ -17,8 +17,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(whitelist_params)
     respond_to do |format|
       if @category.save
-        format.json { render json: @category, status: :created }
-        format.html { redirect_to root_path, notice: 'Category created successfully' }
+        format.html { render 'created.html.erb', layout: nil }
       else
         format.html { render action: 'new' }
         format.json { render json: @category.errors, status: :unprocessable_entity }

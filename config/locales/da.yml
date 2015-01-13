@@ -162,3 +162,6 @@ da:
       new:
         sign_in: "Log ind"
         remember_me: "Husk mig"
+  categories:
+    created:
+      message: "Kategori %{name} oprettet!"

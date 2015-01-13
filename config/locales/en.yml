@@ -120,3 +120,6 @@ en:
         forgot_password: "Forgot your password?"
         new_instructions: "Didn't receive confirmation instructions?"
         create_account: "Create account"
+  categories:
+    created:
+      message: "Category %{name} created!"

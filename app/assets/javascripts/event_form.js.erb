@@ -95,13 +95,7 @@ function loadRemoteModal(context, event, xhr) {
     // in case of failure, we receive back html which
     // we put back into the modal
     function handleSuccess(event, xhr) {
-        $alert = $('<div>', {
-            class: 'alert alert-success',
-            role: 'alert',
-            style: 'margin-bottom: 0px;',
-            text: i18n.events.form.location_created
-        });
-        $target.find('.modal-body').html($alert);
+        $target.find('.modal-body').html(xhr);
         // put the id into the correct field
         var update_field = '[name="' + $this.attr('data-update-field') + '"]';
         $(update_field).val(xhr.id);
@@ -119,8 +113,7 @@ function loadRemoteModal(context, event, xhr) {
     $target.find('.modal-title').text(title);
     // parse the xhr response and get the form object
     // in order to attach listeners
-    var xml = $.parseXML(xhr);
-    var $form = $(xml).find('form');
+    var $form = $target.find('form');
     $form.on('ajax:success', handleSuccess);
     $form.on('ajax:error', handleFailure);
     $target.modal();
