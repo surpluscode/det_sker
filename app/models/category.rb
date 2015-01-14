@@ -14,4 +14,8 @@ class Category < ActiveRecord::Base
           GROUP BY c.key"
      )
   end
+
+  def as_json(options = {})
+    super(only: [:id, :key])
+  end
 end
