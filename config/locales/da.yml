@@ -102,7 +102,7 @@ da:
         price: Pris
       location:
         name: Navn
-        street_address: Gadeadress
+        street_address: Gadeadresse
         postcode: Postnummer
         town: By
         description: Beskrivelse
