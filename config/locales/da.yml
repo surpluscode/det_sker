@@ -62,6 +62,9 @@ da:
       location_created: "Sted oprettet!"
       enable_price: "Koster din begivenhed noget?"
       new_cat_button: "Opret ny kategori"
+      choose_category: "Vælg en eller flere kategorier"
+      typeahead_header: 'Tast for at finde kategorier: '
+      typeahead_footer: 'Opret kategori'
     event:
       price: "Pris"
       start_time: "Starter"

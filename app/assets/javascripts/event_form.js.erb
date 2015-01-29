@@ -5,14 +5,63 @@ var cat_typeahead_selector = '.event_categories ul.typeahead';
 
 $(document).ready(function() {
     activateFormPlugins();
+    initTypeahead();
     activateFormListeners();
     createCategoryHash();
+
+
 });
 
-function activateFormListeners() {
-    $('a[data-target="remote_form_modal"]').on("ajax:success", function(event, xhr){
-       loadRemoteModal(this, event, xhr);
+
+function initTypeahead(){
+    // constructs the suggestion engine
+    var categories = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('key'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+// `states` is an array of state names defined in "The Basics"
+        prefetch: {
+            url: '<%= categories_path %>'
+        },
+        limit: 4
     });
+
+    // kicks off the loading/processing of `local` and `prefetch`
+    categories.initialize();
+    var footer_link = '<a href="<%= new_category_path %>" data-remote="true" data-toggle="modal"' +
+            'data-target="remote_form_modal" data-modal-title="' +
+            i18n.events.form.new_cat_button + '">' +
+            i18n.events.form.new_cat_button +
+            '</a>';
+    $category_typeahead = $('#category-typeahead');
+    $category_typeahead.typeahead({
+        hint: false,
+        highlight: true,
+        minLength: 0
+    },
+    {
+        name: 'categories',
+        displayKey: 'key',
+// `ttAdapter` wraps the suggestion engine in an adapter that
+// is compatible with the typeahead jQuery plugin
+        source: categories.ttAdapter(),
+        templates: {
+            //header and footer log is stored in the events helper to enable reuse
+            header: '<%= typeahead_header %>'.replace('_value_', i18n.events.form.typeahead_header),
+            footer: '<%= typeahead_footer %>'.replace('_value_', footer_link)
+        }
+    });
+    $category_typeahead.on('typeahead:opened', function(){
+        $category_typeahead.attr('placeholder', '');
+        modalFormListener();
+    });
+    $category_typeahead.on('typeahead:selected', function(){
+        addToTarget('selected-categories', $category_typeahead.typeahead('val'));
+        $category_typeahead.typeahead('val', '');
+    });
+}
+
+function activateFormListeners() {
+    modalFormListener();
     //$('a[data-target]').on("ajax:success", showAjaxResponse);
     $('.combobox').click(function(){
         $(this).siblings('.dropdown-toggle').click();
@@ -58,6 +107,12 @@ function activateFormListeners() {
         $(hide_target).addClass('hidden');
     });
 }
+function modalFormListener() {
+    $('a[data-target="remote_form_modal"]').on("ajax:success", function (event, xhr) {
+        loadRemoteModal(this, event, xhr);
+    });
+}
+
 function activateFormPlugins() {
     $('[data-toggle="popover"]').popover();
     $('.combobox').combobox();
@@ -196,9 +251,12 @@ function suggestionsAvailable(input, typeahead_selector){
  */
 function createCategoryHash(){
     categoryHash = {};
-    $('select#event-category-dummy option').map(function() {
-        categoryHash[$(this).val()] = $(this).text();
+    $.getJSON('<%= categories_path %>', function(data){
+        $.each(data, function(i, obj){
+            categoryHash[obj.key] = obj.id;
+        });
     });
+    return categoryHash;
 }
 
 /**
@@ -220,8 +278,8 @@ function addToTarget(target, val) {
     }
 
     // create label and input using Rails helper
-    function createTag(id) {
-        var val = categoryHash[id];
+    function createTag(val) {
+        var id = categoryHash[val];
         var tag = '<%= category_tag %>';
         return tag.replace('_id_', id, 'gm')
                 .replace('_value_', val, 'gm');
@@ -236,8 +294,8 @@ function addToTarget(target, val) {
     }
     // guard clauses to make sure we're only dealing
     // with valid ids that haven't already been added
+    if (typeof val === 'undefined') return;
     if (!val in categoryHash) return;
-    if (!val.isNumeric()) return;
     if (alreadyAdded(val)) return;
     appendCategoryLabel(val);
     categoryTagListener();
