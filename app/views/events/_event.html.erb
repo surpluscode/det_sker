@@ -21,13 +21,13 @@
             <% end %>
         </span>
    	</span>
-    <span class="col-xs-4 col-md-2">
+    <span class="col-xs-5 col-md-2">
       <a href="<%= url_for(event.location) %>"title="<%= event.location.description.truncate(120) %>"
          data-toggle='popover' data-placement='top' data-trigger="click hover focus" data-html="true">
         <%= event.location.display_name %>
       </a>
     </span>
-    <span class="col-xs-4 col-md-2">
+    <span class="col-xs-5 col-md-2">
           <% event.categories.each do |cat| %>
             <span class="event-category"><%= cat.key.titleize %></span>
           <% end %>
@@ -64,3 +64,4 @@
     </div>
     </div>
 </div>
+<div class="row"></div>
