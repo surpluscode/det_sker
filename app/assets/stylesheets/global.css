@@ -23,6 +23,10 @@
 	color: #FFF !important;
 }
 
+.login-button {
+	text-align: right;
+}
+
 
 /* Bootstrap overrides */
 
