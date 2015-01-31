@@ -5,58 +5,75 @@ var cat_typeahead_selector = '.event_categories ul.typeahead';
 
 $(document).ready(function() {
     activateFormPlugins();
-    initTypeahead();
+    initTypeaheads();
     activateFormListeners();
     createCategoryHash();
-
-
 });
 
+function initTypeaheads(){
+    initTypeahead('#category-typeahead');
+    initTypeahead('#location-typeahead');
+}
 
-function initTypeahead(){
+
+//create the given typeahead based on a selector
+// the selected element must have the correct data elements
+// TODO: Remove all the alert box stuff that's no longer in use.
+function initTypeahead(selector){
+    var $typeahead = $(selector);
+    var data = $typeahead.data();
     // constructs the suggestion engine
-    var categories = new Bloodhound({
+    var engine = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('key'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-// `states` is an array of state names defined in "The Basics"
         prefetch: {
-            url: '<%= categories_path %>'
+            url: data.apiPath
         },
         limit: 4
     });
 
+    //ensure the data we've got is always the most recent
+    engine.clearPrefetchCache();
     // kicks off the loading/processing of `local` and `prefetch`
-    categories.initialize();
-    var footer_link = '<a href="<%= new_category_path %>" data-remote="true" data-toggle="modal"' +
+    engine.initialize();
+
+    // the footer link is itself used to call a modal form
+    var footer_link =
+            '<a href="' + data.remotePath + '" data-remote="true" data-toggle="modal"' +
             'data-target="remote_form_modal" data-modal-title="' +
-            i18n.events.form.new_cat_button + '">' +
-            i18n.events.form.new_cat_button +
+            data.label + '">' +
+            data.label +
             '</a>';
-    $category_typeahead = $('#category-typeahead');
-    $category_typeahead.typeahead({
+
+    $typeahead.typeahead({
         hint: false,
         highlight: true,
         minLength: 0
     },
     {
-        name: 'categories',
-        displayKey: 'key',
-// `ttAdapter` wraps the suggestion engine in an adapter that
-// is compatible with the typeahead jQuery plugin
-        source: categories.ttAdapter(),
+        displayKey: data.displayKey,
+        // `ttAdapter` wraps the suggestion engine in an adapter that
+        // is compatible with the typeahead jQuery plugin
+        source: engine.ttAdapter(),
         templates: {
             //header and footer log is stored in the events helper to enable reuse
-            header: '<%= typeahead_header %>'.replace('_value_', i18n.events.form.typeahead_header),
+            header: '<%= typeahead_header %>'.replace('_value_', data.header),
             footer: '<%= typeahead_footer %>'.replace('_value_', footer_link)
         }
     });
-    $category_typeahead.on('typeahead:opened', function(){
-        $category_typeahead.attr('placeholder', '');
-        modalFormListener();
+    $typeahead.on('typeahead:opened', function(){
+        $typeahead.attr('placeholder', '');
+        modalFormListener(); //attach listener to the link as it is created
     });
-    $category_typeahead.on('typeahead:selected', function(){
-        addToTarget('selected-categories', $category_typeahead.typeahead('val'));
-        $category_typeahead.typeahead('val', '');
+    $typeahead.on('typeahead:selected', function(event, chosen){
+        // typeaheads with multiple values need a bit of extra logic
+        // to create labels etc.
+        if (data.multiple) {
+            addToTarget(data.target, $typeahead.typeahead('val'));
+            $typeahead.typeahead('val', '');
+        } else {
+            $(data.target).val(chosen.id)
+        }
     });
 }
 
@@ -152,6 +169,8 @@ function loadRemoteModal(context, event, xhr) {
     function handleSuccess(event, xhr) {
         $target.find('.modal-body').html(xhr);
         // put the id into the correct field
+        initTypeahead();
+
         var update_field = '[name="' + $this.attr('data-update-field') + '"]';
         $(update_field).val(xhr.id);
         // put the name into the input field and disable it
@@ -177,8 +196,9 @@ function loadRemoteModal(context, event, xhr) {
 /**
  * Reusable function to create alert boxes with link texts
  * returns an object with attributes link_id, html_id, and html.
-* */
+ * */
 function createAlertBox(value, text, link, title, update_field, update_val) {
+    //TODO: Deprecated - remove
     text = text.replace('<value>', value);
     this.link_id = 'y' + Date.now();
     var create_link = '<a id="' + this.link_id + '" '

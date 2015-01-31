@@ -27,7 +27,20 @@
         <div class="col-xs-12 col-sm-5">
           <div class="input select required form-group event_categories">
           <%= f.label :categories %>
-          <input id="category-typeahead" class="typeahead" type="text" placeholder="<%= t '.choose_category' %>">
+            <%= text_field_tag(
+                'category-typeahead', nil, placeholder: t('.choose_category'), class: 'typeahead',
+                data: {
+                        api_path: categories_path,
+                        remote_path: new_category_path,
+                        label: t('.new_cat_button'),
+                        display_key: 'key',
+                        header: t('.typeahead_header'),
+                        target: 'selected-categories',
+                        multiple: true
+                }
+            )
+            %>
+
           <span id="new-category-box">
             <% @event.categories.each do |cat| %>
               <%= category_tag(cat.id, cat.key) %>
@@ -38,11 +51,22 @@
           <input name="event[category_ids][]" id="category-ids" class="hidden" value=""/>
         </div>
         <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-            <%= f.association :location, collection: Location.all.sort,
-                              label_method: :display_name,
-                              input_html: { class: 'combobox location-combobox' }
-            %>
-          <span id="new-location-box"></span>
+          <%= f.label :location %>
+          <%= text_field_tag(
+                      'location-typeahead', nil, placeholder: t('.choose_location'), class: 'typeahead',
+                      data: {
+                              api_path: locations_path,
+                              remote_path: new_location_path,
+                              label: t('.create_location'),
+                              display_key: 'name',
+                              header: t('.typeahead_header'),
+                              target: '#event_location_id'
+                      }
+              )
+          %>
+
+        <%= f.input :location_id, as: :hidden %>
+
         </div>
     </div>
 

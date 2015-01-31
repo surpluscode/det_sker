@@ -65,6 +65,8 @@ da:
       choose_category: "Vælg en eller flere kategorier"
       typeahead_header: 'Tast for at finde kategorier: '
       typeahead_footer: 'Opret kategori'
+      choose_location: "Vælg lokation"
+      create_location: "Opret lokation"
     event:
       price: "Pris"
       start_time: "Starter"
