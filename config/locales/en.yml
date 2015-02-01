@@ -65,6 +65,8 @@ en:
       typeahead_header: 'Type to find categories: '
       typeahead_footer: 'Create category'
       create_location: "Create location"
+      empty_location: "No matching location found"
+      empty_category: "No matching category found"
     event:
       price: "Price"
       start_time: "Starts"

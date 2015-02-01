@@ -36,7 +36,8 @@
                         display_key: 'key',
                         header: t('.typeahead_header'),
                         target: 'selected-categories',
-                        multiple: true
+                        multiple: true,
+                        empty_message: t('.empty_category')
                 }
             )
             %>
@@ -60,7 +61,8 @@
                               label: t('.create_location'),
                               display_key: 'name',
                               header: t('.typeahead_header'),
-                              target: '#event_location_id'
+                              target: '#event_location_id',
+                              empty_message: t('.empty_location')
                       }
               )
           %>

@@ -58,7 +58,8 @@ function initTypeahead(selector){
         templates: {
             //header and footer log is stored in the events helper to enable reuse
             header: '<%= typeahead_header %>'.replace('_value_', data.header),
-            footer: '<%= typeahead_footer %>'.replace('_value_', footer_link)
+            footer: '<%= typeahead_element %>'.replace('_value_', footer_link),
+            empty: '<%= typeahead_element %>'.replace('_value_', data.emptyMessage)
         }
     });
     $typeahead.on('typeahead:opened', function(){

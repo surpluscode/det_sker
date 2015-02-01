@@ -67,6 +67,8 @@ da:
       typeahead_footer: 'Opret kategori'
       choose_location: "Vælg lokation"
       create_location: "Opret lokation"
+      empty_location: "Ingen lokation fundet"
+      empty_category: "Ingen kategori fundet"
     event:
       price: "Pris"
       start_time: "Starter"

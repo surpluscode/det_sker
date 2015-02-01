@@ -73,7 +73,7 @@ module EventsHelper
     end
   end
 
-  def typeahead_footer(text = '_value_')
+  def typeahead_element(text = '_value_')
     content_tag(:div) do
       content_tag(:span, class: 'use-styles') do
         text
