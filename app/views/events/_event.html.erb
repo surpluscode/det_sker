@@ -4,20 +4,15 @@
      data-location="<%= event.location.display_name.parameterize('_') %>"
      data-role="event" data-parent="<%= parent_id if defined? parent_id%>">
   <div class="row">
-    <span class="col-xs-2 col-md-2 col-md-push-9">
-          <% event.categories.each do |cat| %>
-            <span class="event-category"><%= cat.key.titleize %></span>
-          <% end %>
-    </span>
   </div>
   <span class="event-topbar_js">
 
-       <span class="col-xs-12 col-md-8 col-md-push-1 event-title">
+       <span class="col-xs-12 col-md-7 col-md-push-1 event-title">
        	<%= title_display(event) %>
 	   </span>
 
 
-	    <span class="col-xs-1 col-md-1 col-md-pull-8">
+	    <span class="col-xs-2 col-md-1 col-md-pull-7">
             <%# In the frontpage context we don't show a date, otherwise, do. %>
             <% if defined? show_date %>
                 <%= format_datetime(event.start_time)  %>
@@ -26,11 +21,16 @@
             <% end %>
         </span>
    	</span>
-    <span class="col-xs-2 col-md-2">
+    <span class="col-xs-5 col-md-2">
       <a href="<%= url_for(event.location) %>"title="<%= event.location.description.truncate(120) %>"
          data-toggle='popover' data-placement='top' data-trigger="click hover focus" data-html="true">
         <%= event.location.display_name %>
       </a>
+    </span>
+    <span class="col-xs-5 col-md-2">
+          <% event.categories.each do |cat| %>
+            <span class="event-category"><%= cat.key.titleize %></span>
+          <% end %>
     </span>
   <% if current_user && current_user.can_edit?(event) %>
       <div class="pull-right">
@@ -56,11 +56,12 @@
 		<div class="col-xs-12 col-md-5 col-md-offset-1">
 	      <p><strong><%= t('.start_time') %> </strong><%= format_datetime(event.start_time) %></p>
     	  <p><strong><%= t('.end_time') %> </strong><%= format_datetime(event.end_time) %></p>
-          <p><strong><%= event.location.street_address %></strong></p>
-          <p><strong><%= event.location.town %></strong></p>
-          <% if event.price.present? %>
-            <p><strong>Pris: </strong><%= event.price %></p>
-          <% end %>
-        </div>
+        <p><strong><%= event.location.street_address %></strong></p>
+        <p><strong><%= event.location.town %></strong></p>
+        <% if event.price.present? %>
+          <p><strong>Pris: </strong><%= event.price %></p>
+        <% end %>
+    </div>
     </div>
 </div>
+<div class="row"></div>
