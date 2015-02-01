@@ -61,6 +61,14 @@ da:
       new_location_title: "Ny lokation"
       location_created: "Sted oprettet!"
       enable_price: "Koster din begivenhed noget?"
+      new_cat_button: "Opret ny kategori"
+      choose_category: "Vælg en eller flere kategorier"
+      typeahead_header: 'Tast for at finde kategorier: '
+      typeahead_footer: 'Opret kategori'
+      choose_location: "Vælg lokation"
+      create_location: "Opret lokation"
+      empty_location: "Ingen lokation fundet"
+      empty_category: "Ingen kategori fundet"
     event:
       price: "Pris"
       start_time: "Starter"
@@ -106,6 +114,10 @@ da:
         postcode: Postnummer
         town: By
         description: Beskrivelse
+      category:
+        key: Navn
+        description: Beskrivelse
+        submit: ajkldfjklajdfl
     placeholders:
       event:
         title: Navnet af begivenheden
@@ -144,7 +156,23 @@ da:
         new_instructions: "Har du ikke modtaget anmodning om bekræftelse?"
         create_account: "Opret konto"
   helpers:
+    submit:
+      category:
+        create: "Opret kategori"
+        update: "Gem ændringer"
     label:
       user:
-       username: "Brugernavn"
-       password_confirmation: "Password igen"
+       username: Brugernavn
+       password_confirmation: Password igen
+  devise:
+    confirmations:
+      new:
+        header: "Send bekræftelses instruktioner igen"
+  devise:
+    sessions:
+      new:
+        sign_in: "Log ind"
+        remember_me: "Husk mig"
+  categories:
+    created:
+      message: "Kategori %{name} oprettet!"

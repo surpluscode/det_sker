@@ -18,4 +18,5 @@
 //= require moment/da
 
 //= require bootstrap-datetimepicker
+//= require typeahead.bundle.min
 //= require_tree .

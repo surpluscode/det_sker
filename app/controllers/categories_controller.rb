@@ -1,12 +1,13 @@
 class CategoriesController < ApplicationController
 
   def index
-    @categories = Category.all
+    render json: Category.all
   end
 
 
   def new
     @category = Category.new
+    render layout: nil
   end
 
   def show
@@ -16,10 +17,10 @@ class CategoriesController < ApplicationController
     @category = Category.new(whitelist_params)
     respond_to do |format|
       if @category.save
-        format.html { redirect_to root_path, notice: 'Category created successfully' }
-        format.json { render json: @category }
+        format.html { render 'created.html.erb', layout: nil }
+        format.json { render json: @category, status: :created }
       else
-        format.html { render_action 'new' }
+        format.html { render action: 'new' }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end

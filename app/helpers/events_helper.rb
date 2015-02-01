@@ -64,4 +64,20 @@ module EventsHelper
       content.html_safe
     end
   end
+
+  def typeahead_header(text = '_value_')
+    content_tag(:div) do
+      content_tag :strong, class: 'use-styles' do
+        text
+      end
+    end
+  end
+
+  def typeahead_element(text = '_value_')
+    content_tag(:div) do
+      content_tag(:span, class: 'use-styles') do
+        text
+      end
+    end
+  end
 end

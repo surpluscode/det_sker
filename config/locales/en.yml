@@ -58,8 +58,15 @@ en:
       new_location: "<value> not found, will you create a new location?"
       new_location_title: "New location"
       location_created: "Location created successfully!"
-      choose_location: "Choose location"
+      choose_location: Choose location
       enable_price: "Does your event have a price?"
+      new_cat_button: "Create new category"
+      choose_category: "Choose one or more categories"
+      typeahead_header: 'Type to find categories: '
+      typeahead_footer: 'Create category'
+      create_location: "Create location"
+      empty_location: "No matching location found"
+      empty_category: "No matching category found"
     event:
       price: "Price"
       start_time: "Starts"
@@ -119,3 +126,6 @@ en:
         forgot_password: "Forgot your password?"
         new_instructions: "Didn't receive confirmation instructions?"
         create_account: "Create account"
+  categories:
+    created:
+      message: "Category %{name} created!"
