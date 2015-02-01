@@ -18,7 +18,6 @@ function initTypeaheads(){
 
 //create the given typeahead based on a selector
 // the selected element must have the correct data elements
-// TODO: Remove all the alert box stuff that's no longer in use.
 function initTypeahead(selector){
     var $typeahead = $(selector);
     var data = $typeahead.data();
@@ -80,39 +79,7 @@ function initTypeahead(selector){
 
 function activateFormListeners() {
     modalFormListener();
-    //$('a[data-target]').on("ajax:success", showAjaxResponse);
-    $('.combobox').click(function(){
-        $(this).siblings('.dropdown-toggle').click();
-    });
 
-    $('input.category-combobox').keyup(function(){
-        // if suggestions are available, remove the create box
-        // if no suggestions are available, suggest category creation
-        if (suggestionsAvailable(this, cat_typeahead_selector)) {
-            $('#new-category-box').find('div').remove();
-        } else if (this.value.length > 1) {
-            createSuggestionLink.call(this);
-        }
-    });
-    $('input.location-combobox').keyup(function(){
-        if (!suggestionsAvailable(this, '.event_location ul.typeahead')
-                && (this.value.length > 1)) {
-            createLocationSuggestionLink(this,
-                    '#new-location-box',
-                            '<%= new_location_path %>'
-                            + '?locale=' + window.locale,
-                    i18n.events.form.new_location,
-                    i18n.events.form.new_location_title,
-                    "event[location_id]",
-                    'input.location-combobox',
-                    '.event_location ul.typeahead'
-            );
-        }
-    });
-    $('.category-combobox').change(function(){
-        addToTarget('selected-categories', this.value);
-        $(this).val('');
-    });
     $('#event_start_time').on('dp.change', function(e){
         $('#event_end_time').data("DateTimePicker").setMinDate(e.date);
         $('#event_end_time').data("DateTimePicker").setDate(e.date);
@@ -133,7 +100,6 @@ function modalFormListener() {
 
 function activateFormPlugins() {
     $('[data-toggle="popover"]').popover();
-    $('.combobox').combobox();
     $('[data-function="datetime-picker"]').datetimepicker({
         language: locale,
         minuteStepping: 5
@@ -195,81 +161,12 @@ function loadRemoteModal(context, event, xhr) {
 }
 
 /**
- * Reusable function to create alert boxes with link texts
- * returns an object with attributes link_id, html_id, and html.
- * */
-function createAlertBox(value, text, link, title, update_field, update_val) {
-    //TODO: Deprecated - remove
-    text = text.replace('<value>', value);
-    this.link_id = 'y' + Date.now();
-    var create_link = '<a id="' + this.link_id + '" '
-            + 'class="alert-link" href="' + link + '" '
-            + 'data-value="' + value + '" '
-            + 'data-remote="true" '
-            + 'data-modal-title="' + title + '" '
-            + 'data-update-field="' + update_field + '" '
-            + 'data-update-val="' + update_val + '">'
-            + text + '</a>';
-    this.html_id = 'x' + Date.now();
-    this.html = '<div class="alert alert-info alert-dismissible" id="' + this.html_id
-            + '" role="alert"><button type="button" class="close" data-dismiss="alert">'
-            + '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> '
-            + create_link + '</div>';
-}
-
-function createLocationSuggestionLink(input, target, link, text, title, update_field, update_val, typeahead){
-    var alertbox = new createAlertBox(input.value, text, link, title, update_field, update_val);
-    $(target).html(alertbox.html);
-    $(target).removeClass('hidden');
-    $('#' + alertbox.link_id).unbind().on('ajax:success', function(event, xhr){
-        loadRemoteModal(this, event, xhr);
-        $('#' + alertbox.html_id).remove();
-
-    });
-    $(update_val).keyup(function(){
-        if (suggestionsAvailable(this, typeahead)){
-            $('#' + alertbox.html_id).remove();
-        }
-    });
-}
-
-/**
- * Give the user a link to create a category
- * and handle clicks on this link
- */
-function createSuggestionLink() {
-    // add the created category to the view
-    function createCategory(data) {
-        categoryHash[data.id] = data.key;
-        addToTarget('selected-categories', data.id);
-        $('#' + alertbox.html_id).remove();
-    }
-
-    var alertbox = new createAlertBox(this.value, i18n.events.form.new_category);
-    $('#new-category-box').html(alertbox.html);
-    $('#new-category-box').removeClass('hidden');
-    $('#' + alertbox.link_id).click(function () {
-        // post create to our category controller and update the category hash with the values returned
-        $.post('<%= categories_path %>', { 'category[key]': $(this).attr('data-value')}, createCategory, 'json');
-        return false;
-    });
-}
-
-
-/**
- * Check to see if popup suggestions are available
- * @params input - the current input form
- * @params typeahead_selector - a selector to find
- * the current typeahead
- * @returns {*|jQuery}
- */
-function suggestionsAvailable(input, typeahead_selector){
-    return $(input).is(':focus') && $(typeahead_selector).is(':visible');
-}
-/**
  * Build a hash of categories with their ids as
  * keys and their names as values.
  */
+// TODO: this method could probably be refactored to
+// fit within the typeahead functionality, thus removing
+// an extra JSON call
 function createCategoryHash(){
     categoryHash = {};
     $.getJSON('<%= categories_path %>', function(data){
