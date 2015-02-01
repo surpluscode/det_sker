@@ -18,6 +18,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         format.html { render 'created.html.erb', layout: nil }
+        format.json { render json: @category, status: :created }
       else
         format.html { render action: 'new' }
         format.json { render json: @category.errors, status: :unprocessable_entity }
