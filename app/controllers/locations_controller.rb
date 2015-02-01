@@ -4,6 +4,9 @@ class LocationsController < ApplicationController
 
   def index
     @locations = Location.all
+    # we use ruby sort rather than sql
+    # because we can't be sure the places have a name
+    @locations.sort_by!(&:display_name)
     respond_to do |format|
       format.json { render json: @locations }
       format.html
