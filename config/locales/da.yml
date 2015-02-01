@@ -34,6 +34,7 @@ da:
       about: "Om"
       my_page: "Mine begivenheder"
       calendar: "Kalender"
+      locations: "Lokationer"
   calendar:
     index:
       new_event: "Opret ny begivenhed"

@@ -34,6 +34,7 @@ en:
       about: "About"
       my_page: "My events"
       calendar: "Calendar"
+      locations: "Locations"
   calendar:
     index:
       new_event: "New Event"
