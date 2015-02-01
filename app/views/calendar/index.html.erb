@@ -19,7 +19,7 @@
 <% @calendar.days.each do |day| %>
     <%= render partial: 'day', object: day, locals: { id: day.date}  %>
 <% end %>
-
+</br>
 <div class="row center-block end-of-events">
     <p class="text-center text-uppercase"><%= t '.end_of_events' %></p>
 </div>

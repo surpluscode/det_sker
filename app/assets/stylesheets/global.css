@@ -7,14 +7,24 @@
 	font-size: 60px;
 }
 
+.menu-text {
+	font-family: Helvetica, Arial;
+	font-size: 20px;
+	letter-spacing: 3px;
+}
+
 .tagline-text {
 	text-align: center;
-	font-size: 10px;
+	font-size: 20px;
 	text-transform: uppercase;
 }
 
 .create-link a  {
-	color: #FFF !important
+	color: #FFF !important;
+}
+
+.login-button {
+	text-align: right;
 }
 
 
@@ -33,7 +43,6 @@ h2 {
 form {
 	padding: 10;
 }
-
 
 .label-primary {
 	font-size: 13px;

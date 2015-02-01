@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>DetSker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -18,10 +19,10 @@
 <body>
 <div class="container">
 	<div class="row">
-		<div class="lang-selection col-xs-4 col-sm-2">
+		<div class="lang-selection col-xs-6">
 			<%= render partial: 'layouts/lang_selector' %>
 		</div>
-		<div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-6">
+		<div class="login-button col-xs-6">
 	  		<% if current_user %>
               <%= link_to t('.my_page'), current_user %>
               <%= link_to t('.logout'), destroy_user_session_path, method: :delete %>
@@ -50,12 +51,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Duk op</a>
+      <a class="navbar-brand menu-text" href="#">Duk op</a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><%= link_to t('.calendar'), root_path %></li>
-          <li><%= link_to t('.about'), page_path('about') %></li>
+          <li class="menu-text"><%= link_to t('.calendar'), root_path %></li>
+          <li class="menu-text"><%= link_to t('.about'), page_path('about') %></li>
         </ul>
       </div>
 

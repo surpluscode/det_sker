@@ -110,7 +110,7 @@ da:
         price: Pris
       location:
         name: Navn
-        street_address: Gadeadress
+        street_address: Gadeadresse
         postcode: Postnummer
         town: By
         description: Beskrivelse
@@ -130,25 +130,29 @@ da:
   anonymous_user:
     new:
       title: "Opret engangskonto"
-      explanation: "Du er ved at oprette en engangskonto. \
-      Det vil sige at en bruger oprettes med den brugernavn du giver. \
-      Der bliver ikke gemt mere oplysning end det. \
-      Da kontoen ikke er forbundet nogle email adress, \
-      kan du ikke logge ind til den igen.  \
-      Derfor, kan du ikke redigere eller slette indhold \
-      du opretter mens du er logget ind til denne konto efter du er logget ud."
+      explanation: |
+        Du er ved at oprette en engangskonto.
+        Det vil sige, at en bruger oprettes med det brugernavn, du giver.
+        Der bliver ikke gemt flere oplysninger end det.
+        Da kontoen ikke er forbundet nogle emailadresse,
+        kan du ikke logge på den igen.
+        Derfor kan du ikke redigere eller slette indhold,
+        du opretter mens du er logget på denne konto, efter du er logget ud.
       create: "Opret konto"
   member_since: "Medlem siden"
   general:
     permission_denied: "Du er ikke tilladt at bruge denne side."
   devise:
+    confirmations:
+        new:
+          header: "Send bekræftelsesinstruktioner igen"
     sessions:
       new:
         sign_in: "Log ind"
         remember_me: "Husk mig"
     shared:
       links:
-        forgot_password: "Glemt din password?"
+        forgot_password: "Glemt dit password?"
         new_instructions: "Har du ikke modtaget anmodning om bekræftelse?"
         create_account: "Opret konto"
   helpers:
