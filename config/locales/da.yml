@@ -35,6 +35,7 @@ da:
       my_page: "Mine begivenheder"
       calendar: "Kalender"
       locations: "Lokationer"
+      create_account: "Opret konto"
   calendar:
     index:
       new_event: "Opret ny begivenhed"
@@ -177,3 +178,10 @@ da:
   categories:
     created:
       message: "Kategori %{name} oprettet!"
+  accounts:
+    standard:
+      title: 'Fast bruger'
+      explanation: 'Til dig som vil oprette og redigere <br/>flere begivenheder.'
+    onetime:
+      title: "Engangs bruger"
+      explanation: "Til dig som ikke vil have din email <br/>bliver gemt"

@@ -35,6 +35,7 @@ en:
       my_page: "My events"
       calendar: "Calendar"
       locations: "Locations"
+      create_account: "Create account"
   calendar:
     index:
       new_event: "New Event"
@@ -130,3 +131,10 @@ en:
   categories:
     created:
       message: "Category %{name} created!"
+  accounts:
+    standard:
+      title: "Permanent user"
+      explanation: "If you want to create and edit multiple events"
+    onetime:
+      title: "One time user"
+      explanation: "If you don't want to share your email address"

@@ -28,6 +28,7 @@
               <%= link_to t('.logout'), destroy_user_session_path, method: :delete %>
   	  		<% else %>
       			<%= link_to t('.login'), user_session_path %>
+      			<%= link_to t('.create_account'), page_path('new_account') %>
   	  		<% end %>
 		</div>
 
