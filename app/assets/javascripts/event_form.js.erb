@@ -20,6 +20,8 @@ function initTypeaheads(){
 // the selected element must have the correct data elements
 function initTypeahead(selector){
     var $typeahead = $(selector);
+    // guard clause to prevent errors when the object isn't present
+    if (!$typeahead.length) return;
     var data = $typeahead.data();
     // constructs the suggestion engine
     var engine = new Bloodhound({
