@@ -24,11 +24,17 @@
 		</div>
 		<div class="login-button col-xs-6">
 	  		<% if current_user %>
-              <%= link_to t('.my_page'), current_user %>
-              <%= link_to t('.logout'), destroy_user_session_path, method: :delete %>
+              <%= link_to t('.my_page'), current_user, class: 'btn btn-primary' %>
+              <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-danger' do %>
+                  <%= bootstrap_glyphicon('off') %>
+                  <%= t('.logout') %>
+              <% end %>
   	  		<% else %>
-      			<%= link_to t('.login'), user_session_path %>
-      			<%= link_to t('.create_account'), page_path('new_account') %>
+              <%= link_to t('.create_account'), page_path('new_account'), class: 'btn btn-primary' %>
+              <%= link_to user_session_path, class: 'btn btn-success' do %>
+                  <%= bootstrap_glyphicon('off') %>
+                  <%= t('.login') %>
+              <% end %>
   	  		<% end %>
 		</div>
 
