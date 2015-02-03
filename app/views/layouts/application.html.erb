@@ -67,6 +67,9 @@
           <li class="menu-text"><%= link_to t('.calendar'), root_path %></li>
           <li class="menu-text"><%= link_to t('.about'), page_path('about') %></li>
           <li class="menu-text"><%= link_to t('.locations'), locations_path %></li>
+          <% if current_user && current_user.is_admin? %>
+            <li class="menu-text"><%= link_to t('.users'), users_path %></li>
+          <% end %>
         </ul>
       </div>
 

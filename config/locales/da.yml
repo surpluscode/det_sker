@@ -36,6 +36,7 @@ da:
       calendar: "Kalender"
       locations: "Lokationer"
       create_account: "Opret konto"
+      users: "Brugere"
   calendar:
     index:
       new_event: "Opret ny begivenhed"

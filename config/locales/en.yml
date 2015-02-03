@@ -36,6 +36,7 @@ en:
       calendar: "Calendar"
       locations: "Locations"
       create_account: "Create account"
+      users: "Users"
   calendar:
     index:
       new_event: "New Event"
