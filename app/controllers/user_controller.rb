@@ -4,8 +4,13 @@ class UserController < ApplicationController
   before_action :authorised_user?, only: [:edit, :update, :destroy]
   before_action :admin_user?, only: :make_admin
 
+  # We don't do the case insensitive search
+  # in SQL as it is implementation dependent,
+  # i.e. different from sqlite3 to postgres.
+  # Therefore we do an initial sort in sql
+  # and a subsequent one in Ruby.
   def index
-    @users = User.all
+    @users = User.order(:username).sort_by { |u| u.username.downcase }
   end
 
   def new
