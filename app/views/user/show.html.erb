@@ -1,7 +1,6 @@
 <div>
-  <p><%= @user.username %></p>
+  <h2><%= @user.username %></h2>
   <p><%= "#{t('member_since')}: #{format_date(@user.created_at.to_date)}" %></p>
-  <p><%= link_to('Edit', edit_user_path(@user)) if current_user && current_user.can_edit?(@user) %></p>
   <% if !@user.is_admin? && current_user && current_user.is_admin? %>
       <p><%= button_to('Make Admin User', make_admin_user_path(@user), method: :patch)  %></p>
   <% end %>
