@@ -80,4 +80,11 @@ module EventsHelper
       end
     end
   end
+
+  # Generic method to create glyphicon icons
+  # supply only the last component of the icon name
+  # e.g. 'off', 'cog' etc
+  def bootstrap_glyphicon(icon)
+    content_tag(:span, nil, class: "glyphicon glyphicon-#{icon}").html_safe
+  end
 end
