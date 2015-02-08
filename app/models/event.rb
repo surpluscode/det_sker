@@ -14,6 +14,12 @@ class Event < ActiveRecord::Base
     start_time <=> other.start_time
   end
 
+  # the name method is an alias used
+  # by the page title helper
+  def name
+    title
+  end
+
   def self.current_events
     self.includes(:user, :location, :comments).order(:start_time).where('end_time > ?', DateTime.now)
   end

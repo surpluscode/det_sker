@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  app_name: 'Duk op'
   hello: "Hello world"
   date:
     formats:
@@ -140,3 +141,17 @@ en:
       title: "One time user"
       explanation: "If you don't want to share your email address"
     title: "Choose the account type that suits you"
+  titles:
+    events:
+      new: 'Create Event'
+      create: 'Create Event'
+      edit: 'Editing'
+      update: 'Editing'
+    locations:
+      index: 'Locations'
+      edit: 'Editing'
+    user:
+      index: 'Users'
+      show: 'User'
+    pages:
+      about: 'About'

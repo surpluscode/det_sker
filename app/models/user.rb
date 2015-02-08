@@ -21,4 +21,10 @@ class User < ActiveRecord::Base
     self.save
   end
 
+  # the name method is an alias used
+  # by the page title helper
+  def name
+    username
+  end
+
 end

@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 da:
+  app_name: 'Duk op'
   hello: "Hello world"
   date:
     formats:
@@ -187,3 +188,17 @@ da:
       title: "Engangs bruger"
       explanation: "Til dig som ikke vil have din email <br/>bliver gemt"
     title: "Vælg konto typen der passer dit behov"
+  titles:
+    events:
+      new: 'Opret begivenhed'
+      create: 'Opret begivenhed'
+      edit: 'Redigerer'
+      update: 'Redigerer'
+    locations:
+      index: 'Lokationer'
+      edit: 'Redigerer'
+    user:
+      index: 'Brugere'
+      show: 'Bruger'
+    pages:
+      about: 'Om'
