@@ -202,3 +202,7 @@ da:
       show: 'Bruger'
     pages:
       about: 'Om'
+    registrations:
+      new: 'Opret konto'
+    sessions:
+      new: 'Log ind'
