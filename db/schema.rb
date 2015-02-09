@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150209182230) do
+ActiveRecord::Schema.define(version: 20150209205229) do
 
   create_table "categories", force: true do |t|
     t.string   "key"
@@ -50,8 +50,12 @@ ActiveRecord::Schema.define(version: 20150209182230) do
     t.text     "long_description"
     t.integer  "user_id"
     t.integer  "location_id"
-    t.boolean  "comments_enabled",  default: false
+    t.boolean  "comments_enabled",     default: false
     t.string   "link"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "events", ["location_id"], name: "index_events_on_location_id"
