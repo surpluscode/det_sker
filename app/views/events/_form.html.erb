@@ -83,6 +83,13 @@
                 function: 'datetime-picker', 'date-format' => 'DD/MM/YYYY HH:mm' }} %>
         </div>
     </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <%= f.input :link, as: :url %>
+      </div>
+    </div>
+
     <%# event price field should only be shown a) if there is already a price
     or b) if the user has checked this box to say that there is a price
     Note the javascript hooks on the data elements. %>
@@ -96,6 +103,7 @@
       </label>
     </div>
     <% end %>
+
     <div class="row">
       <div class="col-xs-12">
         <% is_visible =  @event.price.present? ? ' ' : 'hidden' %>

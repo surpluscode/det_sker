@@ -90,6 +90,8 @@ da:
       new_event: "Opret begivenhed"
     event_updated: "Opdatering fuldført"
     event_created: "Begivenhed oprettet"
+    show:
+      link: "Mere info"
   comments:
     form:
       writing_as: "Skriver som"
@@ -131,6 +133,7 @@ da:
         start_time: Hvornår starter det?
         end_time: Hvornår slutter det?
         price: Hvor meget koster det?
+        link: Indsætte et link hvis det er relevant...
   anonymous_user:
     new:
       title: "Opret engangskonto"

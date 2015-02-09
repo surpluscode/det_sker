@@ -88,6 +88,8 @@ en:
       new_event: "New event"
     event_updated: "Event updated"
     event_created: "Event created"
+    show:
+      link: "More info"
   comments:
     form:
       writing_as: "Writing as"
@@ -110,6 +112,7 @@ en:
         start_time: When does it start?
         end_time: When does it finish?
         price: How much does it cost?
+        link: Insert a link if relevant...
   anonymous_user:
     new:
       title: "Create a one time account"
