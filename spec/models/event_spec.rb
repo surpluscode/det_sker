@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe Event do
   before(:each) do
-    @party_details = {title: 'Massive party', short_description: 'The Best Party Ever!',
-                   start_time: DateTime.new, end_time: DateTime.new, location_id: '1',
-                  user_id: '1'}
+    @party_details = {
+        title: 'Massive party', short_description: 'The Best Party Ever!',
+        start_time: DateTime.new, end_time: DateTime.new, location_id: '1',
+        user_id: '1'
+    }
   end
   it 'should create an event' do
     event = Event.create(@party_details)
@@ -57,5 +59,10 @@ describe Event do
     [tomorrow, today].sort.first.should eql today
   end
 
+  it 'has a link field' do
+    e = Event.new
+    e.link = 'http://example.com'
+    expect(e.link).to eql 'http://example.com'
+  end
 
 end

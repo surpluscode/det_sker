@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723202134) do
+ActiveRecord::Schema.define(version: 20150209182230) do
 
   create_table "categories", force: true do |t|
     t.string   "key"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140723202134) do
     t.integer  "user_id"
     t.integer  "location_id"
     t.boolean  "comments_enabled",  default: false
+    t.string   "link"
   end
 
   add_index "events", ["location_id"], name: "index_events_on_location_id"
