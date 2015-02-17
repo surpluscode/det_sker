@@ -114,6 +114,7 @@ da:
         start_time: Starter
         end_time: Slutter
         price: Pris
+        picture: Billede
       location:
         name: Navn
         street_address: Gadeadresse
