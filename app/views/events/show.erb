@@ -1,12 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @event.title %></h1>
+<%= image_tag @event.picture.url(:original) %>
 <p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
   <%= @event.short_description %>
   <%= @event.long_description %>
 </p>
