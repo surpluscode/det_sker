@@ -73,6 +73,7 @@ da:
       create_location: "Opret lokation"
       empty_location: "Ingen lokation fundet"
       empty_category: "Ingen kategori fundet"
+      choose_file: "Vælg fil"
     event:
       price: "Pris"
       start_time: "Starter"

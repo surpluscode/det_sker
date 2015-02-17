@@ -71,6 +71,7 @@ en:
       create_location: "Create location"
       empty_location: "No matching location found"
       empty_category: "No matching category found"
+      choose_file: "Choose file"
     event:
       price: "Price"
       start_time: "Starts"
