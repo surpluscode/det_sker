@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.3'
 
 gem 'paperclip', '~> 4.2'
+gem 'lograge'
 
 group :production do
   gem 'pg'
