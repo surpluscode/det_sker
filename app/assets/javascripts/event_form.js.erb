@@ -185,6 +185,8 @@ function loadRemoteModal(context, event, xhr) {
 // fit within the typeahead functionality, thus removing
 // an extra JSON call
 function createCategoryHash(){
+    // only call on event-form page
+    if ($('input.typeahead').length == 0) return;
     categoryHash = {};
     $.getJSON('<%= categories_path %>', function(data){
         $.each(data, function(i, obj){
@@ -244,8 +246,6 @@ function addToTarget(target, val) {
  * @param xhr
  */
 function showAjaxResponse(event, xhr){
-    console.log("getting here");
-    console.log(xhr);
     //target div has id equal to the clicked link's data target attr
     var target = $('#' + $(this).attr('data-target'));
    // target.html(xhr);
