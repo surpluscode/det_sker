@@ -18,14 +18,14 @@ DetSker::Application.configure do
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
   # config.action_dispatch.rack_cache = true
-  config.action_mailer.default_url_options = { host: 'thawing-dawn-8343.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: ENV['MAILER_HOST'] }
   config.action_mailer.smtp_settings = {
-      :address        => 'smtp.sendgrid.net',
-      :port           => '587',
+      :address        => ENV['MAILER_ADDRESS'],
+      :port           => ENV['MAILER_PORT'],
       :authentication => :plain,
-      :user_name      => ENV['SENDGRID_USERNAME'],
-      :password       => ENV['SENDGRID_PASSWORD'],
-      :domain         => 'heroku.com',
+      :user_name      => ENV['MAILER_USERNAME'],
+      :password       => ENV['MAILER_PASSWORD'],
+      :domain         => ENV['MAILER_DOMAIN'],
       :enable_starttls_auto => true
   }
 
