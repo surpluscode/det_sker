@@ -20,6 +20,6 @@ test: &test
 
 production:
   adapter: postgresql
-  database: det_sker_prod
+  database: <%= ENV['DATABASE_NAME'] %>
   pool: 5
   timeout: 5000
