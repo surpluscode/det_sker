@@ -40,7 +40,7 @@
           <div class="input select required form-group event_categories">
           <%= f.label :categories %>
             <%= text_field_tag(
-                'category-typeahead', nil, placeholder: t('.choose_category'), class: 'typeahead',
+                'category-typeahead', nil, placeholder: t('.choose_category'), class: 'typeahead form-control',
                 data: {
                         api_path: categories_path,
                         remote_path: new_category_path,
@@ -65,8 +65,12 @@
         </div>
         <div class="col-xs-12 col-sm-5 col-sm-offset-1">
           <%= f.label :location %>
+          <%# If we already have a location the placeholder should be that location's name %>
+          <% location_name = @event.location.display_name rescue nil %>
           <%= text_field_tag(
-                      'location-typeahead', nil, placeholder: t('.choose_location'), class: 'typeahead',
+                      'location-typeahead', location_name,
+                      placeholder: "#{location_name || t('.choose_location')}",
+                      class: "typeahead form-control",
                       data: {
                               api_path: locations_path,
                               remote_path: new_location_path,
