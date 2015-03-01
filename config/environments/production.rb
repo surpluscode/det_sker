@@ -1,8 +1,8 @@
 # ensure all our env variables are defined in production mode
 %w{
-  MAILER_HOST MAILER_ADDRESS MAILER_PORT
-  MAILER_USERNAME MAILER_PASSWORD MAILER_DOMAIN
-  MAILER_SENDER DATABASE_NAME DEVISE_SECRET_KEY
+  DATABASE_NAME DEVISE_SECRET_KEY MAILER_ADDRESS
+  MAILER_DOMAIN MAILER_HOST MAILER_PASSWORD
+  MAILER_PORT MAILER_SENDER MAILER_USERNAME
   }.each do |var|
   raise "#{var} must be defined in production mode" unless ENV[var].present?
 end
