@@ -1,3 +1,12 @@
+# ensure all our env variables are defined in production mode
+%w{
+  MAILER_HOST MAILER_ADDRESS MAILER_PORT
+  MAILER_USERNAME MAILER_PASSWORD MAILER_DOMAIN
+  MAILER_SENDER DATABASE_NAME DEVISE_SECRET_KEY
+  }.each do |var|
+  raise "#{var} must be defined in production mode" unless ENV[var].present?
+end
+
 DetSker::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
