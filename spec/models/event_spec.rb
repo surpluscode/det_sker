@@ -5,7 +5,7 @@ describe Event do
     @party_details = {
         title: 'Massive party', short_description: 'The Best Party Ever!',
         start_time: DateTime.new, end_time: DateTime.new, location_id: '1',
-        user_id: '1'
+        user_id: '1', category_id: '1'
     }
   end
   it 'should create an event' do
@@ -34,6 +34,11 @@ describe Event do
   it 'should not save an event without an end_time' do
     @party_details.delete(:end_time)
     Event.create(@party_details).valid?.should_not be_true
+  end
+
+  it 'should not save an event without a category' do
+    @party_details.delete(:category_id)
+    expect(Event.new(@party_details)).not_to be_valid
   end
 
   describe 'Event.in_progress?' do

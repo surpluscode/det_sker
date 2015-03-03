@@ -1,9 +1,9 @@
 class Event < ActiveRecord::Base
-  validates :title, :short_description, :start_time, :end_time, :location_id, :user_id, presence: true
+  validates :title, :short_description, :start_time, :end_time, :location_id, :user_id, :category_id, presence: true
 
   belongs_to :user
   belongs_to :location
-  has_and_belongs_to_many :categories
+  belongs_to :categories
   has_many :comments
   has_attached_file :picture, styles: { original: '500x500>', thumb: '100x100>'}, default_url: 'images/:st'
 

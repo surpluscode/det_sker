@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303192722) do
+ActiveRecord::Schema.define(version: 20150303204250) do
 
   create_table "categories", force: true do |t|
     t.string   "danish"
@@ -51,8 +51,10 @@ ActiveRecord::Schema.define(version: 20150303192722) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.integer  "category_id"
   end
 
+  add_index "events", ["category_id"], name: "index_events_on_category_id"
   add_index "events", ["location_id"], name: "index_events_on_location_id"
   add_index "events", ["user_id"], name: "index_events_on_user_id"
 

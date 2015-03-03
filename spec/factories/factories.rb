@@ -31,6 +31,7 @@ FactoryGirl.define do
     end_time DateTime.now + 5.hours
     location
     user_id 1
+    category_id 1
 
     factory :event_yesterday do
       title 'This happened yesterday'
