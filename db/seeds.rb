@@ -6,9 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Category.create([{ key: :party }, { key: :food }, { key: :exercise },
-                 { key: :workshop }, { key: :demo }, { key: :talk },
-                { key: :meeting }, { key: :other }])
+Category.create([
+                    { english: :party, danish: :fest },
+                    { english: :food, danish: :mad },
+                    { english: :exercise, danish: :motion },
+                    { english: :workshop, danish: :workshop },
+                    { english: :demo, danish: :demo },
+                    { english: :talk, danish: :oplæg },
+                    { english: :meeting, danish: :møde },
+                    { english: :other, danish: :andet }
+                ])
 
 folkets = {name: 'Folkets Hus',street_address: 'Stengade 50',
            postcode: '2200', town: 'København N.',
