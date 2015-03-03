@@ -1,6 +1,7 @@
 class Category < ActiveRecord::Base
-  validates :key, presence: true, uniqueness: { case_sensitive: false }
-  has_and_belongs_to_many :events
+  has_many :events
+  validates :danish, presence: true, uniqueness: { case_sensitive: false }
+  validates :english, presence: true, uniqueness: { case_sensitive: false }
 
   # Return a grouped set of categories containing current events
   # we need to use raw SQL here because we don't have a CategoriesEvents model
