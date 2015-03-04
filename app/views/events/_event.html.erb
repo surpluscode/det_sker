@@ -1,6 +1,6 @@
 
 <div class='event-container'
-     data-categories="<%= event.category_id %>"
+     data-categories="<%= translated_category_name(event.category_id) %>"
      data-location="<%= event.location.display_name.parameterize('_') %>"
      data-role="event" data-parent="<%= parent_id if defined? parent_id%>">
   <div class="row">

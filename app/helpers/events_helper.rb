@@ -25,6 +25,10 @@ module EventsHelper
     end
   end
 
+  def translated_category_name(cat_id)
+    Category.find(cat_id).send(t(:language)).titleize
+  end
+
   # A category tag is composed of two elements
   # a hidden input field and a bootstrap label
   # The input is connected to the label via a
