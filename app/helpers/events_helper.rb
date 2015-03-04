@@ -25,16 +25,6 @@ module EventsHelper
     end
   end
 
-  # Given an array of Category objects
-  # return a string of their keys
-  # separated by space
-  def categories_as_string(categories, title = false)
-    string = categories.map do |e|
-      title ? e.key.titleize : e.key.parameterize('_')
-    end
-    string.join(' ')
-  end
-
   # A category tag is composed of two elements
   # a hidden input field and a bootstrap label
   # The input is connected to the label via a
