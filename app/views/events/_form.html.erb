@@ -37,7 +37,7 @@
                               input_html: { class: 'selectpicker', title: t('.choose_category') } %>
         </div>
         <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-          <%= f.label :location %>
+          <%= f.label :location_id %>
           <%# If we already have a location the placeholder should be that location's name %>
           <% location_name = @event.location.display_name rescue nil %>
           <%= text_field_tag(

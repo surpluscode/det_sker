@@ -117,6 +117,8 @@ da:
         end_time: Slutter
         price: Pris
         picture: Billede
+        location_id: Sted
+        category: Kategori
       location:
         name: Navn
         street_address: Gadeadresse
