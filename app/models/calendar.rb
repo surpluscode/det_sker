@@ -42,8 +42,13 @@ class Calendar
   # their count e.g. [[party, 2], [demo, 1]]
   def get_filter_categories
     categories = {}
-    Category.current_categories.each do |cat|
-     categories[cat['key'].to_sym] = cat['num'].to_i
+    @events.each do |e|
+      next unless e.category_id.present?
+      if categories.has_key? e.category_id
+        categories[e.category_id] += 1
+      else
+        categories[e.category_id] = 1
+      end
     end
     @filter_categories = categories.sort_by(&:last).reverse
   end
