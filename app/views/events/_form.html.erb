@@ -33,7 +33,8 @@
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-5">
-            <%= f.association :category, label_method: t(:language) %>
+            <%= f.association :category, label_method: t(:language),
+                              input_html: { class: 'selectpicker', title: t('.choose_category') } %>
         </div>
         <div class="col-xs-12 col-sm-5 col-sm-offset-1">
           <%= f.label :location %>

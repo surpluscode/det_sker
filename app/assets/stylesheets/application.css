@@ -11,6 +11,7 @@
  *= require 'bootstrap.min'
  *= require bootstrap-datetimepicker
  *= require typeaheadjs
+ *= require bootstrap-select.min
  *= require_self
  *= require_tree .
  */
