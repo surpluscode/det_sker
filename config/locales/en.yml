@@ -42,7 +42,10 @@ en:
   calendar:
     index:
       new_event: "New Event"
-      describe_filters: "Showing events of type <categories> in <locations>"
+      describe_filters:
+        base: "Showing events"
+        categories: " of type "
+        locations: " in "
       end_of_events: "No more events"
     filter_options:
       filter_header: "Show only:"
