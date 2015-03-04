@@ -47,16 +47,17 @@ FactoryGirl.define do
   end
 
   factory :category do
-    key :party
-    description 'Fun things with hats and glasses'
+    english 'party'
+    danish  'fest'
   end
 
   factory :demo_cat, class: Category do
-    key :demo
+    english :demo
   end
 
   factory :random_category, class: Category do
-    key { (0...8).map { (65 + rand(26)).chr }.join }
+    english { (0...8).map { (65 + rand(26)).chr }.join }
+    danish { (0...8).map { (65 + rand(26)).chr }.join }
   end
 
 
