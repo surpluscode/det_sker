@@ -33,11 +33,13 @@ en:
       login: "Sign in"
       logout: "Sign out"
       about: "About"
+      about_project: "About the DukOp project"
       my_page: "My events"
       calendar: "Calendar"
       locations: "Locations"
       create_account: "Create account"
       users: "Users"
+      security: "Security on DukOp"
   calendar:
     index:
       new_event: "New Event"
