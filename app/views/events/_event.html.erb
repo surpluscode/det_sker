@@ -46,8 +46,10 @@
       </div>
   <% end %>
   	<div class='event-details'>
-      <%= link_to event do %>
-        <%= image_tag event.picture.url(:thumb) %>
+      <% unless event.picture.nil? %>
+          <%= link_to event do %>
+            <%= image_tag event.picture.url(:thumb) %>
+          <% end %>
       <% end %>
   		<div class="col-xs-12 col-md-11 col-md-offset-1">
     		<p><%= "#{t('.posted_by')} #{link_to(event.user.username, event.user)  if event.user}".html_safe %></p>
