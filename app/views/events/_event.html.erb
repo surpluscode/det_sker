@@ -46,7 +46,7 @@
       </div>
   <% end %>
   	<div class='event-details'>
-      <% unless event.picture.nil? %>
+      <% if event.picture.url(:thumb).present? %>
           <%= link_to event do %>
             <%= image_tag event.picture.url(:thumb) %>
           <% end %>
