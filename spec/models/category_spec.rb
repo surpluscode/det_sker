@@ -1,16 +1,19 @@
 require 'spec_helper'
 
 describe Category do
-  it 'should create a category with a key and a description' do
-    c = FactoryGirl.build(:category, key: Time.now.to_s)
-    expect(c).to be_valid
+  it 'has a danish and an english name' do
+    category = Category.new(danish: 'fest', english: 'party')
+    expect(category).to be_valid
   end
-
-  it 'should reject duplicate categories' do
-    key = Time.now.to_s
-    FactoryGirl.create(:category, key: key)
-    c2 = FactoryGirl.build(:category, key: key)
-    expect(c2).to_not be_valid
+  it 'has a unique danish name' do
+    cat1 = Category.create(danish: 'fest', english: 'party')
+    cat2 = Category.new(danish: 'fest', english: 'partay')
+    expect(cat2).not_to be_valid
+  end
+  it 'has a unique english name' do
+    cat1 = Category.create(danish: 'demo', english: 'demonstration')
+    cat2 = Category.new(danish: 'manifestation', english: 'demonstration')
+    expect(cat2).not_to be_valid
   end
 
 end

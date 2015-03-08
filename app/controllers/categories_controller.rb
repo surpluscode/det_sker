@@ -38,6 +38,6 @@ class CategoriesController < ApplicationController
 
   private
   def whitelist_params
-    params.require(:category).permit(:key, :description)
+    params.require(:category).permit(:english, :danish)
   end
 end
