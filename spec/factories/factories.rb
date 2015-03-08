@@ -52,6 +52,7 @@ FactoryGirl.define do
 
   factory :demo_cat, class: Category do
     danish :demo
+    english :demonstration
   end
 
   factory :random_category, class: Category do
