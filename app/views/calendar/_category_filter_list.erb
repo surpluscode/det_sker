@@ -1,9 +1,9 @@
 <% filter_objects.each do |arr| %>
     <dd>
-      <% cat_name = Category.find(arr.first).send(t(:language)).titleize %>
-      <a href='#' data-toggle="<%= cat_name.parameterize('_') %>"
+      <% cat_name = Category.find(arr.first).send(t(:language)) %>
+      <a href='#' data-toggle="<%= cat_name.gsub(' ', '_') %>"
          data-filter-type="<%= data_type %>" data-role="filter-link">
-        <%= cat_name %>
+        <%= cat_name.titleize %>
       (<%= arr.last %>)
       </a>
     </dd>
