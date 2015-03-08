@@ -1,7 +1,11 @@
 class CategoriesController < ApplicationController
 
   def index
-    render json: Category.all
+    @categories = Category.order(:danish)
+    respond_to do |format|
+      format.json { render json: @categories }
+      format.html
+    end
   end
 
 

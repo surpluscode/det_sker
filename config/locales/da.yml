@@ -40,6 +40,7 @@ da:
       create_account: "Opret konto"
       users: "Brugere"
       security: "Sikkerhed på DukOp"
+      categories: "Kategorier"
   calendar:
     index:
       new_event: "Opret ny begivenhed"
@@ -214,3 +215,4 @@ da:
     sessions:
       new: 'Log ind'
   language: "danish"
+  edit: "Rediger"

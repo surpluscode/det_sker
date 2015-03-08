@@ -40,6 +40,7 @@ en:
       create_account: "Create account"
       users: "Users"
       security: "Security on DukOp"
+      categories: "Categories"
   calendar:
     index:
       new_event: "New Event"
@@ -166,3 +167,4 @@ en:
     sessions:
       new: Sign in
   language: "english"
+  edit: "Edit"
