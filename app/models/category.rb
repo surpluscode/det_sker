@@ -17,6 +17,6 @@ class Category < ActiveRecord::Base
   end
 
   def as_json(options = {})
-    super(only: [:id, :key])
+    super(only: [:id, :english, :danish])
   end
 end
