@@ -213,3 +213,4 @@ da:
       new: 'Opret konto'
     sessions:
       new: 'Log ind'
+  language: "danish"

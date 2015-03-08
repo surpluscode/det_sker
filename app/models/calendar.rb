@@ -43,7 +43,7 @@ class Calendar
   def get_filter_categories
     categories = {}
     Category.current_categories.each do |cat|
-     categories[cat['key'].to_sym] = cat['num'].to_i
+     categories[cat['id']] = cat['num'].to_i
     end
     @filter_categories = categories.sort_by(&:last).reverse
   end

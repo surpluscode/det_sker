@@ -9,10 +9,10 @@ class Category < ActiveRecord::Base
   # This is dangerous because the SQL might not be compatible across dbs
   def self.current_categories
     ActiveRecord::Base.connection.execute(
-         "SELECT c.key, COUNT(*) AS num from categories_events AS ce, events AS e, categories AS c
+         "SELECT c.id, COUNT(*) AS num from categories_events AS ce, events AS e, categories AS c
           WHERE ce.event_id = e.id AND ce.category_id = c.id
           AND e.end_time > '#{Time.now.to_s}'
-          GROUP BY c.key"
+          GROUP BY c.id"
      )
   end
 

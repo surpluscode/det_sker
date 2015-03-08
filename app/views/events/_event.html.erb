@@ -29,7 +29,7 @@
     </span>
     <span class="col-xs-5 col-md-2">
           <% event.categories.each do |cat| %>
-            <span class="event-category"><%= cat.key.titleize %></span>
+            <span class="event-category"><%= cat.send(t(:language)).titleize %></span>
           <% end %>
     </span>
   <% if current_user && current_user.can_edit?(event) %>
