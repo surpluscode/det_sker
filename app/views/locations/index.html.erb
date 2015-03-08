@@ -1,6 +1,6 @@
+<dl>
 <% @locations.each do |location| %>
-<div>
-   <span><%= link_to location.name, location %></span>
-   <span><%= location.street_address %></span>
-</div>
+      <dt><%= link_to location.display_name, location %></dt>
+      <dd><%= location.full_address %></dd>
 <% end %>
+</dl>

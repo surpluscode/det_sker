@@ -7,6 +7,13 @@ class Location < ActiveRecord::Base
     name.present? ? name : street_address
   end
 
+  # combined address as single string without nil vals
+  def full_address
+    [name, street_address, postcode, town]
+        .reject(&:nil?)
+        .join(', ')
+  end
+
   def <=>(other)
     display_name.downcase <=> other.display_name.downcase
   end
