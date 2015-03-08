@@ -1,7 +1,3 @@
-<div id="bloodhound">
-
-</div>
-
 <%= simple_form_for @event, html: { multipart: true, class: 'form-horizontal' }, defaults: {
                             wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' } } do |f| %>
 
@@ -37,31 +33,9 @@
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-5">
-          <div class="input select required form-group event_categories">
-          <%= f.label :categories %>
-            <%= text_field_tag(
-                'category-typeahead', nil, placeholder: t('.choose_category'), class: 'typeahead form-control',
-                data: {
-                        api_path: categories_path,
-                        remote_path: new_category_path,
-                        label: t('.new_cat_button'),
-                        display_key: 'key',
-                        header: t('.typeahead_header'),
-                        target: 'selected-categories',
-                        multiple: true,
-                        empty_message: t('.empty_category')
-                }
-            )
+            <%= f.association :categories, label_method: t(:language),
+                              input_html: { class: 'selectpicker', title: t('.choose_category') }
             %>
-
-          <span id="new-category-box">
-            <% @event.categories.each do |cat| %>
-              <%= category_tag(cat.id, cat.key) %>
-            <% end %>
-          </span>
-          </div>
-          <div data-role="selected-categories"></div>
-          <input name="event[category_ids][]" id="category-ids" class="hidden" value=""/>
         </div>
         <div class="col-xs-12 col-sm-5 col-sm-offset-1">
           <%= f.label :location %>

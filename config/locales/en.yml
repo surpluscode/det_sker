@@ -68,7 +68,7 @@ en:
       choose_location: Choose location
       enable_price: "Does your event have a price?"
       new_cat_button: "Create new category"
-      choose_category: "Choose one or more categories"
+      choose_category: "Choose categoy"
       typeahead_header: 'Type to find categories: '
       typeahead_footer: 'Create category'
       create_location: "Create location"

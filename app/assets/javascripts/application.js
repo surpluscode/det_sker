@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
-//= require bootstrap-combobox
+//= require bootstrap-select.min
 //= require moment
 //= require moment/da
 
