@@ -38,14 +38,6 @@ function initTypeahead(selector){
     // kicks off the loading/processing of `local` and `prefetch`
     engine.initialize();
 
-    // the footer link is itself used to call a modal form
-    var footer_link =
-            '<a href="' + data.remotePath + '" data-remote="true" data-toggle="modal"' +
-            'data-target="remote_form_modal" data-modal-title="' +
-            data.label + '">' +
-            data.label +
-            '</a>';
-
     $typeahead.typeahead({
         hint: false,
         highlight: true,
@@ -59,7 +51,6 @@ function initTypeahead(selector){
         templates: {
             //header and footer log is stored in the events helper to enable reuse
             header: '<%= typeahead_header %>'.replace('_value_', data.header),
-            footer: '<%= typeahead_element %>'.replace('_value_', footer_link),
             empty: '<%= typeahead_element %>'.replace('_value_', data.emptyMessage)
         }
     });
