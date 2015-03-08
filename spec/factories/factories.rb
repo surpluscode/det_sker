@@ -56,6 +56,7 @@ FactoryGirl.define do
 
   factory :random_category, class: Category do
     danish { (0...8).map { (65 + rand(26)).chr }.join }
+    english { (0...8).map { (65 + rand(26)).chr }.join }
   end
 
 
