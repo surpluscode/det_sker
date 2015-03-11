@@ -188,6 +188,10 @@ da:
   categories:
     created:
       message: "Kategori %{name} oprettet!"
+    updated:
+      message: "Kategori opdateret"
+    index:
+      edit: "Rediger kategori"
   accounts:
     standard:
       title: 'Fast bruger'

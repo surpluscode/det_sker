@@ -140,6 +140,10 @@ en:
   categories:
     created:
       message: "Category %{name} created!"
+    updated:
+      message: "Category updated successfully"
+    index:
+      edit: "Edit category"
   accounts:
     standard:
       title: "Permanent user"

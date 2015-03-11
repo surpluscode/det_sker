@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :set_category, only: [:edit, :update]
 
   def index
     @categories = Category.order(:danish)
@@ -32,15 +33,29 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    render layout: nil
   end
 
   def update
+    respond_to do |format|
+      if @category.update(whitelist_params)
+        format.html { render 'updated.html.erb', layout: nil}
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @category.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
   end
 
   private
+  def set_category
+    @category = Category.find(params[:id])
+  end
+
   def whitelist_params
     params.require(:category).permit(:english, :danish)
   end

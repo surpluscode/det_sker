@@ -1,10 +1,16 @@
 <%= link_to t('events.form.new_cat_button'), new_category_path,
-            data: { remote: true, toggle: 'modal', target: 'remote_form_modal'} %>
+            data: { remote: true, toggle: 'modal', target: 'remote_form_modal',
+                    modal_title: t('events.form.new_cat_button')
+            }
+%>
 <dl class="dl-horizontal">
   <% @categories.each do |category| %>
-      <dt><%= category.danish.titleize %></dt>
+      <dt><%= category.danish %></dt>
       <% if current_user && current_user.is_admin? %>
-          <dd><%= link_to t(:edit), category %></dd>
+          <dd>
+            <%= link_to t(:edit), edit_category_path(category),
+                        data: { remote: true, toggle: 'modal', target: 'remote_form_modal', modal_title: t('.edit')} %>
+          </dd>
       <% end %>
   <% end %>
 </dl>
