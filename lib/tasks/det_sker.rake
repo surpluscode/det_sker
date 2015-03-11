@@ -13,7 +13,7 @@ namespace :det_sker do
     end
   end
 
-  desc 'create an admin user given a username, email and password'
+  desc 'create an admin user given an email, username and password'
   task :create_admin, [:email, :username, :password] => :environment do |t, args|
     u = User.new(
         is_admin: true, email: args[:email], username: args[:username],
