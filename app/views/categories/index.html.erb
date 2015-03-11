@@ -1,3 +1,5 @@
+<%= link_to t('events.form.new_cat_button'), new_category_path,
+            data: { remote: true, toggle: 'modal', target: 'remote_form_modal'} %>
 <dl class="dl-horizontal">
   <% @categories.each do |category| %>
       <dt><%= category.danish.titleize %></dt>
@@ -6,3 +8,4 @@
       <% end %>
   <% end %>
 </dl>
+<%= render partial: 'layouts/modal_wrapper' %>
