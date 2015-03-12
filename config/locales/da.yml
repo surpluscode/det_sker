@@ -172,6 +172,8 @@ da:
       category:
         create: "Opret kategori"
         update: "Gem ændringer"
+      user:
+        create: Opret bruger
     label:
       user:
        username: Brugernavn
