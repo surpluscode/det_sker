@@ -75,6 +75,7 @@ en:
       empty_location: "No matching location found"
       empty_category: "No matching category found"
       choose_file: "Choose file"
+      picture_warning: "Only JPEG or PNG files no larger than 1MB can be uploaded."
     event:
       price: "Price"
       start_time: "Starts"
