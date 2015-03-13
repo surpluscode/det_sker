@@ -115,6 +115,7 @@ da:
         short_description: Beskrivelse
         categories: Kategorier
         location: Sted
+        location_id: Sted
         start_time: Starter
         end_time: Slutter
         price: Pris
