@@ -81,4 +81,8 @@ module EventsHelper
   def bootstrap_glyphicon(icon)
     content_tag(:span, nil, class: "glyphicon glyphicon-#{icon}").html_safe
   end
+
+  def bootstrap_success(message)
+    content_tag(:div, message, class: 'alert alert-success').html_safe
+  end
 end
