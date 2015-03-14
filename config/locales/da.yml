@@ -41,6 +41,8 @@ da:
       users: "Brugere"
       security: "Sikkerhed på DukOp"
       categories: "Kategorier"
+    created:
+      message: "%{name} oprettet!"
   calendar:
     index:
       new_event: "Opret ny begivenhed"
