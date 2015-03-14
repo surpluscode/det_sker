@@ -12,8 +12,14 @@ module ApplicationHelper
     "#{action} #{app_name}"
   end
 
+  # try and get a name using the name or display name method
+  # return nil if nothing works
   def object_name
-    assigns[controller_name.singularize].name rescue nil
+    assigned_object.try(:display_name) || assigned_object.try(:name)
+  end
+
+  def assigned_object
+    assigns[controller_name.singularize]
   end
 
   def current_translations
