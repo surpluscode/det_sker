@@ -22,6 +22,8 @@
 da:
   app_name: 'Duk op'
   hello: "Hello world"
+  Location: Lokation
+  Category: Kategori
   date:
     formats:
       header: ! '%a d. %e. %b'
@@ -42,7 +44,7 @@ da:
       security: "Sikkerhed på DukOp"
       categories: "Kategorier"
     created:
-      message: "%{name} oprettet!"
+      message: "%{_class} <strong>%{name}</strong> oprettet!"
   calendar:
     index:
       new_event: "Opret ny begivenhed"

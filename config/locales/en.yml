@@ -22,6 +22,8 @@
 en:
   app_name: 'Duk op'
   hello: "Hello world"
+  Location: Location
+  Category: Category
   date:
     formats:
       header: ! '%a %e. %b'
@@ -42,7 +44,7 @@ en:
       security: "Security on DukOp"
       categories: "Categories"
     created:
-      message: "%{name} created!"
+      message: "%{_class} <strong>%{name}</strong> created!"
   calendar:
     index:
       new_event: "New Event"
@@ -141,8 +143,6 @@ en:
         new_instructions: "Didn't receive confirmation instructions?"
         create_account: "Create account"
   categories:
-    created:
-      message: "Category %{name} created!"
     updated:
       message: "Category updated successfully"
     index:

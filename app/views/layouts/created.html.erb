@@ -1,1 +1,1 @@
-<%= bootstrap_success(t('.message', name: object_name)) %>
+<%= bootstrap_success(t('.message', _class: t(assigned_object.class), name: object_name).html_safe) %>
