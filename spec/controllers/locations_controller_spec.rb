@@ -28,11 +28,6 @@ describe LocationsController do
         post :create, location: FactoryGirl.attributes_for(:location)
       }.to change(Location, :count).by(1)
     end
-
-    it 'redirects to the location path' do
-      post :create, location: FactoryGirl.attributes_for(:location)
-      assert_match /http:\/\/test.host\/location/, @response.redirect_url
-    end
   end
 
   describe 'PUT#update' do

@@ -5,7 +5,7 @@ describe Event do
     @party_details = {
         title: 'Massive party', short_description: 'The Best Party Ever!',
         start_time: DateTime.new, end_time: DateTime.new, location_id: '1',
-        user_id: '1'
+        user_id: '1', categories: [Category.create(danish: 'ost', english: 'cheese')]
     }
   end
   it 'should create an event' do
