@@ -12,10 +12,10 @@ module ApplicationHelper
     "#{action} #{app_name}"
   end
 
-  # try and get a name using the name or display name method
+  # try and get a name using the name, display name or language method
   # return nil if nothing works
   def object_name
-    assigned_object.try(:display_name) || assigned_object.try(:name)
+    assigned_object.try(:display_name) || assigned_object.try(:name) || assigned_object.try(t :language)
   end
 
   def assigned_object
