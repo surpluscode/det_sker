@@ -45,6 +45,8 @@ da:
       categories: "Kategorier"
     created:
       message: "%{_class} <strong>%{name}</strong> oprettet!"
+    updated:
+      message: "Ændringer til %{_class} <strong>%{name}</strong> gemt!"
   calendar:
     index:
       new_event: "Opret ny begivenhed"

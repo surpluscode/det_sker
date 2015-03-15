@@ -39,10 +39,10 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(whitelist_params)
-        format.html { render 'updated.html.erb', layout: nil}
+        format.html { render 'layouts/updated', layout: nil}
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'edit', layout: nil }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end

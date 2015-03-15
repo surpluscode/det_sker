@@ -45,6 +45,8 @@ en:
       categories: "Categories"
     created:
       message: "%{_class} <strong>%{name}</strong> created!"
+    updated:
+      message: "Changes to %{_class} <strong>%{name}</strong> saved!"
   calendar:
     index:
       new_event: "New Event"
