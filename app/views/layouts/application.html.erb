@@ -84,14 +84,13 @@
 
     </div>
   </nav>
-  
-</br>
+
   <div class="row">
      <% if notice.present? %>
-        <div class="alert alert-success" role="alert"><%= notice %></div>
+        <%= bootstrap_success(notice) %>
      <% end %>
     <% if alert.present? %>
-        <div class="alert alert-danger"><%= alert %></div>
+        <%= bootstrap_danger(alert) %>
     <% end %>
   </div>
 	<%= yield %>
