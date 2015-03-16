@@ -5,13 +5,12 @@ var cat_typeahead_selector = '.event_categories ul.typeahead';
 
 $(document).ready(function() {
     activateFormPlugins();
-    initTypeaheads();
+    initLocationTypeahead();
     activateFormListeners();
     createCategoryHash();
 });
 
-function initTypeaheads(){
-    initTypeahead('#category-typeahead');
+function    initLocationTypeahead() {
     initTypeahead('#location-typeahead');
 }
 
@@ -25,7 +24,7 @@ function initTypeahead(selector){
     var data = $typeahead.data();
     // constructs the suggestion engine
     var engine = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('key'),
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('display_name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         prefetch: {
             url: data.apiPath
@@ -56,7 +55,6 @@ function initTypeahead(selector){
     });
     $typeahead.on('typeahead:opened', function(){
         $typeahead.attr('placeholder', '');
-        modalFormListener(); //attach listener to the link as it is created
     });
     $typeahead.on('typeahead:selected', function(event, chosen){
         // typeaheads with multiple values need a bit of extra logic
@@ -143,8 +141,8 @@ function loadRemoteModal(context, event, xhr) {
     // we put back into the modal
     function handleSuccess(event, xhr) {
         $target.find('.modal-body').html(xhr);
-        // put the id into the correct field
-        initTypeahead();
+        // refresh the typeahead to include the result
+        initLocationTypeahead();
 
         var update_field = '[name="' + $this.attr('data-update-field') + '"]';
         $(update_field).val(xhr.id);
