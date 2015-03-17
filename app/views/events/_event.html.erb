@@ -3,8 +3,6 @@
      data-categories="<%= categories_as_string(event.categories) %>"
      data-location="<%= event.location.display_name.parameterize('_') %>"
      data-role="event" data-parent="<%= parent_id if defined? parent_id%>">
-  <div class="row">
-  </div>
   <span class="event-topbar_js">
 
        <span class="col-xs-12 col-md-7 col-md-push-1 event-title">
@@ -14,7 +12,7 @@
 
 	    <span class="col-xs-2 col-md-1 col-md-pull-7">
             <%# In the frontpage context we don't show a date, otherwise, do. %>
-            <% if defined? show_date %>
+          <% if defined? show_date %>
                 <%= format_datetime(event.start_time)  %>
             <% else %>
                 <%= format_starttime(event.start_time) %>
@@ -45,28 +43,28 @@
         </div>
       </div>
   <% end %>
-  	<div class='event-details'>
-      <% if event.picture.url(:thumb).present? %>
-          <%= link_to event do %>
+  <div class='event-details'>
+    <% if event.picture.url(:thumb).present? %>
+        <%= link_to event do %>
             <%= image_tag event.picture.url(:thumb) %>
-          <% end %>
-      <% end %>
-  		<div class="col-xs-12 col-md-11 col-md-offset-1">
-    		<p><%= "#{t('.posted_by')} #{link_to(event.user.username, event.user)  if event.user}".html_safe %></p>
-    	</div>
-    	<div class="col-xs-12 col-md-8 col-md-offset-1">
-    		<p> <%= event.short_description.truncate(160, separator: ' ') %></p>
-            <p><%= link_to t('.see_more'), event %> </p>
-        </div>
-		<div class="col-xs-12 col-md-5 col-md-offset-1">
-	      <p><strong><%= t('.start_time') %> </strong><%= format_datetime(event.start_time) %></p>
-    	  <p><strong><%= t('.end_time') %> </strong><%= format_datetime(event.end_time) %></p>
-        <p><strong><%= event.location.street_address %></strong></p>
-        <p><strong><%= event.location.town %></strong></p>
-        <% if event.price.present? %>
-          <p><strong>Pris: </strong><%= event.price %></p>
         <% end %>
+    <% end %>
+    <div class="col-xs-12 col-md-11 col-md-offset-1">
+      <p><%= "#{t('.posted_by')} #{link_to(event.user.username, event.user)  if event.user}".html_safe %></p>
     </div>
+    <div class="col-xs-12 col-md-8 col-md-offset-1">
+      <p> <%= event.short_description.truncate(160, separator: ' ') %></p>
+      <p><%= link_to t('.see_more'), event %> </p>
     </div>
+    <div class="col-xs-12 col-md-5 col-md-offset-1">
+      <p><strong><%= t('.start_time') %> </strong><%= format_datetime(event.start_time) %></p>
+      <p><strong><%= t('.end_time') %> </strong><%= format_datetime(event.end_time) %></p>
+      <p><strong><%= event.location.street_address %></strong></p>
+      <p><strong><%= event.location.town %></strong></p>
+      <% if event.price.present? %>
+          <p><strong>Pris: </strong><%= event.price %></p>
+      <% end %>
+    </div>
+  </div>
 </div>
 <div class="row"></div>
