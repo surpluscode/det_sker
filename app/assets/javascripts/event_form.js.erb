@@ -1,16 +1,13 @@
 <% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
 <% environment.context_class.instance_eval { include EventsHelper } %>
-var categoryHash;
-var cat_typeahead_selector = '.event_categories ul.typeahead';
 
 $(document).ready(function() {
     activateFormPlugins();
     initLocationTypeahead();
     activateFormListeners();
-    createCategoryHash();
 });
 
-function    initLocationTypeahead() {
+function initLocationTypeahead() {
     initTypeahead('#location-typeahead');
 }
 
@@ -57,14 +54,7 @@ function initTypeahead(selector){
         $typeahead.attr('placeholder', '');
     });
     $typeahead.on('typeahead:selected', function(event, chosen){
-        // typeaheads with multiple values need a bit of extra logic
-        // to create labels etc.
-        if (data.multiple) {
-            addToTarget(data.target, $typeahead.typeahead('val'));
-            $typeahead.typeahead('val', '');
-        } else {
             $(data.target).val(chosen.id)
-        }
     });
 }
 
@@ -164,79 +154,5 @@ function loadRemoteModal(context, event, xhr) {
     $form.on('ajax:success', handleSuccess);
     $form.on('ajax:error', handleFailure);
     $target.modal();
-}
-
-/**
- * Build a hash of categories with their ids as
- * keys and their names as values.
- */
-// TODO: this method could probably be refactored to
-// fit within the typeahead functionality, thus removing
-// an extra JSON call
-function createCategoryHash(){
-    // only call on event-form page
-    if ($('input.typeahead').length == 0) return;
-    categoryHash = {};
-    $.getJSON('<%= categories_path %>', function(data){
-        $.each(data, function(i, obj){
-            categoryHash[obj.key] = obj.id;
-        });
-    });
-    return categoryHash;
-}
-
-/**
- * Append the selected value to the correct target.
- * Ensure that the value is not already present and that
- * it is not an array or a number.
- * @param target
- * @param val
- */
-function addToTarget(target, val) {
-    // check to see if category already added
-    function alreadyAdded(val){
-        // need to convert from a jquery object to an Array
-        var $vals_obj = $('[data-role="category_value"]').map(function(){
-            return this.value
-        });
-        var vals = $.makeArray($vals_obj);
-        return (vals.indexOf(val) >= 0)
-    }
-
-    // create label and input using Rails helper
-    function createTag(val) {
-        var id = categoryHash[val];
-        var tag = '<%= category_tag %>';
-        return tag.replace('_id_', id, 'gm')
-                .replace('_value_', val, 'gm');
-    }
-
-    // append a label and input to the form
-    function appendCategoryLabel(value) {
-        var $data_target = $('[data-role="' + target + '"]');
-        // create the category label and add to form
-        $data_target.append(createTag(value));
-        $('#event-category-dummy').val('');
-    }
-    // guard clauses to make sure we're only dealing
-    // with valid ids that haven't already been added
-    if (typeof val === 'undefined') return;
-    if (!val in categoryHash) return;
-    if (alreadyAdded(val)) return;
-    appendCategoryLabel(val);
-    categoryTagListener();
-}
-
-/**
- * Upon completing an AJAX request
- * show the result in an element based
- * on the calling object's data-target attribute
- * @param event
- * @param xhr
- */
-function showAjaxResponse(event, xhr){
-    //target div has id equal to the clicked link's data target attr
-    var target = $('#' + $(this).attr('data-target'));
-   // target.html(xhr);
 }
 
