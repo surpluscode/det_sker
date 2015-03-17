@@ -19,7 +19,9 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     respond_to do |format|
       if @event.save
-        format.html { redirect_to root_path, notice: I18n.t('events.event_created', name: @event.name).html_safe }
+        format.html {
+          redirect_to root_path, notice: I18n.t('events.event_created', name: @event.name, id: @event.id)
+        }
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
@@ -31,7 +33,9 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(user_params)
-        format.html { redirect_to root_path, notice: I18n.t('events.event_updated', name: @event.name).html_safe }
+        format.html {
+          redirect_to root_path, notice: I18n.t('events.event_updated', name: @event.name, id: @event.id)
+        }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

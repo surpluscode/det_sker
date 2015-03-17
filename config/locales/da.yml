@@ -99,8 +99,8 @@ da:
       edit_event: "Redigerer begivenhed"
     new:
       new_event: "Opret begivenhed"
-    event_updated: "Ændringer til <strong>%{name}</strong> gemt!"
-    event_created: "Begivenhed <strong>%{name}</strong> oprettet!"
+    event_updated: "Ændringer til <a href=\"#%{id}\" class='alert-link'>%{name}</a> gemt!"
+    event_created: "Begivenhed <a href=\"#%{id}\" class='alert-link'>%{name}</a> oprettet!"
     show:
       link: "Mere info"
   comments:

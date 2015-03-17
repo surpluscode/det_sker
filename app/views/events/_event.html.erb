@@ -3,6 +3,7 @@
      data-categories="<%= categories_as_string(event.categories) %>"
      data-location="<%= event.location.display_name.parameterize('_') %>"
      data-role="event" data-parent="<%= parent_id if defined? parent_id%>">
+  <%= link_to '', '#', name: event.id, data: { remote: true } %>
   <span class="event-topbar_js">
 
        <span class="col-xs-12 col-md-7 col-md-push-1 event-title">

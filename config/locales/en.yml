@@ -97,8 +97,8 @@ en:
       edit_event: "Editing event"
     new:
       new_event: "New event"
-    event_updated: "Changes to <strong>%{name}</strong> saved!"
-    event_created: "Event <strong>%{name}</strong> created!"
+    event_updated: "Changes to <a href=\"#%{id}\" class='alert-link'>%{name}</a> saved!"
+    event_created: "Event <a href=\"#%{id}\" class='alert-link'>%{name}</a> created!"
     show:
       link: "More info"
   comments:
