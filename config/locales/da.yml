@@ -83,7 +83,11 @@ da:
       empty_location: "Ingen lokation fundet"
       empty_category: "Ingen kategori fundet"
       choose_file: "Vælg fil"
-      picture_warning: "Kun filer af type PNG eller JPEG under 1MB i størrelse accepteres."
+      picture:
+        warning: "Kun filer af type PNG eller JPEG under 1MB i størrelse accepteres."
+        too_big: 'Denne fil er over 1MB!'
+        wrong_format: 'Denne fil er ikke en JPEG eller en PNG!'
+        ok: Denne fil er lige tilpas.
     event:
       price: "Pris"
       start_time: "Starter"

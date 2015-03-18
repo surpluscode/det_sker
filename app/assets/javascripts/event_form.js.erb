@@ -76,7 +76,49 @@ function activateFormListeners() {
 
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
         $('#js_button_text').text(label);
+        validateFileInput(this);
     });
+}
+
+/**
+ * Ensure file selected is valid
+ * (under 1MB and a jpeg or png)
+ * If not prevent form completion
+ * and give the user an error message.
+ * @param input (file input)
+ */
+function validateFileInput(input){
+    // guards - ensure browser has FileReader API
+    // and has files method on File object
+    // and there is a file
+    if (!window.FileReader) return;
+    if (!input.files) return;
+    if (!input.files[0]) return;
+
+    var file = input.files[0];
+    var allowedTypes = ["image/png", "image/jpeg"];
+    var error = false;
+    var message = '';
+    if (file.size > 1000000 ) {
+        error = true;
+        message += i18n.events.form.picture.too_big + " ";
+    }
+    if (allowedTypes.indexOf(file.type) == -1) {
+        error = true;
+        message += i18n.events.form.picture.wrong_format;
+    }
+    $text_field = $('span[data-role="picture_warning"]');
+    if (error) {
+        $text_field
+                .html(message)
+                .removeClass()
+                .addClass('text-danger');
+    } else {
+        $text_field
+                .html(i18n.events.form.picture.ok)
+                .removeClass()
+                .addClass('text-success')
+    }
 
 }
 

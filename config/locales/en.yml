@@ -81,7 +81,11 @@ en:
       empty_location: "No matching location found"
       empty_category: "No matching category found"
       choose_file: "Choose file"
-      picture_warning: "Only JPEG or PNG files no larger than 1MB can be uploaded."
+      picture:
+        warning: "Only JPEG or PNG files no larger than 1MB can be uploaded."
+        too_big: This file is over 1MB large!
+        wrong_format: This file is not a JPEG or a PNG!
+        ok: This file is just right.
     event:
       price: "Price"
       start_time: "Starts"
