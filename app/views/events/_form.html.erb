@@ -21,13 +21,14 @@
         <%= f.label :picture %>
         <span class="btn btn-default btn-file">
         <span id="js_button_text">
+          <%# show the filename in the button if there is a file %>
           <% if @event.picture.present? %>
             <%= @event.picture.original_filename %>
           <% else %>
             <%= t '.choose_file' %>
           <% end %>
         </span>
-          <%= f.input :picture, label: false, value: @event.picture %>
+          <%= f.input :picture, label: false %>
         </span>
         <%= f.hint t('.picture.warning'), data: { role: 'picture_warning' } %>
       </div>
