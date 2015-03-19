@@ -72,12 +72,33 @@ function activateFormListeners() {
         var hide_target = $(this).attr('data-hide');
         $(hide_target).addClass('hidden');
     });
+    $('.glyphicon-trash').click(removePicture);
 
 
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
         $('#js_button_text').text(label);
         validateFileInput(this);
+        addRemoveButton(this);
     });
+}
+
+function addRemoveButton(input) {
+    //add the remove button after adding the file
+    $(input).parents('span').after('<%= bootstrap_glyphicon("trash") %>');
+    $button = $('.glyphicon-trash');
+    $button.addClass('btn btn-default');
+    $button.click(removePicture);
+
+}
+
+function removePicture(){
+    $('#js_button_text').text(i18n.events.form.choose_file);
+    $('#event_picture').val('');
+    $('span[data-role="picture_warning"]')
+            .html(i18n.events.form.picture.warning)
+            .removeClass('alert alert-success alert-danger')
+            .addClass('text text-warning');
+    $button.remove();
 }
 
 /**
@@ -119,7 +140,6 @@ function validateFileInput(input){
                 .removeClass()
                 .addClass('alert alert-success')
     }
-
 }
 
 $(document)
