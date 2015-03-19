@@ -33,6 +33,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(user_params)
+        destroy_image?
         format.html {
           redirect_to root_path, notice: I18n.t('events.event_updated', name: @event.name, id: @event.id)
         }
@@ -67,10 +68,19 @@ class EventsController < ApplicationController
     end
   end
 
+  # if the obj has a picture but it's not in the new form
+  def destroy_image?
+    if @event.picture.present? && params[:remove_picture] == '1'
+      @event.picture.clear
+      @event.save
+    end
+  end
+
   def user_params
     params.require(:event).permit(:title, :short_description, :long_description,
                                  :start_time, :end_time,  :location_id, :comments_enabled,
-                                 :price, :cancelled, :link, :picture, category_ids: []).tap do |list|
+                                 :price, :cancelled, :link, :picture,
+                                 category_ids: []).tap do |list|
       list[:category_ids].uniq!
     end
   end

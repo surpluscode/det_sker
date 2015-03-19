@@ -77,6 +77,7 @@ function activateFormListeners() {
 
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
         $('#js_button_text').text(label);
+        $('#event_remove_picture').val('0');
         validateFileInput(this);
         addRemoveButton(this);
     });
@@ -93,7 +94,7 @@ function addRemoveButton(input) {
 
 function removePicture(){
     $('#js_button_text').text(i18n.events.form.choose_file);
-    $('#event_picture').val('');
+    $('#event_remove_picture').val('1');
     $('span[data-role="picture_warning"]')
             .html(i18n.events.form.picture.warning)
             .removeClass('alert alert-success alert-danger')
