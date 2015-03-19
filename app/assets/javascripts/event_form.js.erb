@@ -112,12 +112,12 @@ function validateFileInput(input){
         $text_field
                 .html(message)
                 .removeClass()
-                .addClass('text-danger');
+                .addClass('alert alert-danger');
     } else {
         $text_field
                 .html(i18n.events.form.picture.ok)
                 .removeClass()
-                .addClass('text-success')
+                .addClass('alert alert-success')
     }
 
 }
