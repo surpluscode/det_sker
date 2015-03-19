@@ -30,6 +30,8 @@
         </span>
           <%= f.input :picture, label: false %>
         </span>
+        <%= bootstrap_glyphicon('trash', 'btn btn-default') if @event.picture.present? %>
+        <br/>
         <%= f.hint t('.picture.warning'), data: { role: 'picture_warning' } %>
       </div>
     </div>
