@@ -60,11 +60,8 @@ function initTypeahead(selector){
 
 function activateFormListeners() {
     modalFormListener();
+    initDateTimePicker();
 
-    $('#event_start_time').on('dp.change', function(e){
-        $('#event_end_time').data("DateTimePicker").setMinDate(e.date);
-        $('#event_end_time').data("DateTimePicker").setDate(e.date);
-    });
     categoryTagListener();
     $('[data-function="show"]').change(function(){
         var show_target = $(this).attr('data-target');
@@ -82,6 +79,19 @@ function activateFormListeners() {
         addRemoveButton(this);
     });
 }
+
+function initDateTimePicker(){
+    $start_time = $('#event_start_time');
+    $end_time = $('#event_end_time');
+    //disallow choosing date before today
+    $start_time.data('DateTimePicker').setMinDate(new Date());
+    $end_time.data('DateTimePicker').setMinDate(new Date());
+    $start_time.on('dp.change', function(e){
+        $end_time.data("DateTimePicker").setMinDate(e.date);
+        $end_time.data("DateTimePicker").setDate(e.date);
+    });
+}
+
 // add the remove button with listener after adding the file
 function addRemoveButton(input) {
     // don't add the button if it's already there
