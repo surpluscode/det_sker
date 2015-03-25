@@ -18,7 +18,7 @@
     </div>
     <br/>
     <div>
-      <%= f.submit  t('.sign_in'), id: 'user_sign_in' %>
+      <%= f.submit  t('.sign_in'), id: 'user_sign_in', class: 'btn btn-primary' %>
       <% if devise_mapping.rememberable? -%>
           <div>
             <%= f.check_box :remember_me %> <%= f.label t('.remember_me') %>
