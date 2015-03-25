@@ -82,14 +82,14 @@ function activateFormListeners() {
         addRemoveButton(this);
     });
 }
-
+// add the remove button with listener after adding the file
 function addRemoveButton(input) {
-    //add the remove button after adding the file
+    // don't add the button if it's already there
+    if ($('.glyphicon-trash').length > 0) return;
     $(input).parents('span').after('<%= bootstrap_glyphicon("trash") %>');
     $button = $('.glyphicon-trash');
     $button.addClass('btn btn-default');
     $button.click(removePicture);
-
 }
 
 function removePicture(){
