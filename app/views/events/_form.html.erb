@@ -33,6 +33,7 @@
         <%= bootstrap_glyphicon('trash', 'btn btn-default') if @event.picture.present? %>
         <input type="hidden" name="remove_picture" id="event_remove_picture"/>
         <br/>
+        <br/>
         <%= f.hint t('.picture.warning'), data: { role: 'picture_warning' } %>
       </div>
     </div>
