@@ -83,9 +83,12 @@ function activateFormListeners() {
 function initDateTimePicker(){
     $start_time = $('#event_start_time');
     $end_time = $('#event_end_time');
-    //disallow choosing date before today
+    // guard clause - make sure we're on the right page
+    if ($start_time.length == 0 || $end_time.length == 0) return;
+    // disable dates before today
     $start_time.data('DateTimePicker').setMinDate(new Date());
     $end_time.data('DateTimePicker').setMinDate(new Date());
+    // set the end time to be the start date
     $start_time.on('dp.change', function(e){
         $end_time.data("DateTimePicker").setMinDate(e.date);
         $end_time.data("DateTimePicker").setDate(e.date);
