@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
-
+ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
+
+gem 'bootstrap-sass', '~> 3.3.4'
+
 
 gem 'paperclip', '~> 4.2'
 gem 'lograge'
@@ -62,7 +65,7 @@ gem 'rails_12factor', group: :production
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-gem 'unicorn'
+gem 'unicorn', group: [:production]
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
