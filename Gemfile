@@ -14,6 +14,8 @@ group :production do
   gem 'rmagick'
 end
 
+gem 'humanizer'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
