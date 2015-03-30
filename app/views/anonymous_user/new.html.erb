@@ -1,13 +1,12 @@
 
 <h2><%= t '.title' %></h2>
-</br>
 <%= simple_form_for @user, url: url_for(controller: 'anonymous_user', action: 'create') do |f| %>
     <%= f.input :username %>
     <%= f.input :password, as: :hidden %>
-	</br>
+    <%= f.input :humanizer_answer, label: @user.humanizer_question %>
+    <%= f.input  :humanizer_question_id, as: :hidden %>
     <%= f.submit t('.create'), class: 'btn btn-primary' %>
 <% end %>
-</br>
 <div class="row col-sm-8">
 <%= t '.explanation' %>
 </div>
