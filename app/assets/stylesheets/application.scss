@@ -1,9 +1,34 @@
+/* Before importing bootstrap, define fonts and colors */
+
+$font-family-sans-serif: monospace;
+$font-family-serif: monospace;
+
+$navbar-default-bg: #6CE5C5;
+$navbar-default-border: #6CE5C5;
+$navbar-default-link-color: #000;
+
 @import "bootstrap";
 @import "bootstrap-datetimepicker";
 @import "typeaheadjs";
 @import "bootstrap-select.min";
 
 @import "events.css.scss";
-@import "global.css";
+@import "global";
 @import "new_event.css";
 
+/* Bootstrap overrides */
+
+.navbar-default {
+  @media (min-width: $grid-float-breakpoint) {
+    .navbar-collapse {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .navbar-nav > li:first-child > a {
+      padding-left: 0;
+    }
+  }
+  .navbar-nav > li > a {
+    font-size: $font-size-base;
+  }
+}
