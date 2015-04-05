@@ -18,8 +18,15 @@ $navbar-default-link-color: #000;
 
 /* Bootstrap overrides */
 
-.navbar-default {
+.navbar-default
+{
+  border-width: 0;
+  border-radius: 0;
+}
+
+#navbar-main {
   @media (min-width: $grid-float-breakpoint) {
+    padding-left: 0;
     .navbar-collapse {
       padding-left: 0;
       padding-right: 0;
@@ -28,6 +35,31 @@ $navbar-default-link-color: #000;
       padding-left: 0;
     }
   }
+  .navbar-nav > li > a {
+    font-size: $font-size-base;
+  }
+}
+
+.navbar-toggle
+{
+  background-color: #6CDAE5;
+  border-color: #FFF !important;
+  height: 40px;
+  width: 40px;
+}
+
+@media (min-width: $grid-float-breakpoint) {
+  #navbar-user {
+    float: right;
+  }
+}
+#navbar-user {
+  @media (min-width: $grid-float-breakpoint) {
+    .navbar-nav {
+      border-left: 2px solid #FFF;
+      background-color: #6CDAE5;
+    }
+  }  
   .navbar-nav > li > a {
     font-size: $font-size-base;
   }
