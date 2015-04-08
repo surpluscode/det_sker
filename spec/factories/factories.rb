@@ -20,6 +20,7 @@ FactoryGirl.define do
       email 'anon@secrets.org'
       username 'anon'
       is_anonymous true
+      skip_humanizer true
     end
   end
 

@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   include HasEvents
   include Humanizer
-  # humanizer validation will trigger only for anonymous users
-  require_human_on :create, if: :is_anonymous?
+  # humanizer validation will trigger only for anonymous users except for test users
+  attr_accessor :skip_humanizer
+  require_human_on :create, if: :is_anonymous?, unless: :skip_humanizer
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
