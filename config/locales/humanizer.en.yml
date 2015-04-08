@@ -1,5 +1,6 @@
 en:
   humanizer:
+    explanation: To protect the site against spam robots, we need you to answer a simple question.
     validation:
       error: Please confirm that you're not a robot
     questions:

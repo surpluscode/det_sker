@@ -1,5 +1,6 @@
 da:
   humanizer:
+    explanation: For at sikre sitet mod spam robotter, har vi behov for at du besvarer et simpelt spørgsmål.
     validation:
       error: Venligst bevise, at du ikke er en robot
     questions:

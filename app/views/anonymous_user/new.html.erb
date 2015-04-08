@@ -4,6 +4,8 @@
     <%= f.input :username %>
     <%= f.input :password, as: :hidden %>
     <%= f.input :humanizer_answer, label: @user.humanizer_question %>
+    <%= f.hint t('humanizer.explanation') %>
+    <br/>
     <%= f.input  :humanizer_question_id, as: :hidden %>
     <%= f.submit t('.create'), class: 'btn btn-primary' %>
 <% end %>
