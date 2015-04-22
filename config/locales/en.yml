@@ -43,6 +43,7 @@ en:
       users: "Users"
       security: "Security on DukOp"
       categories: "Categories"
+      new: "New"
     created:
       message: "%{_class} <strong>%{name}</strong> created!"
     updated:
