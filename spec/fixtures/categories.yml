@@ -1,14 +1,20 @@
 ---
 party:
-  key: party
+  english: party
+  danish: fest
 seminar:
-  key: seminar
+  english: seminar
+  danish: seminar
 meeting:
-  key: meeting
+  english: meeting
+  danish: møde
 demo:
-  key: demo
+  english: demo
+  danish: demo
 concert:
-  key: concert
+  english: concert
+  danish: koncert
 exercise:
-  key: exercise
+  english: exercise
+  danish: motion
 
