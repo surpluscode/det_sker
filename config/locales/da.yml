@@ -191,15 +191,6 @@ da:
       user:
        username: Brugernavn
        password_confirmation: Password igen
-  devise:
-    confirmations:
-      new:
-        header: "Send bekræftelses instruktioner igen"
-  devise:
-    sessions:
-      new:
-        sign_in: "Log ind"
-        remember_me: "Husk mig"
   categories:
     created:
       message: "Kategori %{name} oprettet!"
