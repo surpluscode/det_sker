@@ -3,9 +3,9 @@
 $font-family-sans-serif: monospace;
 $font-family-serif: monospace;
 
-$navbar-default-bg: #6CE5C5;
-$navbar-default-border: #6CE5C5;
-$navbar-default-link-color: #000;
+$navbar-default-bg: #408298;
+$navbar-default-border: #408298;
+$navbar-default-link-color: #fcfcfc;
 
 @import "bootstrap";
 @import "bootstrap-datetimepicker";
@@ -42,7 +42,7 @@ $navbar-default-link-color: #000;
 
 .navbar-toggle
 {
-  background-color: #6CDAE5;
+  background-color: #408298;
   border-color: #FFF !important;
   height: 40px;
   width: 40px;
@@ -55,9 +55,8 @@ $navbar-default-link-color: #000;
 }
 #navbar-user {
   @media (min-width: $grid-float-breakpoint) {
-    .navbar-nav {
-      border-left: 2px solid #FFF;
-      background-color: #6CDAE5;
+    .navbar-nav > li > p > a.btn-default {
+      margin-right: 8px;
     }
   }  
   .navbar-nav > li > a {

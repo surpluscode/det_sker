@@ -47,11 +47,11 @@
     <div class="collapse navbar-collapse" id="navbar-user">
       <ul class="nav navbar-nav">
         <% if current_user %>
-            <li class="menu-text">
-              <%= link_to new_event_path do %>
-                  <%= bootstrap_glyphicon('plus') %>
-                  <%= t('.new') %>
-              <% end %>
+            <li>
+                <%= link_to new_event_path do %>
+                    <%= bootstrap_glyphicon('plus') %>
+                    <%= t('.new') %>
+                <% end %>
             </li>
             <li class="menu-text dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
