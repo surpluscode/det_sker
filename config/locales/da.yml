@@ -43,7 +43,7 @@ da:
       users: "Brugere"
       security: "Sikkerhed på DukOp"
       categories: "Kategorier"
-      new: "Ny"
+      new: "Ny event"
     created:
       message: "%{_class} <strong>%{name}</strong> oprettet!"
     updated:
