@@ -199,13 +199,20 @@ da:
     index:
       edit: "Rediger kategori"
   accounts:
+    login:
+      title: 'Log ind til en eksisterende konto'
+      explanation: 'Hvis du allerede har en Duk op konto og gerne vil oprette din event som denne bruger.'
     standard:
-      title: 'Fast bruger'
-      explanation: 'Til dig som vil oprette og redigere <br/>flere begivenheder.'
+      title: 'Opret ny konto'
+      explanation: >
+                Hvis du vil oprette indhold med et konto knyttet til en email adress.
+                Dette valg giver mulighed for at rette og slette events efterfølgende.
     onetime:
-      title: "Engangs bruger"
-      explanation: "Til dig som ikke vil have din email <br/>bliver gemt"
-    title: "Vælg konto typen der passer dit behov"
+      title: "Fortsæt uden konto"
+      explanation: >
+                Hvis du vil lave events uden at gemme et brugernavn eller email adress i systemet.
+                Bemærk at dette valg udelukker muligheden for at rette og slette events efterfølgende.
+    title: "Vælg en af de følgende muligheder"
   titles:
     events:
       new: 'Opret begivenhed'
