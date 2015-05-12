@@ -155,15 +155,11 @@ da:
   anonymous_user:
     name: Anonynm bruger
     new:
-      title: "Opret engangskonto"
-      explanation: |
-        Du er ved at oprette en engangskonto.
-        Det vil sige, at en bruger oprettes med det brugernavn, du giver.
-        Der bliver ikke gemt flere oplysninger end det.
-        Da kontoen ikke er forbundet nogle emailadresse,
-        kan du ikke logge på den igen.
-        Derfor kan du ikke redigere eller slette indhold,
-        du opretter mens du er logget på denne konto, efter du er logget ud.
+      title: "Fortsæt uden konto"
+      explanation: >
+        Du er ved at oprette indhold uden en konto. Da der ikke angives identificering oplysning,
+        kan du ikke logge på igen. Derfor kan du ikke redigere eller slette indhold,
+        du opretter mens du er logget på denne konto, efter din session udløber.
       create: "Opret konto"
   member_since: "Medlem siden"
   general:
