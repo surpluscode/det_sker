@@ -26,4 +26,12 @@ module ApplicationHelper
     @translations ||= I18n.backend.send(:translations)
     @translations[I18n.locale].with_indifferent_access
   end
+
+  def username(user)
+    if user.is_anonymous?
+      t('anonymous_user.name')
+    else
+      user.username
+    end
+  end
 end

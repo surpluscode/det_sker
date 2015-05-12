@@ -153,6 +153,7 @@ da:
         price: Hvor meget koster det?
         link: Indsætte et link hvis det er relevant...
   anonymous_user:
+    name: Anonynm bruger
     new:
       title: "Opret engangskonto"
       explanation: |
