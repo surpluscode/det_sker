@@ -22,6 +22,6 @@ class AnonymousUserController < ApplicationController
 
   private
   def whitelist_params
-    params.require(:user).permit(:username, :humanizer_answer, :humanizer_question_id)
+    params.require(:user).permit(:humanizer_answer, :humanizer_question_id)
   end
 end

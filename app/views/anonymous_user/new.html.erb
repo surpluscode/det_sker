@@ -1,7 +1,6 @@
 
 <h2><%= t '.title' %></h2>
 <%= simple_form_for @user, url: url_for(controller: 'anonymous_user', action: 'create') do |f| %>
-    <%= f.input :username %>
     <%= f.input :password, as: :hidden %>
     <%= f.input :humanizer_answer, label: @user.humanizer_question %>
     <%= f.hint t('humanizer.explanation') %>
