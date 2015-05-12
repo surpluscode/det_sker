@@ -158,12 +158,19 @@ en:
     index:
       edit: "Edit category"
   accounts:
+    login:
+      title: 'Log in to an existing account'
+      explanation: 'If you already have a Duk Op account and want to use this to create an event.'
     standard:
-      title: "Permanent user"
-      explanation: "If you want to create and edit multiple events"
+      title: "Create new account"
+      explanation: >
+                If you want to create content with an account connected to your email address.
+                This option allows you to edit and delete events later.
     onetime:
-      title: "One time user"
-      explanation: "If you don't want to share your email address"
+      title: "Continue without an account"
+      explanation: >
+                  If you want to create content without saving a username or email address in the system.
+                  Note that choosing this option will mean that you can't edit or delete content you create later.
     title: "Choose the account type that suits you"
   titles:
     events:
