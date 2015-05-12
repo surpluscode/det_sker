@@ -32,7 +32,7 @@ describe UserController do
 
     it 'should not permit non-logged in users to edit' do
       get :edit, id: @user
-      response.should redirect_to new_user_session_path
+      response.should redirect_to page_path 'new_account'
     end
 
     it 'should not permit normal users to edit other users' do
