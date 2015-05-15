@@ -7,8 +7,8 @@
             <div class="row">
               <% if current_user && current_user.can_edit?(comment) %>
                   <p>
-                    <%= link_to(t('.edit'), edit_event_comment_path(comment.event.id, comment.id),
-                                remote: true, data: {target: "comment-data_#{comment.id}"} )
+                    <%= link_to(t('.edit'), edit_event_comment_path(comment.event.id, comment.id), remote: true,
+                                data: { function: 'show', target: "#reply_button", hide: '#comment_form'} )
                     %>
                   </p>
               <% end %>
