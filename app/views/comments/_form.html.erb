@@ -1,18 +1,26 @@
 <% event = @event || event %>
 <% comment = @comment || Comment.new(event: event) %>
 <div class="container">
-  <div class="pull-right">
-    <%= t('.writing_as') %> <strong><%= username(current_user) %></strong>
+  <div class="row">
+    <button id="reply_button" class="btn btn-default"
+            data-function="show" data-target="#comment_form" data-hide="#reply_button">
+      Reply
+    </button>
   </div>
-  <%= simple_form_for comment, url: url_for([event, comment]),
-                      html: { class: 'form-horizontal' },
-                      defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' }
-                      } do |f| %>
-      <div class="row">
-        <%= f.input :content, as: :text %>
-      </div>
-      <div class="row">
-        <%= f.button :submit, class: 'btn btn-primary' %>
-      </div>
-      </div>
-  <% end %>
+  <div class="hidden" id="comment_form">
+    <div class="pull-right">
+      <%= t('.writing_as') %> <strong><%= username(current_user) %></strong>
+    </div>
+    <%= simple_form_for comment, url: url_for([event, comment]),
+                        html: { class: 'form-horizontal' },
+                        defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' }
+                        } do |f| %>
+        <div class="row">
+          <%= f.input :content, as: :text %>
+        </div>
+        <div class="row">
+          <%= f.button :submit, class: 'btn btn-primary' %>
+        </div>
+        </div>
+    <% end %>
+    </div>
