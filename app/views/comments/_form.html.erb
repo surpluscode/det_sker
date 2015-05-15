@@ -1,7 +1,18 @@
 <% event = @event || event %>
 <% comment = @comment || Comment.new(event: event) %>
-<%= simple_form_for comment, url: url_for([event, comment]) do |f| %>
-    <%= f.input :content, as: :text %>
-    <%= t('.writing_as') %> <b><%= current_user.username %></b>
-    <%= f.button :submit %>
-<% end %>
+<div class="container">
+  <div class="pull-right">
+    <%= t('.writing_as') %> <strong><%= username(current_user) %></strong>
+  </div>
+  <%= simple_form_for comment, url: url_for([event, comment]),
+                      html: { class: 'form-horizontal' },
+                      defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' }
+                      } do |f| %>
+      <div class="row">
+        <%= f.input :content, as: :text %>
+      </div>
+      <div class="row">
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      </div>
+      </div>
+  <% end %>
