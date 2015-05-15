@@ -2,7 +2,7 @@ DetSker::Application.routes.draw do
   devise_for :user
   root 'calendar#index'
   resources :events, except: [:index] do
-    resources :comments, except: [:index, :new, :delete]
+    resources :comments, except: [:new, :delete]
   end
   # events has no index - instead it should redirect to calendar index with params
   get 'events', to: redirect(path: '/')

@@ -1,8 +1,12 @@
 class CommentsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :index
   before_action only: [:edit, :update] do
     user_can_edit? set_comment_and_event
+  end
+
+  def index
+    @event = Event.find(user_params[:event_id])
   end
 
   def create
