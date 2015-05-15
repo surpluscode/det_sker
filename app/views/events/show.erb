@@ -18,6 +18,7 @@
 </p>
 <% end %>
 <% if @event.comments_enabled? %>
+    <hr/>
  <%= render partial: 'events/comments/list', locals: {comments: @event.comments} %>
  <%= render partial: 'comments/form', locals: { event: @event } if user_signed_in? %>
 <% end %>
