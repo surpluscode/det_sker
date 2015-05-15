@@ -58,17 +58,26 @@ function initTypeahead(selector){
     });
 }
 
-function activateFormListeners() {
-    modalFormListener();
-    initDateTimePicker();
-
-    categoryTagListener();
-    $('[data-function="show"]').change(function(){
+/**
+ * Generic function to allow us to hide and show DOM elements
+ * through the use of an input with data-function='show', data-target and
+ * data-hide attributes where the last two contain selectors.
+ */
+function showListener(){
+    $('[data-function="show"]').click(function(){
         var show_target = $(this).attr('data-target');
         $(show_target).removeClass('hidden');
         var hide_target = $(this).attr('data-hide');
         $(hide_target).addClass('hidden');
     });
+}
+
+function activateFormListeners() {
+    modalFormListener();
+    initDateTimePicker();
+
+    categoryTagListener();
+    showListener();
     $('.glyphicon-trash').click(removePicture);
 
 
