@@ -1,26 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="event_show">
+  <h1><%= @event.title %></h1>
+  <%= image_tag @event.picture.url(:original) %>
+  <p>
+    <%= @event.short_description %>
+    <%= @event.long_description %>
+  </p>
 
-<h1><%= @event.title %></h1>
-<%= image_tag @event.picture.url(:original) %>
-<p>
-  <%= @event.short_description %>
-  <%= @event.long_description %>
-</p>
+  <p>
+    <strong><%= t 'simple_form.labels.event.location' %></strong>
+    <%= link_to(@event.location.name, location_path(@event.location)) %>
+  </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= link_to(@event.location.name, location_path(@event.location)) %>
-</p>
-
-<% if @event.link.present? %>
-<p>
-  <%= link_to(t('.link'), @event.link) %>
-</p>
-<% end %>
-<% if @event.comments_enabled? %>
-    <hr/>
- <%= render partial: 'events/comments/list', locals: {comments: @event.comments} %>
- <%= render partial: 'comments/form', locals: { event: @event } if user_signed_in? %>
-<% end %>
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+  <% if @event.link.present? %>
+      <p>
+        <%= link_to(t('.link'), @event.link) %>
+      </p>
+  <% end %>
+  <% if @event.comments_enabled? %>
+      <div class="hidden-xs">
+        <hr/>
+        <%= render partial: 'events/comments/list', locals: { comments: @event.comments } %>
+        <%= render partial: 'comments/form', locals: { event: @event } if user_signed_in? %>
+      </div>
+  <% end %>
+  <div class="hidden-xs">
+    <%= link_to t(:edit), edit_event_path(@event) %> |
+    <%= link_to t(:back), events_path %>
+  </div>
+</div>

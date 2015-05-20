@@ -109,8 +109,10 @@ da:
     show:
       link: "Mere info"
   comments:
+    created_message: 'Kommentar oprettet!'
     form:
       writing_as: "Skriver som"
+      reply: "Svar"
   locations:
     form:
       new_location: 'Opret nyt sted'
@@ -230,3 +232,4 @@ da:
       new: 'Log ind'
   language: "danish"
   edit: "Rediger"
+  back: 'Tilbage'

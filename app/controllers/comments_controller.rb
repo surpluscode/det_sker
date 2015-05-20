@@ -17,8 +17,8 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to event_path(comment_params[:event_id]), notice: 'Comment was created successfully.'}
-        format.json { render json: @comment, status: :created}
+        format.html { redirect_to event_path(comment_params[:event_id]), notice: I18n.t('comments.created_message')}
+        format.json { render json: @comment, status: :created }
       else
         format.html { redirect_to root_path, notice: "Comment was not created: #{@comment.errors.inspect}" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }

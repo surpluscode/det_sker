@@ -112,6 +112,8 @@ en:
   comments:
     form:
       writing_as: "Writing as"
+      reply: "Reply"
+    created_message: "Comment created"
   locations:
     form:
       new_location: 'Create new location'
