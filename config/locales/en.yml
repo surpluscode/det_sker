@@ -114,6 +114,7 @@ en:
       writing_as: "Writing as"
       reply: "Reply"
     created_message: "Comment created"
+    updated_message: "Comment updated!"
   locations:
     form:
       new_location: 'Create new location'

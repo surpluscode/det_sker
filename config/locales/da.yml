@@ -113,6 +113,7 @@ da:
     form:
       writing_as: "Skriver som"
       reply: "Svar"
+    updated_message: "Kommentar opdateret!"
   locations:
     form:
       new_location: 'Opret nyt sted'

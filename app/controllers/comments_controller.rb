@@ -26,17 +26,14 @@ class CommentsController < ApplicationController
     end
   end
 
-  # since this action is called via ajax,
-  # we don't want to show the standard layout
   def edit
-    render layout: nil
   end
 
 
   def update
     respond_to do |format|
       if @comment.update(user_params.except(:comment_id))
-        format.html { redirect_to event_path(@comment.event_id), notice: 'Comment updated successfully'}
+        format.html { redirect_to event_path(@comment.event_id), notice: I18n.t('comments.updated_message')}
         format.json { render json: @comment }
       else
         format.html { redirect_to event_path(user_params[:event_id]), notice: 'Comment could not be updated'}
