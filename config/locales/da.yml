@@ -43,7 +43,7 @@ da:
       users: "Brugere"
       security: "Sikkerhed på DukOp"
       categories: "Kategorier"
-      new: "Ny event"
+      new: "Nyt event"
     created:
       message: "%{_class} <strong>%{name}</strong> oprettet!"
     updated:
@@ -200,17 +200,17 @@ da:
       edit: "Rediger kategori"
   accounts:
     login:
-      title: 'Log ind til en eksisterende konto'
-      explanation: 'Hvis du allerede har en Duk op konto og gerne vil oprette din event som denne bruger.'
+      title: 'Log ind på en eksisterende konto'
+      explanation: 'Hvis du allerede har en Duk op konto og gerne vil oprette dit event som denne bruger.'
     standard:
       title: 'Opret ny konto'
       explanation: >
-                Hvis du vil oprette indhold med et konto knyttet til en email adress.
+                Hvis du vil oprette indhold med et konto knyttet til en email adresse.
                 Dette valg giver mulighed for at rette og slette events efterfølgende.
     onetime:
       title: "Fortsæt uden konto"
       explanation: >
-                Hvis du vil lave events uden at gemme et brugernavn eller email adress i systemet.
+                Hvis du vil lave events uden at gemme et brugernavn eller email adresse i systemet.
                 Bemærk at dette valg udelukker muligheden for at rette og slette events efterfølgende.
     title: "Vælg en af de følgende muligheder"
   titles:
