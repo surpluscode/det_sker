@@ -135,6 +135,7 @@ da:
         end_time: Slutter
         price: Pris
         picture: Billede
+        comments_enabled: Tillad kommentarer?
       location:
         name: Navn
         street_address: Gadeadresse

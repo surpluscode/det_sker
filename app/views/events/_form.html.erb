@@ -1,20 +1,20 @@
 <%= simple_form_for @event, html: { multipart: true, class: 'form-horizontal' }, defaults: {
-                            wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' } } do |f| %>
+                                  wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' } } do |f| %>
 
 
     <div class="row">
       <div class="col-xs-12">
         <%= f.input :title %>
       </div>
-      </div>
-      <% if @event.persisted? %>
-      <div class="row">
+    </div>
+    <% if @event.persisted? %>
+        <div class="row">
           <div class="col-xs-12">
             <%= f.input :cancelled, wrapper_html: { class: 'checkbox' },
                         input_html: { class: 'checkbox'}, label_html: { class: 'override'} %>
           </div>
-      </div>
-      <% end %>
+        </div>
+    <% end %>
 
     <div class="row">
       <div class="col-xs-12">
@@ -44,52 +44,52 @@
       </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-5">
-            <%= f.association :categories, label_method: ->(obj){ obj.send(t(:language)).titleize }, required: true,
-                              input_html: { class: 'selectpicker', title: t('.choose_category') }
-            %>
-        </div>
-        <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-          <%= f.label :location_id %>
-          <%# If we already have a location the placeholder should be that location's name %>
-          <% location_name = @event.location.display_name rescue nil %>
-          <%= text_field_tag(
-                      'location-typeahead', location_name,
-                      placeholder: "#{location_name || t('.choose_location')}",
-                      class: "typeahead form-control",
-                      data: {
-                              api_path: locations_path,
-                              remote_path: new_location_path,
-                              label: t('.create_location'),
-                              display_key: 'display_name',
-                              header: t('.typeahead_header'),
-                              target: '#event_location_id',
-                              empty_message: t('.empty_location')
-                      }
-              )
-          %>
-          <%= f.full_error :location_id %>
-          <%= link_to new_location_path, class: 'btn btn-default btn-sm pull-right',
-                      data: { remote: true, toggle: 'modal', target: 'remote_form_modal' } do %>
-                <%= t('.create_location') %>
-                <%= bootstrap_glyphicon('plus') %>
-          <% end %>
+      <div class="col-xs-12 col-sm-5">
+        <%= f.association :categories, label_method: ->(obj){ obj.send(t(:language)).titleize }, required: true,
+                          input_html: { class: 'selectpicker', title: t('.choose_category') }
+        %>
+      </div>
+      <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+        <%= f.label :location_id %>
+        <%# If we already have a location the placeholder should be that location's name %>
+        <% location_name = @event.location.display_name rescue nil %>
+        <%= text_field_tag(
+                    'location-typeahead', location_name,
+                    placeholder: "#{location_name || t('.choose_location')}",
+                    class: "typeahead form-control",
+                    data: {
+                            api_path: locations_path,
+                            remote_path: new_location_path,
+                            label: t('.create_location'),
+                            display_key: 'display_name',
+                            header: t('.typeahead_header'),
+                            target: '#event_location_id',
+                            empty_message: t('.empty_location')
+                    }
+            )
+        %>
+        <%= f.full_error :location_id %>
+        <%= link_to new_location_path, class: 'btn btn-default btn-sm pull-right',
+                    data: { remote: true, toggle: 'modal', target: 'remote_form_modal' } do %>
+            <%= t('.create_location') %>
+            <%= bootstrap_glyphicon('plus') %>
+        <% end %>
 
         <%= f.input :location_id, as: :hidden %>
 
-        </div>
+      </div>
     </div>
 
 
     <div class="row">
-        <div class="col-xs-12 col-sm-5">
-          <%= f.input :start_time, as: :string, input_html: { data:{
-                  function: 'datetime-picker', 'date-format' => 'DD/MM/YYYY HH:mm' }} %>
-        </div>
-        <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+      <div class="col-xs-12 col-sm-5">
+        <%= f.input :start_time, as: :string, input_html: { data:{
+                                       function: 'datetime-picker', 'date-format' => 'DD/MM/YYYY HH:mm' }} %>
+      </div>
+      <div class="col-xs-12 col-sm-5 col-sm-offset-1">
         <%= f.input :end_time, as: :string, input_html: { data: {
-                function: 'datetime-picker', 'date-format' => 'DD/MM/YYYY HH:mm' }} %>
-        </div>
+                                     function: 'datetime-picker', 'date-format' => 'DD/MM/YYYY HH:mm' }} %>
+      </div>
     </div>
 
     <div class="row">
@@ -102,14 +102,14 @@
     or b) if the user has checked this box to say that there is a price
     Note the javascript hooks on the data elements. %>
     <% if @event.price.blank? %>
-    <div class="input boolean optional event_price_enabled checkbox">
-      <label class="boolean optional control-label override checkbox" for="event_price_enabled">
-        <input class="boolean optional checkbox" id="event_price_enabled"
-               name="event[price_enabled]" value="1" type="checkbox"
-               data-function="show" data-target=".event_price" data-hide=".event_price_enabled">
-        <%= t '.enable_price' %>
-      </label>
-    </div>
+        <div class="input boolean optional event_price_enabled checkbox">
+          <label class="boolean optional control-label override checkbox" for="event_price_enabled">
+            <input class="boolean optional checkbox" id="event_price_enabled"
+                   name="event[price_enabled]" value="1" type="checkbox"
+                   data-function="show" data-target=".event_price" data-hide=".event_price_enabled">
+            <%= t '.enable_price' %>
+          </label>
+        </div>
     <% end %>
 
     <div class="row">
@@ -118,12 +118,21 @@
         <%= f.input :price, wrapper_html: { class: is_visible } %>
       </div>
     </div>
-  <br/>
+    <% if current_user.is_admin? %>
+        <div class="input boolean optional event_comments_enabled checkbox">
+          <label class="boolean optional control-label override checkbox" for="event_comments_enabled">
+            <input class="boolean optional checkbox" id="event_comments_enabled"
+                   name="event[comments_enabled]" value="0" type="checkbox">
+            <%= t 'simple_form.labels.event.comments_enabled' %>
+          </label>
+        </div>
+    <% end %>
+    <br/>
     <div class="row">
       <div class="col-xs-12">
         <%= f.button :submit, class: 'btn btn-primary' %>
       </div>
     </div>
-  <br/>
+    <br/>
 <% end %>
 <%= render partial: 'layouts/modal_wrapper' %>
