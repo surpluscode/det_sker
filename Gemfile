@@ -12,6 +12,8 @@ gem 'lograge'
 group :production do
   gem 'pg'
   gem 'rmagick'
+  gem 'unicorn'
+  gem 'unicorn-worker-killer'
 end
 
 gem 'humanizer'
@@ -67,7 +69,7 @@ gem 'rails_12factor', group: :production
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-gem 'unicorn', group: [:production]
+# gem 'unicorn', group: [:production]
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
