@@ -16,8 +16,9 @@ class User < ActiveRecord::Base
   # ensure user is permitted to edit object
   # either if the user is an admin or if
   # the user has created the object
+  # Note only event objects have user_ids
   def can_edit?(object)
-    self.is_admin? || id == object.user_id
+    self.is_admin? || id == object.try(:user_id)
   end
 
   def make_admin
