@@ -1,6 +1,6 @@
 <div class="event_show">
   <h1><%= @event.title %></h1>
-  <%= image_tag @event.picture.url(:original) %>
+  <%= image_tag @event.picture.url(:original) if @event.picture.present? %>
   <p>
     <%= simple_format(@event.short_description) %>
     <%= simple_format(@event.long_description) %>
