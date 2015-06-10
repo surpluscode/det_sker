@@ -2,8 +2,8 @@
   <h1><%= @event.title %></h1>
   <%= image_tag @event.picture.url(:original) %>
   <p>
-    <%= @event.short_description %>
-    <%= @event.long_description %>
+    <%= simple_format(@event.short_description) %>
+    <%= simple_format(@event.long_description) %>
   </p>
 
   <p>
