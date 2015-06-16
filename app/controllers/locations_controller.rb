@@ -23,8 +23,7 @@ class LocationsController < ApplicationController
     @location = Location.new(location_whitelist)
     respond_to do |format|
       if @location.save
-        format.html { render 'layouts/created', layout: nil }
-        format.json { render json: @location, status: :created}
+        format.json { render 'show' }
       else
         format.html { render action: :new, status: :unprocessable_entity, layout: nil }
         format.json { render json: @location.errors, status: :unprocessable_entity }

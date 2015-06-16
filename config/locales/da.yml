@@ -45,7 +45,7 @@ da:
       categories: "Kategorier"
       new: "Nyt event"
     created:
-      message: "%{_class} <strong>%{name}</strong> oprettet!"
+      message: "%{_class} \"%{name}\" oprettet!"
     updated:
       message: "Ændringer til %{_class} <strong>%{name}</strong> gemt!"
   calendar:

@@ -70,7 +70,12 @@
         %>
         <%= f.full_error :location_id %>
         <%= link_to new_location_path, class: 'btn btn-default btn-sm pull-right',
-                    data: { remote: true, toggle: 'modal', target: 'remote_form_modal' } do %>
+                    data: {
+                            remote: true,
+                            toggle: 'modal',
+                            target: 'remote_form_modal',
+                            update_val: '#location-typeahead'
+                    } do %>
             <%= t('.create_location') %>
             <%= bootstrap_glyphicon('plus') %>
         <% end %>
