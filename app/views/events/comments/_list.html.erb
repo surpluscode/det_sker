@@ -15,7 +15,7 @@
             <div class="row">
               <p>
                 <strong><%= username(comment.user) %></strong>
-                <%= comment.content %>
+                <%= simple_format(comment.content) %>
               </p>
             </div>
           </div>
