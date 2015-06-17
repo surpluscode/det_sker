@@ -1,0 +1,11 @@
+<p>
+  <%= link_to(event.location.name, location_path(event.location)) %>
+</p>
+
+<p><strong><%= event.location.street_address %></strong></p>
+<p><strong><%= event.location.town %></strong></p>
+<% if event.price.present? %>
+    <p><strong><%= t 'simple_form.labels.event.price' %>: </strong><%= event.price %></p>
+<% end %>
+<p><strong><%= t('simple_form.labels.event.start_time') %> </strong><%= format_datetime(event.start_time) %></p>
+<p><strong><%= t('simple_form.labels.event.end_time') %> </strong><%= format_datetime(event.end_time) %></p>

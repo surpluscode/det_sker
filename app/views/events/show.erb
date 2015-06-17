@@ -6,10 +6,7 @@
     <%= simple_format(@event.long_description) %>
   </p>
 
-  <p>
-    <strong><%= t 'simple_form.labels.event.location' %></strong>
-    <%= link_to(@event.location.name, location_path(@event.location)) %>
-  </p>
+  <%= render partial: 'details', locals: { event: @event } %>
 
   <% if @event.link.present? %>
       <p>
