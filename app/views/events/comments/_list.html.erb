@@ -2,18 +2,18 @@
     <h4><%= t '.title' %></h4>
 
     <% comments.each do |comment| %>
-        <div class="comment-container_js container">
-          <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong><%= username(comment.user) %></strong>
             <% if current_user && current_user.can_edit?(comment) %>
-                <p>
-                  <%= link_to(t('.edit'), edit_event_comment_path(comment.event.id, comment.id))
-                  %>
-                </p>
+                <span class="pull-right">
+                    <%= link_to(t('.edit'), edit_event_comment_path(comment.event.id, comment.id))
+                    %>
+                </span>
             <% end %>
           </div>
-          <div class="row">
+          <div class="panel-body">
             <p>
-              <strong><%= username(comment.user) %></strong>
               <%= simple_format(comment.content) %>
             </p>
           </div>
