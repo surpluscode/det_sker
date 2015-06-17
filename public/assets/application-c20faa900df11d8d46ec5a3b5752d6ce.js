@@ -15276,7 +15276,7 @@ function loadRemoteModal(context, event, xhr) {
     // in case of failure, we receive back html which
     // we put back into the modal
     function handleSuccess(event, xhr) {
-        $target.find('.modal-body').html(xhr);
+        $target.find('.modal-body').html(xhr.message);
         // refresh the typeahead to include the result
         initLocationTypeahead();
 
@@ -15284,7 +15284,7 @@ function loadRemoteModal(context, event, xhr) {
         $(update_field).val(xhr.id);
         // put the name into the input field and disable it
         var update_val = $this.attr('data-update-val');
-        $(update_val).val(xhr.display_name).attr('disabled', true);
+        $(update_val).val(xhr.display_name);
     }
     function handleFailure(event, xhr) {
         $target.find('.modal-body').html(xhr.responseText);
