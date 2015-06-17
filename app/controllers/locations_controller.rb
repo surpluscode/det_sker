@@ -24,6 +24,7 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.save
         format.json { render 'show' }
+        format.html { redirect_to @location, notice: 'Location created successfully'}
       else
         format.html { render action: :new, status: :unprocessable_entity, layout: nil }
         format.json { render json: @location.errors, status: :unprocessable_entity }
