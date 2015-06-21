@@ -78,7 +78,7 @@ da:
       enable_price: "Koster din begivenhed noget?"
       new_cat_button: "Opret ny kategori"
       choose_category: "Vælg en eller flere kategori"
-      typeahead_header: 'Tast for at finde kategorier: '
+      typeahead_header: '<strong>Tast for at finde steder:</strong> '
       typeahead_footer: 'Opret kategori'
       choose_location: "Vælg lokation"
       create_location: "Opret lokation"
