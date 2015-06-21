@@ -30,6 +30,7 @@ da:
   time:
     formats:
       calendar: ! '%a d. %e. %b %H:%M'
+      time: ! '%H:%M'
   layouts:
     application:
       login: "Log ind"

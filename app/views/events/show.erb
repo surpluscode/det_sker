@@ -1,12 +1,23 @@
 <div class="event_show">
   <h1><%= @event.title %></h1>
   <%= image_tag @event.picture.url(:original) if @event.picture.present? %>
+  <h3>
+    <%= format_daterange(@event.start_time, @event.end_time) %>
+    <%#= format_datetime(@event.start_time) %>  <%#= format_datetime(@event.end_time) %>
+  </h3>
+  <h4>
+    <%= link_to(@event.location.full_address, location_path(@event.location)) %>
+  </h4>
+  <% if @event.price.present? %>
+      <p><strong><%= t 'simple_form.labels.event.price' %>: </strong><%= @event.price %></p>
+  <% end %>
+
   <p>
     <%= simple_format(@event.short_description) %>
     <%= simple_format(@event.long_description) %>
   </p>
 
-  <%= render partial: 'details', locals: { event: @event } %>
+
 
   <% if @event.link.present? %>
       <p>

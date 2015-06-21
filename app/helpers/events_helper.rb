@@ -9,6 +9,16 @@ module EventsHelper
     I18n.localize(dt, format: :calendar)
   end
 
+  def format_daterange(starttime, endtime)
+    # If it's the same day, only print day once
+    if starttime.to_date == endtime.to_date
+      "#{I18n.localize(starttime, format: :calendar)} - #{I18n.localize(endtime, format: :time)}"
+    else
+      "#{I18n.localize(starttime, format: :calendar)} - #{I18n.localize(endtime, format: :calendar)}"
+    end
+  end
+
+
   def format_starttime(dt)
     dt.strftime('%H:%M')
   end
