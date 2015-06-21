@@ -69,9 +69,6 @@
       <p> <%= event.short_description.truncate(160, separator: ' ') %></p>
       <p><%= link_to t('.see_more'), event %> </p>
     </div>
-    <div class="col-xs-12 col-md-5 col-md-offset-1">
-      <%= render partial: 'events/details', locals: { event: event} %>
-    </div>
   </div>
 </div>
 <div class="row"></div>
