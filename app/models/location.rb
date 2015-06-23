@@ -10,7 +10,13 @@ class Location < ActiveRecord::Base
   # combined address as single string without nil vals
   def full_address
     [name, street_address, postcode, town]
-        .reject(&:nil?)
+        .reject(&:empty?)
+        .join(', ')
+  end
+
+  def address
+    [street_address, postcode, town]
+        .reject(&:empty?)
         .join(', ')
   end
 

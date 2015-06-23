@@ -27,8 +27,10 @@ da:
   date:
     formats:
       header: ! '%a d. %e. %b'
+      brief: ! '%e %b'
   time:
     formats:
+      short: ! '%a/%e'
       calendar: ! '%a d. %e. %b %H:%M'
       time: ! '%H:%M'
   layouts:

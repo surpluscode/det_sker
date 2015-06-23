@@ -41,7 +41,7 @@
 	    <span class="col-xs-2 col-md-1 col-md-pull-7">
             <%# In the frontpage context we don't show a date, otherwise, do. %>
           <% if defined? show_date %>
-                <%= format_datetime(event.start_time)  %>
+                <%= I18n.localize(event.start_time.to_date, format: :brief)  %>
             <% else %>
                 <%= format_starttime(event.start_time) %>
             <% end %>
