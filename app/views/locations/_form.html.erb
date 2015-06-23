@@ -1,8 +1,11 @@
-<%= simple_form_for(@location, data: { remote: true}) do |f| %>
+<%= simple_form_for(@location, data: { remote: true}, html: { class: 'form-horizontal' }, defaults: {
+                                     wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' } }
+    ) do |f| %>
     <%= f.input :name  %>
     <%= f.input :street_address %>
     <%= f.input :postcode %>
     <%= f.input :town %>
     <%= f.input :description, as: :string %>
-    <%= f.button :submit %>
+    <br/>
+    <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
