@@ -22,7 +22,7 @@
 da:
   app_name: 'Duk op'
   hello: "Hello world"
-  Location: Lokation
+  Location: Sted
   Category: Kategori
   date:
     formats:
@@ -39,7 +39,7 @@ da:
       about_project: "Om DukOp projektet"
       my_page: "Mine begivenheder"
       calendar: "Kalender"
-      locations: "Lokationer"
+      locations: "Steder"
       create_account: "Opret konto"
       users: "Brugere"
       security: "Sikkerhed på DukOp"
@@ -72,17 +72,17 @@ da:
     form:
       enable_comments: "Tillad kommentar på din begivenhed?"
       new_category: "Kategori <value> findes ikke, vil du tilføje det?"
-      new_location: "Lokation <value> findes ikke, vil du tilføje det?"
-      new_location_title: "Ny lokation"
+      new_location: "Sted <value> findes ikke, vil du tilføje det?"
+      new_location_title: "Nyt sted"
       location_created: "Sted oprettet!"
       enable_price: "Koster din begivenhed noget?"
       new_cat_button: "Opret ny kategori"
       choose_category: "Vælg en eller flere kategori"
       typeahead_header: '<strong>Tast for at finde steder:</strong> '
       typeahead_footer: 'Opret kategori'
-      choose_location: "Vælg lokation"
-      create_location: "Opret lokation"
-      empty_location: "Ingen lokation fundet"
+      choose_location: "Vælg sted"
+      create_location: "Opret sted"
+      empty_location: "Ingen passende steder fundet"
       empty_category: "Ingen kategori fundet"
       choose_file: "Vælg fil"
       picture:
@@ -222,7 +222,7 @@ da:
       edit: 'Redigerer'
       update: 'Redigerer'
     locations:
-      index: 'Lokationer'
+      index: 'Steder'
       edit: 'Redigerer'
     user:
       index: 'Brugere'
@@ -236,3 +236,6 @@ da:
   language: "danish"
   edit: "Rediger"
   back: 'Tilbage'
+  activerecord:
+    models:
+      location: sted
