@@ -6,7 +6,7 @@ describe LocationsController do
     it 'creates an array of locations' do
       location = FactoryGirl.create(:other_location)
       get :index
-      assigns(:locations).should include(location)
+      expect(assigns(:locations)).to include(location)
     end
   end
 
@@ -14,7 +14,7 @@ describe LocationsController do
     it 'assigns the correct location' do
       l = FactoryGirl.create(:other_location)
       get :show, id: l
-      assigns(:location).should eq l
+      expect(assigns(:location)).to eq l
     end
   end
 
@@ -38,14 +38,14 @@ describe LocationsController do
     end
     it 'should assign the correct location' do
       put :update, id: @location, location: FactoryGirl.attributes_for(:location)
-      assigns(:location).id.should eq @location.id
+      expect(assigns(:location).id).to eq @location.id
     end
 
     it 'should update the location' do
       l_mod = FactoryGirl.attributes_for(:location, description: 'A new description')
       put :update, id: @location, location: l_mod
       @location.reload
-      @location.description.should eq('A new description')
+      expect(@location.description).to eq('A new description')
     end
   end
 
@@ -64,7 +64,7 @@ describe LocationsController do
 
     it 'redirects to index' do
       delete :destroy, id: @location
-      response.should redirect_to locations_url
+      expect(response).to redirect_to locations_url
     end
   end
 end

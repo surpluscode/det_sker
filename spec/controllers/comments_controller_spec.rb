@@ -51,7 +51,7 @@ describe CommentsController do
     it 'should allow a user to update their comment' do
       patch :update, id: @comment, comment: @modified_comment
       @comment.reload
-      @comment.content.should eql 'Actually, I reconsider...'
+      expect(@comment.content).to eql 'Actually, I reconsider...'
     end
 
     it "should not allow a user to update another user's comment" do
@@ -59,7 +59,7 @@ describe CommentsController do
       sign_in FactoryGirl.create(:different_user)
       patch :update, id: @comment, comment: @modified_comment
       @comment.reload
-      @comment.content.should_not eql 'Actually, I reconsider...'
+      expect(@comment.content).not_to eql 'Actually, I reconsider...'
     end
 
     it "should allow an admin user to update another user's comment" do
@@ -67,7 +67,7 @@ describe CommentsController do
       sign_in FactoryGirl.create(:admin_user)
       patch :update, id: @comment, comment: @modified_comment
       @comment.reload
-      @comment.content.should eql 'Actually, I reconsider...'
+      expect(@comment.content).to eql 'Actually, I reconsider...'
     end
 
   end
@@ -83,21 +83,21 @@ describe CommentsController do
 
     it 'should return a comment object' do
       get :edit, id: @comment
-      assigns(:comment).should eql @comment
+      expect(assigns(:comment)).to eql @comment
     end
 
     it 'should not respond to an unauthorized user' do
       sign_out @user
       sign_in FactoryGirl.create(:different_user)
       get :edit, id: @comment
-      response.should redirect_to root_path
+      expect(response).to redirect_to root_path
     end
 
     it "should allow an admin user to edit another user's comment" do
       sign_out @user
       sign_in FactoryGirl.create(:admin_user)
       get :edit, id: @comment
-      assigns(:comment).should eql @comment
+      expect(assigns(:comment)).to eql @comment
     end
 
   end

@@ -9,8 +9,8 @@ describe UserController do
 
     it 'should return a list of all users' do
       get :index
-      assigns(:users).should_not be_nil
-      assigns(:users).first.should be_a User
+      expect(assigns(:users)).not_to be_nil
+      expect(assigns(:users).first).to be_a User
     end
   end
 
@@ -21,7 +21,7 @@ describe UserController do
 
     it 'should assign the requested user to the session' do
       get :show, id: @user
-      assigns(:user).should eql @user
+      expect(assigns(:user)).to eql @user
     end
   end
 
@@ -32,27 +32,27 @@ describe UserController do
 
     it 'should not permit non-logged in users to edit' do
       get :edit, id: @user
-      response.should redirect_to page_path 'new_account'
+      expect(response).to redirect_to page_path 'new_account'
     end
 
     it 'should not permit normal users to edit other users' do
       diff_user = FactoryGirl.create(:different_user)
       sign_in diff_user
       get :edit, id: @user
-      response.should redirect_to users_path
+      expect(response).to redirect_to users_path
     end
 
     it 'should permit admin users to edit' do
       admin = FactoryGirl.create(:admin_user)
       sign_in admin
       get :edit, id: @user
-      response.should render_template :edit
+      expect(response).to render_template :edit
     end
 
     it 'should permit a logged in user to edit their own profile' do
       sign_in @user
       get :edit, id: @user
-      response.should render_template :edit
+      expect(response).to render_template :edit
     end
 
   end
@@ -66,7 +66,7 @@ describe UserController do
       diff_user = FactoryGirl.create(:different_user)
       sign_in diff_user
       patch :make_admin, id: @user
-      response.should redirect_to users_path
+      expect(response).to redirect_to users_path
     end
 
     it 'should allow admin users to make the relevant user an admin user' do

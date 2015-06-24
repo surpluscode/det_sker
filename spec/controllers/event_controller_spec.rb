@@ -7,7 +7,7 @@ describe EventsController do
     it 'should return the event itself' do
       event = FactoryGirl.create(:event)
       get :show, id: event
-      assigns(:event).should eql event
+      expect(assigns(:event)).to eql event
     end
 
     it 'should return all the events comments' do
@@ -15,7 +15,7 @@ describe EventsController do
       c = FactoryGirl.create(:comment, event: event)
       get :show, id: event
 
-      assigns(:event).comments.first.should eql c
+      expect(assigns(:event).comments.first).to eql c
     end
   end
 

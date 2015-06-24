@@ -7,18 +7,18 @@ describe Day do
   end
 
   it 'should contain events' do
-    @day.events.should be_a Array
-    @day.events.first.should eql @event
+    expect(@day.events).to be_a Array
+    expect(@day.events.first).to eql @event
   end
 
   it 'should have a date with the same date as its events' do
-    @day.date.should eql @event.start_time.to_date
+    expect(@day.date).to eql @event.start_time.to_date
   end
 
   it 'should allow us to add more dates' do
     e = FactoryGirl.create(:event, title: 'A different event')
     @day.add_event(e)
-    @day.events.should include(e)
+    expect(@day.events).to include(e)
   end
 
   it 'should throw an exception given a day with a different date' do
@@ -29,7 +29,7 @@ describe Day do
   it 'should sort by date ascending' do
     e = FactoryGirl.create(:event_tomorrow)
     tomorrow = Day.new(e)
-    [tomorrow, @day].sort.first.should eql @day
+    expect([tomorrow, @day].sort.first).to eql @day
   end
 
 end

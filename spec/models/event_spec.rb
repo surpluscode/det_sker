@@ -10,53 +10,53 @@ describe Event do
   end
   it 'should create an event' do
     event = Event.create(@party_details)
-    event.valid?.should be_true
-    event.title.should match('Massive party')
+    expect(event.valid?).to be_true
+    expect(event.title).to match('Massive party')
   end
   it 'should not save an event without a title' do
     @party_details.delete(:title)
-    Event.create(@party_details).valid?.should_not be_true
+    expect(Event.create(@party_details).valid?).not_to be_true
   end
   it 'should not save an event without a location' do
     @party_details.delete(:location_id)
-    Event.create(@party_details).valid?.should_not be_true
+    expect(Event.create(@party_details).valid?).not_to be_true
   end
   it 'should not save an event without a short description' do
     @party_details.delete(:short_description)
-    Event.create(@party_details).valid?.should_not be_true
+    expect(Event.create(@party_details).valid?).not_to be_true
   end
 
   it 'should not save an event without a start_time' do
     @party_details.delete(:start_time)
-    Event.create(@party_details).valid?.should_not be_true
+    expect(Event.create(@party_details).valid?).not_to be_true
   end
 
   it 'should not save an event without an end_time' do
     @party_details.delete(:end_time)
-    Event.create(@party_details).valid?.should_not be_true
+    expect(Event.create(@party_details).valid?).not_to be_true
   end
 
   describe 'Event.in_progress?' do
     it 'should return true when an event is in progress' do
       e = FactoryGirl.create(:event)
-      e.in_progress?.should be_true
+      expect(e.in_progress?).to be_true
     end
 
     it 'should return false when an event has already finished' do
       e = FactoryGirl.create(:event_yesterday)
-      e.in_progress?.should be_false
+      expect(e.in_progress?).to be_false
     end
 
     it 'should return false when an event has not started' do
       e = FactoryGirl.create(:event_tomorrow)
-      e.in_progress?.should be_false
+      expect(e.in_progress?).to be_false
     end
   end
 
   it 'should sort by start time ascending' do
     today = FactoryGirl.create(:event)
     tomorrow = FactoryGirl.create(:event_tomorrow)
-    [tomorrow, today].sort.first.should eql today
+    expect([tomorrow, today].sort.first).to eql today
   end
 
   it 'has a link field' do

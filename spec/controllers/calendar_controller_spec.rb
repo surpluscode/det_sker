@@ -8,7 +8,7 @@ describe CalendarController do
 
     it 'should return a calendar object' do
       get :index
-      assigns(:calendar).should be_a Calendar
+      expect(assigns(:calendar)).to be_a Calendar
     end
 
   end

@@ -18,8 +18,8 @@ describe Calendar do
     end
 
     it 'should return an array of days' do
-      @cal.days.should be_an Array
-      @cal.days.first.should be_a Day
+      expect(@cal.days).to be_an Array
+      expect(@cal.days.first).to be_a Day
     end
 
     it 'should order its days by date ascending' do
@@ -28,15 +28,15 @@ describe Calendar do
     end
 
     it 'should not return past events' do
-      @cal.events.should_not include(@event_yesterday)
+      expect(@cal.events).not_to include(@event_yesterday)
     end
 
     it 'should include future events' do
-      @cal.events.should include(@event_tomorrow)
+      expect(@cal.events).to include(@event_tomorrow)
     end
 
     it 'should return in progress events' do
-      @cal.in_progress.first.should eql @event_now
+      expect(@cal.in_progress.first).to eql @event_now
     end
 
     it 'should not crash if an event does not have a location' do
