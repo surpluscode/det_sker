@@ -5,7 +5,7 @@ describe Calendar do
   describe 'Calendar.new(:coming)' do
     before(:all) do
       l1 =  FactoryGirl.create(:location)
-      l2 = FactoryGirl.create(:other_location, name: nil, street_address: 'Strandvejen 49')
+      l2 = FactoryGirl.create(:other_location, street_address: 'Strandvejen 49')
       @cat = FactoryGirl.create(:random_category)
       other_cat = FactoryGirl.create(:random_category)
       @event_now = FactoryGirl.create(:event, categories: [@cat], location: l1)
@@ -65,10 +65,6 @@ describe Calendar do
       it 'should return an array of arrays' do
         expect(@cal.filter_locations).to be_an Array
         expect(@cal.filter_locations.first).to be_an Array
-      end
-
-      it 'uses the street address when no name is present' do
-        expect(@cal.filter_locations.flatten).to include 'Strandvejen 49'
       end
     end
   end

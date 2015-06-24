@@ -62,9 +62,12 @@ FactoryGirl.define do
     english { (0...8).map { (65 + rand(26)).chr }.join }
   end
 
+  sequence :name do  |n|
+    "Test Location #{n}"
+  end
 
   factory :location do
-    name 'Folkets Hus'
+    name
     street_address 'Stengade 50'
     postcode '2200'
     town 'Nørrebro'
@@ -73,7 +76,7 @@ FactoryGirl.define do
     longitude 55.687301
 
     factory :other_location do
-      name 'BolsjeFabrikken'
+      name
       street_address 'Ragnhildgade 1'
       postcode '2100 Ø'
       description 'warehouse! joints! reggae!'

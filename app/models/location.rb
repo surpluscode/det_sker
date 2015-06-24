@@ -1,7 +1,7 @@
 class Location < ActiveRecord::Base
   include HasEvents
   include Comparable
-  validates :street_address, :town, presence: true
+  validates :name, presence: true, uniqueness: true
 
   def display_name
     name.present? ? name : street_address

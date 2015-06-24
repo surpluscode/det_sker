@@ -11,14 +11,8 @@ describe Location do
     l.valid?.should be_true
   end
 
-  it 'should refuse to save without street address' do
-    @location.delete(:street_address)
-    l = Location.new(@location)
-    l.valid?.should be_false
-  end
-
-  it 'should refuse to save without town' do
-    @location.delete(:town)
+  it 'should refuse to save without a name' do
+    @location.delete(:name)
     l = Location.new(@location)
     l.valid?.should be_false
   end

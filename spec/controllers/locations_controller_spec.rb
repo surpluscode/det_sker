@@ -38,7 +38,7 @@ describe LocationsController do
     end
     it 'should assign the correct location' do
       put :update, id: @location, location: FactoryGirl.attributes_for(:location)
-      assigns(:location).should eq @location
+      assigns(:location).id.should eq @location.id
     end
 
     it 'should update the location' do
