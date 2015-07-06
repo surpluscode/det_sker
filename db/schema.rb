@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308130437) do
+ActiveRecord::Schema.define(version: 20150706204536) do
 
   create_table "categories", force: true do |t|
     t.string   "danish"
@@ -40,6 +40,33 @@ ActiveRecord::Schema.define(version: 20150308130437) do
 
   add_index "comments", ["event_id"], name: "index_comments_on_event_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "event_series", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "price"
+    t.boolean  "cancelled"
+    t.integer  "user_id"
+    t.integer  "location_id"
+    t.boolean  "comments_enabled"
+    t.string   "link"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_series_categories", id: false, force: true do |t|
+    t.integer "event_series_id"
+    t.integer "category_id"
+  end
+
+  add_index "event_series_categories", ["category_id"], name: "index_event_series_categories_on_category_id"
+  add_index "event_series_categories", ["event_series_id"], name: "index_event_series_categories_on_event_series_id"
 
   create_table "events", force: true do |t|
     t.string   "title"
