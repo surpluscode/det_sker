@@ -65,10 +65,12 @@ function initTypeahead(selector){
  */
 function showListener(){
     $('[data-function="show"]').click(function(){
-        var show_target = $(this).attr('data-target');
-        $(show_target).removeClass('hidden');
-        var hide_target = $(this).attr('data-hide');
-        $(hide_target).addClass('hidden');
+        if (this.checked) {
+            var show_target = $(this).attr('data-target');
+            $(show_target).removeClass('hidden');
+            var hide_target = $(this).attr('data-hide');
+            $(hide_target).addClass('hidden');
+        }
     });
 }
 

@@ -98,6 +98,18 @@
       </div>
     </div>
 
+    <div id='check_recurring' class="checkbox">
+      <label>
+        <%= check_box_tag :recurring, '0', false,
+                          data: { function: 'show', target: '#repeating_control', hide: 'check_recurring' }
+        %>
+        <%= t '.repeating_event' %>
+      </label>
+    </div>
+    <div id="repeating_control" class="row">
+        IT'S REPEATING!!!
+    </div>
+
     <div class="row">
       <div class="col-xs-12">
         <%= f.input :link, as: :url %>

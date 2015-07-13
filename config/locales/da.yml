@@ -92,6 +92,7 @@ da:
         too_big: 'Denne fil er over 1MB!'
         wrong_format: 'Denne fil er ikke en JPEG eller en PNG!'
         ok: Denne fil er lige tilpas.
+      repeating_event: "Gentages begivenheden?"
     event:
       price: "Pris"
       start_time: "Starter"
