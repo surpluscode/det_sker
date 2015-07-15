@@ -90,7 +90,7 @@ function activateFormListeners() {
     $('#event_series_frequency').on('change', function(){
         var selected = $(this).children('option:selected');
         var unit = $(selected).data('unit');
-        $('#repeating_control').append(unit);
+        $('#unit').text(unit);
     });
 }
 
