@@ -85,6 +85,13 @@ function activateFormListeners() {
         validateFileInput(this);
         addRemoveButton(this);
     });
+
+    // UI for repeating events
+    $('#event_series_frequency').on('change', function(){
+        var selected = $(this).children('option:selected');
+        var unit = $(selected).data('unit');
+        $('#repeating_control').append(unit);
+    });
 }
 
 function initDateTimePicker(){

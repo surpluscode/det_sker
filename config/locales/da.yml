@@ -93,6 +93,13 @@ da:
         wrong_format: 'Denne fil er ikke en JPEG eller en PNG!'
         ok: Denne fil er lige tilpas.
       repeating_event: "Gentages begivenheden?"
+      every_day: "Hver dag"
+      every_week: "Hver uge"
+      every_month: "Hver måned"
+      for_time: "i"
+      weeks: "uger"
+      days: "dage"
+      months: "måneder"
     event:
       price: "Pris"
       start_time: "Starter"

@@ -93,6 +93,14 @@ en:
         wrong_format: This file is not a JPEG or a PNG!
         ok: This file is just right.
       repeating_event: "Is it a recurring event?"
+      every_day: "Every day"
+      every_week: "Every week"
+      every_month: "Every month"
+      times: "times"
+      for_time: "for"
+      weeks: "weeks"
+      days: "days"
+      months: "months"
     event:
       price: "Price"
       start_time: "Starts"
