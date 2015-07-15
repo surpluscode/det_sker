@@ -65,12 +65,8 @@ function initTypeahead(selector){
  */
 function showListener(){
     $('[data-function="show"]').click(function(){
-        if (this.checked) {
-            var show_target = $(this).attr('data-target');
-            $(show_target).removeClass('hidden');
-            var hide_target = $(this).attr('data-hide');
-            $(hide_target).addClass('hidden');
-        }
+        var show_target = $(this).attr('data-target');
+        $(show_target).toggle(this.checked);
     });
 }
 
