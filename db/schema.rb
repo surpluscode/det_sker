@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706204536) do
+ActiveRecord::Schema.define(version: 20150724140708) do
 
   create_table "categories", force: true do |t|
     t.string   "danish"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20150706204536) do
 
   add_index "categories", ["danish"], name: "index_categories_on_danish", unique: true
   add_index "categories", ["english"], name: "index_categories_on_english", unique: true
+
+  create_table "categories_event_series", id: false, force: true do |t|
+    t.integer "event_series_id"
+    t.integer "category_id"
+  end
+
+  add_index "categories_event_series", ["category_id"], name: "index_categories_event_series_on_category_id"
+  add_index "categories_event_series", ["event_series_id"], name: "index_categories_event_series_on_event_series_id"
 
   create_table "categories_events", id: false, force: true do |t|
     t.integer "event_id"
@@ -44,8 +52,6 @@ ActiveRecord::Schema.define(version: 20150706204536) do
   create_table "event_series", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "start_time"
-    t.datetime "end_time"
     t.string   "price"
     t.boolean  "cancelled"
     t.integer  "user_id"
@@ -58,6 +64,7 @@ ActiveRecord::Schema.define(version: 20150706204536) do
     t.datetime "picture_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "rule"
   end
 
   create_table "event_series_categories", id: false, force: true do |t|
@@ -86,8 +93,10 @@ ActiveRecord::Schema.define(version: 20150706204536) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.integer  "event_series_id"
   end
 
+  add_index "events", ["event_series_id"], name: "index_events_on_event_series_id"
   add_index "events", ["location_id"], name: "index_events_on_location_id"
   add_index "events", ["user_id"], name: "index_events_on_user_id"
 

@@ -1,0 +1,35 @@
+<div class="event_show">
+  <h1><%= @event_series.title %></h1>
+  <%= image_tag @event_series.picture.url(:original) if @event_series.picture.present? %>
+  <h4>
+    <%= link_to(@event_series.location.full_address, location_path(@event_series.location)) %>
+  </h4>
+  <% if @event_series.price.present? %>
+      <p><strong><%= t 'simple_form.labels.event.price' %>: </strong><%= @event_series.price %></p>
+  <% end %>
+
+  <p>
+    <%= simple_format(@event_series.description) %>
+  </p>
+
+
+
+  <% if @event_series.link.present? %>
+      <p>
+        <%= link_to(t('.link'), @event_series.link) %>
+      </p>
+  <% end %>
+  <% if current_user && current_user.can_edit?(@event_series) %>
+      <div class="hidden-xs">
+        <%= link_to t(:edit), edit_event_series_path(@event_series) %> |
+        <%= link_to t(:back), event_series_path %>
+      </div>
+  <% end %>
+  <% if @event_series.comments_enabled? %>
+      <div class="hidden-xs">
+        <hr/>
+        <%= render partial: 'events/comments/list', locals: { comments: @event_series.comments } %>
+        <%= render partial: 'comments/form', locals: { event: @event_series, show_form: false } if user_signed_in? %>
+      </div>
+  <% end %>
+</div>
