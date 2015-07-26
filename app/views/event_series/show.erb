@@ -25,11 +25,4 @@
         <%= link_to t(:back), event_series_path %>
       </div>
   <% end %>
-  <% if @event_series.comments_enabled? %>
-      <div class="hidden-xs">
-        <hr/>
-        <%= render partial: 'events/comments/list', locals: { comments: @event_series.comments } %>
-        <%= render partial: 'comments/form', locals: { event: @event_series, show_form: false } if user_signed_in? %>
-      </div>
-  <% end %>
 </div>
