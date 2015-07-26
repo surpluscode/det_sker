@@ -210,3 +210,7 @@ en:
       new: Sign in
   language: "english"
   edit: "Edit"
+  event_series:
+    form:
+      every_week: "every week"
+      repetition_header: "Repeats"

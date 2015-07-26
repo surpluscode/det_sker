@@ -5,6 +5,8 @@ class EventSeries < ActiveRecord::Base
   has_attached_file :picture, styles: { original: '500x500>', thumb: '100x100>'}, default_url: 'images/:st'
   validates :title, :description, :location_id, :user_id, :categories, presence: true
 
+  def expiry
+  end
   # the name method is an alias used
   # by the page title helper
   def name

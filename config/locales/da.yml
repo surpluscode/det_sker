@@ -135,6 +135,7 @@ da:
     labels:
       defaults:
         username: Brugernavn
+        expiry: Indtil
       event:
         title: Titel
         cancelled: Aflys begivenhed?
@@ -249,3 +250,15 @@ da:
   activerecord:
     models:
       location: sted
+  event_series:
+    form:
+      every_week: "hver uge"
+      repetition_header: "Gentages"
+  day_names:
+     Sunday: søndag
+     Monday: mandag
+     Tuesday: tirsdag
+     Wednesday: onsdag
+     Thursday: torsdag
+     Friday: fredag
+     Saturday: lørdag

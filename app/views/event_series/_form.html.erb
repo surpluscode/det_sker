@@ -98,29 +98,26 @@
       </div>
     </div>
 
-        <h2>Frequency</h2>
-        <div id="repeating_control" class='form-inline row-fluid' style="display: none;">
-          <%= simple_fields_for :event_series do |s| %>
-              <%= s.input_field :frequency,
-                        collection: [[t('.every_day'), 'days', 'data-unit' => t('.days')],
-                                     [t('.every_week'), 'weeks', 'data-unit' => t('.weeks')],
-                                     [t('.every_month'), 'months', 'data-unit' =>  t('.months')] ],
-                        selected: 'weeks',
-                        class: 'selectpicker',
-                        data: { width: '50%'}
-              %>
-                <%= t '.for_time' %>
-                <%#= s.input_field :number,
-                            collection: 1..30,
-                            class: 'selectpicker',
-                            data: { width: '30%' }
-                %>
-              <span id="unit"></span>
+        <h2><%= t '.repetition_header' %></h2>
+        <div id="repeating_control" class='form-inline row-fluid'>
 
-          <% end %>
-          <%#= select_tag :frequency, options_for_select([t('.every_day'), 'D'], t('.every_week'), t('.every_month')],  t('.every_week')) %>
+          <%= select(:event_series, 'rule', dayname_collection,
+                     {}, {multiple: true, class: 'selectpicker'})  %>
+
+          <%= f.input :rule,
+                        collection: [[t('.every_week'), 'weeks'],
+                                     [t('.first_month'), 'months'] ],
+                        selected: 'weeks', label: false,
+                        input_html: { class: 'selectpicker' }
+          %>
+
         </div>
 
+    <%= f.input :expiry, as: :string, input_html: { data: {
+                               function: 'datetime-picker', date_format: 'DD/MM/YYYY',
+                               language: I18n.locale, calendar_weeks: true, disabled_hours: true
+                       }}
+    %>
     <div class="row">
       <div class="col-xs-12">
         <%= f.input :link, as: :url %>

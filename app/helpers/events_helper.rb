@@ -55,6 +55,12 @@ module EventsHelper
     hidden_field_tag(val, val, name: 'event[category_ids][]', data: { role: 'category_value' } )
   end
 
+  def dayname_collection
+    names = Date::DAYNAMES.dup
+    names << names.delete_at(0) # move sunday to the end!
+    names.collect {|n| [t("day_names.#{n}"), n]}
+  end
+
 
   def bootstrap_label(id, value)
     # we create the content in two steps to make the nested value

@@ -186,9 +186,11 @@ function modalFormListener() {
 
 function activateFormPlugins() {
     $('[data-toggle="popover"]').popover();
-    $('[data-function="datetime-picker"]').datetimepicker({
-        language: locale,
-        minuteStepping: 5
+    $('[data-function="datetime-picker"]').each(function(){
+        var data = $.extend($(this).data(), {language: locale, minuteStepping: 5});
+        delete data.function;
+        console.log(data);
+        $(this).datetimepicker(data);
     });
 }
 
