@@ -8,7 +8,7 @@ namespace :det_sker do
   end
 
   def truncate_all_tables
-    (ActiveRecord::Base.connection.tables - ['schema_migrations', 'categories_events']).each do |table|
+    (ActiveRecord::Base.connection.truncate_all_tables - ['schema_migrations', 'categories_events', 'event_series_categories']).each do |table|
       table.classify.constantize.destroy_all
     end
   end

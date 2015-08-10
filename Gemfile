@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
@@ -11,9 +11,9 @@ gem 'lograge'
 
 group :production do
   gem 'pg'
-  gem 'rmagick'
-  gem 'unicorn'
-  gem 'unicorn-worker-killer'
+  gem 'rmagick', platforms: [:ruby]
+  gem 'unicorn', platforms: [:ruby]
+  gem 'unicorn-worker-killer', platforms: [:ruby]
 end
 
 gem 'humanizer'

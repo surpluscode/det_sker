@@ -213,4 +213,6 @@ en:
   event_series:
     form:
       every_week: "every week"
+      first_in_month: first week of the month
+      last_in_month: last week of the month
       repetition_header: "Repeats"

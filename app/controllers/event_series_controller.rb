@@ -19,7 +19,7 @@ class EventSeriesController < ApplicationController
     event_params = user_params
     # add the user id if we've got one
     event_params.merge!(user_id: current_user.id) if user_signed_in?
-
+    
     @event_series = EventSeries.new(event_params)
     respond_to do |format|
       if @event_series.save
@@ -38,9 +38,7 @@ class EventSeriesController < ApplicationController
     respond_to do |format|
       if @event_series.update(user_params)
         destroy_image?
-        format.html {
-          redirect_to root_path, notice: I18n.t('events.event_updated', name: @event_series.name, id: @event_series.id)
-        }
+        format.html { render action: 'show', notice: I18n.t('events.event_created', name: @event_series.name, id: @event_series.id) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -82,9 +80,10 @@ class EventSeriesController < ApplicationController
 
   def user_params
     params.require(:event_series).permit(:title, :description, :location_id, :comments_enabled,
-                                 :price, :cancelled, :link, :picture,
+                                 :price, :cancelled, :link, :picture, :rule, :expiry, days: [],
                                  category_ids: []).tap do |list|
       list[:category_ids].uniq!
+      list[:days] = list[:days].select(&:present?).join(',')
     end
   end
 end

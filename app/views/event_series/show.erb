@@ -11,7 +11,10 @@
   <p>
     <%= simple_format(@event_series.description) %>
   </p>
-
+<h4>Repeats</h4>
+<p><%= @event_series.days %></p>
+<p><%= @event_series.rule %></p>
+<p><%= @event_series.expiry %></p>
 
 
   <% if @event_series.link.present? %>

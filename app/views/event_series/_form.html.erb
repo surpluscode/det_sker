@@ -101,12 +101,15 @@
         <h2><%= t '.repetition_header' %></h2>
         <div id="repeating_control" class='form-inline row-fluid'>
 
-          <%= select(:event_series, 'rule', dayname_collection,
+          <%= select(:event_series, 'days', dayname_collection,
                      {}, {multiple: true, class: 'selectpicker'})  %>
 
           <%= f.input :rule,
-                        collection: [[t('.every_week'), 'weeks'],
-                                     [t('.first_month'), 'months'] ],
+                        collection: [
+                          [t('.every_week'), 'weeks'], 
+                          [t('.first_in_month'), 'first'],
+                          [t('.last_in_month'), 'last'],  
+                          ],
                         selected: 'weeks', label: false,
                         input_html: { class: 'selectpicker' }
           %>
