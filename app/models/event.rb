@@ -19,6 +19,10 @@ class Event < ActiveRecord::Base
     start_time <=> other.start_time
   end
 
+  def description=(val)
+    self.short_description = val
+  end
+
   # the name method is an alias used
   # by the page title helper
   def name
