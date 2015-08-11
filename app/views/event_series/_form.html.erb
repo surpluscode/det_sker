@@ -1,6 +1,8 @@
 <%= simple_form_for @event_series, html: { multipart: true } do |f| %>
 
-
+  <div class="alert alert-danger">
+    <%= @event_series.errors.messages %>
+  </div>
     <div class="row">
       <div class="col-xs-12">
         <%= f.input :title %>
@@ -101,9 +103,7 @@
         <h2><%= t '.repetition_header' %></h2>
         <div id="repeating_control" class='form-inline row-fluid'>
 
-          <%= select(:event_series, 'days', dayname_collection,
-                     {}, {multiple: true, class: 'selectpicker'})  %>
-
+          <%= f.input :day_array, collection: dayname_collection, label: false,  input_html: { multiple: true, class: 'selectpicker' }  %>
           <%= f.input :rule,
                         collection: [
                           [t('.every_week'), 'weekly'], 
@@ -115,12 +115,27 @@
           %>
 
         </div>
+    <div class='form-inline row-fluid'>
+       <%= f.input :start_date, as: :date %>
+       <%= f.input :expiry, as: :date %>
 
-    <%= f.input :expiry, as: :string, input_html: { data: {
-                               function: 'datetime-picker', date_format: 'DD/MM/YYYY',
+    <%#= f.input :start_date, as: :string, input_html: { data: {
+                               function: 'datetime-picker', date_format: 'YYYY/MM/DD',
                                language: I18n.locale, calendar_weeks: true, disabled_hours: true
                        }}
     %>
+
+    <%#= f.input :expiry, as: :string, input_html: { data: {
+                               function: 'datetime-picker', date_format: 'YYYY/MM/DD',
+                               language: I18n.locale, calendar_weeks: true, disabled_hours: true
+                       }}
+    %>
+    </div>
+        <div class='form-inline row-fluid'>
+
+        <%= f.input :start_time, as: :time %>
+        <%= f.input :end_time, as: :time %>
+    </div>
     <div class="row">
       <div class="col-xs-12">
         <%= f.input :link, as: :url %>

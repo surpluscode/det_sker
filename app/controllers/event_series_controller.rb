@@ -80,10 +80,11 @@ class EventSeriesController < ApplicationController
 
   def user_params
     params.require(:event_series).permit(:title, :description, :location_id, :comments_enabled,
-                                 :price, :cancelled, :link, :picture, :rule, :expiry, days: [],
+                                 :price, :cancelled, :link, :picture, :rule, :start_date, 
+                                 :start_time, :expiry, :end_time, day_array: [], 
                                  category_ids: []).tap do |list|
       list[:category_ids].uniq!
-      list[:days] = list[:days].select(&:present?).join(',')
+      list[:days] = list[:day_array].select(&:present?).join(',')
     end
   end
 end

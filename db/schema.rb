@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810125811) do
+ActiveRecord::Schema.define(version: 20150811191944) do
 
   create_table "categories", force: true do |t|
     t.string   "danish"
@@ -66,7 +66,10 @@ ActiveRecord::Schema.define(version: 20150810125811) do
     t.datetime "updated_at"
     t.string   "rule"
     t.string   "days"
-    t.datetime "expiry"
+    t.date     "expiry"
+    t.date     "start_date"
+    t.time     "start_time"
+    t.time     "end_time"
   end
 
   create_table "event_series_categories", id: false, force: true do |t|
