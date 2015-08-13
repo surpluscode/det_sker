@@ -1,5 +1,5 @@
 <div class="event_show">
-  <h1><%= @event_series.title %></h1>
+  <h1>Serie: <%= @event_series.title %></h1>
   <%= image_tag @event_series.picture.url(:original) if @event_series.picture.present? %>
   <h4>
     <%= link_to(@event_series.location.full_address, location_path(@event_series.location)) %>

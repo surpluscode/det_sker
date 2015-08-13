@@ -27,6 +27,7 @@
   <% if current_user && current_user.can_edit?(@event) %>
       <div class="hidden-xs">
         <%= link_to t(:edit), edit_event_path(@event) %> |
+        <%= link_to t(:edit_series), edit_event_series_path(@event.event_series) if @event.event_series.present? %> |
         <%= link_to t(:back), events_path %>
       </div>
   <% end %>

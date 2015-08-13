@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :location
+  belongs_to :event_series
   has_and_belongs_to_many :categories
   has_many :comments
   has_attached_file :picture, styles: { original: '500x500>', thumb: '100x100>'}, default_url: 'images/:st'

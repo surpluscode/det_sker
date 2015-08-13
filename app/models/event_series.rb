@@ -1,6 +1,7 @@
 class EventSeries < ActiveRecord::Base
   belongs_to :user
   belongs_to :location
+  has_many :events
   has_and_belongs_to_many :categories
   has_attached_file :picture, styles: { original: '500x500>', thumb: '100x100>'}, default_url: 'images/:st'
   validates :title, :description, :location_id, :user_id, :categories, 
@@ -33,8 +34,8 @@ class EventSeries < ActiveRecord::Base
       (start_date..expiry.to_date).each do |date|
         if day_array.include? (Date::DAYNAMES[date.wday])
           # create an event on this date
-          event_start = DateTime.new(date.year, date.month, date.day, start_time.hour, start_time.min, start_time.sec, start_time.zone)
-          event_end = DateTime.new(date.year, date.month, date.day, end_time.hour, end_time.min, end_time.sec, end_time.zone)
+          event_start = DateTime.new(date.year, date.month, date.day, start_time.hour, start_time.min, 0, start_time.zone)
+          event_end = DateTime.new(date.year, date.month, date.day, end_time.hour, end_time.min, 0, end_time.zone)
           child = Event.new(event_attributes.merge(start_time: event_start, end_time: event_end))  
           fail unless child.save
         end
