@@ -31,16 +31,28 @@ class EventSeries < ActiveRecord::Base
     #days_occurring = days.split(',')
     #TODO: these should use actual start date from form  
     if rule == 'weekly'
-      (start_date..expiry.to_date).each do |date|
-        if day_array.include? (Date::DAYNAMES[date.wday])
+      (start_date..expiry).each do |date|
+        date_name = Date::DAYNAMES[date.wday]
+        if day_array.include? (date_name)
           # create an event on this date
-          event_start = DateTime.new(date.year, date.month, date.day, start_time.hour, start_time.min, 0, start_time.zone)
-          event_end = DateTime.new(date.year, date.month, date.day, end_time.hour, end_time.min, 0, end_time.zone)
-          child = Event.new(event_attributes.merge(start_time: event_start, end_time: event_end))  
+          child = Event.from_date_and_times(date, start_time, end_time, event_attributes)
           fail unless child.save
         end
       end
-    else
+    elsif rule == 'first_week'
+      # Run through all the months in question and use Chronic to parse the first 
+      # date in that month for each relevant day
+      (start_date.month..expiry.month).each do |date|
+        cur_month = Date::MONTHNAMES[date]
+        day_array.each do |day|
+          first_day = Chronic.parse("first #{day} in #{cur_month}")
+          unless first_day < DateTime.now.to_date
+            child = Event.from_date_and_times(first_day, start_time, end_time, event_attributes)  
+            fail unless child.save
+          end
+        end
+      end
+    elsif rule == 'last_week'
     end
     # if not: for each matching day, find first or last in each month until we get to the expiry date
   end

@@ -8,6 +8,7 @@ gem 'bootstrap-sass', '~> 3.3.4'
 
 gem 'paperclip', '~> 4.2'
 gem 'lograge'
+gem 'chronic'
 
 group :production do
   gem 'pg'

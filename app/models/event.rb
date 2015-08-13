@@ -34,4 +34,11 @@ class Event < ActiveRecord::Base
     self.includes(:user, :location, :comments).order(:start_time).where('end_time > ?', DateTime.now)
   end
 
+  # Return Event object given a Date, Time, Time, attribute Hash
+  def self.from_date_and_times(date, start_time, end_time, attributes)
+    event_start = DateTime.new(date.year, date.month, date.day, start_time.hour, start_time.min, 0, start_time.zone)
+    event_end = DateTime.new(date.year, date.month, date.day, end_time.hour, end_time.min, 0, end_time.zone)
+    Event.new(attributes.merge(start_time: event_start, end_time: event_end))  
+  end
+
 end
