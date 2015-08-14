@@ -1,8 +1,5 @@
 <%= simple_form_for @event_series, html: { multipart: true } do |f| %>
 
-  <div class="alert alert-danger">
-    <%= @event_series.errors.messages %>
-  </div>
     <div class="row">
       <div class="col-xs-12">
         <%= f.input :title %>
@@ -107,7 +104,9 @@
           <%= f.input :rule,
                         collection: [
                           [t('.every_week'), 'weekly'], 
-                          [t('.first_in_month'), 'first_week'],
+                          [t('.first_in_month'), 'first'],
+                          [t('.second_in_month'), 'second'],
+                          [t('.third_in_month'), 'third'],
                           [t('.last_in_month'), 'last_week'],  
                           ],
                         selected: 'weeks', label: false,

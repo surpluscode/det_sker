@@ -255,6 +255,8 @@ da:
       every_week: "hver uge"
       repetition_header: "Gentages"
       first_in_month: først uge i måneden
+      second_in_month: anden uge i måneden
+      third_in_month: tredje uge i måneden
       last_in_month: sidst uge i måneden
   day_names:
      Sunday: søndag

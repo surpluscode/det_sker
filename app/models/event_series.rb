@@ -39,16 +39,16 @@ class EventSeries < ActiveRecord::Base
           fail unless child.save
         end
       end
-    elsif rule == 'first_week'
+    elsif rule == 'first' || rule == 'second' || rule == 'third'
       # Run through all the months in question and use Chronic to parse the first 
       # date in that month for each relevant day
       (start_date.month..expiry.month).each do |date|
         cur_month = Date::MONTHNAMES[date]
         day_array.each do |day|
-          first_day = Chronic.parse("first #{day} in #{cur_month}")
-          unless first_day < DateTime.now.to_date
-            child = Event.from_date_and_times(first_day, start_time, end_time, event_attributes)  
-            fail unless child.save
+          day_as_date = Chronic.parse("#{rule} #{day} in #{cur_month}")
+          unless day_as_date.nil? || day_as_date < DateTime.now.to_date
+            child = Event.from_date_and_times(day_as_date, start_time, end_time, event_attributes)  
+            fail "event could not be saved with rule #{rule} and date #{day_as_date}" unless child.save
           end
         end
       end
