@@ -27,34 +27,47 @@ class EventSeries < ActiveRecord::Base
 
   # using rule, create events for this series
   def cascade_creation
-    # between start date and end date
-    #days_occurring = days.split(',')
-    #TODO: these should use actual start date from form  
     if rule == 'weekly'
       (start_date..expiry).each do |date|
         date_name = Date::DAYNAMES[date.wday]
         if day_array.include? (date_name)
           # create an event on this date
           child = Event.from_date_and_times(date, start_time, end_time, event_attributes)
-          fail unless child.save
-        end
-      end
-    elsif rule == 'first' || rule == 'second' || rule == 'third'
-      # Run through all the months in question and use Chronic to parse the first 
-      # date in that month for each relevant day
-      (start_date.month..expiry.month).each do |date|
-        cur_month = Date::MONTHNAMES[date]
-        day_array.each do |day|
-          day_as_date = Chronic.parse("#{rule} #{day} in #{cur_month}")
-          unless day_as_date.nil? || day_as_date < DateTime.now.to_date
-            child = Event.from_date_and_times(day_as_date, start_time, end_time, event_attributes)  
-            fail "event could not be saved with rule #{rule} and date #{day_as_date}" unless child.save
+          unless child.save
+            logger.error "event could not be saved with rule #{rule} and date #{day_as_date}" 
           end
         end
       end
-    elsif rule == 'last_week'
+    else
+      # for each month, get the matching dates for each day specified using the rule specified
+      (start_date.month..expiry.month).each do |date|
+        cur_month = Date::MONTHNAMES[date]
+        day_array.each do |day|
+          # day_as_date will be nil if Chronic can't parse it
+          day_as_date = convert_rule_to_date(rule, day, cur_month)
+          # don't accept any dates prior to today or after expiry
+          unless day_as_date.nil? || day_as_date < DateTime.now.to_date || day_as_date > expiry
+            child = Event.from_date_and_times(day_as_date, start_time, end_time, event_attributes)  
+            unless child.save
+              logger.error "event could not be saved with rule #{rule} and date #{day_as_date}" 
+            end
+          end
+        end
+      end
     end
-    # if not: for each matching day, find first or last in each month until we get to the expiry date
+  end
+
+  private
+
+  # Use Chronic to convert the rules to Date objects
+  # in the case of the 'last' rule, we need to try the fifth followed by the fourth
+  # if no date is found, it will return nil
+  def convert_rule_to_date(rule, day, month)
+    if %w{first second third}.include? rule
+      Chronic.parse("#{rule} #{day} in #{month}")
+    elsif rule == 'last'
+      Chronic.parse("fifth #{day} in #{month}") || Chronic.parse("fourth #{day} in #{month}")
+    end  
   end
 
   def event_attributes
