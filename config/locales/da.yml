@@ -258,6 +258,11 @@ da:
       second_in_month: anden uge i måneden
       third_in_month: tredje uge i måneden
       last_in_month: sidst uge i måneden
+      rule_disabled: > 
+                    Du kan ikke redigere gentagelses reglen når der stadig er events i denne serie. 
+                    Hvis du vil ændre på gentagelses reglen kan du enten slette eksisterende forekommelser eller
+                    oprette en ny serie. 
+                    Du kan dog godt opdatere start og slut tid og alle andre attributer.
   day_names:
      Sunday: søndag
      Monday: mandag

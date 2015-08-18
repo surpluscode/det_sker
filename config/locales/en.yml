@@ -216,3 +216,7 @@ en:
       first_in_month: first week of the month
       last_in_month: last week of the month
       repetition_header: "Repeats"
+      rule_disabled: >
+                  You can't edit the repetition rule when there are still events active in the series.
+                  If you want to change the rule, you should either delete all the remaining events
+                  or create a new series. You can still change the start and end time as well as the other attributes.
