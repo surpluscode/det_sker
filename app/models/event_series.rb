@@ -28,7 +28,9 @@ class EventSeries < ActiveRecord::Base
 
   def cascade_update
     events.all.each do |event|
-      event.update(event_attributes)
+      start_time = DateTime.new(event.start_time.year, event.start_time.month, event.start_time.day, self.start_time.hour, self.start_time.min, 0, self.start_time.zone)
+      end_time = DateTime.new(event.end_time.year, event.end_time.month, event.end_time.day, self.end_time.hour, self.end_time.min, 0, self.end_time.zone)
+      event.update(event_attributes.merge(start_time: start_time, end_time: end_time))
     end
   end
 
