@@ -8,6 +8,7 @@ class EventSeries < ActiveRecord::Base
   :days, :rule, :start_date, :start_time, :end_time, :expiry, presence: true
 
   after_create :cascade_creation, if: :persisted?
+  after_update :cascade_update
   # the name method is an alias used
   # by the page title helper
   def name
@@ -23,6 +24,12 @@ class EventSeries < ActiveRecord::Base
 
   def day_array=(arr)
     self.days = arr.join(',')
+  end
+
+  def cascade_update
+    events.all.each do |event|
+      event.update(event_attributes)
+    end
   end
 
   # using rule, create events for this series
