@@ -211,6 +211,8 @@ en:
   language: "english"
   edit: "Edit"
   event_series:
+    created: "%{name} created with %{num_events} occurrences"
+    updated: "%{num_events} occurrences of %{name} updated"
     form:
       every_week: "every week"
       first_in_month: first week of the month

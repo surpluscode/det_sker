@@ -24,7 +24,8 @@ class EventSeriesController < ApplicationController
     respond_to do |format|
       if @event_series.save
         format.html {
-         render action: 'show', notice: I18n.t('events.event_created', name: @event_series.name, id: @event_series.id)
+         redirect_to root_path, notice: 
+          I18n.t('event_series.created', name: @event_series.name, num_events: @event_series.coming_events.size)
         }
         format.json { render action: 'show', status: :created, location: @event_series }
       else
@@ -38,7 +39,8 @@ class EventSeriesController < ApplicationController
     respond_to do |format|
       if @event_series.update(user_params)
         destroy_image?
-        format.html { render action: 'show', notice: I18n.t('events.event_created', name: @event_series.name, id: @event_series.id) }
+        format.html { redirect_to root_path, notice: 
+          I18n.t('event_series.updated', name: @event_series.name, num_events: @event_series.coming_events.size) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -84,7 +86,7 @@ class EventSeriesController < ApplicationController
                                  :start_time, :expiry, :end_time, day_array: [], 
                                  category_ids: []).tap do |list|
       list[:category_ids].uniq!
-      list[:days] = list[:day_array].select(&:present?).join(',')
+      list[:days] = list[:day_array].select(&:present?).join(',') if list[:day_array].present?
     end
   end
 end

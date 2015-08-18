@@ -136,7 +136,6 @@ da:
       defaults:
         username: Brugernavn
         expiry: Indtil
-      event:
         title: Titel
         cancelled: Aflys begivenhed?
         short_description: Beskrivelse
@@ -158,6 +157,10 @@ da:
         key: Navn
         description: Beskrivelse
         submit: ajkldfjklajdfl
+      event_series:
+        start_date: Starter
+        start_time: Fra
+        end_time: Til
     placeholders:
       event:
         title: Navnet af begivenheden
@@ -251,6 +254,7 @@ da:
     models:
       location: sted
   event_series:
+    created: "Serie %{name} oprettet med %{num_events} forekomster!"
     form:
       every_week: "hver uge"
       repetition_header: "Gentages"
@@ -260,7 +264,7 @@ da:
       last_in_month: sidst uge i måneden
       rule_disabled: > 
                     Du kan ikke redigere gentagelses reglen når der stadig er events i denne serie. 
-                    Hvis du vil ændre på gentagelses reglen kan du enten slette eksisterende forekommelser eller
+                    Hvis du vil ændre på gentagelses reglen kan du enten slette eksisterende forekomster eller
                     oprette en ny serie. 
                     Du kan dog godt opdatere start og slut tid og alle andre attributer.
   day_names:
