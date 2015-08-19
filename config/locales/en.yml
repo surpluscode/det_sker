@@ -215,6 +215,11 @@ en:
   language: "english"
   edit: "Edit"
   event_series:
+    new:
+      explanation: >
+              You are about to create an event series. This will create a number of events 
+              defined by the rule you specify. You can then choose to edit the events individually
+              or all at once by editing this series. 
     created: "%{name} created with %{num_events} occurrences"
     updated: "%{num_events} occurrences of %{name} updated"
     form:

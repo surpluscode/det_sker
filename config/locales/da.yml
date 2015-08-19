@@ -259,6 +259,13 @@ da:
     models:
       location: sted
   event_series:
+    new:
+      new_series: 'Opret event serie'
+      explanation: >
+                  En event serie er en række events der gentages efter nogle bestemt regler.
+                  Ved at oprette en serie med en bestemt regel opretter du flere events på de datoer
+                  givet i reglen. Efterfølgende kan du vælge at redigere disse forekomster enkeltvis 
+                  eller samlede ved at redigere i selv serien. 
     created: "Serie %{name} oprettet med %{num_events} forekomster!"
     form:
       every_week: "hver uge"
