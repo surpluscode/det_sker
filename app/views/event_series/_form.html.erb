@@ -88,12 +88,12 @@
     <h2><%= t '.repetition_header' %></h2>
     <div id="repeating_control" class='form-inline row-fluid'>
     <%# we disable the rule controls if there are any events present as we don't know how to update the rules for existing events %>
-    <% coming_events? = @event_series.coming_events.present? %> 
-    <% if coming_events? %>
+    <% coming_events = @event_series.coming_events.present? %> 
+    <% if coming_events %>
       <p class="text-danger"><%= t('.rule_disabled') %></p>
     <% end %>
       <%= f.input :day_array, collection: dayname_collection, label: false,  input_html: { 
-        multiple: true, disabled: coming_events?, class: 'selectpicker' 
+        multiple: true, disabled: coming_events, class: 'selectpicker' 
         }  %>
       <%= f.input :rule,
       collection: [
@@ -104,21 +104,21 @@
         [t('.last_in_month'), 'last'],  
         ],
         selected: 'weeks', label: false,
-        input_html: { class: 'selectpicker', disabled: coming_events? }
+        input_html: { class: 'selectpicker', disabled: coming_events }
         %>
 
       </div>
       <div class='form-inline row-fluid'>
 
         <%= f.input :start_date, as: :string, input_html: { 
-          disabled: coming_events?, data: { 
+          disabled: coming_events, data: { 
             function: 'datetime-picker', date_format: 'YYYY/MM/DD', inline: 'true',
             language: I18n.locale, calendar_weeks: true, disabled_hours: true
        }}
        %>
 
        <%= f.input :expiry, as: :string, input_html: {  
-        disabled: coming_events?, data: {
+        disabled: coming_events, data: {
          function: 'datetime-picker', date_format: 'YYYY/MM/DD', inline: 'true',
          language: I18n.locale, calendar_weeks: true, disabled_hours: true
        }}
