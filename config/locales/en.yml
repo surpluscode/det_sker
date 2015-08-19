@@ -116,6 +116,10 @@ en:
       edit_event: "Editing event"
     new:
       new_event: "New event"
+      event_series_message: >
+                    You are about to create an event - if you want to create 
+                    several events of the same type, you can also choose to
+                    <a class="alert-link" href="%{link}">create an event series.</a>
     event_updated: "Changes to <a href=\"#%{id}\" class='alert-link'>%{name}</a> saved!"
     event_created: "Event <a href=\"#%{id}\" class='alert-link'>%{name}</a> created!"
     show:

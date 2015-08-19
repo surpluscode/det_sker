@@ -106,6 +106,10 @@ module EventsHelper
     bootstrap_alert(message, 'danger')
   end
 
+  def bootstrap_info(message)
+    bootstrap_alert(message, 'info')
+  end
+
   def bootstrap_alert(message, level)
     content_tag(:div, message.html_safe, class: "alert alert-#{level}", role: 'alert')
   end
