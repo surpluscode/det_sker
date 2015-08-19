@@ -227,6 +227,9 @@ en:
       first_in_month: first week of the month
       last_in_month: last week of the month
       repetition_header: "Repeats"
+      date_explanation: > 
+                     You are only allowed to create events within the next three months. 
+                     You can renew the series if the event is still running after three months.
       rule_disabled: >
                   You can't edit the repetition rule when there are still events active in the series.
                   If you want to change the rule, you should either delete all the remaining events
