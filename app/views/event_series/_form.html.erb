@@ -126,8 +126,8 @@
      </div>
      <div class='form-inline row-fluid'>
 
-      <%= f.input :start_time, as: :time %>
-      <%= f.input :end_time, as: :time %>
+      <%= f.input :start_time, as: :time, minute_step: 15 %>
+      <%= f.input :end_time, as: :time, minute_step: 15 %>
     </div>
     <div class="row">
       <div class="col-xs-12">
