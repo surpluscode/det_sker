@@ -115,6 +115,11 @@ da:
       edit_event: "Redigerer begivenhed"
     new:
       new_event: "Opret begivenhed"
+      event_series_message: >
+                          Du er ved at oprette en event - hvis du skal oprette
+                          flere events af samme slags kan du også vælge at 
+                          <a class="alert-link" href="%{link}">oprette en
+                          event serie</a>. 
     event_updated: "Ændringer til <a href=\"#%{id}\" class='alert-link'>%{name}</a> gemt!"
     event_created: "Begivenhed <a href=\"#%{id}\" class='alert-link'>%{name}</a> oprettet!"
     show:
@@ -136,7 +141,6 @@ da:
       defaults:
         username: Brugernavn
         expiry: Indtil
-      event:
         title: Titel
         cancelled: Aflys begivenhed?
         short_description: Beskrivelse
@@ -158,6 +162,10 @@ da:
         key: Navn
         description: Beskrivelse
         submit: ajkldfjklajdfl
+      event_series:
+        start_date: Starter
+        start_time: Fra
+        end_time: Til
     placeholders:
       event:
         title: Navnet af begivenheden
@@ -251,11 +259,29 @@ da:
     models:
       location: sted
   event_series:
+    new:
+      new_series: 'Opret event serie'
+      explanation: >
+                  En event serie er en række events der gentages efter nogle bestemt regler.
+                  Ved at oprette en serie med en bestemt regel opretter du flere events på de datoer
+                  givet i reglen. Efterfølgende kan du vælge at redigere disse forekomster enkeltvis 
+                  eller samlede ved at redigere i selv serien. 
+    created: "Serie %{name} oprettet med %{num_events} forekomster!"
     form:
       every_week: "hver uge"
       repetition_header: "Gentages"
       first_in_month: først uge i måneden
+      second_in_month: anden uge i måneden
+      third_in_month: tredje uge i måneden
       last_in_month: sidst uge i måneden
+      date_explanation: > 
+                      Du kan kun oprette events indenfor de næste tre måneder. 
+                      Du godt fornye serien senere hvis din serie stadig kører efter tre måneder.
+      rule_disabled: > 
+                    Du kan ikke redigere gentagelses reglen når der stadig er events i denne serie. 
+                    Hvis du vil ændre på gentagelses reglen kan du enten slette eksisterende forekomster eller
+                    oprette en ny serie. 
+                    Du kan dog godt opdatere start og slut tid og alle andre attributer.
   day_names:
      Sunday: søndag
      Monday: mandag

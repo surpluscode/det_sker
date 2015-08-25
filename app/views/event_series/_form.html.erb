@@ -1,86 +1,83 @@
 <%= simple_form_for @event_series, html: { multipart: true } do |f| %>
 
-  <div class="alert alert-danger">
-    <%= @event_series.errors.messages %>
+<div class="row">
+  <div class="col-xs-12">
+    <%= f.input :title %>
   </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <%= f.input :title %>
-      </div>
-    </div>
-    <% if @event_series.persisted? %>
-        <div class="row">
-          <div class="col-xs-12">
-            <%= f.input :cancelled, wrapper_html: { class: 'checkbox' },
-                        input_html: { class: 'checkbox'}, label_html: { class: 'override'} %>
-          </div>
-        </div>
-    <% end %>
+</div>
+<% if @event_series.persisted? %>
+<div class="row">
+  <div class="col-xs-12">
+    <%= f.input :cancelled, wrapper_html: { class: 'checkbox' },
+    input_html: { class: 'checkbox'}, label_html: { class: 'override'} %>
+  </div>
+</div>
+<% end %>
 
-    <div class="row">
-      <div class="col-xs-12">
-        <%= f.label :picture %>
-        <span class="btn btn-default btn-file">
-        <span id="js_button_text">
-          <%# show the filename in the button if there is a file %>
-          <% if @event_series.picture.present? %>
-            <%= @event_series.picture.original_filename %>
-          <% else %>
-            <%= t '.choose_file' %>
-          <% end %>
-        </span>
-          <%#= f.input :picture, label: false %>
-        </span>
-        <%#= bootstrap_glyphicon('trash', 'btn btn-default') if @event_series.picture.present? %>
-        <input type="hidden" name="remove_picture" id="event_remove_picture"/>
-        <br/>
-        <br/>
-        <%= f.hint t('events.form.picture.warning'), data: { role: 'picture_warning' } %>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-xs-12">
+    <%= f.label :picture %>
+    <span class="btn btn-default btn-file">
+      <span id="js_button_text">
+        <%# show the filename in the button if there is a file %>
+        <% if @event_series.picture.present? %>
+        <%= @event_series.picture.original_filename %>
+        <% else %>
+        <%= t '.choose_file' %>
+        <% end %>
+      </span>
+      <%#= f.input :picture, label: false %>
+    </span>
+    <%#= bootstrap_glyphicon('trash', 'btn btn-default') if @event_series.picture.present? %>
+    <input type="hidden" name="remove_picture" id="event_remove_picture"/>
+    <br/>
+    <br/>
+    <%= f.hint t('events.form.picture.warning'), data: { role: 'picture_warning' } %>
+  </div>
+</div>
 
-    <div class="row">
-      <div class="col-xs-12">
-        <%= f.input :description %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-5">
-        <%= f.association :categories, label_method: ->(obj){ obj.send(t(:language)).titleize }, required: true,
-                          input_html: { class: 'selectpicker', title: t('.choose_category') }
-        %>
-      </div>
-      <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-        <%= f.label :location_id %>
-        <%# If we already have a location the placeholder should be that location's name %>
-        <% location_name = @event_series.location.display_name rescue nil %>
-        <%= text_field_tag(
-                    'location-typeahead', location_name,
-                    placeholder: "#{location_name || t('events.form.choose_location')}",
-                    class: "typeahead form-control",
-                    data: {
-                            api_path: locations_path,
-                            remote_path: new_location_path,
-                            label: t('events.form.create_location'),
-                            display_key: 'display_name',
-                            header: t('events.form.typeahead_header'),
-                            target: '#event_series_location_id',
-                            empty_message: t('events.form.empty_location')
-                    }
-            )
+<div class="row">
+  <div class="col-xs-12">
+    <%= f.input :description %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-5">
+    <%= f.association :categories, label_method: ->(obj){ obj.send(t(:language)).titleize }, required: true,
+    input_html: { class: 'selectpicker', title: t('.choose_category') }
+    %>
+  </div>
+  <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+    <%= f.label :location_id %>
+    <%# If we already have a location the placeholder should be that location's name %>
+    <% location_name = @event_series.location.display_name rescue nil %>
+    <%= text_field_tag(
+      'location-typeahead', location_name,
+      placeholder: "#{location_name || t('events.form.choose_location')}",
+      class: "typeahead form-control",
+        data: {
+          api_path: locations_path,
+          remote_path: new_location_path,
+          label: t('events.form.create_location'),
+          display_key: 'display_name',
+          header: t('events.form.typeahead_header'),
+          target: '#event_series_location_id',
+          empty_message: t('events.form.empty_location')
+        }
+        )
         %>
         <%= f.full_error :location_id %>
         <%= link_to new_location_path, class: 'btn btn-default btn-sm pull-right',
-                    data: {
-                            remote: true,
-                            toggle: 'modal',
-                            target: 'remote_form_modal',
-                            update_val: '#location-typeahead',
-                            update_field: 'event[location_id]',
-                            modal_title: t('events.form.new_location_title')
-                    } do %>
-            <%= t('events.form.create_location') %>
-            <%= bootstrap_glyphicon('plus') %>
+        data: {
+          remote: true,
+          toggle: 'modal',
+          target: 'remote_form_modal',
+          update_val: '#location-typeahead',
+          update_field: 'event[location_id]',
+          modal_title: t('events.form.new_location_title')
+        } do %>
+        <%= t('events.form.create_location') %>
+        <%= bootstrap_glyphicon('plus') %>
         <% end %>
 
         <%= f.input :location_id, as: :hidden %>
@@ -88,51 +85,56 @@
       </div>
     </div>
 
+    <h2><%= t '.repetition_header' %></h2>
+    <div id="repeating_control" class='form-inline row-fluid'>
+    <%# we disable the rule controls if there are any events present as we don't know how to update the rules for existing events %>
+    <% coming_events = @event_series.coming_events.present? %> 
+    <% if coming_events %>
+      <p class="text-danger"><%= t('.rule_disabled') %></p>
+    <% end %>
+      <%= f.input :day_array, collection: dayname_collection, label: false,  input_html: { 
+        multiple: true, disabled: coming_events, class: 'selectpicker' 
+        }  %>
+      <%= f.input :rule,
+      collection: [
+        [t('.every_week'), 'weekly'], 
+        [t('.first_in_month'), 'first'],
+        [t('.second_in_month'), 'second'],
+        [t('.third_in_month'), 'third'],
+        [t('.last_in_month'), 'last'],  
+        ],
+        selected: 'weeks', label: false,
+        input_html: { class: 'selectpicker', disabled: coming_events }
+        %>
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-5">
-        <%#= f.input :start_time, as: :string, input_html: { data:{
-                                       function: 'datetime-picker', 'date-format' => 'DD/MM/YYYY HH:mm' }} %>
       </div>
-      <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-        <%#= f.input :end_time, as: :string, input_html: { data: {
-                                     function: 'datetime-picker', 'date-format' => 'DD/MM/YYYY HH:mm' }} %>
-      </div>
-    </div>
+      <div class='form-inline row-fluid'>
 
-        <h2><%= t '.repetition_header' %></h2>
-        <div id="repeating_control" class='form-inline row-fluid'>
+      <%# Not allowed to make events more than 3 months in the future %>
+      <% max_date = (DateTime.now + 3.months).strftime('%Y/%m/%d') %>
+        <%= f.input :start_date, as: :string, input_html: { 
+          disabled: coming_events, data: { 
+            function: 'datetime-picker', date_format: 'YYYY/MM/DD', inline: 'true',
+            language: I18n.locale, calendar_weeks: true, disabled_hours: true,
+            max_date: max_date
+       }}
+       %>
 
-          <%= f.input :day_array, collection: dayname_collection, label: false,  input_html: { multiple: true, class: 'selectpicker' }  %>
-          <%= f.input :rule,
-                        collection: [
-                          [t('.every_week'), 'weekly'], 
-                          [t('.first_in_month'), 'first_week'],
-                          [t('.last_in_month'), 'last_week'],  
-                          ],
-                        selected: 'weeks', label: false,
-                        input_html: { class: 'selectpicker' }
-          %>
+       <%= f.input :expiry, as: :string, input_html: {  
+        disabled: coming_events, data: {
+         function: 'datetime-picker', date_format: 'YYYY/MM/DD', inline: 'true',
+         language: I18n.locale, calendar_weeks: true, disabled_hours: true, 
+         max_date: max_date  
+       }}
+       %>
+       <p class="text-info">
+        <%= t('.date_explanation') %>
+      </p>
+     </div>
+     <div class='form-inline row-fluid'>
 
-        </div>
-    <div class='form-inline row-fluid'>
-   
-    <%= f.input :start_date, as: :string, input_html: { data: {
-                               function: 'datetime-picker', date_format: 'YYYY/MM/DD', inline: 'true',
-                               language: I18n.locale, calendar_weeks: true, disabled_hours: true
-                       }}
-    %>
-
-    <%= f.input :expiry, as: :string, input_html: { data: {
-                               function: 'datetime-picker', date_format: 'YYYY/MM/DD', inline: 'true',
-                               language: I18n.locale, calendar_weeks: true, disabled_hours: true
-                       }}
-    %>
-    </div>
-        <div class='form-inline row-fluid'>
-
-        <%= f.input :start_time, as: :time %>
-        <%= f.input :end_time, as: :time %>
+      <%= f.input :start_time, as: :time, minute_step: 15 %>
+      <%= f.input :end_time, as: :time, minute_step: 15 %>
     </div>
     <div class="row">
       <div class="col-xs-12">
@@ -144,14 +146,14 @@
     or b) if the user has checked this box to say that there is a price
     Note the javascript hooks on the data elements. %>
     <% if @event_series.price.blank? %>
-        <div class="input boolean optional event_price_enabled checkbox">
-          <label class="boolean optional control-label override checkbox" for="event_price_enabled">
-            <input class="boolean optional checkbox" id="event_price_enabled"
-                   name="event[price_enabled]" value="1" type="checkbox"
-                   data-function="show" data-target=".event_price">
-            <%= t 'events.form.enable_price' %>
-          </label>
-        </div>
+    <div class="input boolean optional event_price_enabled checkbox">
+      <label class="boolean optional control-label override checkbox" for="event_price_enabled">
+        <input class="boolean optional checkbox" id="event_price_enabled"
+        name="event_series[price_enabled]" value="1" type="checkbox"
+        data-function="show" data-target=".event_series_price">
+        <%= t 'events.form.enable_price' %>
+      </label>
+    </div>
     <% end %>
 
     <div class="row">
@@ -163,7 +165,7 @@
     <div class="input boolean optional event_comments_enabled checkbox">
       <label class="boolean optional control-label override checkbox" for="event_comments_enabled">
         <input class="boolean optional checkbox" id="event_comments_enabled"
-               name="event[comments_enabled]" value="1" type="checkbox">
+        name="event_series[comments_enabled]" value="1" type="checkbox">
         <%= t 'simple_form.labels.event.comments_enabled' %>
       </label>
     </div>
@@ -174,5 +176,5 @@
       </div>
     </div>
     <br/>
-<% end %>
-<%= render partial: 'layouts/modal_wrapper' %>
+    <% end %>
+    <%= render partial: 'layouts/modal_wrapper' %>

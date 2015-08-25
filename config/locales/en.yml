@@ -116,6 +116,10 @@ en:
       edit_event: "Editing event"
     new:
       new_event: "New event"
+      event_series_message: >
+                    You are about to create an event - if you want to create 
+                    several events of the same type, you can also choose to
+                    <a class="alert-link" href="%{link}">create an event series.</a>
     event_updated: "Changes to <a href=\"#%{id}\" class='alert-link'>%{name}</a> saved!"
     event_created: "Event <a href=\"#%{id}\" class='alert-link'>%{name}</a> created!"
     show:
@@ -211,8 +215,22 @@ en:
   language: "english"
   edit: "Edit"
   event_series:
+    new:
+      explanation: >
+              You are about to create an event series. This will create a number of events 
+              defined by the rule you specify. You can then choose to edit the events individually
+              or all at once by editing this series. 
+    created: "%{name} created with %{num_events} occurrences"
+    updated: "%{num_events} occurrences of %{name} updated"
     form:
       every_week: "every week"
       first_in_month: first week of the month
       last_in_month: last week of the month
       repetition_header: "Repeats"
+      date_explanation: > 
+                     You are only allowed to create events within the next three months. 
+                     You can renew the series if the event is still running after three months.
+      rule_disabled: >
+                  You can't edit the repetition rule when there are still events active in the series.
+                  If you want to change the rule, you should either delete all the remaining events
+                  or create a new series. You can still change the start and end time as well as the other attributes.
