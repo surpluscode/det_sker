@@ -90,7 +90,7 @@
     <% unless @event.persisted? %>
       <div id='check_recurring' class="checkbox">
         <label>
-          <%= check_box_tag :recurring, '0', false,
+          <%= check_box_tag :recurring, 'yes', false,
           data: { function: 'show', target: '#repeating_control', hide: '#standard_time_control' }
           %>
           <%= t '.repeating_event' %>

@@ -92,7 +92,7 @@
     <% if coming_events %>
       <p class="text-danger"><%= t('.rule_disabled') %></p>
     <% end %>
-     <%= render partial: 'repeating_control', locals: { builder: f,  coming_events: coming_events } %>
+     <%= render partial: 'event_series/repeating_control', locals: { builder: f,  coming_events: coming_events } %>
      </div>
     <div class="row">
       <div class="col-xs-12">

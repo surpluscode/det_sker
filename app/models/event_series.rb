@@ -70,6 +70,10 @@ class EventSeries < ActiveRecord::Base
     end
   end
 
+  def short_description=(val)
+    self.description = val
+  end
+
   private
 
   # Use Chronic to convert the rules to Date objects

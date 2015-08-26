@@ -15,14 +15,25 @@ class EventsController < ApplicationController
     event_params = user_params
     # add the user id if we've got one
     event_params.merge!(user_id: current_user.id) if user_signed_in?
+    # handle creation of recurring events here
+    if params[:recurring] == 'yes'
+      series_params = event_params.merge(event_params[:event_series]).except(:event_series)
+      @event_series = EventSeries.new(series_params)
+      saved = @event_series.save
+      notice = I18n.t('event_series.created', name: @event_series.name, num_events: @event_series.coming_events.size)
+    else
+      @event = Event.new(event_params)
+      saved = @event.save
+      notice = I18n.t('events.event_created', name: @event.name, id: @event.id)
+    end
 
-    @event = Event.new(event_params)
     respond_to do |format|
-      if @event.save
-        format.html {
-          redirect_to root_path, notice: I18n.t('events.event_created', name: @event.name, id: @event.id)
-        }
+      if saved
+        format.html { redirect_to root_path, notice: notice }
         format.json { render action: 'show', status: :created, location: @event }
+      elsif @event_series.present?
+        format.html { render template: 'event_series/new' }
+        format.json { render json: @event_series.errors, status: :unprocessable_entity }
       else
         format.html { render action: 'new' }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -80,8 +91,10 @@ class EventsController < ApplicationController
     params.require(:event).permit(:title, :short_description, :long_description,
                                  :start_time, :end_time,  :location_id, :comments_enabled,
                                  :price, :cancelled, :link, :picture,
-                                 category_ids: []).tap do |list|
+                                 category_ids: [], event_series: [[:rule, :start_date, 
+                                 :start_time, :expiry, :end_time, day_array: []]]).tap do |list|
       list[:category_ids].uniq!
+      list[:event_series][:days] = list[:event_series][:day_array].select(&:present?).join(',') if list[:event_series][:day_array].present?
     end
   end
 end
