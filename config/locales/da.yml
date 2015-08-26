@@ -115,11 +115,6 @@ da:
       edit_event: "Redigerer begivenhed"
     new:
       new_event: "Opret begivenhed"
-      event_series_message: >
-                          Du er ved at oprette en event - hvis du skal oprette
-                          flere events af samme slags kan du også vælge at 
-                          <a class="alert-link" href="%{link}">oprette en
-                          event serie</a>. 
     event_updated: "Ændringer til <a href=\"#%{id}\" class='alert-link'>%{name}</a> gemt!"
     event_created: "Begivenhed <a href=\"#%{id}\" class='alert-link'>%{name}</a> oprettet!"
     show:
