@@ -66,7 +66,9 @@ function initTypeahead(selector){
 function showListener(){
     $('[data-function="show"]').click(function(){
         var show_target = $(this).attr('data-target');
+        var hide_target = $(this).attr('data-hide');
         $(show_target).toggle(this.checked);
+        $(hide_target).toggle(!this.checked);
     });
 }
 
@@ -189,7 +191,6 @@ function activateFormPlugins() {
     $('[data-function="datetime-picker"]').each(function(){
         var data = $.extend($(this).data(), {language: locale, minuteStepping: 5});
         delete data.function;
-        console.log(data);
         $(this).datetimepicker(data);
     });
 }

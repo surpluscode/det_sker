@@ -86,8 +86,20 @@
       </div>
     </div>
 
+    <%# This dialog is only for new events %>
+    <% unless @event.persisted? %>
+        <div id='check_recurring' class="checkbox">
+          <label>
+            <%= check_box_tag :recurring, '0', false,
+                              data: { function: 'show', target: '#repeating_control', hide: '#standard_time_control' }
+            %>
+            <%= t '.repeating_event' %>
+          </label>
+        </div>
+    <% end %>
 
-    <div class="row">
+
+    <div class="row" id="standard_time_control">
       <div class="col-xs-12 col-sm-5">
         <%= f.input :start_time, as: :string, input_html: { data:{
                                        function: 'datetime-picker', 'date-format' => 'YYYY/MM/DD HH:mm' }} %>
@@ -98,39 +110,11 @@
       </div>
     </div>
 
-    <%# This dialog is only for new events %>
-    <% unless @event.persisted? %>
-        <div id='check_recurring' class="checkbox">
-          <label>
-            <%= check_box_tag :recurring, '0', false,
-                              data: { function: 'show', target: '#repeating_control' }
-            %>
-            <%= t '.repeating_event' %>
-          </label>
-        </div>
-        <div id="repeating_control" class='form-inline row-fluid' style="display: none;">
-          <%= simple_fields_for :event_series do |s| %>
-              <%= s.input_field :frequency,
-                        collection: [[t('.every_day'), 'days', 'data-unit' => t('.days')],
-                                     [t('.every_week'), 'weeks', 'data-unit' => t('.weeks')],
-                                     [t('.every_month'), 'months', 'data-unit' =>  t('.months')] ],
-                        selected: 'weeks',
-                        class: 'selectpicker',
-                        data: { width: '50%'}
-              %>
-                <%= t '.for_time' %>
-                <%= s.input_field :number,
-                            collection: 1..30,
-                            class: 'selectpicker',
-                            data: { width: '30%' }
-                %>
-              <span id="unit"></span>
-
-          <% end %>
-          <%#= select_tag :frequency, options_for_select([t('.every_day'), 'D'], t('.every_week'), t('.every_month')],  t('.every_week')) %>
-        </div>
-    <% end %>
-
+    <div id="repeating_control" class='form-inline row-fluid' style="display: none;">
+    <h2><%= t 'event_series.form.repetition_header' %></h2>
+     <%= f.simple_fields_for :event_series do |s| %>
+      <%= render partial: 'event_series/repeating_control', locals: { builder: s,  coming_events: false } %>
+      <% end %> 
     <div class="row">
       <div class="col-xs-12">
         <%= f.input :link, as: :url %>

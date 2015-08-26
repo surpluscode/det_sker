@@ -1,0 +1,47 @@
+
+
+<%= builder.input :day_array, collection: dayname_collection, label: false,  input_html: { 
+  multiple: true, disabled: coming_events, class: 'selectpicker' 
+}  %>
+<%= builder.input :rule,
+collection: [
+  [t('.every_week'), 'weekly'], 
+  [t('.first_in_month'), 'first'],
+  [t('.second_in_month'), 'second'],
+  [t('.third_in_month'), 'third'],
+  [t('.last_in_month'), 'last'],  
+  ],
+  selected: 'weeks', label: false,
+  input_html: { class: 'selectpicker', disabled: coming_events }
+  %>
+
+</div>
+<div class='form-inline row-fluid'>
+
+<%= builder.input :start_time, as: :time, minute_step: 15 %>
+<%= builder.input :end_time, as: :time, minute_step: 15 %>
+</div>
+<div class='form-inline row-fluid'>
+
+  <%# Not allowed to make events more than 3 months in the future %>
+  <% max_date = (DateTime.now + 3.months).strftime('%Y/%m/%d') %>
+  <%= builder.input :start_date, as: :string, input_html: { 
+    disabled: coming_events, data: { 
+      function: 'datetime-picker', date_format: 'YYYY/MM/DD', inline: 'true',
+      language: I18n.locale, calendar_weeks: true, disabled_hours: true,
+      max_date: max_date
+    }}
+    %>
+
+    <%= builder.input :expiry, as: :string, input_html: {  
+      disabled: coming_events, data: {
+       function: 'datetime-picker', date_format: 'YYYY/MM/DD', inline: 'true',
+       language: I18n.locale, calendar_weeks: true, disabled_hours: true, 
+       max_date: max_date  
+     }}
+     %>
+     <p class="text-info">
+      <%= t('event_series.form.date_explanation') %>
+    </p>
+  </div>
+
