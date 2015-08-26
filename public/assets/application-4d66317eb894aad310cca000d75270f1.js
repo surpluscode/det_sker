@@ -15127,9 +15127,9 @@ function initTypeahead(selector){
 function showListener(){
     $('[data-function="show"]').click(function(){
         var show_target = $(this).attr('data-target');
-        $(show_target).removeClass('hidden');
         var hide_target = $(this).attr('data-hide');
-        $(hide_target).addClass('hidden');
+        $(show_target).toggle(this.checked);
+        $(hide_target).toggle(!this.checked);
     });
 }
 
@@ -15147,6 +15147,13 @@ function activateFormListeners() {
         $('#event_remove_picture').val('0');
         validateFileInput(this);
         addRemoveButton(this);
+    });
+
+    // UI for repeating events
+    $('#event_series_frequency').on('change', function(){
+        var selected = $(this).children('option:selected');
+        var unit = $(selected).data('unit');
+        $('#unit').text(unit);
     });
 }
 
@@ -15242,9 +15249,10 @@ function modalFormListener() {
 
 function activateFormPlugins() {
     $('[data-toggle="popover"]').popover();
-    $('[data-function="datetime-picker"]').datetimepicker({
-        language: locale,
-        minuteStepping: 5
+    $('[data-function="datetime-picker"]').each(function(){
+        var data = $.extend($(this).data(), {language: locale, minuteStepping: 5});
+        delete data.function;
+        $(this).datetimepicker(data);
     });
 }
 

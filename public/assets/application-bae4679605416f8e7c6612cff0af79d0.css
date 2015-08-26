@@ -8899,7 +8899,7 @@ button.close {
     width: 283px;
   }
 }
-/* line 1, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
+/* line 1, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
 span.twitter-typeahead .tt-dropdown-menu {
   position: absolute;
   top: 100%;
@@ -8922,7 +8922,7 @@ span.twitter-typeahead .tt-dropdown-menu {
   background-clip: padding-box;
 }
 
-/* line 22, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
+/* line 22, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
 span.twitter-typeahead .tt-suggestion > p {
   display: block;
   padding: 3px 20px;
@@ -8933,7 +8933,7 @@ span.twitter-typeahead .tt-suggestion > p {
   white-space: nowrap;
 }
 
-/* line 32, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
+/* line 32, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
 span.twitter-typeahead .tt-suggestion > p:hover,
 span.twitter-typeahead .tt-suggestion > p:focus {
   color: #ffffff;
@@ -8942,33 +8942,33 @@ span.twitter-typeahead .tt-suggestion > p:focus {
   background-color: #428bca;
 }
 
-/* line 38, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
+/* line 38, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
 span.twitter-typeahead .tt-suggestion.tt-cursor {
   color: #ffffff;
   background-color: #428bca;
 }
 
-/* line 42, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
+/* line 42, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
 span.twitter-typeahead {
   width: 100%;
 }
 
-/* line 45, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
+/* line 45, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
 .input-group span.twitter-typeahead {
   display: block !important;
 }
 
-/* line 48, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
+/* line 48, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
 .input-group span.twitter-typeahead .tt-dropdown-menu {
   top: 32px !important;
 }
 
-/* line 51, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
+/* line 51, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
 .input-group.input-group-lg span.twitter-typeahead .tt-dropdown-menu {
   top: 44px !important;
 }
 
-/* line 54, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
+/* line 54, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/typeaheadjs.css */
 .input-group.input-group-sm span.twitter-typeahead .tt-dropdown-menu {
   top: 28px !important;
 }
@@ -8979,94 +8979,94 @@ span.twitter-typeahead {
  * Copyright 2013-2015 bootstrap-select
  * Licensed under MIT (https://github.com/silviomoreto/bootstrap-select/blob/master/LICENSE)
  */
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select {
   width: 220px \0;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select > .btn {
   width: 100%;
   padding-right: 25px;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .error .bootstrap-select .dropdown-toggle, .has-error .bootstrap-select .dropdown-toggle {
   border-color: #b94a48;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.fit-width {
   width: auto !important;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
   width: 220px;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select .btn:focus {
   outline: #333333 dotted thin !important;
   outline: -webkit-focus-ring-color auto 5px !important;
   outline-offset: -2px;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.form-control {
   margin-bottom: 0;
   padding: 0;
   border: none;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.form-control:not([class*=col-]) {
   width: 100%;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.form-control.input-group-btn {
   z-index: auto;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group:not(.input-group-btn), .bootstrap-select.btn-group[class*=col-] {
   float: none;
   display: inline-block;
   margin-left: 0;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group.dropdown-menu-right, .bootstrap-select.btn-group[class*=col-].dropdown-menu-right, .row .bootstrap-select.btn-group[class*=col-].dropdown-menu-right {
   float: right;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .form-group .bootstrap-select.btn-group, .form-horizontal .bootstrap-select.btn-group, .form-inline .bootstrap-select.btn-group {
   margin-bottom: 0;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .form-group-lg .bootstrap-select.btn-group.form-control, .form-group-sm .bootstrap-select.btn-group.form-control {
   padding: 0;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .form-inline .bootstrap-select.btn-group .form-control {
   width: 100%;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group > .disabled {
   cursor: not-allowed;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group > .disabled:focus {
   outline: 0 !important;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .btn .filter-option {
   display: inline-block;
   overflow: hidden;
@@ -9074,7 +9074,7 @@ span.twitter-typeahead {
   text-align: left;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .btn .caret {
   position: absolute;
   top: 50%;
@@ -9083,12 +9083,12 @@ span.twitter-typeahead {
   vertical-align: middle;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group[class*=col-] .btn {
   width: 100%;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .dropdown-menu {
   min-width: 100%;
   z-index: 1035;
@@ -9097,7 +9097,7 @@ span.twitter-typeahead {
   box-sizing: border-box;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .dropdown-menu.inner {
   position: static;
   border: 0;
@@ -9108,48 +9108,48 @@ span.twitter-typeahead {
   box-shadow: none;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .dropdown-menu li {
   position: relative;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .dropdown-menu li.active small {
   color: #fff;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .dropdown-menu li.disabled a {
   cursor: not-allowed;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .dropdown-menu li a {
   cursor: pointer;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .dropdown-menu li a.opt {
   position: relative;
   padding-left: 2.25em;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .dropdown-menu li a span.check-mark {
   display: none;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .dropdown-menu li a span.text {
   display: inline-block;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .dropdown-menu li small {
   padding-left: .5em;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .dropdown-menu .notify {
   position: absolute;
   bottom: 5px;
@@ -9168,26 +9168,26 @@ span.twitter-typeahead {
   box-sizing: border-box;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group .no-results {
   padding: 3px;
   background: #f5f5f5;
   margin: 0 5px;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group.fit-width .btn .filter-option {
   position: static;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group.fit-width .btn .caret {
   position: static;
   top: auto;
   margin-top: -1px;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark {
   position: absolute;
   display: inline-block;
@@ -9195,17 +9195,17 @@ span.twitter-typeahead {
   margin-top: 5px;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.btn-group.show-tick .dropdown-menu li a span.text {
   margin-right: 34px;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.show-menu-arrow.open > .btn {
   z-index: 1036;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.show-menu-arrow .dropdown-toggle:before {
   content: '';
   border-left: 7px solid transparent;
@@ -9217,7 +9217,7 @@ span.twitter-typeahead {
   display: none;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.show-menu-arrow .dropdown-toggle:after {
   content: '';
   border-left: 6px solid transparent;
@@ -9229,7 +9229,7 @@ span.twitter-typeahead {
   display: none;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.show-menu-arrow.dropup .dropdown-toggle:before {
   bottom: auto;
   top: -3px;
@@ -9237,7 +9237,7 @@ span.twitter-typeahead {
   border-bottom: 0;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.show-menu-arrow.dropup .dropdown-toggle:after {
   bottom: auto;
   top: -3px;
@@ -9245,29 +9245,29 @@ span.twitter-typeahead {
   border-bottom: 0;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.show-menu-arrow.pull-right .dropdown-toggle:before {
   right: 12px;
   left: auto;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.show-menu-arrow.pull-right .dropdown-toggle:after {
   right: 13px;
   left: auto;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bootstrap-select.show-menu-arrow.open > .dropdown-toggle:after, .bootstrap-select.show-menu-arrow.open > .dropdown-toggle:before {
   display: block;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bs-actionsbox, .bs-donebutton, .bs-searchbox {
   padding: 4px 8px;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bs-actionsbox {
   float: left;
   width: 100%;
@@ -9276,12 +9276,12 @@ span.twitter-typeahead {
   box-sizing: border-box;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bs-actionsbox .btn-group button {
   width: 50%;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bs-donebutton {
   float: left;
   width: 100%;
@@ -9290,23 +9290,23 @@ span.twitter-typeahead {
   box-sizing: border-box;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bs-donebutton .btn-group button {
   width: 100%;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bs-searchbox + .bs-actionsbox {
   padding: 0 8px 4px;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .bs-searchbox input.form-control {
   margin-bottom: 0;
   width: 100%;
 }
 
-/* line 7, C:/Users/romc/Programming/personal/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
+/* line 7, C:/Users/ronan/Documents/Programming/det_sker/vendor/assets/stylesheets/bootstrap-select.min.css */
 .mobile-device {
   position: absolute !important;
   top: 0;
@@ -9317,95 +9317,91 @@ span.twitter-typeahead {
   opacity: 0;
 }
 
-/* line 4, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 4, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 form {
   padding-right: 0px;
   padding-left: 0px;
 }
 
-/* line 9, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 9, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .hidden {
   display: none;
 }
 
-/* line 10, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 10, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 input, textarea, .select_group {
   display: block;
 }
 
-/* line 14, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 14, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .event-container {
   padding: 10px 0px;
 }
 
-/* line 18, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 18, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .event-topbar_js {
   cursor: pointer;
 }
-/* line 21, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
-.event-topbar_js:hover {
-  background-color: yellow;
-}
 
-/* line 25, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 22, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .event-category {
   border: 1px solid #000000;
   padding: 1px;
 }
 
-/* line 33, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 30, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .long-description {
   display: none;
 }
 
-/* line 38, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 35, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 dl#filter-list_js .active {
   color: #fff;
 }
 
-/* line 43, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 40, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 #user_remember_me {
   display: inline;
 }
 
 /* adapted from http://maxwells.github.io/bootstrap-tags.html */
-/* line 48, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 45, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .tag {
   font-size: 14px;
   padding: .3em .4em .4em;
   margin: 0 .1em;
 }
 
-/* line 53, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 50, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .tag a {
   color: #bbb;
   cursor: pointer;
   opacity: 0.6;
 }
 
-/* line 58, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 55, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .tag a:hover {
   opacity: 1;
 }
 
-/* line 61, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 58, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .tag .remove {
   vertical-align: bottom;
   top: 0;
 }
 
-/* line 65, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 62, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .tag a {
   margin: 0 0 0 .3em;
 }
 
-/* line 68, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 65, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .tag a .glyphicon-white {
   color: #fff;
   margin-bottom: 2px;
 }
 
-/* line 74, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 71, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .combobox-container .input-group-addon {
   display: none;
 }
@@ -9414,13 +9410,13 @@ dl#filter-list_js .active {
 * Rules to allow styling of file input button
 * by hiding file input under a styled button
 */
-/* line 84, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 81, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .btn-file {
   position: relative;
   overflow: hidden;
 }
 
-/* line 88, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 85, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .btn-file input[type=file] {
   position: absolute;
   top: 0;
@@ -9436,65 +9432,87 @@ dl#filter-list_js .active {
   display: block;
 }
 
-/* line 103, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/events.css.scss */
+/* line 100, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/events.css.scss */
 .end-of-events {
   color: #ababab;
 }
 
-/* line 1, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 1, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
+h1 {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+/* line 6, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* line 11, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
+h4 {
+  font-size: 16px;
+}
+
+/* line 15, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
+a:hover {
+  text-decoration: none;
+}
+
+/* line 19, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .container {
   max-width: 960px;
 }
 
-/* line 5, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 23, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .header-text {
   text-align: center;
   font-size: 60px;
 }
 
-/* line 10, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 28, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .menu-text {
   font-family: Helvetica, Arial;
   font-size: 20px;
   letter-spacing: 3px;
 }
 
-/* line 16, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 34, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .tagline-text {
   text-align: center;
   font-size: 14px;
   margin: 10px 0;
 }
 
-/* line 22, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 40, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .create-link a {
   color: #FFF !important;
 }
 
-/* line 26, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 44, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .login-button {
   text-align: right;
 }
 
 /* Bootstrap overrides */
-/* line 33, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 51, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 h2 {
   font-size: 18px;
   color: #5e9397;
   margin-bottom: 0px;
 }
 
-/* line 39, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 57, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .form-horizontal .form-group {
   margin: 0;
 }
 
-/* line 43, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 61, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 form {
   padding: 10;
 }
 
-/* line 47, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 65, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .label-primary {
   font-size: 13px;
   font-weight: normal;
@@ -9507,7 +9525,7 @@ form {
   border-radius: 5px;
 }
 
-/* line 61, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 79, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .label-success {
   font-size: 13px;
   font-weight: normal;
@@ -9520,39 +9538,39 @@ form {
   border-radius: 5px;
 }
 
-/* line 73, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 91, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .tag a {
   opacity: 1;
 }
 
-/* line 77, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 95, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .tag a .glyphicon-white {
   margin-bottom: 6px;
 }
 
-/* line 81, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 99, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .label-primary[href]:focus {
   background-color: #5e9397;
 }
 
-/* line 85, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 103, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .label-primary[href]:hover {
   background-color: #ababab;
 }
 
 /* calender index */
-/* line 93, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 111, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .event-title {
   font-weight: bold;
 }
 
-/* line 98, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 116, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .event-time {
   background: red;
 }
 
 /* filter-kategorier */
-/* line 103, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 121, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .filter-cat, .filter-location {
   font-family: Helvetica, Sans-Serif;
   line-height: 24px;
@@ -9562,14 +9580,14 @@ form {
   margin-bottom: 20px;
 }
 
-/* line 112, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 130, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .filter-cat a, .filter-location a {
   font-family: Helvetica, Sans-Serif;
   line-height: 24px;
   color: #ababab;
 }
 
-/* line 118, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 136, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .filter-cat a:hover {
   color: #fff;
   background: #8dc4c6;
@@ -9579,7 +9597,7 @@ form {
   text-decoration: none;
 }
 
-/* line 127, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/global.scss */
+/* line 145, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/global.scss */
 .filter-location a:hover {
   color: #fff;
   background: #5e9397;
@@ -9589,95 +9607,95 @@ form {
   text-decoration: none;
 }
 
-/* line 1, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 1, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 .event_start_time select {
   display: inline;
 }
 
-/* line 5, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 5, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 .event_end_time select {
   display: inline;
 }
 
-/* line 9, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 9, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 .event_form {
   max-width: 500px;
   margin: 0 auto;
 }
 
-/* line 14, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 14, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 .event_show {
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* line 19, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 19, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 #event_short_description {
   height: 100px;
 }
 
-/* line 23, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 23, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 #event_long_description {
   height: 100px;
 }
 
-/* line 33, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 33, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 #event_start_time_5i {
   width: 50px;
 }
 
-/* line 37, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 37, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 #event_start_time_4i {
   width: 50px;
 }
 
-/* line 41, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 41, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 #event_start_time_3i {
   width: 50px;
 }
 
-/* line 45, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 45, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 #event_start_time_2i {
   width: 100px;
 }
 
-/* line 49, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 49, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 #event_start_time_1i {
   width: 70px;
 }
 
-/* line 53, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 53, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 #event_end_time_5i {
   width: 50px;
 }
 
-/* line 57, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 57, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 #event_end_time_4i {
   width: 50px;
 }
 
-/* line 61, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 61, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 #event_end_time_3i {
   width: 50px;
 }
 
-/* line 65, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 65, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 #event_end_time_2i {
   width: 100px;
 }
 
-/* line 69, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 69, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 #event_end_time_1i {
   width: 70px;
 }
 
-/* line 73, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 73, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 .control-label {
   text-align: left !important;
   display: block;
 }
 
-/* line 78, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 78, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 .required abbr {
   color: #ff0000;
   font-size: 18px;
@@ -9691,7 +9709,7 @@ form {
 * the actual class to prevent the default onclick
 * behaviour from being triggerd.
 **/
-/* line 91, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/_new_event.css.scss */
+/* line 91, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/_new_event.css.scss */
 .twitter-typeahead .use-styles {
   display: block;
   padding: 3px 20px;
@@ -9702,33 +9720,33 @@ form {
 }
 
 /* Bootstrap overrides */
-/* line 23, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/application.scss */
+/* line 23, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/application.scss */
 .navbar-default {
   border-width: 0;
   border-radius: 0;
 }
 
 @media (min-width: 768px) {
-  /* line 28, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/application.scss */
+  /* line 28, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/application.scss */
   #navbar-main {
     padding-left: 0;
   }
-  /* line 31, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/application.scss */
+  /* line 31, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/application.scss */
   #navbar-main .navbar-collapse {
     padding-left: 0;
     padding-right: 0;
   }
-  /* line 35, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/application.scss */
+  /* line 35, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/application.scss */
   #navbar-main .navbar-nav > li:first-child > a {
     padding-left: 0;
   }
 }
-/* line 39, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/application.scss */
+/* line 39, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/application.scss */
 #navbar-main .navbar-nav > li > a {
   font-size: 14px;
 }
 
-/* line 45, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/application.scss */
+/* line 45, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/application.scss */
 .navbar-toggle {
   background-color: #408298;
   border-color: #FFF !important;
@@ -9737,18 +9755,18 @@ form {
 }
 
 @media (min-width: 768px) {
-  /* line 53, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/application.scss */
+  /* line 53, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/application.scss */
   #navbar-user {
     float: right;
   }
 }
 @media (min-width: 768px) {
-  /* line 59, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/application.scss */
+  /* line 59, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/application.scss */
   #navbar-user .navbar-nav > li > p > a.btn-default {
     margin-right: 8px;
   }
 }
-/* line 63, C:/Users/romc/Programming/personal/det_sker/app/assets/stylesheets/application.scss */
+/* line 63, C:/Users/ronan/Documents/Programming/det_sker/app/assets/stylesheets/application.scss */
 #navbar-user .navbar-nav > li > a {
   font-size: 14px;
 }
