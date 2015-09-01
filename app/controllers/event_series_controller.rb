@@ -1,8 +1,8 @@
 class EventSeriesController < ApplicationController
-  before_action :set_event_series, only: [:show, :edit, :update, :destroy]
+  before_action :set_event_series, only: [:show, :edit, :update, :destroy, :delete_events]
   #TODO: shouldn't we authenticate the user before the create action also?
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
-  before_action :authorised_user?, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :delete_events]
+  before_action :authorised_user?, only: [:edit, :update, :destroy, :delete_events]
 
   def index
     @event_series = EventSeries.all
@@ -58,6 +58,11 @@ class EventSeriesController < ApplicationController
       format.html { redirect_to events_url }
       format.json { head :no_content }
     end
+  end
+
+  def delete_events
+    @event_series.events.each(&:destroy)
+     redirect_to root_path
   end
 
   private

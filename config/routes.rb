@@ -4,7 +4,9 @@ DetSker::Application.routes.draw do
   resources :events, except: [:index] do
     resources :comments, except: [:new, :delete]
   end
-  resources :event_series, controller: :event_series
+  resources :event_series, controller: :event_series do
+    delete 'delete_events', on: :member
+  end
   # events has no index - instead it should redirect to calendar index with params
   get 'events', to: redirect(path: '/')
 
