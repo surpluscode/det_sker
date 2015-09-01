@@ -64,7 +64,7 @@ function initTypeahead(selector){
  * data-hide attributes where the last two contain selectors.
  */
 function showListener(){
-    $('[data-function="show"]').click(function(){
+    $('[data-function="show"]').change(function(){
         var show_target = $(this).attr('data-target');
         var hide_target = $(this).attr('data-hide');
         $(show_target).toggle(this.checked);
@@ -78,6 +78,9 @@ function activateFormListeners() {
 
     categoryTagListener();
     showListener();
+    // we trigger the change event so that the correct inputs 
+    // will be shown on page refresh (i.e. it's not click dependent)
+    $('[data-function="show"]').change();
     $('.glyphicon-trash').click(removePicture);
 
 
