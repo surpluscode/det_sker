@@ -5,11 +5,11 @@
 }  %>
 <%= builder.input :rule,
 collection: [
-  [t('.every_week'), 'weekly'], 
-  [t('.first_in_month'), 'first'],
-  [t('.second_in_month'), 'second'],
-  [t('.third_in_month'), 'third'],
-  [t('.last_in_month'), 'last'],  
+  [t('event_series.form.every_week'), 'weekly'], 
+  [t('event_series.form.first_in_month'), 'first'],
+  [t('event_series.form.second_in_month'), 'second'],
+  [t('event_series.form.third_in_month'), 'third'],
+  [t('event_series.form.last_in_month'), 'last'],  
   ],
   selected: 'weeks', label: false,
   input_html: { class: 'selectpicker', disabled: coming_events }
