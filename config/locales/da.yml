@@ -274,6 +274,7 @@ da:
     created: "Serie %{name} oprettet med %{num_events} forekomster!"
     events_deleted: "%{number} events slettet"
     form:
+      choose_days: 'Vælg en eller flere dage'
       every_week: "hver uge"
       repetition_header: "Gentages"
       first_in_month: først uge i måneden

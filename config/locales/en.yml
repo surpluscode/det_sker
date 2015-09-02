@@ -225,6 +225,7 @@ en:
     updated: "%{num_events} occurrences of %{name} updated"
     events_deleted: "%{number} events slettet"
     form:
+      choose_days: Choose one or more days
       every_week: "every week"
       first_in_month: first week of the month
       last_in_month: last week of the month

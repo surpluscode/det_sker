@@ -1,7 +1,7 @@
 
 
 <%= builder.input :day_array, collection: dayname_collection, label: false,  input_html: { 
-  multiple: true, disabled: coming_events, class: 'selectpicker' 
+  multiple: true, disabled: coming_events, class: 'selectpicker', title: t('event_series.form.choose_days') 
 }  %>
 <%= builder.input :rule,
 collection: [
