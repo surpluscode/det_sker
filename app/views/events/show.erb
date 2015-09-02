@@ -26,10 +26,17 @@
   <% end %>
   <% if current_user && current_user.can_edit?(@event) %>
       <div class="hidden-xs">
-        <%= link_to t(:edit), edit_event_path(@event) %> |
-        <%= link_to t(:edit_series), edit_event_series_path(@event.event_series) if @event.event_series.present? %> |
-        <%= link_to t(:back), events_path %>
+        <%= link_to t(:edit), edit_event_path(@event) %>
       </div>
+  <% end %>
+   <% if current_user && @event.event_series.present? && current_user.can_edit?(@event.event_series) %>
+    <hr/>
+    <%= display_repetition_rule(@event.event_series) %>
+    <div class="hidden-xs">
+      <%= link_to t('event_series.edit_link'), edit_event_series_path(@event.event_series) %> 
+      <br/>
+      <%= link_to t('event_series.delete_events_link'), delete_events_event_series_path(@event.event_series), method: :delete, confirm: t('event_series.delete_events_warning', number: @event.event_series.events.size) %> 
+    </div>
   <% end %>
   <% if @event.comments_enabled? %>
       <div class="hidden-xs">

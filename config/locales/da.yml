@@ -254,6 +254,16 @@ da:
     models:
       location: sted
   event_series:
+    monthly_display_rule: "Gentages den %{rule} %{days} i måneden."
+    weekly_display_rule: "Gentages hver %{days}"
+    first: første
+    second: anden
+    third: tredje
+    fourth: fjerde
+    last: sidste
+    edit_link: Rediger serien
+    delete_events_link: Slet alle forekomster af denne serie
+    delete_events_warning: "Du er ved at slette %{number} events - er du sikker du vil fortsætte?"
     new:
       new_series: 'Opret event serie'
       explanation: >
@@ -262,6 +272,7 @@ da:
                   givet i reglen. Efterfølgende kan du vælge at redigere disse forekomster enkeltvis 
                   eller samlede ved at redigere i selv serien. 
     created: "Serie %{name} oprettet med %{num_events} forekomster!"
+    events_deleted: "%{number} events slettet"
     form:
       every_week: "hver uge"
       repetition_header: "Gentages"
@@ -274,7 +285,7 @@ da:
                       Du godt fornye serien senere hvis din serie stadig kører efter tre måneder.
       rule_disabled: > 
                     Du kan ikke redigere gentagelses reglen når der stadig er events i denne serie. 
-                    Hvis du vil ændre på gentagelses reglen kan du enten slette eksisterende forekomster eller
+                    Hvis du vil ændre på gentagelses reglen kan du enten <a href="%{url}">slette eksisterende forekomster</a> eller
                     oprette en ny serie. 
                     Du kan dog godt opdatere start og slut tid og alle andre attributer.
   day_names:

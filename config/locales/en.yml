@@ -211,6 +211,11 @@ en:
   language: "english"
   edit: "Edit"
   event_series:
+    monthly_display_rule: "Repeats on the %{rule} %{days} in the month."
+    weekly_display_rule: "Every %{days}"
+    edit_link: Edit series
+    delete_events_link: Delete all occurrences of this series
+    delete_events_warning: "You are about to delete %{number} events - are you sure you want to continue?"
     new:
       explanation: >
               You are about to create an event series. This will create a number of events 
@@ -218,6 +223,7 @@ en:
               or all at once by editing this series. 
     created: "%{name} created with %{num_events} occurrences"
     updated: "%{num_events} occurrences of %{name} updated"
+    events_deleted: "%{number} events slettet"
     form:
       every_week: "every week"
       first_in_month: first week of the month

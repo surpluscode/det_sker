@@ -39,6 +39,17 @@ module EventsHelper
     categories.map { |cat| cat.send(t :language) }.join(' ')
   end
 
+  def display_repetition_rule(series)
+    # translate the days and convert them to a string
+    transl_days = series.day_array.collect { |d| I18n.t("day_names.#{d.titleize}", default: d) }.to_sentence(locale: I18n.locale)
+    if series.rule == 'weekly'
+      I18n.t('event_series.weekly_display_rule', days: transl_days)
+    else
+      transl_rule = I18n.t("event_series.#{series.rule}", default: series.rule)
+      I18n.t('event_series.monthly_display_rule', days: transl_days, rule: transl_rule)
+    end
+  end
+
   # A category tag is composed of two elements
   # a hidden input field and a bootstrap label
   # The input is connected to the label via a

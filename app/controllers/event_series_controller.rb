@@ -61,8 +61,9 @@ class EventSeriesController < ApplicationController
   end
 
   def delete_events
+    num = @event_series.events.size
     @event_series.events.each(&:destroy)
-     redirect_to root_path
+    redirect_to root_path,  notice: I18n.t('event_series.events_deleted', number: num) 
   end
 
   private
