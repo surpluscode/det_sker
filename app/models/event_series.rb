@@ -4,7 +4,7 @@ class EventSeries < ActiveRecord::Base
   has_many :events
   has_and_belongs_to_many :categories
   validates :title, :description, :location_id, :user_id, :categories, 
-  :days, :rule, :start_date, :start_time, :end_time, :expiry, presence: true
+  :day_array, :rule, :start_date, :start_time, :end_time, :expiry, presence: true
   
   # TODO: this duplicates functionality in Event.rb so it should be refactored, but modularization caused constant load errors 
   has_attached_file :picture, styles: { original: '500x500>', thumb: '100x100>'}, default_url: 'images/:st'
