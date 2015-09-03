@@ -109,11 +109,11 @@
     <div class="row" id="standard_time_control">
       <div class="col-xs-12 col-sm-5">
         <%= f.input :start_time, as: :string, input_html: { data:{
-         function: 'datetime-picker', 'date-format' => 'YYYY/MM/DD HH:mm' }} %>
+         function: 'datetime-picker', 'date-format' => 'YYYY/MM/DD HH:mm', side_by_side: true, role: 'start-time', listener: '#event_end_time' }} %>
        </div>
        <div class="col-xs-12 col-sm-5 col-sm-offset-1">
         <%= f.input :end_time, as: :string, input_html: { data: {
-         function: 'datetime-picker', 'date-format' => 'YYYY/MM/DD HH:mm' }} %>
+         function: 'datetime-picker', 'date-format' => 'YYYY/MM/DD HH:mm', side_by_side: true }} %>
        </div>
      </div>
 

@@ -25,14 +25,14 @@ collection: [
   <% max_date = (DateTime.now + 3.months).strftime('%Y/%m/%d') %>
   <%= builder.input :start_date, as: :string, input_html: { 
     disabled: builder.object.try(:persisted?), data: { 
-      function: 'datetime-picker', date_format: 'YYYY/MM/DD', inline: 'true',
+      function: 'datetime-picker', date_format: 'YYYY/MM/DD', 
       language: I18n.locale, calendar_weeks: true, disabled_hours: true,
-      max_date: max_date
+      max_date: max_date, role: 'start-time', listener: '#event_series_expiry'
     }}
     %>
 
     <%= builder.input :expiry, as: :string, input_html: {  
-       data: { function: 'datetime-picker', date_format: 'YYYY/MM/DD', inline: 'true',
+       data: { function: 'datetime-picker', date_format: 'YYYY/MM/DD', 
        language: I18n.locale, calendar_weeks: true, disabled_hours: true, 
        max_date: max_date  
      }}

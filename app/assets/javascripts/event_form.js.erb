@@ -100,17 +100,26 @@ function activateFormListeners() {
 }
 
 function initDateTimePicker(){
-    $start_time = $('#event_start_time');
-    $end_time = $('#event_end_time');
-    // guard clause - make sure we're on the right page
-    if ($start_time.length == 0 || $end_time.length == 0) return;
-    // disable dates before today
-    $start_time.data('DateTimePicker').setMinDate(new Date());
-    $end_time.data('DateTimePicker').setMinDate(new Date());
-    // set the end time to be the start date
-    $start_time.on('dp.change', function(e){
-        $end_time.data("DateTimePicker").setMinDate(e.date);
-        $end_time.data("DateTimePicker").setDate(e.date);
+    // Initialise all inputs with the given data attribute and value
+    $('[data-function="datetime-picker"]').each(function(){
+        var data = $.extend($(this).data(), {language: locale, minuteStepping: 15 });
+        delete data.function;
+        $(this).datetimepicker(data);
+    });
+
+    // For each start time, setup a listener action on the
+    // corresponding end time
+    $('[data-role="start-time"]').each(function(){
+        $start = $(this);
+        $end = $($start.data('listener'));
+        if ($end.length == 0) return;
+        $start.data('DateTimePicker').setMinDate(new Date());
+        $end.data('DateTimePicker').setMinDate(new Date());
+        // set the end time to be the start date
+        $start.on('dp.change', function(e){
+            $end.data("DateTimePicker").setMinDate(e.date);
+            $end.data("DateTimePicker").setDate(e.date);
+        });
     });
 }
 
@@ -191,11 +200,6 @@ function modalFormListener() {
 
 function activateFormPlugins() {
     $('[data-toggle="popover"]').popover();
-    $('[data-function="datetime-picker"]').each(function(){
-        var data = $.extend($(this).data(), {language: locale, minuteStepping: 5});
-        delete data.function;
-        $(this).datetimepicker(data);
-    });
 }
 
 /**
