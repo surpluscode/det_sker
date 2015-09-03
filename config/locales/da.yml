@@ -272,6 +272,7 @@ da:
                   givet i reglen. Efterfølgende kan du vælge at redigere disse forekomster enkeltvis 
                   eller samlede ved at redigere i selv serien. 
     created: "Serie %{name} oprettet med %{num_events} forekomster!"
+    updated: "Serie %{name} med %{num_events} forekomster opdateret."
     events_deleted: "%{number} events slettet"
     form:
       choose_days: 'Vælg en eller flere dage'
