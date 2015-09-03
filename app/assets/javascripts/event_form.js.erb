@@ -102,7 +102,7 @@ function activateFormListeners() {
 function initDateTimePicker(){
     // Initialise all inputs with the given data attribute and value
     $('[data-function="datetime-picker"]').each(function(){
-        var data = $.extend($(this).data(), {language: locale, minuteStepping: 15 });
+        var data = $.extend($(this).data(), {language: locale, minuteStepping: 15});
         delete data.function;
         $(this).datetimepicker(data);
     });
@@ -121,6 +121,8 @@ function initDateTimePicker(){
             $end.data("DateTimePicker").setDate(e.date);
         });
     });
+    // kill the clock link - this could be problematic if we need it somewhere else!
+    $('li.picker-switch a').remove();
 }
 
 // add the remove button with listener after adding the file
