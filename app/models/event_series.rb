@@ -35,18 +35,23 @@ class EventSeries < ActiveRecord::Base
     self.events.where('start_time > ? ', DateTime.now.to_formatted_s(:db))
   end
 
+  # 1. update all existing events
+  # 2. create new events - starting from the last existing event and ending at expiry
   def cascade_update
     coming_events.all.each do |event|
+      # We retain the existing date but update to reflect any changes to start time or end time
       start_time = DateTime.new(event.start_time.year, event.start_time.month, event.start_time.day, self.start_time.hour, self.start_time.min, 0, self.start_time.zone)
       end_time = DateTime.new(event.end_time.year, event.end_time.month, event.end_time.day, self.end_time.hour, self.end_time.min, 0, self.end_time.zone)
       event.update(event_attributes.merge(start_time: start_time, end_time: end_time))
     end
+    date_last_existing = coming_events.order(:start_time).last.start_time.to_date
+    create_events(date_last_existing, expiry)
   end
-
+  
   # using rule, create events for this series
-  def cascade_creation
-    if rule == 'weekly'
-      (start_date..expiry).each do |date|
+  def create_events(start_d, expiry_d)
+     if rule == 'weekly'
+      (start_d..expiry_d).each do |date|
         date_name = Date::DAYNAMES[date.wday]
         if day_array.include? (date_name)
           # create an event on this date
@@ -58,13 +63,13 @@ class EventSeries < ActiveRecord::Base
       end
     else
       # for each month, get the matching dates for each day specified using the rule specified
-      (start_date.month..expiry.month).each do |date|
+      (start_d.month..expiry_d.month).each do |date|
         cur_month = Date::MONTHNAMES[date]
         day_array.each do |day|
           # day_as_date will be nil if Chronic can't parse it
           day_as_date = convert_rule_to_date(rule, day, cur_month)
-          # don't accept any dates prior to today or after expiry
-          unless day_as_date.nil? || day_as_date < DateTime.now.to_date || day_as_date > expiry
+          # don't accept any dates prior to today or after expiry_d
+          unless day_as_date.nil? || day_as_date < DateTime.now.to_date || day_as_date > expiry_d
             child = Event.from_date_and_times(day_as_date, start_time, end_time, event_attributes)  
             unless child.save
               logger.error "event could not be saved with rule #{rule} and date #{day_as_date}" 
@@ -73,6 +78,10 @@ class EventSeries < ActiveRecord::Base
         end
       end
     end
+  end
+
+  def cascade_creation
+    create_events(start_date, expiry) 
   end
 
   def short_description=(val)
