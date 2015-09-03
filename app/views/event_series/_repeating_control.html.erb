@@ -24,7 +24,7 @@ collection: [
   <%# Not allowed to make events more than 3 months in the future %>
   <% max_date = (DateTime.now + 3.months).strftime('%Y/%m/%d') %>
   <%= builder.input :start_date, as: :string, input_html: { 
-    disabled: builder.object.persisted?, data: { 
+    disabled: builder.object.try(:persisted?), data: { 
       function: 'datetime-picker', date_format: 'YYYY/MM/DD', inline: 'true',
       language: I18n.locale, calendar_weeks: true, disabled_hours: true,
       max_date: max_date
