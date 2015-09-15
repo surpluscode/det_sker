@@ -102,7 +102,9 @@ class EventSeries < ActiveRecord::Base
   end
 
   def event_attributes
-    attributes.except('id', 'expiry', 'days', 'rule', 'start_date', 'start_time', 'end_time')
-    .merge(event_series_id: self.id, categories: categories)
+    attributes.except(
+      'id', 'expiry', 'days', 'rule', 'start_date', 'start_time', 'end_time', 
+      'picture_file_size', 'picture_content_type', 'picture_updated_at', 'picture_file_name'
+    ).merge(event_series_id: self.id, categories: categories)
   end
 end
