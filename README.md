@@ -15,7 +15,12 @@ You can see the Roadmap to see our vision for the full release while the [Issue 
 If you want to try it out, you will need a ruby 2.0 development environment, rails 4 and git.
 If this fills you with doubt and confusion, have a look at the [Railsbridge install guide](http://docs.railsbridge.org/installfest/)
 and follow relevant points for your platform (ignore all that guff about Heroku).
-Clone the project and start it up using ```rails s```.
+Once you have cloned the project you will need to install all gems and system dependencies. Some gems have dependencies on system libraries, the following list works for me but you might very depending on your platform and pre-existing libraries.
+
+```
+sudo apt-get install postgresql libpq-dev imagemagick libmagickwand-dev libsqlite3-dev
+```
+Now you're ready to run `bundle install`.  
 A custom rake task has been created to show sample data.
 This will clear out the database, load the db seeds (default categories and locations), and load some sample fixtures.
 To run it, navigate to the root directory of the application in your console and enter the following command:
