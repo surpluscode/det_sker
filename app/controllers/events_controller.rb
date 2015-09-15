@@ -94,7 +94,7 @@ class EventsController < ApplicationController
                                  category_ids: [], event_series: [[:rule, :start_date, 
                                  :start_time, :expiry, :end_time, day_array: []]]).tap do |list|
       list[:category_ids].uniq!
-      list[:event_series][:days] = list[:event_series][:day_array].select(&:present?).join(',') if list[:event_series][:day_array].present?
+      list[:event_series][:days] = list[:event_series][:day_array].select(&:present?).join(',') if list[:event_series].present? && list[:event_series][:day_array].present?
     end
   end
 end
