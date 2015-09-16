@@ -3,10 +3,7 @@ class LocationsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @locations = Location.all
-    # we use ruby sort rather than sql
-    # because we can't be sure the places have a name
-    @locations.sort_by!(&:display_name)
+    @locations = Location.order(:name)
     respond_to do |format|
       format.json { render json: @locations }
       format.html
