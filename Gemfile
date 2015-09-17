@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 ruby '2.2.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
+gem 'transpec', github: 'yujinakayama/transpec'
 
 gem 'bootstrap-sass', '~> 3.3.4'
 
@@ -50,7 +51,7 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.0'
 end
 
 group :test do
