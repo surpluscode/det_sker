@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150811191944) do
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "danish"
     t.string   "english"
     t.datetime "created_at"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150811191944) do
   add_index "categories", ["danish"], name: "index_categories_on_danish", unique: true
   add_index "categories", ["english"], name: "index_categories_on_english", unique: true
 
-  create_table "categories_event_series", id: false, force: true do |t|
+  create_table "categories_event_series", id: false, force: :cascade do |t|
     t.integer "event_series_id"
     t.integer "category_id"
   end
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150811191944) do
   add_index "categories_event_series", ["category_id"], name: "index_categories_event_series_on_category_id"
   add_index "categories_event_series", ["event_series_id"], name: "index_categories_event_series_on_event_series_id"
 
-  create_table "categories_events", id: false, force: true do |t|
+  create_table "categories_events", id: false, force: :cascade do |t|
     t.integer "event_id"
     t.integer "category_id"
   end
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20150811191944) do
   add_index "categories_events", ["category_id"], name: "index_categories_events_on_category_id"
   add_index "categories_events", ["event_id"], name: "index_categories_events_on_event_id"
 
-  create_table "comments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
     t.text    "content"
     t.boolean "hidden"
     t.integer "event_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20150811191944) do
   add_index "comments", ["event_id"], name: "index_comments_on_event_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
-  create_table "event_series", force: true do |t|
+  create_table "event_series", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.string   "price"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20150811191944) do
     t.time     "end_time"
   end
 
-  create_table "event_series_categories", id: false, force: true do |t|
+  create_table "event_series_categories", id: false, force: :cascade do |t|
     t.integer "event_series_id"
     t.integer "category_id"
   end
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20150811191944) do
   add_index "event_series_categories", ["category_id"], name: "index_event_series_categories_on_category_id"
   add_index "event_series_categories", ["event_series_id"], name: "index_event_series_categories_on_event_series_id"
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.string   "title"
     t.text     "short_description"
     t.datetime "start_time"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20150811191944) do
   add_index "events", ["location_id"], name: "index_events_on_location_id"
   add_index "events", ["user_id"], name: "index_events_on_user_id"
 
-  create_table "locations", force: true do |t|
+  create_table "locations", force: :cascade do |t|
     t.string  "name"
     t.string  "street_address"
     t.string  "postcode"
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20150811191944) do
     t.decimal "longitude"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
