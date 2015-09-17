@@ -22,7 +22,7 @@ class EventsController < ApplicationController
       saved = @event_series.save
       notice = I18n.t('event_series.created', name: @event_series.name, num_events: @event_series.coming_events.size)
     else
-      @event = Event.new(event_params)
+      @event = Event.new(event_params.except('event_series'))
       saved = @event.save
       notice = I18n.t('events.event_created', name: @event.name, id: @event.id)
     end
