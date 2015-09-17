@@ -36,16 +36,14 @@
 
 
    	</span>
-    <span class="col-xs-5 col-md-2">
-
-    </span>
 
   <div class='event-details'>
-    <% if event.picture.url(:thumb).present? %>
-        <%= link_to event do %>
-            <%= image_tag event.picture.url(:thumb) if event.picture.present? %>
-        <% end %>
-    <% end %>
+  <% pic = event.picture || event.event_series.picture || nil %>
+  <% if pic.present? %>
+      <%= link_to event do %>
+          <%= image_tag pic.url(:thumb) %>
+      <% end %>
+  <% end %>
     <div class="col-xs-12 col-md-11 col-md-offset-1">
       <p>
         <%= "#{t('.posted_by')} #{link_to(username(event.user), event.user)  if event.user}".html_safe %>

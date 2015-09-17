@@ -1,10 +1,10 @@
 <div class="event_show">
   <h1><%= @event.title %></h1>
-  <% if @event.picture.present? %>
-    <%= image_tag @event.picture.url(:original) %>
-  <% elsif @event.event_series.picture.present? %>
-    <%= image_tag @event.event_series.picture.url(:original) %>
-  <% end %> 
+  <%# If this event has a picture, show that, if not and it's part of a series with a picture, show that instead %>
+  <% pic = @event.picture || @event.event_series.picture || nil %>
+  <% if pic.present? %>
+    <%= image_tag pic.url(:original) %>
+  <% end %>
   <h3>
     <%= format_daterange(@event.start_time, @event.end_time) %>
     <%#= format_datetime(@event.start_time) %>  <%#= format_datetime(@event.end_time) %>
