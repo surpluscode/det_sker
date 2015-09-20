@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811191944) do
+ActiveRecord::Schema.define(version: 20150920200555) do
 
   create_table "categories", force: :cascade do |t|
-    t.string   "danish"
-    t.string   "english"
+    t.string   "danish",     limit: 255
+    t.string   "english",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -50,22 +50,22 @@ ActiveRecord::Schema.define(version: 20150811191944) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "event_series", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",                limit: 255
     t.text     "description"
-    t.string   "price"
+    t.string   "price",                limit: 255
     t.boolean  "cancelled"
     t.integer  "user_id"
     t.integer  "location_id"
     t.boolean  "comments_enabled"
-    t.string   "link"
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
+    t.string   "link",                 limit: 255
+    t.string   "picture_file_name",    limit: 255
+    t.string   "picture_content_type", limit: 255
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "rule"
-    t.string   "days"
+    t.string   "rule",                 limit: 255
+    t.string   "days",                 limit: 255
     t.date     "expiry"
     t.date     "start_date"
     t.time     "start_time"
@@ -81,21 +81,21 @@ ActiveRecord::Schema.define(version: 20150811191944) do
   add_index "event_series_categories", ["event_series_id"], name: "index_event_series_categories_on_event_series_id"
 
   create_table "events", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",                limit: 255
     t.text     "short_description"
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "price"
+    t.string   "price",                limit: 255
     t.boolean  "cancelled"
     t.text     "long_description"
     t.integer  "user_id"
     t.integer  "location_id"
-    t.boolean  "comments_enabled",     default: false
-    t.string   "link"
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
+    t.boolean  "comments_enabled",                 default: false
+    t.string   "link",                 limit: 255
+    t.string   "picture_file_name",    limit: 255
+    t.string   "picture_content_type", limit: 255
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.integer  "event_series_id"
@@ -106,35 +106,43 @@ ActiveRecord::Schema.define(version: 20150811191944) do
   add_index "events", ["user_id"], name: "index_events_on_user_id"
 
   create_table "locations", force: :cascade do |t|
-    t.string  "name"
-    t.string  "street_address"
-    t.string  "postcode"
-    t.string  "town"
+    t.string  "name",           limit: 255
+    t.string  "street_address", limit: 255
+    t.string  "postcode",       limit: 255
+    t.string  "town",           limit: 255
     t.text    "description"
     t.decimal "latitude"
     t.decimal "longitude"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "featured"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "",    null: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",                      default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username"
-    t.string   "confirmation_token"
+    t.string   "username",               limit: 255
+    t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.boolean  "is_admin",               default: false
-    t.boolean  "is_anonymous",           default: false
+    t.string   "unconfirmed_email",      limit: 255
+    t.boolean  "is_admin",                           default: false
+    t.boolean  "is_anonymous",                       default: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

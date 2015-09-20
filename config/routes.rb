@@ -1,4 +1,6 @@
 DetSker::Application.routes.draw do
+  resources :posts
+
   devise_for :user
   root 'calendar#index'
   resources :events, except: [:index] do
