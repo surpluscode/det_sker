@@ -29,6 +29,10 @@ describe PostsController do
   # in order to pass any filters (e.g. authentication) defined in
   # PostsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+  before(:each) do
+    @user = FactoryGirl.create(:admin_user)
+    sign_in @user
+  end
 
   describe "GET index" do
     it "assigns all posts as @posts" do
