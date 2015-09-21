@@ -1,19 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
+<h1>
   <%= @post.title %>
-</p>
+</h1>
 
 <p>
-  <strong>Body:</strong>
-  <%= @post.body %>
+  <%= simple_format @post.body %>
 </p>
 
-<p>
-  <strong>Featured:</strong>
-  <%= @post.featured %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<% if current_user.present? && current_user.is_admin? %>
+	<%= link_to 'Edit', edit_post_path(@post) %>  |
+	<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>  |
+<% end %> 
+<%= link_to t(:back), posts_path %>
