@@ -15,12 +15,22 @@ namespace :det_sker do
 
   desc 'create an admin user given an email, username and password'
   task :create_admin, [:email, :username, :password] => :environment do |t, args|
-    u = User.new(
-        is_admin: true, email: args[:email], username: args[:username],
-        password: args[:password], password_confirmation: args[:password],
-    )
-    u.skip_confirmation!
-    raise "User could not be saved! #{u.errors.messages}" unless u.save
+    create_user(args[:email], args[:username], args[:password], true)
     puts "Admin user #{args[:username]} created with email #{args[:email]} and password #{args[:password]}"
+  end
+
+  desc 'create a standard user given an email, username and password'
+  task :create_user, [:email, :username, :password] => :environment do |t, args|
+    create_user(args[:email], args[:username], args[:password])
+    puts "User #{args[:username]} created with email #{args[:email]} and password #{args[:password]}"
+  end
+
+  def create_user(email, username, password, admin = false)
+    u = User.new(
+      is_admin: admin, email: email, username: username,
+      password: password, password_confirmation: password,
+    )  
+    u.skip_confirmation!    
+    raise "User could not be saved! #{u.errors.messages}" unless u.save
   end
 end
