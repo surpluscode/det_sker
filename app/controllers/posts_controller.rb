@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  
+  before_action :ensure_admin!, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -70,5 +72,11 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :body, :featured)
+    end
+
+    def ensure_admin!
+      unless current_user.present? && current_user.is_admin?
+        redirect_to posts_url, alert: 'Only administrators can make the news!'
+      end
     end
 end
