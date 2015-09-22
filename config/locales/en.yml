@@ -24,6 +24,7 @@ en:
   hello: "Hello world"
   Location: Location
   Category: Category
+  news: News
   date:
     formats:
       header: ! '%a %e. %b'

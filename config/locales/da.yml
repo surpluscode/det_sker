@@ -24,6 +24,7 @@ da:
   hello: "Hello world"
   Location: Sted
   Category: Kategori
+  news: Nyheder
   date:
     formats:
       header: ! '%a d. %e. %b'

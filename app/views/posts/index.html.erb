@@ -1,7 +1,8 @@
-<h1>News</h1>
+<h1><%= t(:news) %></h1>
 
 <% @posts.each do |post| %>
   <h2><%= link_to(post.title, post) %></h2>
+  <p class="text text-muted"><%= format_datetime(post.created_at) %>
   <p><%= truncate(post.body, length: 30, separator: ' ') %>
 <% end %>
 
