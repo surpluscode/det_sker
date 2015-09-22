@@ -19,6 +19,7 @@ DetSker::Application.routes.draw do
   end
   resources :comments
 
+  get 'news' => 'posts#index'
   get 'anonymous_user/new' => 'anonymous_user#new'
   match '/anonymous_user' => 'anonymous_user#create', via: :post
 
