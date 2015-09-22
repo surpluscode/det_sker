@@ -2,6 +2,11 @@
            locals: {filter_categories: @calendar.filter_categories,
                     filter_locations: @calendar.filter_locations }
 %>
+<% @posts.each do |post| %>
+<div class="alert alert-info center-block">
+	<%= link_to(post.title, post) %>
+</div>
+<% end %>
 <div class="row hidden center-block" data-role="filter-description">
   <%= t '.describe_filters' %>
 </div>
