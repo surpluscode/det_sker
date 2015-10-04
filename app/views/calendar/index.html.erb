@@ -1,7 +1,9 @@
 <% @posts.each do |post| %>
+<% cache post do %>
 <div class="alert alert-info center-block">
 	<%= link_to(post.title, post) %>
 </div>
+<% end %>
 <% end %>
 <%= render partial: 'filter_options',
            locals: {filter_categories: @calendar.filter_categories,
