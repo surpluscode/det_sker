@@ -1,8 +1,7 @@
 source 'http://rubygems.org'
-ruby '2.2.0'
+ruby '2.2.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-gem 'transpec', github: 'yujinakayama/transpec'
 
 gem 'bootstrap-sass', '~> 3.3.4'
 
@@ -63,6 +62,8 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'quiet_assets'
+  gem 'rack-mini-profiler'
 end
 
 gem 'rails_12factor', group: :production
