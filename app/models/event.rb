@@ -30,6 +30,16 @@ class Event < ActiveRecord::Base
     title
   end
 
+  def best_picture
+    if picture.present?
+      picture
+    elsif event_series.present? && event_series.picture.present?
+      event_series.picture
+    else
+      nil
+    end 
+  end
+
   def self.current_events
     self.includes(:user, :location, :comments).order(:start_time).where('end_time > ?', DateTime.now)
   end

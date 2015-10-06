@@ -38,10 +38,9 @@
    	</span>
 
   <div class='event-details'>
-  <% pic = event.picture || event.event_series.picture || nil %>
-  <% if pic.present? %>
+  <% if event.best_picture.present? %>
       <%= link_to event do %>
-          <%= image_tag pic.url(:thumb) %>
+          <%= image_tag event.best_picture.url(:thumb) %>
       <% end %>
   <% end %>
     <div class="col-xs-12 col-md-11 col-md-offset-1">
