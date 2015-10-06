@@ -8,11 +8,11 @@
 
   <span class="event-topbar_js">
       <%# In mobile view the title line is broken up into two lines %>
-       <span class="col-xs-12 col-md-7 col-md-push-1 event-title">
+       <span class="col-xs-12 col-md-6 col-md-push-2 event-title">
        	<%= title_display(event) %>
 	    </span>
 
-      <span class="col-xs-2 col-md-1 col-md-pull-7">
+      <span class="col-xs-2 col-md-2 col-md-pull-6">
           <%# In the frontpage context we don't show a date, otherwise, do. %>
         <% if defined? show_date %>
               <%= I18n.localize(event.start_time.to_date, format: :brief)  %>
@@ -38,17 +38,14 @@
    	</span>
 
   <div class='event-details'>
+  <div class="col-md-2 hidden-xs">
   <% if event.best_picture.present? %>
       <%= link_to event do %>
-          <%= image_tag event.best_picture.url(:thumb) %>
+          <%= image_tag event.best_picture.url(:thumb), class: 'img-responsive center-block' %>
       <% end %>
   <% end %>
-    <div class="col-xs-12 col-md-11 col-md-offset-1">
-      <p>
-        <%= "#{t('.posted_by')} #{link_to(username(event.user), event.user)  if event.user}".html_safe %>
-      </p>
-    </div>
-    <div class="col-xs-12 col-md-8 col-md-offset-1">
+  </div>  
+    <div class="col-xs-12 col-md-10">
       <p> <%= event.short_description.truncate(160, separator: ' ') %></p>
       <p><%= link_to t('.see_more'), event %> </p>
     </div>

@@ -11,6 +11,9 @@
   <h4>
     <%= link_to(@event.location.full_address, location_path(@event.location)) %>
   </h4>
+  <p>
+  <%= "#{t('events.event.posted_by')} #{link_to(username(@event.user), @event.user)  if @event.user}".html_safe %>
+  </p>
   <% if @event.price.present? %>
       <p><strong><%= t 'simple_form.labels.event.price' %>: </strong><%= @event.price %></p>
   <% end %>
