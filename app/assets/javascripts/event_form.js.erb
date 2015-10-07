@@ -2,6 +2,7 @@
 <% environment.context_class.instance_eval { include EventsHelper } %>
 
 $(document).ready(function() {
+    if (document.body.id == 'calendar_index') return;
     activateFormPlugins();
     initLocationTypeahead();
     activateFormListeners();

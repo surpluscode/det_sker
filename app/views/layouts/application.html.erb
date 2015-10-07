@@ -16,7 +16,8 @@
       window.locale = '<%= I18n.locale %>';
   </script>
 </head>
-<body>
+<%# We add the action to the id here to help with guard clauses in our javascript %>
+<body id="<%= "#{controller_name}_#{action_name}" %>">
 <div class="container">
   <div class="row">
     <div class="header-text col-xs-12">
