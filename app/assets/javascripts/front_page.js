@@ -3,7 +3,6 @@ var activeCategories = [];
 var activeLocations = [];
 
 $(document).ready(function() {
-    hideEventDetails();
     activateFrontPageListeners();
 });
 
