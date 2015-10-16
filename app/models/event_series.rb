@@ -63,8 +63,8 @@ class EventSeries < ActiveRecord::Base
       end
     else
       # for each month, get the matching dates for each day specified using the rule specified
-      (start_d.month..expiry_d.month).each do |date|
-        cur_month = Date::MONTHNAMES[date]
+      dates_to_months(start_d, expiry_d).each do |month|
+        cur_month = Date::MONTHNAMES[month]
         day_array.each do |day|
           # day_as_date will be nil if Chronic can't parse it
           day_as_date = convert_rule_to_date(rule, day, cur_month)
@@ -78,6 +78,12 @@ class EventSeries < ActiveRecord::Base
         end
       end
     end
+  end
+
+  # get the month numbers for the dates in question
+  # e.g. from Date1 to Date2 -> [10,11,12,1] 
+  def dates_to_months(date1, date2)
+    (date1..date2).to_a.collect(&:month).uniq  
   end
 
   def cascade_creation
@@ -94,6 +100,7 @@ class EventSeries < ActiveRecord::Base
   # in the case of the 'last' rule, we need to try the fifth followed by the fourth
   # if no date is found, it will return nil
   def convert_rule_to_date(rule, day, month)
+    Rails.logger.info "CHRONIC:: #{rule} #{day} in #{month}"
     if %w{first second third}.include? rule
       Chronic.parse("#{rule} #{day} in #{month}")
     elsif rule == 'last'
