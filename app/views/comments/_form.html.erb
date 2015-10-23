@@ -7,7 +7,7 @@
       <%= t('.reply') %>
     </button>
   </div>
-  <div class="<%= "hidden" unless show_form %>" id="comment_form">
+  <div id="comment_form" style="<%= "display: none;" unless show_form %>">
     <div class="pull-right">
       <%= t('.writing_as') %> <strong><%= username(current_user) %></strong>
     </div>

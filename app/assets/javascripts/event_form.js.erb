@@ -64,13 +64,23 @@ function initTypeahead(selector){
  * data-hide attributes where the last two contain selectors.
  */
 function showListener(){
-    $('[data-function="show"]').change(function(){
+    function handleChange(){
         var show_target = $(this).attr('data-target');
         var hide_target = $(this).attr('data-hide');
-        $(show_target).toggle(this.checked);
-        $(hide_target).toggle(!this.checked);
-    });
+        if ($(this).is(':checkbox')) {
+            $(show_target).toggle(this.checked);
+            $(hide_target).toggle(!this.checked);
+        } else {
+            $(show_target).toggle();
+            $(hide_target).toggle(); 
+        }
+    }
+    // button clicks don't count as change events so we need to handle both
+    // change and click
+    $('[data-function="show"]').change(handleChange);
+    $('[data-function="show"]').click(handleChange);
 }
+
 
 function activateFormListeners() {
     modalFormListener();
@@ -78,9 +88,9 @@ function activateFormListeners() {
 
     categoryTagListener();
     showListener();
-    // we trigger the change event so that the correct inputs 
+    // we trigger the change event for the checkboxes so that the correct inputs 
     // will be shown on page refresh (i.e. it's not click dependent)
-    $('[data-function="show"]').change();
+    $('.checkbox [data-function="show"]').change();
     $('.glyphicon-trash').click(removePicture);
 
 
