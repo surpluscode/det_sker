@@ -45,10 +45,8 @@
     </div>
   <% end %>
   <% if @event.comments_enabled? %>
-      <div class="hidden-xs">
         <hr/>
         <%= render partial: 'events/comments/list', locals: { comments: @event.comments } %>
         <%= render partial: 'comments/form', locals: { event: @event, show_form: false } if user_signed_in? %>
-      </div>
   <% end %>
 </div>
