@@ -120,6 +120,10 @@ da:
     event_created: "Begivenhed <a href=\"#%{id}\" class='alert-link'>%{name}</a> oprettet!"
     show:
       link: "Mere info"
+      delete_warning: > 
+                  Slet kun begivenheden hvis den er oprettet ved en fejl - 
+                  hvis den er blevet aflyst er det bedre at klikke på Redigér og så Aflys. 
+                  Derved kan dine gæster se at den er blevet aflyst.
   comments:
     created_message: 'Kommentar oprettet!'
     form:
@@ -250,6 +254,7 @@ da:
       new: 'Log ind'
   language: "danish"
   edit: "Rediger"
+  delete: "Slet"
   back: 'Tilbage'
   activerecord:
     models:

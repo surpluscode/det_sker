@@ -121,6 +121,11 @@ en:
     event_created: "Event <a href=\"#%{id}\" class='alert-link'>%{name}</a> created!"
     show:
       link: "More info"
+      delete_warning: >
+                  Only delete the event if it has been created by mistake. 
+                  If your event has been cancelled it is better to edit your event
+                  and click on cancel. In this way, your guests can see that the event
+                  has been cancelled.
   comments:
     form:
       writing_as: "Writing as"
