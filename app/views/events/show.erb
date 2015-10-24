@@ -19,8 +19,8 @@
   <% end %>
 
   <p>
-    <%= simple_format(@event.short_description) %>
-    <%= simple_format(@event.long_description) %>
+    <%= auto_link(simple_format(@event.short_description)) %>
+    <%= auto_link(simple_format(@event.long_description)) %>
   </p>
 
 

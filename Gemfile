@@ -9,6 +9,7 @@ gem 'bootstrap-sass', '~> 3.3.4'
 gem 'paperclip', '~> 4.2'
 gem 'lograge'
 gem 'chronic'
+gem 'rails_autolink'
 
 group :production do
   gem 'pg'
