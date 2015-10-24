@@ -117,7 +117,8 @@ da:
     new:
       new_event: "Opret begivenhed"
     event_updated: "Ændringer til <a href=\"#%{id}\" class='alert-link'>%{name}</a> gemt!"
-    event_created: "Begivenhed <a href=\"#%{id}\" class='alert-link'>%{name}</a> oprettet!"
+    event_created: "Event <a href=\"#%{id}\" class='alert-link'>%{name}</a> oprettet!"
+    event_deleted: "Event slettet"
     show:
       link: "Mere info"
       delete_warning: > 

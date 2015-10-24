@@ -62,7 +62,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url }
+      format.html { redirect_to events_url, notice: I18n.t('events.event_deleted') }
       format.json { head :no_content }
     end
   end

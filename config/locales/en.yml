@@ -119,6 +119,7 @@ en:
       new_event: "New event"
     event_updated: "Changes to <a href=\"#%{id}\" class='alert-link'>%{name}</a> saved!"
     event_created: "Event <a href=\"#%{id}\" class='alert-link'>%{name}</a> created!"
+    event_deleted: "Event deleted"
     show:
       link: "More info"
       delete_warning: >
