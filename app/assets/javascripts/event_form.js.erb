@@ -165,7 +165,7 @@ function removePicture(){
 
 /**
  * Ensure file selected is valid
- * (under 1MB and a jpeg or png)
+ * (under 3MB and a jpeg or png)
  * If not prevent form completion
  * and give the user an error message.
  * @param input (file input)
@@ -182,7 +182,8 @@ function validateFileInput(input){
     var allowedTypes = ["image/png", "image/jpeg"];
     var error = false;
     var message = '';
-    if (file.size > 1000000 ) {
+    var size_mb = file.size/1024/1024;
+    if (size_mb > 3 ) {
         error = true;
         message += i18n.events.form.picture.too_big + " ";
     }
