@@ -24,16 +24,13 @@
   </p>
 
 
-
   <% if @event.link.present? %>
       <p>
         <%= link_to(t('.link'), @event.link) %>
       </p>
   <% end %>
   <% if current_user && current_user.can_edit?(@event) %>
-      <div class="hidden-xs">
-        <%= link_to t(:edit), edit_event_path(@event) %>
-      </div>
+      <%= link_to t(:edit), edit_event_path(@event) %>
   <% end %>
    <% if current_user && @event.event_series.present? && current_user.can_edit?(@event.event_series) %>
     <hr/>
