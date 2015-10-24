@@ -101,12 +101,20 @@ function activateFormListeners() {
         addRemoveButton(this);
     });
 
-    // UI for repeating events
+    // UI for repeating events - what does this do?
     $('#event_series_frequency').on('change', function(){
         var selected = $(this).children('option:selected');
         var unit = $(selected).data('unit');
         $('#unit').text(unit);
     });
+
+    // Prevent submitting of form on enter
+    $('.event_form form').keydown(function(event){
+        if (event.keyCode == 13){
+            event.preventDefault();
+            return false;
+        }
+    })
 }
 
 function initDateTimePicker(){
