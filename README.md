@@ -75,3 +75,8 @@ Nice read: https://gorails.com/setup/ubuntu/14.04
     ```
     bundle install
     ```
+
+Running it:
+
+    rake db:migrate
+    rails s
