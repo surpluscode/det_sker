@@ -10,7 +10,7 @@ class UserController < ApplicationController
   # Therefore we do an initial sort in sql
   # and a subsequent one in Ruby.
   def index
-    @users = User.order(:username).sort_by { |u| u.username.downcase }
+    @users = User.where(is_anonymous: false).order(:username).sort_by { |u| u.username.downcase }
   end
 
   def new
