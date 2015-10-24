@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
 
   validates_attachment_content_type :picture, :content_type => /\Aimage/
   validates_attachment_file_name :picture, matches: [/png\Z/, /jpe?g\Z/]
-  validates_with AttachmentSizeValidator, attributes: :picture, less_than:  1.megabytes
+  validates_with AttachmentSizeValidator, attributes: :picture, less_than:  3.megabytes
 
   def in_progress?
     start_time < DateTime.now && end_time > DateTime.now
