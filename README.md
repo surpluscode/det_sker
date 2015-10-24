@@ -35,3 +35,32 @@ To create content you will need an admin user, this is defined in one of the fix
 # Testing
 We use rspec for model and controller tests and FactoryGirl for stubbing.
 [Codeship](https://www.codeship.io/projects/30535) is running Continuous Integration and Continuous Deployment of the master branch to [staging](http://thawing-dawn-8343.herokuapp.com/).
+
+
+# Development setup notes (ubuntu)
+
+ 1. Install ruby
+    ```
+    sudo apt-get install ruby
+    ```
+ 1. Install rvm:
+    ```
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+\curl -sSL https://get.rvm.io | bash -s stable --rails
+    ```
+ 1. Activate and install correct ruby version
+    ```
+    rvm install 2.2.3
+    ```
+ 1. Use it
+    ```
+    rvm use 2.2.3
+    ```
+ 1. Install bundler
+    ```
+    gem install bundler
+    ```
+ 1. Install dependencies
+    ```
+    bundle install
+    ```
