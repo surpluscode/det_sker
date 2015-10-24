@@ -108,8 +108,8 @@ function activateFormListeners() {
         $('#unit').text(unit);
     });
 
-    // Prevent submitting of form on enter
-    $('.event_form form').keydown(function(event){
+    // Prevent submission of form on enter 
+    $('.event_form form').on('keypress', ':input:not(textarea)', function(event){
         if (event.keyCode == 13){
             event.preventDefault();
             return false;
