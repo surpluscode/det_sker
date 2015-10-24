@@ -1,32 +1,40 @@
-<div class="event_show">
-  <h1><%= @event.title %></h1>
+<div class="event_show" itemscope itemtype="http://schema.org/Event">
+  <h1 itemprop="name"><%= @event.title %></h1>
   <%# If this event has a picture, show that, if not and it's part of a series with a picture, show that instead %>
   <% if @event.best_picture.present? %>
+    <meta itemprop="image" content="<%= @event.best_picture.url(:original) %>"> 
     <%= image_tag @event.best_picture.url(:original) %>
   <% end %>
   <h3>
+  <meta itemprop="startDate" content="<%= @event.start_time.iso8601 %>">
+  <meta itemprop="endDate" content="<%= @event.end_time.iso8601 %>">
     <%= format_daterange(@event.start_time, @event.end_time) %>
     <%#= format_datetime(@event.start_time) %>  <%#= format_datetime(@event.end_time) %>
   </h3>
-  <h4>
+  <h4 itemscope itemprop="location" itemtype="http://schema.org/Place">
+    <meta itemprop="name" content="<%= @event.name %>">
+    <meta itemprop="address" content="<%= @event.location.full_address %>"> 
     <%= link_to(@event.location.full_address, location_path(@event.location)) %>
   </h4>
-  <p>
+  <p itemprop="organizer" itemscope itemtype="http://schema.org/Person">
+  <meta itemprop="name" content="<%= username(@event.user) %>">
   <%= "#{t('events.event.posted_by')} #{link_to(username(@event.user), @event.user)  if @event.user}".html_safe %>
   </p>
   <% if @event.price.present? %>
       <p><strong><%= t 'simple_form.labels.event.price' %>: </strong><%= @event.price %></p>
   <% end %>
 
+  <div itemprop="description">
   <p>
     <%= auto_link(simple_format(@event.short_description)) %>
     <%= auto_link(simple_format(@event.long_description)) %>
   </p>
+  </div>
 
 
   <% if @event.link.present? %>
       <p>
-        <%= link_to(t('.link'), @event.link) %>
+        <%= link_to(t('.link'), @event.link, itemprop: :url) %>
       </p>
   <% end %>
   <% if current_user && current_user.can_edit?(@event) %>
