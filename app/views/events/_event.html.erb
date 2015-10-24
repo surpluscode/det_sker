@@ -46,7 +46,7 @@
   <% end %>
   </div>  
     <div class="col-xs-12 col-md-10">
-      <p> <%= event.short_description.truncate(160, separator: ' ') %></p>
+      <p> <%= auto_link(event.short_description.truncate(160, separator: ' ')) %></p>
       <p><%= link_to t('.see_more'), event %> </p>
     </div>
   </div>
