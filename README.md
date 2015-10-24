@@ -39,14 +39,25 @@ We use rspec for model and controller tests and FactoryGirl for stubbing.
 
 # Development setup notes (ubuntu)
 
- 1. Install ruby
+Nice read: https://gorails.com/setup/ubuntu/14.04
+
+ 1. Install ruby and rvm dependencies
     ```
-    sudo apt-get install ruby
+    sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+    ```
+ 1. Install nokogiri and rmagick annoying build dependency (took an hour to debug this)
+    ```
+    sudo apt-get install libgmp-dev
+    sudo apt-get install libmagicwand-dev
     ```
  1. Install rvm:
     ```
     gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 \curl -sSL https://get.rvm.io | bash -s stable --rails
+    ```
+ 1. Make sure that rvm is activated as a shell function -- and possibly add this to your `~/.bashrc`.
+    ```
+    source ~/.rvm/scripts/rvm
     ```
  1. Activate and install correct ruby version
     ```
