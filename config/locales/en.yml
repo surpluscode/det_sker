@@ -89,8 +89,8 @@ en:
       empty_category: "No matching category found"
       choose_file: "Choose file"
       picture:
-        warning: "Only JPEG or PNG files no larger than 1MB can be uploaded."
-        too_big: This file is over 1MB large!
+        warning: "Only JPEG or PNG files no larger than 3MB can be uploaded."
+        too_big: This file is over 3MB large!
         wrong_format: This file is not a JPEG or a PNG!
         ok: This file is just right.
       repeating_event: "Is it a recurring event?"
