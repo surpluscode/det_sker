@@ -4,8 +4,7 @@
      data-location="<%= event.location.display_name.parameterize('_') %>"
      data-role="event" data-parent="<%= parent_id if defined? parent_id%>">
   <%= link_to '', '#', name: event.id, data: { remote: true } %>
-
-
+  <%= schema_json(event) %>
   <span class="event-topbar_js">
       <%# In mobile view the title line is broken up into two lines %>
        <span class="col-xs-12 col-md-6 col-md-push-2 event-title">

@@ -124,4 +124,19 @@ module EventsHelper
   def bootstrap_alert(message, level)
     content_tag(:div, message.html_safe, class: "alert alert-#{level}", role: 'alert')
   end
+
+  # return json ld of object schema microdata
+  def schema_json(object)
+    details = object.to_schema
+    case object
+    when Event
+      url = event_url(object)
+    when User
+      url = user_url(object)
+    when Location
+      url = location_url(object)
+    end
+    details.merge!(url: url)
+    content_tag(:script, details.to_json.html_safe, type: 'application/ld+json')
+  end
 end

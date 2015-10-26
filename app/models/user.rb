@@ -32,4 +32,8 @@ class User < ActiveRecord::Base
     username
   end
 
+  def to_schema
+    { '@type': 'Person', name: self.username } unless self.is_anonymous?
+  end
+
 end

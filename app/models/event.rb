@@ -51,4 +51,20 @@ class Event < ActiveRecord::Base
     Event.new(attributes.merge(start_time: event_start, end_time: event_end))  
   end
 
+  def to_schema
+    schema = {
+      '@context': 'http://schema.org', 
+      '@type': 'Event',
+      name: self.title, 
+      startDate: self.start_time.iso8601, 
+      endDate: self.end_time.iso8601, 
+      description: self.short_description, 
+      sameAs: self.link,
+      location: self.location.to_schema,
+      organizer: self.user.to_schema
+    }
+    schema.merge!(image: self.best_picture.url(:original)) if self.best_picture.present?
+    schema
+  end
+
 end

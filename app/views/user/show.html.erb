@@ -1,4 +1,5 @@
 <div>
+<%= schema_json(@user) %>
   <h2><%= @user.username %></h2>
   <p><%= "#{t('member_since')}: #{format_date(@user.created_at.to_date)}" %></p>
   <% if !@user.is_admin? && current_user && current_user.is_admin? %>

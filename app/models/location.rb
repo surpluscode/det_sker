@@ -29,4 +29,13 @@ class Location < ActiveRecord::Base
   def as_json(opts)
     super(methods: [:display_name])
   end
+
+  def to_schema
+    {   
+      '@type': 'Place',
+      name: self.name,
+      address: self.full_address,
+      description: self.description
+    }
+  end
 end
