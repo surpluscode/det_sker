@@ -38,6 +38,11 @@ DetSker::Application.configure do
       :enable_starttls_auto => true
   }
 
+  # Config for Heroku staging environment
+  if ENV['STAGING'].present? && ENV['STAGING'] == '1'
+    config.force_ssl = false
+  end
+
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false
 
