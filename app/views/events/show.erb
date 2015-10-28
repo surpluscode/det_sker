@@ -3,8 +3,7 @@
   <h1 ><%= @event.title %></h1>
   <%# If this event has a picture, show that, if not and it's part of a series with a picture, show that instead %>
   <% if @event.best_picture.present? %>
-     
-    <%= image_tag @event.best_picture.url(:original) %>
+    <%= image_tag @event.best_picture.url(:original), title: @event.title, alt: @event.title %>
   <% end %>
   <h3>
   
