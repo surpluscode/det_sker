@@ -31,7 +31,8 @@ class Location < ActiveRecord::Base
   end
 
   def to_schema
-    {   
+    { 
+      '@context': 'http://schema.org',  
       '@type': 'Place',
       name: self.name,
       address: self.full_address,
