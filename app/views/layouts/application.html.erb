@@ -6,6 +6,10 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%# Add Google verification tag for production only %>
+  <% if ENV['RAILS_ENV'] == 'production' && (ENV['STAGING'].blank? || ENV['STAGING'] != '1') %>
+    <meta name="google-site-verification" content="RijEG_DoxoqsXGbLPFlLEx96pwlGfj1lYcWoRGmrk6s" />
+  <% end %>
   <script type="text/javascript">
       <%#
       Make our translations accessible to javascript
@@ -24,7 +28,6 @@
     </div>
   </div>
 </div>
-
 <!-- Menu navigation bar -->
 <nav class="navbar navbar-default">
   <div class="container">
