@@ -63,7 +63,6 @@ class Event < ActiveRecord::Base
       location: self.location.to_schema,
       organizer: self.user.to_schema
     }
-    schema.merge!(image: self.best_picture.url(:original)) if self.best_picture.present?
     schema
   end
 

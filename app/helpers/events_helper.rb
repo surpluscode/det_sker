@@ -131,6 +131,8 @@ module EventsHelper
     case object
     when Event
       url = event_url(object)
+      # we add the picture url here so that we can create a url
+      details.merge!(image: image_url(object.best_picture.url(:original))) if object.best_picture.present?
     when User
       url = user_url(object)
     when Location
@@ -139,4 +141,8 @@ module EventsHelper
     details.merge!(url: url)
     content_tag(:script, details.to_json.html_safe, type: 'application/ld+json')
   end
+end
+
+def image_url(file)
+  request.protocol + request.host_with_port + file
 end
