@@ -51,6 +51,7 @@ en:
       message: "%{_class} \"%{name}\" created!"
     updated:
       message: "Changes to %{_class} <strong>%{name}</strong> saved!"
+      basic_message: 'Changes saved!'
   calendar:
     index:
       new_event: "New Event"

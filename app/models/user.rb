@@ -33,7 +33,14 @@ class User < ActiveRecord::Base
   end
 
   def to_schema
-    { '@context': 'http://schema.org', '@type': 'Person', name: self.username } unless self.is_anonymous?
+    unless self.is_anonymous?
+      { 
+        '@context': 'http://schema.org',
+        '@type': 'Person', 
+        name: self.username,
+        description: self.description
+      } 
+    end
   end
 
 end

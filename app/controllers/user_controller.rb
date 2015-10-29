@@ -26,6 +26,11 @@ class UserController < ApplicationController
   end
 
   def update
+    if @user.update(user_whitelist)
+      redirect_to @user, notice: I18n.t('layouts.updated.basic_message')
+    else
+      render action: :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -57,6 +62,6 @@ class UserController < ApplicationController
   end
 
   def user_whitelist
-    params.require(:user).permit(:email, :password, :username, :is_admin)
+    params.require(:user).permit(:email, :password, :username, :is_admin, :description)
   end
 end

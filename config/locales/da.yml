@@ -52,6 +52,7 @@ da:
       message: "%{_class} \"%{name}\" oprettet!"
     updated:
       message: "Ændringer til %{_class} <strong>%{name}</strong> gemt!"
+      basic_message: "Ændringer gemt!"
   calendar:
     index:
       new_event: "Opret ny begivenhed"
@@ -153,6 +154,7 @@ da:
         price: Pris
         picture: Billede
         comments_enabled: Tillad kommentarer?
+        description: Beskrivelse
       location:
         name: Navn
         street_address: Gadeadresse

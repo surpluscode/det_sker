@@ -2,8 +2,11 @@
 <%= schema_json(@user) %>
   <h2><%= @user.username %></h2>
   <p><%= "#{t('member_since')}: #{format_date(@user.created_at.to_date)}" %></p>
+  <p><%= @user.description %>
+  <p><%= link_to t(:edit), edit_user_path(@user) %></p>
   <% if !@user.is_admin? && current_user && current_user.is_admin? %>
-      <p><%= button_to('Make Admin User', make_admin_user_path(@user), method: :patch, data: { confirm: 'Are you sure?' })  %></p>
+      <p>
+      <%= button_to('Make Admin User', make_admin_user_path(@user), method: :patch, data: { confirm: 'Are you sure?' }) %></p>
   <% end %>
 </div>
 <hr/>
