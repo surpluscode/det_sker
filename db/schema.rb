@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029103757) do
+ActiveRecord::Schema.define(version: 20151029111555) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "danish",     limit: 255
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20151029103757) do
     t.text    "description"
     t.decimal "latitude"
     t.decimal "longitude"
+    t.string  "link"
   end
 
   create_table "posts", force: :cascade do |t|

@@ -54,7 +54,7 @@ class LocationsController < ApplicationController
 
   private
   def location_whitelist
-    params.require(:location).permit(:id, :name, :street_address, :postcode, :town, :description, :latitude, :longitude)
+    params.require(:location).permit(:id, :name, :street_address, :postcode, :town, :description, :latitude, :longitude, :link)
   end
 
   def set_location

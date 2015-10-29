@@ -2,6 +2,7 @@ class Location < ActiveRecord::Base
   include HasEvents
   include Comparable
   validates :name, presence: true, uniqueness: true
+  validates :link, format: { with: URI.regexp }, if: Proc.new { |a| a.link.present? }
 
   def display_name
     name.present? ? name : street_address
@@ -36,7 +37,8 @@ class Location < ActiveRecord::Base
       '@type': 'Place',
       name: self.name,
       address: self.full_address,
-      description: self.description
+      description: self.description,
+      'sameAs': self.link
     }
   end
 end

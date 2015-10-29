@@ -3,7 +3,8 @@
   <h1><%= @location.try(:display_name) %></h1>
   <h2><%= @location.address %></h2>
 
-  <p><%= @location.try(:description) %></p>
+  <p><%= simple_format(@location.try(:description)) %></p>
+  <p><%= auto_link(@location.try(:link)) %></p>
 
   <% if current_user && current_user.can_edit?(@location) %>
       <%= link_to t('.edit_location'), edit_location_path %>
