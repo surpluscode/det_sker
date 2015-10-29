@@ -1,5 +1,7 @@
+<div class="generic_form">
 <h2><%= @user.username %></h2>
 <%= simple_form_for @user do |f| %>
 	<%= f.input :description %>
 	<%= f.button :submit %>
 <% end %>
+</div>
