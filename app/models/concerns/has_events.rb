@@ -5,6 +5,6 @@ module HasEvents
   end
 
   def coming_events
-    events.where('end_time > ?', DateTime.now)
+    events.where('end_time > ?', DateTime.now).order(:start_time)
   end
 end
