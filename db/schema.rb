@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150920200555) do
+ActiveRecord::Schema.define(version: 20151029103757) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "danish",     limit: 255
@@ -123,6 +123,8 @@ ActiveRecord::Schema.define(version: 20150920200555) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "posts", ["featured"], name: "index_posts_on_featured"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
     t.string   "encrypted_password",     limit: 255, default: "",    null: false
@@ -143,6 +145,7 @@ ActiveRecord::Schema.define(version: 20150920200555) do
     t.string   "unconfirmed_email",      limit: 255
     t.boolean  "is_admin",                           default: false
     t.boolean  "is_anonymous",                       default: false
+    t.text     "description"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
