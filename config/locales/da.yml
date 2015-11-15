@@ -307,3 +307,6 @@ da:
      Thursday: torsdag
      Friday: fredag
      Saturday: lørdag
+  user:
+    show:
+      unconfirmed: "Brugeren har ikke bekræftet deres konto endnu"

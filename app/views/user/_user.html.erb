@@ -1,8 +1,6 @@
 <div>
   <p><%= link_to(user.username, user_path(user)) %>
-  <% if user.is_admin? %>
-    Admin
-  <% end %>
-
+  <%= 'Admin' if user.is_admin? %>
+  <%= bootstrap_glyphicon('question-sign') if user.confirmed_at.nil? %>
   </p>
 </div>

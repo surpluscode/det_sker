@@ -245,3 +245,6 @@ en:
                   You can't edit the repetition rule when there are still events active in the series.
                   If you want to change the rule, you should either delete all the remaining events
                   or create a new series. You can still change the start and end time as well as the other attributes.
+  user:
+    show:
+      unconfirmed: "The user has not confirmed their account yet."

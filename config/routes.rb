@@ -2,6 +2,7 @@ DetSker::Application.routes.draw do
   resources :posts
 
   devise_for :user
+  match 'users/:id' => 'user#destroy', via: :delete, as: :admin_destroy_user
   root 'calendar#index'
   resources :events, except: [:index] do
     resources :comments, except: [:new, :delete]

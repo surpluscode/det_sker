@@ -2,7 +2,7 @@ class UserController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :make_admin]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :make_admin]
   before_action :authorised_user?, only: [:edit, :update, :destroy]
-  before_action :admin_user?, only: :make_admin
+  before_action :admin_user?, only: [:make_admin, :destroy]
 
   # We don't do the case insensitive search
   # in SQL as it is implementation dependent,
@@ -34,6 +34,11 @@ class UserController < ApplicationController
   end
 
   def destroy
+    if @user.destroy
+      redirect_to users_path, notice: 'User deleted'
+    else
+      redirect_to :back, status: :service_unavailable
+    end
   end
 
   def make_admin
