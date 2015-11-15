@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :username << :description
+    devise_parameter_sanitizer.for(:sign_up) << :username << :description << :email_confirmation
   end
 
   def user_can_edit?(object)

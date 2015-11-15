@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   alias_method :user_id, :id
 
   validates :username, presence: true, uniqueness: true
-
+  validates_confirmation_of :email, message: I18n.t('user.email_must_match')
+  validates_presence_of :email_confirmation, on: :create
   # ensure user is permitted to edit object
   # either if the user is an admin or if
   # the user has created the object

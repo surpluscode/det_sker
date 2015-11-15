@@ -310,3 +310,4 @@ da:
   user:
     show:
       unconfirmed: "Brugeren har ikke bekræftet deres konto endnu"
+    email_must_match: "Du har tastet to forskellige værdier for din email"
