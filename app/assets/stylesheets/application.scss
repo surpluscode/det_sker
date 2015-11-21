@@ -1,70 +1,78 @@
 /* Before importing bootstrap, define fonts and colors */
 
-$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;;
-$font-family-serif: Georgia, "Times New Roman", Times, serif;
-
-$navbar-default-bg: #408298;
-$navbar-default-border: #408298;
-$navbar-default-link-color: #fcfcfc;
-
+@import 'variables';
 @import "bootstrap";
 @import "bootstrap-datetimepicker";
 @import "typeaheadjs";
 @import "bootstrap-select.min";
 
 @import "events.css.scss";
-@import "global";
+//@import "global";
 @import "new_event.css.scss";
 
+
+
 /* Bootstrap overrides */
-
-.navbar-default
-{
-  border-width: 0;
-  border-radius: 0;
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-#navbar-main {
-  @media (min-width: $grid-float-breakpoint) {
-    padding-left: 0;
-    .navbar-collapse {
-      padding-left: 0;
-      padding-right: 0;
+.navbar-user,
+.navbar-main {
+  float: right;
+  width: 35%;
+  padding-top: 30px;
+  font-family: $font-family-heading;
+  font-size: 120%;
+}
+
+.site-logo {
+  width: 30%;
+  float: right;
+  img {
+    max-width: 100%;
+  }
+}
+
+.navbar-user,
+.navbar-main {
+  .nav {
+    text-align: center;
+    margin: 0 auto;
+    float: none;
+    li {
+      display: inline-block;
     }
-    .navbar-nav > li:first-child > a {
-      padding-left: 0;
-    }
   }
-  .navbar-nav > li > a {
-    font-size: $font-size-base;
+
+  li {
+    display: inline-block;
+    float: none;
   }
 }
 
-.navbar-toggle
-{
-  background-color: #408298;
-  border-color: #FFF !important;
-  height: 40px;
-  width: 40px;
-}
+.navbar-nav li.lang-switch-wrapper {
 
-@media (min-width: $grid-float-breakpoint) {
-  #navbar-user {
-    float: right;
-  }
-}
-#navbar-user {
-  @media (min-width: $grid-float-breakpoint) {
-    .navbar-nav > li > p > a.btn-default {
-      margin-right: 8px;
+  .lang-switch {
+
+    border: 1px solid #bbb;
+    @include clearfix;
+    a {
+      padding: 2px 10px;
+      margin: 0;
+      float: left;
+      display: block;
+      width: 50%;
+      color: #fff;
+      background-color: #bbb;
+      &:first-child {
+        border-right: 1px solid #bbb;
+      }
     }
-  }  
-  .navbar-nav > li > a {
-    font-size: $font-size-base;
+    .active {
+      background-color: #fff;
+      color: #bbb;
+    }
   }
-}
-@font-face {
-  font-family: 'Glyphicons Halflings';
-  src: url('../assets/glyphicons-halflings-regular.eot');
-  src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../assets/glyphicons-halflings-regular.woff') format('woff'), url('../assets/glyphicons-halflings-regular.ttf') format('truetype'), url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }

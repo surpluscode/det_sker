@@ -1,0 +1,11 @@
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;;
+$font-family-serif: Georgia, "Times New Roman", Times, serif;
+$font-family-heading: "Fjalla One","Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$navbar-default-color:             #fff !default;
+$navbar-default-bg:                #fff;
+$navbar-default-border:            none;
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../assets/glyphicons-halflings-regular.eot');
+  src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../assets/glyphicons-halflings-regular.woff') format('woff'), url('../assets/glyphicons-halflings-regular.ttf') format('truetype'), url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}

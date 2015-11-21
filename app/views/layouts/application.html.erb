@@ -21,13 +21,7 @@
   </script>
 </head>
 <body>
-<div class="container">
-  <div class="row">
-    <div class="header-text col-xs-12">
-      <%= link_to image_tag("dukopheader.png", alt:"DukOp logo", width:"80%", height:"80%"), root_path %>
-    </div>
-  </div>
-</div>
+
 <!-- Menu navigation bar -->
 <nav class="navbar navbar-default">
   <div class="container">
@@ -48,6 +42,7 @@
       <ul class="nav navbar-nav">
         <li class="menu-text">
           <%= link_to new_event_path do %>
+              <%= bootstrap_glyphicon('pencil') %>
               <%= t('.new') %>
           <% end %>
         </li>
@@ -69,6 +64,7 @@
             </li>
         <% else %>
             <li class="menu-text">
+              <%= bootstrap_glyphicon('user') %>
               <%= link_to t('.login'), user_session_path %>
             </li>
         <% end %>
@@ -76,16 +72,27 @@
       </ul>
     </div>
 
-    <div class="collapse navbar-collapse" id="navbar-main">
+    <div class="site-logo">
+      <%= image_tag("dukopheader.png", alt:"Duk Op") %>
+    </div>
+
+    <div class="navbar-main collapse navbar-collapse" id="navbar-main">
       <ul class="nav navbar-nav">
-        <li class="menu-text"><%= link_to t('.calendar'), root_path %></li>
-        <li class="menu-text"><%= link_to t('.locations'), locations_path %></li>
+        <li class="menu-text">
+          <%= bootstrap_glyphicon('home') %>
+          <%= link_to t('.calendar'), root_path %>
+        </li>
+        <li class="menu-text">
+          <%= bootstrap_glyphicon('map-marker') %>
+          <%= link_to t('.locations'), locations_path %>
+        </li>
         <% if current_user.try(:is_admin?) %>
             <li class="menu-text"><%= link_to t('.categories'), categories_path %></li>
             <li class="menu-text"><%= link_to t('.users'), users_path %></li>
         <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle menu-text" data-toggle="dropdown" role="button" aria-expanded="false">
+            <%= bootstrap_glyphicon('info-sign') %>
             <%= t('.about') %><span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
