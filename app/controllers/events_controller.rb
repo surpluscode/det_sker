@@ -90,11 +90,12 @@ class EventsController < ApplicationController
   def user_params
     params.require(:event).permit(:title, :short_description, :long_description,
                                  :start_time, :end_time,  :location_id, :comments_enabled,
-                                 :price, :cancelled, :link, :picture,
+                                 :price, :cancelled, :link, :picture, :featured,
                                  category_ids: [], event_series: [[:rule, :start_date, 
                                  :start_time, :expiry, :end_time, day_array: []]]).tap do |list|
       list[:category_ids].uniq!
       list[:event_series][:days] = list[:event_series][:day_array].select(&:present?).join(',') if list[:event_series].present? && list[:event_series][:day_array].present?
+      list.delete(:featured) unless current_user.is_admin? # only admins can update featured value
     end
   end
 end

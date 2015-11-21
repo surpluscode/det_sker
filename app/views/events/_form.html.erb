@@ -137,6 +137,16 @@
     </div>
     <% end %>
 
+    <% if current_user.is_admin? %>
+    <div class="input boolean optional checkbox">
+      <label class="boolean optional control-label override checkbox for event_featured">
+        <input class="boolean optional checkbox" id="event_featured"
+               name="event[featured]" value="1" type="checkbox">
+        <%= t '.feature_event?' %>
+      </label>
+    </div>
+    <% end %>
+
     <div class="row">
       <div class="col-xs-12">
         <% visibility =  @event.price.present? ? 'block' : 'none' %>

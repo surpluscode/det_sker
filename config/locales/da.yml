@@ -102,6 +102,7 @@ da:
       weeks: "uger"
       days: "dage"
       months: "måneder"
+      feature_event?: 'Skal eventen promoveres?'
     event:
       price: "Pris"
       start_time: "Starter"
