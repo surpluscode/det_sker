@@ -1,6 +1,6 @@
 class Calendar
 
-  attr_reader :filter_categories, :filter_locations, :events, :in_progress
+  attr_reader :filter_categories, :filter_locations, :events, :in_progress, :highlights
 
   def initialize(type = :coming)
     @days = {}
@@ -9,6 +9,7 @@ class Calendar
       get_coming_events
       get_filter_categories
       get_filter_locations
+      @highlights = Event.highlights(3)
     end
   end
 

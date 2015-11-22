@@ -76,3 +76,36 @@ img {
     }
   }
 }
+
+
+.featured-container {
+  margin-bottom: 3em;
+}
+
+.upcoming-event {
+  margin-bottom: 2em;
+}
+
+.recurring-event {
+  margin-bottom: 2em;
+}
+
+.recurring-event-title {
+  margin-top: 5px;
+}
+
+.section-heading {
+  color: #aaa;
+  border-bottom: 1px solid #ddd;
+  font-size: 2rem;
+  padding-bottom: .3em;
+}
+.no-gutter > [class*='col-'] {
+  padding-right:0;
+  padding-left:0;
+}
+
+.small-gutter > [class*='col-'] {
+  padding-right:5px;
+  padding-left:5px;
+}

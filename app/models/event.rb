@@ -41,7 +41,26 @@ class Event < ActiveRecord::Base
   end
 
   def self.current_events
-    self.includes(:user, :location, :comments).order(:start_time).where('end_time > ?', DateTime.now)
+    self.includes(:user, :location).order(:start_time).where('end_time > ?', DateTime.now)
+  end
+
+  def self.featured_events
+    self.current_events.where(featured: true).limit(3)
+  end
+
+  def self.non_featured_events
+    self.current_events.where.not(featured: true)
+  end
+
+  # Highlights is composed of three events where
+  # these are coming featured events and non-featured events
+  def self.highlights(num)
+    featured = self.featured_events
+    if featured.size < num
+      featured + self.non_featured_events.take(num - featured.size)
+    else
+      featured
+    end
   end
 
   # Return Event object given a Date, Time, Time, attribute Hash

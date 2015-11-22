@@ -13,6 +13,10 @@
   <%= t '.describe_filters' %>
 </div>
 
+<% if @calendar.highlights.size > 0 %>
+  <%= render partial: 'highlights', object: @calendar.highlights %>
+<% end %>
+
 <% if @calendar.in_progress.size > 0 %>
     <%= render partial: 'day', object: @calendar.in_progress, locals: { id: 'inProgress' } %>
 <% end %>
