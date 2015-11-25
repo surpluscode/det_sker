@@ -94,6 +94,14 @@ class EventSeries < ActiveRecord::Base
     self.description = val
   end
 
+  def self.active_weekly
+    self.joins(:events)
+        .order('events.start_time')
+        .where('events.end_time > ?', DateTime.now)
+        .where('rule = "weekly"')
+        .distinct
+  end
+
   private
 
   # Use Chronic to convert the rules to Date objects
