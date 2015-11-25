@@ -5,18 +5,32 @@
 </div>
 <% end %>
 <% end %>
-<%= render partial: 'filter_options',
-           locals: {filter_categories: @calendar.filter_categories,
-                    filter_locations: @calendar.filter_locations }
-%>
 <div class="row hidden center-block" data-role="filter-description">
   <%= t '.describe_filters' %>
 </div>
 
-<% if @calendar.highlights.size > 0 %>
-  <%= render partial: 'highlights', object: @calendar.highlights %>
-<% end %>
+<div class="container">
+  <div class="row featured-container">
+    <% if @calendar.highlights.size > 0 %>
+        <%= render partial: 'highlights', object: @calendar.highlights %>
+    <% end %>
 
+    <% if @calendar.weekly.size > 0 %>
+        <%= render partial: 'weekly', object: @calendar.weekly %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="section-heading">
+      <%# TODO TRANSLATE %>
+      Hele kalenderen
+    </h2>
+  </div>
+  <%= render partial: 'filter_options',
+             locals: {filter_categories: @calendar.filter_categories,
+                      filter_locations: @calendar.filter_locations }
+  %>
 <% if @calendar.in_progress.size > 0 %>
     <%= render partial: 'day', object: @calendar.in_progress, locals: { id: 'inProgress' } %>
 <% end %>
@@ -27,4 +41,5 @@
 </br>
 <div class="row center-block end-of-events">
     <p class="text-center text-uppercase"><%= t '.end_of_events' %></p>
+</div>
 </div>

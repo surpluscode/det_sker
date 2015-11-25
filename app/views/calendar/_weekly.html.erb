@@ -1,0 +1,25 @@
+<div class="col-md-4">
+  <h2 class="section-heading">Faste begivenheder</h2>
+  <% weekly.each do |series| %>
+      <div class="recurring-event row">
+        <div class="col-xs-3">
+          <%= image_tag series.picture.url(:thumb) if series.picture.present? %>
+        </div>
+        <div class="col-xs-9">
+          <h4 class="recurring-event-title">
+            <%= series.title %>
+          </h4>
+          <div class="event-date">
+            <%= bootstrap_glyphicon 'time' %>
+            <%= display_repetition_rule(series) %>
+            <%= format_starttime(series.start_time) %>
+          </div>
+          <div class="event-place">
+            <%= bootstrap_glyphicon 'map-marker' %>
+            <%= series.location.display_name %>
+          </div>
+        </div>
+
+      </div>
+  <% end %>
+</div>
