@@ -52,8 +52,8 @@ class Event < ActiveRecord::Base
     self.current_events.where.not(featured: true)
   end
 
-  # Highlights is composed of three events where
-  # these are coming featured events and non-featured events
+  # Highlights is composed of num events where
+  # these are composed of featured events and non-featured events
   def self.highlights(num)
     featured = self.featured_events
     if featured.size < num
