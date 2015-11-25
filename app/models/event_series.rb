@@ -98,7 +98,7 @@ class EventSeries < ActiveRecord::Base
     self.joins(:events)
         .order('events.start_time')
         .where('events.end_time > ?', DateTime.now)
-        .where('rule = "weekly"')
+        .where('event_series.rule LIKE \'weekly\'')
         .distinct
   end
 
