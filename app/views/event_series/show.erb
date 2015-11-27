@@ -1,5 +1,5 @@
 <div class="event_show">
-  <h1>Serie: <%= @event_series.title %></h1>
+  <h1><%= @event_series.title %></h1>
   <%= image_tag @event_series.picture.url(:original) if @event_series.picture.present? %>
   <h4>
     <%= link_to(@event_series.location.full_address, location_path(@event_series.location)) %>
@@ -11,10 +11,8 @@
   <p>
     <%= simple_format(@event_series.description) %>
   </p>
-<h4>Repeats</h4>
-<p><%= @event_series.days %></p>
-<p><%= @event_series.rule %></p>
-<p><%= @event_series.expiry %></p>
+
+  <p><%= display_repetition_rule(@event_series)%></p>
 
 
   <% if @event_series.link.present? %>
