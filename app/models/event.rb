@@ -49,7 +49,9 @@ class Event < ActiveRecord::Base
   end
 
   def self.non_featured_events
-    self.current_events.where.not(featured: true)
+    self.current_events
+        .where.not(featured: true)
+        .where('event_series_id IS NULL')
   end
 
   # Highlights is composed of num events where
