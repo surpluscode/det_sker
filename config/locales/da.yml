@@ -270,7 +270,7 @@ da:
       location: sted
   event_series:
     monthly_display_rule: "Gentages den %{rule} %{days} i måneden."
-    weekly_display_rule: "Gentages hver %{days}"
+    weekly_display_rule: "Hver %{days}"
     first: første
     second: anden
     third: tredje
