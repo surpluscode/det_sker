@@ -1,5 +1,5 @@
 <div class="col-md-4">
-  <h2 class="section-heading">Faste begivenheder</h2>
+  <h2 class="section-heading"><%= t '.title' %></h2>
   <% weekly.each do |series| %>
       <div class="recurring-event row">
         <div class="col-xs-3">
@@ -7,7 +7,7 @@
         </div>
         <div class="col-xs-9">
           <h4 class="recurring-event-title">
-            <%= series.title %>
+            <%= link_to(series.title, series) %>
           </h4>
           <div class="event-date">
             <%= bootstrap_glyphicon 'time' %>

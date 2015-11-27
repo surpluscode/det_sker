@@ -60,12 +60,17 @@ en:
         categories: " of type "
         locations: " in "
       end_of_events: "No more events"
+      title: "Calendar"
     filter_options:
       filter_header: "Show only:"
       category_filter_heading: "Event Types"
       location_filter_heading: "Locations"
     day:
       in_progress: "In progress"
+    highlights:
+      title: "Coming up"
+    weekly:
+      title: "Every week"
   coming_events: "Coming Events"
   events:
     comments:

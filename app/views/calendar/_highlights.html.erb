@@ -1,6 +1,6 @@
 
 <div class="col-md-8">
-  <h2 class="section-heading">Den kommende uge</h2>
+  <h2 class="section-heading"><%= t '.title' %></h2>
 
   <% highlights.each do |event| %>
       <div class="upcoming-event row">
@@ -19,14 +19,11 @@
             </div>
             <div class="event-place col-xs-4">
               <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-              <%= event.location.display_name %>
+              <%= link_to(event.location.display_name, event.location) %>
             </div>
           </div>
-          <h3 class="upcoming-event-title"><a href="#"><%= event.title %></a></h3>
-          <p>
-            <%= event.short_description %>
-          </p>
-
+          <h3 class="upcoming-event-title"><%= link_to(event.title, event) %></a></h3>
+          <p><%= event.short_description %></p>
         </div>
       </div>
   <% end %>
