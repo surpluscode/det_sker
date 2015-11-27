@@ -94,12 +94,12 @@ class EventSeries < ActiveRecord::Base
     self.description = val
   end
 
+  # Returns the series objects with
+  # weekly events occurring this week
   def self.active_weekly
-    self.joins(:events)
-        .order('events.start_time')
-        .where('events.end_time > ?', DateTime.now)
-        .where('event_series.rule LIKE \'weekly\'')
-        .distinct
+    ids = Event.repeating_this_week.map(&:event_series_id)
+    self.where('id in (?)', ids)
+      .where("rule LIKE 'weekly'")
   end
 
   private

@@ -63,6 +63,16 @@ class Event < ActiveRecord::Base
     end
   end
 
+  # The repeating events that are occurring this week
+  def self.repeating_this_week
+    self.select('id, event_series_id')
+      .where('end_time > ?', DateTime.now)
+      .where('start_time >= ?', DateTime.now)
+      .where('start_time <= ?', DateTime.now + 1.week)
+      .where('event_series_id > 0')
+      .where('cancelled IS NULL OR cancelled = FALSE')
+  end
+
   # Return Event object given a Date, Time, Time, attribute Hash
   def self.from_date_and_times(date, start_time, end_time, attributes)
     event_start = DateTime.new(date.year, date.month, date.day, start_time.hour, start_time.min, 0, start_time.zone)
