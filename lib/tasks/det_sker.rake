@@ -27,8 +27,8 @@ namespace :det_sker do
 
   def create_user(email, username, password, admin = false)
     u = User.new(
-      is_admin: admin, email: email, username: username,
-      password: password, password_confirmation: password,
+      is_admin: admin, email: email, email_confirmation: email,
+      username: username, password: password, password_confirmation: password,
     )  
     u.skip_confirmation!    
     raise "User could not be saved! #{u.errors.messages}" unless u.save
