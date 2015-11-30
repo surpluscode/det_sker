@@ -44,7 +44,7 @@
 <div class="row">
   <div class="col-xs-12 col-sm-5">
     <%= f.association :categories, label_method: ->(obj){ obj.send(t(:language)).titleize }, required: true,
-    input_html: { class: 'selectpicker', title: t('.choose_category') }
+    input_html: { class: 'selectpicker', title: t('events.form.choose_category') }
     %>
   </div>
   <div class="col-xs-12 col-sm-5 col-sm-offset-1">
