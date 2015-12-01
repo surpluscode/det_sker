@@ -1,5 +1,5 @@
-[![Stories in Ready](https://badge.waffle.io/ronan-mch/det_sker.png?label=ready&title=Ready)](https://waffle.io/ronan-mch/det_sker)
-[ ![Codeship Status for ronan-mch/det_sker](https://www.codeship.io/projects/efb8ed90-03c6-0132-4808-06cd9fe8c123/status)](https://www.codeship.io/projects/30535)
+[![Codeship Status for ronan-mch/det_sker](https://www.codeship.io/projects/efb8ed90-03c6-0132-4808-06cd9fe8c123/status)](https://www.codeship.io/projects/30535)
+[![Coverage Status](https://coveralls.io/repos/ronan-mch/det_sker/badge.png?branch=tests)](https://coveralls.io/r/team-umlaut/umlaut)
 det_sker
 ========
 
