@@ -58,6 +58,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'sqlite3'
+  gem 'coveralls', require: false
 end
 
 group :development do
