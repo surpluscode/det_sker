@@ -1,5 +1,5 @@
 [![Codeship Status for ronan-mch/det_sker](https://www.codeship.io/projects/efb8ed90-03c6-0132-4808-06cd9fe8c123/status)](https://www.codeship.io/projects/30535)
-[![Coverage Status](https://coveralls.io/repos/ronan-mch/det_sker/badge.png?branch=tests)](https://coveralls.io/r/ronan-mch/det_sker)
+[![Coverage Status](https://coveralls.io/repos/ronan-mch/det_sker/badge.svg?branch=tests&service=github)](https://coveralls.io/github/ronan-mch/det_sker?branch=tests)
 det_sker
 ========
 
