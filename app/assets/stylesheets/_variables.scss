@@ -1,8 +1,11 @@
-$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;;
+$brand-primary:         #488496 !default; // #337ab7
+$font-family-sans-serif:  "Titillium Web","Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif: Georgia, "Times New Roman", Times, serif;
 $font-family-heading: "Fjalla One","Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$navbar-default-color:             #fff !default;
-$navbar-default-bg:                #fff;
+$headings-font-family:    $font-family-heading;
+$grid-gutter-width:         20px !default;
+
+$navbar-default-bg:                #fff !default;
 $navbar-default-border:            none;
 @font-face {
   font-family: 'Glyphicons Halflings';
