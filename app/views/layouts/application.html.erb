@@ -40,11 +40,11 @@
       </button>
     </div>
 
-    <div class="collapse navbar-collapse" id="navbar-user">
+    <div class="navbar-user collapse navbar-collapse" id="navbar-user">
       <ul class="nav navbar-nav">
         <li class="menu-text">
           <%= link_to new_event_path do %>
-              <%= bootstrap_glyphicon('pencil') %>
+              <%= bootstrap_glyphicon('pencil', nil) %>
               <%= t('.new') %>
           <% end %>
         </li>
@@ -66,8 +66,10 @@
             </li>
         <% else %>
             <li class="menu-text">
-              <%= bootstrap_glyphicon('user') %>
-              <%= link_to t('.login'), user_session_path %>
+              <%= link_to user_session_path do %>
+                  <%= bootstrap_glyphicon('user') %>
+                  <%= t('.login') %>
+              <% end %>
             </li>
         <% end %>
         <%= render partial: 'layouts/lang_selector' %>
@@ -81,12 +83,16 @@
     <div class="navbar-main collapse navbar-collapse" id="navbar-main">
       <ul class="nav navbar-nav">
         <li class="menu-text">
-          <%= bootstrap_glyphicon('home') %>
-          <%= link_to t('.calendar'), root_path %>
+          <%= link_to root_path do %>
+              <%= bootstrap_glyphicon('home') %>
+              <%= t('.calendar') %>
+          <% end %>
         </li>
         <li class="menu-text">
-          <%= bootstrap_glyphicon('map-marker') %>
-          <%= link_to t('.locations'), locations_path %>
+          <%= link_to locations_path do %>
+            <%= bootstrap_glyphicon('map-marker') %>
+            <%=  t('.locations') %>
+          <% end %>
         </li>
         <% if current_user.try(:is_admin?) %>
             <li class="menu-text"><%= link_to t('.categories'), categories_path %></li>
