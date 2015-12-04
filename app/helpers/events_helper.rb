@@ -106,7 +106,7 @@ module EventsHelper
   # supply only the last component of the icon name
   # e.g. 'off', 'cog' etc
   def bootstrap_glyphicon(icon, classes = '')
-    content_tag(:span, nil, class: "glyphicon glyphicon-#{icon} #{classes}").html_safe
+    content_tag(:span, nil, class: "glyphicon glyphicon-#{icon} #{classes}", aria_hidden: true).html_safe
   end
 
   def bootstrap_success(message)
