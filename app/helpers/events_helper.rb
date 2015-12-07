@@ -36,7 +36,11 @@ module EventsHelper
   end
 
   def categories_as_string(categories, title = false)
-    categories.map { |cat| cat.send(t :language) }.join(' ')
+    categories.map { |cat| transl_cat(cat) }.join(' ')
+  end
+
+  def transl_cat(cat)
+    cat.send(t :language)
   end
 
   def display_repetition_rule(series)

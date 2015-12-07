@@ -10,7 +10,7 @@ class Calendar
       get_filter_categories
       get_filter_locations
       @highlights = Event.highlights(3)
-      @weekly = EventSeries.active_weekly
+      @weekly = EventSeries.repeating_grouped
     end
   end
 

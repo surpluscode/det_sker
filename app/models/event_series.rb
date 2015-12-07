@@ -98,8 +98,19 @@ class EventSeries < ActiveRecord::Base
   # weekly events occurring this week
   def self.active_weekly
     ids = Event.repeating_this_week.map(&:event_series_id)
-    self.where('id in (?)', ids)
+    self.where('event_series.id in (?)', ids)
+      .includes(:categories)
       .where("rule LIKE 'weekly'")
+      .order('categories.danish desc')
+  end
+
+  def self.repeating_grouped
+    grouped = {}
+    self.active_weekly.each do |series|
+      grouped[series.categories.first] = [] unless grouped.has_key? series.categories.first
+      grouped[series.categories.first] << series
+    end
+    grouped
   end
 
   private
