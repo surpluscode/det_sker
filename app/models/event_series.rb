@@ -100,6 +100,7 @@ class EventSeries < ActiveRecord::Base
     self.where('start_date <= ?', DateTime.now)
         .where('expiry >= ?', DateTime.now)
       .includes(:categories)
+      .includes(:location)
       .where("rule LIKE 'weekly'")
       .order('categories.danish desc')
   end
