@@ -40,7 +40,7 @@ module EventsHelper
   end
 
   def transl_cat(cat)
-    cat.send(t :language)
+    cat.send(t :language) rescue ''
   end
 
   def display_repetition_rule(series)
