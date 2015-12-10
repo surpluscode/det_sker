@@ -97,8 +97,8 @@ class EventSeries < ActiveRecord::Base
   # Returns the series objects with
   # weekly events occurring this week
   def self.active_weekly
-    ids = Event.repeating_this_week.map(&:event_series_id)
-    self.where('event_series.id in (?)', ids)
+    self.where('start_date <= ?', DateTime.now)
+        .where('expiry >= ?', DateTime.now)
       .includes(:categories)
       .where("rule LIKE 'weekly'")
       .order('categories.danish desc')
