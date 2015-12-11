@@ -5,49 +5,29 @@
      data-role="event" data-parent="<%= parent_id if defined? parent_id%>">
   <%= link_to '', '#', name: event.id, data: { remote: true } %>
   <%= schema_json(event) %>
-  <span class="event-topbar_js">
-      <%# In mobile view the title line is broken up into two lines %>
-       <span class="col-xs-12 col-md-6 col-md-push-2 event-title">
-       	<%= title_display(event) %>
-	    </span>
+  <%# In mobile view the title line is broken up into two lines %>
+  <span class="col-xs-12 col-md-6 col-md-push-2 event-title">
+       	<%= link_to(title_display(event), event) %>
+  </span>
 
-      <span class="col-xs-2 col-md-2 col-md-pull-6">
-          <%# In the frontpage context we don't show a date, otherwise, do. %>
-        <% if defined? show_date %>
-              <%= I18n.localize(event.start_time.to_date, format: :brief)  %>
-          <% else %>
-              <%= format_starttime(event.start_time) %>
-          <% end %>
-      </span>
+  <span class="col-xs-2 col-md-2 col-md-pull-6">
+    <%# In the frontpage context we don't show a date, otherwise, do. %>
+    <% if defined? show_date %>
+        <%= I18n.localize(event.start_time.to_date, format: :brief)  %>
+    <% else %>
+        <%= format_starttime(event.start_time) %>
+    <% end %>
+  </span>
       
-      <span class="col-md-2 hidden-xs">
+  <span class="col-md-2 hidden-xs">
         <% event.categories.each do |cat| %>
             <span class=""><%= cat.send(t(:language)).titleize %></span>
         <% end %>
-      </span>
-      <span class="col-md-2 pull-right">
-      <a href="<%= url_for(event.location) %>"title="<%= event.location.description.truncate(120) %>"
-         data-toggle='popover' data-placement='top' data-trigger="click hover focus" data-html="true">
-        <%= event.location.display_name %>
-      </a>
-      </span>
-
-
-
-   	</span>
-
-  <div class='event-details'>
-  <div class="col-md-2 hidden-xs">
-  <% if event.best_picture.present? %>
-      <%= link_to event do %>
-          <%= image_tag event.best_picture.url(:thumb), class: 'img-responsive center-block' %>
-      <% end %>
-  <% end %>
-  </div>  
-    <div class="col-xs-12 col-md-10">
-      <p> <%= auto_link(event.short_description.truncate(160, separator: ' ')) %></p>
-      <p><%= link_to t('.see_more'), event %> </p>
-    </div>
-  </div>
+  </span>
+  <span class="col-md-2 pull-right">
+  <a href="<%= url_for(event.location) %>"title="<%= event.location.description.truncate(120) %>"
+     data-toggle='popover' data-placement='top' data-trigger="click hover focus" data-html="true">
+    <%= event.location.display_name %>
+  </a>
+  </span>
 </div>
-<div class="row"></div>

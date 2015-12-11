@@ -3,43 +3,14 @@ var activeCategories = [];
 var activeLocations = [];
 
 $(document).ready(function() {
-    hideEventDetails();
     activateFrontPageListeners();
 });
 
 function activateFrontPageListeners() {
-    $('span.event-topbar_js').click(toggleContent);
     $('a[data-role="filter-link"]').click(filterCategory);
     $('.show-long-description_js').click(toggleLongDescription);
 }
 
-/**
- *  Because of a jQuery bug, we need to inform
- *  jQuery of the event-detail's height so that
- *  the slideToggle doesn't "jump".
- *  See https://coderwall.com/p/r855xw for details.
- */
-function hideEventDetails() {
-    $('.event-details').each(function(){
-        $height = $(this).height();
-        $(this).css('height', $height);
-        $(this).hide();
-    })
-}
-
-/**
- *   If this container's details div is exposed, hide it
- *   otherwise, hide any exposed details div and show the
- *   current container's details div.
- */
-function toggleContent() {
-    if  ($(this).siblings('.event-details').hasClass('revealed')) {
-        $(this).siblings('.event-details').removeClass('revealed').slideToggle('fast');
-    } else {
-        $('.revealed').removeClass('revealed').slideToggle();
-        $(this).siblings('.event-details').addClass('revealed').slideToggle('fast');
-    }
-}
 
 /**
  * Given a change in filter state
