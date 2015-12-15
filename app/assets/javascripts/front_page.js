@@ -8,7 +8,6 @@ $(document).ready(function() {
 
 function activateFrontPageListeners() {
     $('a[data-role="filter-link"]').click(filterCategory);
-    $('.show-long-description_js').click(toggleLongDescription);
 }
 
 
@@ -25,7 +24,7 @@ function refreshFilterView(){
         } else if ($(this).hasClass('active')) {
             $(this).removeClass('active')
         }
-    })
+    });
 }
 
 /**
@@ -70,29 +69,52 @@ function evaluateShown(){
      * else show all events
      */
     function evaluateEventVisibility() {
-        var events = $('[data-role="event"]');
-
-        if (activeFilters.length == 0) {
-            events.show();
-            $('[data-role="day"]').show();
-        } else {
-            events.each(function (i) {
-                var $this = $(this);
-                var categories = $this.attr('data-categories').split(' ');
-                var location = $this.attr('data-location');
-                var parentId = '#' + $this.attr('data-parent');
-                if ($this.is(':hidden')) {
-                    if (attributesMatchFilters(categories, location)) {
-                        $this.show();
-                        $(parentId).show();
-                    }
-                } else if ($this.is(':visible')) {
-                    if (!attributesMatchFilters(categories, location)) {
-                        $this.hide();
-                    }
-                }
-            });
+        function showEventAndParent(event){
+          $event = $(event);
+          $event.show();
+          var parentId = '#' + $event.attr('data-parent');
+          $(parentId).show();
         }
+        function noFilters(){
+            return (activeCategories.length == 0 && activeLocations.length == 0)
+        }
+
+        function findMatchingEvents(){
+            var eventsWithValidCategory = [];
+            var eventsWithValidLocation = [];
+            activeCategories.forEach(function(cat) {
+                Array.prototype.push.apply(eventsWithValidCategory, $('[data-categories~='+ cat +']').toArray());
+            });
+            activeLocations.forEach(function(loc) {
+                Array.prototype.push.apply(eventsWithValidLocation, $('[data-location='+ loc +']').toArray());
+            });
+            // 1. identify all the matching objects (i.e. intersection of A & B)
+            // 2. hide all other objects (i.e. E - (A intersection B))
+            var matchingEvents = [];
+            if (activeCategories.length > 0 && activeLocations.length > 0) {
+                matchingEvents = Util.intersection(eventsWithValidCategory, eventsWithValidLocation);
+            } else if (activeCategories.length > 0) {
+                matchingEvents = eventsWithValidCategory;
+            } else if (activeLocations.length > 0) {
+                matchingEvents = eventsWithValidLocation;
+            }
+            return matchingEvents;
+        }
+
+        var events = $('[data-role="event"]').toArray();
+        if (noFilters()) {
+            events.forEach(showEventAndParent);
+            return;
+        }
+
+        var matchingEvents = findMatchingEvents();
+        var nonMatchingEvents = Util.arrayDiff(events, matchingEvents);
+        matchingEvents.forEach(showEventAndParent);
+        nonMatchingEvents.forEach(function(e){
+            $(e).hide();
+        });
+
+
     }
 
     /**
@@ -183,53 +205,4 @@ function numVisibleChildEvents(childEvents) {
         }
     });
     return visible;
-}
-
-/**
- * This function checks if an event
- * has any of the requested categories
- * or takes place in any of the requested locations.
- *
- * @param eventCategories
- * @returns {boolean}
- */
-function attributesMatchFilters(eventCategories, eventLocation) {
-    function matchingLocation(location){
-        if (activeLocations.length == 0) return true;
-        return (activeLocations.indexOf(location) >= 0);
-    }
-
-    function matchingCategories(categories) {
-        if (activeCategories.length == 0) return true;
-        for (var i = 0; i < activeCategories.length; i++) {
-            if (eventCategories.indexOf(activeCategories[i]) >= 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-    return (matchingCategories(eventCategories) && matchingLocation(eventLocation));
-}
-
-/**
- * Given a change in filter state
- * Run through the list of active filters
- * and insert html elements to represent them.
- */
-function updateActiveFilters(){
-    refreshFilterView();
-    var filterHTML = '';
-    for (var i = 0; i < activeFilters.length; i++) {
-        var filterName = activeFilters[i];
-        var removeLink = ' <a href="" class="remove-filter" data-toggle="' + filterName + '"> [X] </a>';
-        filterHTML += '<li>' + filterName.titleize() + removeLink + '</li>';
-    }
-    $('ul.active-filters_js').html(filterHTML);
-}
-
-
-function toggleLongDescription() {
-    $(this).hide();
-    $(this).siblings('.long-description').slideToggle();
-    return false;
 }
