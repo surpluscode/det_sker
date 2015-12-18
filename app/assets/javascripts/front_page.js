@@ -152,8 +152,10 @@ function evaluateShown(){
             } else if (type == 'location') {
                 label_type = 'label-success';
             }
-            tag = "<span class='tag label " + label_type + "'>";
-            tag += name;
+            var tag = "<span class='tag label " + label_type + "'>";
+            // present tag text in human readable format
+            var text = $('[data-toggle="' + name + '"]').text();
+            tag += text.substr(0, text.indexOf('('));
             tag += "<a class='active' data-role='filter-link' data-filter-type='" + type + "' data-toggle='" + name + "'>";
             tag += "<span class=\"remove glyphicon glyphicon-remove glyphicon-white\"></span></a></span>";
             return tag;
