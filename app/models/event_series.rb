@@ -105,13 +105,14 @@ class EventSeries < ActiveRecord::Base
       .order('categories.danish desc')
   end
 
-  def self.repeating_grouped
-    grouped = {}
+  def self.repeating_by_day
+    days = Date::DAYS_INTO_WEEK.transform_values { |_| [] } # create hash in style { :dayname => [] }
     self.active_weekly.each do |series|
-      grouped[series.categories.first] = [] unless grouped.has_key? series.categories.first
-      grouped[series.categories.first] << series
+      series.days.split(',').each do |day|
+        days[day.downcase.to_sym] << series if days.has_key?(day.downcase.to_sym)
+      end
     end
-    grouped
+    days
   end
 
   private

@@ -254,3 +254,11 @@ en:
     show:
       unconfirmed: "The user has not confirmed their account yet."
     email_must_match: "You have supplied two different email addresses!"
+  day_names:
+     Sunday: Sunday
+     Monday: Monday
+     Tuesday: Tuesday
+     Wednesday: Wednesday
+     Thursday: Thursday
+     Friday: Friday
+     Saturday: Saturday
