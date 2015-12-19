@@ -1,6 +1,7 @@
 <div class="col-md-4">
   <h2 class="section-heading"><%= t '.title' %></h2>
   <% weekly.each do |day, series_arr| %>
+      <% next if series_arr.blank? %>
       <h3><%= I18n.t("day_names.#{day.to_s.titleize}") %></h3>
   <% series_arr.each do |series| %>
       <div class="recurring-event row">
