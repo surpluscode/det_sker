@@ -79,7 +79,7 @@ function evaluateShown(){
             return (activeCategories.length == 0 && activeLocations.length == 0)
         }
 
-        function findMatchingEvents(){
+        function findMatching(){
             var eventsWithValidCategory = [];
             var eventsWithValidLocation = [];
             activeCategories.forEach(function(cat) {
@@ -98,7 +98,13 @@ function evaluateShown(){
             } else if (activeLocations.length > 0) {
                 matchingEvents = eventsWithValidLocation;
             }
-            return matchingEvents;
+            var matchingParents = [];
+            matchingEvents.forEach(function(event){
+                var parentId = $(event).attr('data-parent');
+                var parent = window.document.getElementById(parentId);
+                matchingParents.push(parent);
+            });
+            return { events: matchingEvents, parents: matchingParents };
         }
 
         var events = $('[data-role="event"]').toArray();
@@ -107,33 +113,22 @@ function evaluateShown(){
             return;
         }
 
-        var matchingEvents = findMatchingEvents();
+        var matching = findMatching();
+        var matchingEvents = matching.events;
+        var matchingParents = matching.parents;
         var nonMatchingEvents = Util.arrayDiff(events, matchingEvents);
+        var parents = $('[data-role="day"]').toArray();
+        var nonMatchingParents = Util.arrayDiff(parents, matchingParents);
         matchingEvents.forEach(showEventAndParent);
         nonMatchingEvents.forEach(function(e){
             $(e).hide();
         });
-
-
-    }
-
-    /**
-     * If a date has no visible child events, hide it
-     * Otherwise, show it.
-     */
-    function evaluateDateVisibility() {
-        $('[data-role="day"]').each(function (i) {
-            var childEvents = $(this).find('[data-role="event"]');
-            var numVisible = numVisibleChildEvents(childEvents);
-            if (numVisible > 0) {
-                $(this).show();
-                // update the number contained within the header
-                $(this).find('[data-role="day-event-count"]').text('(' + numVisible + ')');
-            } else {
-                $(this).hide();
-            }
+        nonMatchingParents.forEach(function(e){
+            $(e).hide();
         });
+
     }
+
 
     /**
      * Create a description of the currently active filters based on
@@ -188,7 +183,6 @@ function evaluateShown(){
     }
 
     evaluateEventVisibility();
-    evaluateDateVisibility();
     evaluateFilterDescription();
 }
 
