@@ -1,13 +1,19 @@
+<%
+   data_attrs = {
+    categories: categories_as_string(event.categories),
+    location: event.location.display_name.parameterize('_'),
+    role: 'event',
+    parent: parent_id.to_s
+   }
+%>
+<%  data_attrs.merge!(rule: 'weekly') if event.weekly?  %>
 
-<div class='event-container'
-     data-categories="<%= categories_as_string(event.categories) %>"
-     data-location="<%= event.location.display_name.parameterize('_') %>"
-     data-role="event" data-parent="<%= parent_id if defined? parent_id%>">
-  <%= link_to '', '#', name: event.id, data: { remote: true } %>
+<%= content_tag :div, class: 'event-container', data: data_attrs do %>
+
   <%= schema_json(event) %>
   <%# In mobile view the title line is broken up into two lines %>
   <span class="col-xs-12 col-md-6 col-md-push-2 event-title">
-       	<%= link_to(title_display(event), event) %>
+      <%= link_to(title_display(event), event) %>
   </span>
 
   <span class="col-xs-2 col-md-2 col-md-pull-6">
@@ -20,9 +26,9 @@
   </span>
       
   <span class="col-md-2 hidden-xs">
-        <% event.categories.each do |cat| %>
-            <span class=""><%= cat.send(t(:language)).titleize %></span>
-        <% end %>
+    <% event.categories.each do |cat| %>
+        <%= cat.send(t(:language)).titleize %>
+    <% end %>
   </span>
   <span class="col-md-2 pull-right">
   <a href="<%= url_for(event.location) %>"title="<%= event.location.description.truncate(120) %>"
@@ -30,4 +36,5 @@
     <%= event.location.display_name %>
   </a>
   </span>
-</div>
+
+<% end %>

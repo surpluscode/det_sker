@@ -1,23 +1,20 @@
 		<div class="day row" id="<%= id %>" data-role="day">
 			<div class="col-xs-12">
-
 				<h2>
 					<% if defined? day.date %>
-					<%= format_date(day.date) %>
+					  <%= format_date(day.date) %>
 					<% else %>
-					<%= t '.in_progress' %>
+					  <%= t '.in_progress' %>
 					<% end %>
-
-					<span data-role="day-event-count"></span>
 				</h2>
 			</div>
 
 			<div class="row">
 				<div class="col-xs-12">						
 					<% day.events.each do |event| %>
-					<% cache event do %>
-					<%= render partial: 'events/event', object: event, locals: { parent_id: id } %>
-					<% end %>
+            <% cache event do %>
+              <%= render partial: 'events/event', object: event, locals: { parent_id: id } %>
+            <% end %>
 					<% end %>
 				</div>
 			</div>
