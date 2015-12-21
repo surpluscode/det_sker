@@ -1,9 +1,9 @@
 <% @posts.each do |post| %>
-<% cache post do %>
-<div class="alert alert-info center-block">
-	<%= link_to(post.title, post) %>
-</div>
-<% end %>
+    <% cache post do %>
+        <div class="alert alert-info center-block">
+          <%= link_to(post.title, post) %>
+        </div>
+    <% end %>
 <% end %>
 
 <div class="container">
@@ -30,15 +30,17 @@
              locals: {filter_categories: @calendar.filter_categories,
                       filter_locations: @calendar.filter_locations }
   %>
-<% if @calendar.in_progress.size > 0 %>
-    <%= render partial: 'day', object: @calendar.in_progress, locals: { id: 'inProgress' } %>
-<% end %>
+  <div class="col-xs-12 col-sm-9 col-sm-pull-2">
+    <% if @calendar.in_progress.size > 0 %>
+        <%= render partial: 'day', object: @calendar.in_progress, locals: { id: 'inProgress' } %>
+    <% end %>
 
-<% @calendar.days.each do |day| %>
-    <%= render partial: 'day', object: day, locals: { id: day.date}  %>
-<% end %>
-</br>
-<div class="row center-block end-of-events">
-    <p class="text-center text-uppercase"><%= t '.end_of_events' %></p>
-</div>
+    <% @calendar.days.each do |day| %>
+        <%= render partial: 'day', object: day, locals: { id: day.date}  %>
+    <% end %>
+    </br>
+    <div class="row center-block end-of-events">
+      <p class="text-center text-uppercase"><%= t '.end_of_events' %></p>
+    </div>
+  </div>
 </div>

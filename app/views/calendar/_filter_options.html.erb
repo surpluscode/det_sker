@@ -1,29 +1,28 @@
 <div class="category-filter hidden-xs col-sm-2 col-sm-push-10">
-<div class="category-filter-affix" data-spy="affix" data-offset-top="800">
-  <h4><%= t '.filter_header' %></h4>
-  <dl id="filter-list_js">
-    <div class="row">
+  <div class="category-filter-affix" data-spy="affix" data-offset-top="800">
+    <h4><%= t '.filter_header' %></h4>
+    <dl id="filter-list_js">
+      <div class="row">
+        <div class="col-xs-6 col-sm-12">
+          <dt><%= t '.category_filter_heading' %></dt>
+          <div class="filter-cat">
+            <%= render partial: 'category_filter_list',
+                       locals: { filter_objects: filter_categories, data_type: 'category'}
+            %>
+          </div>
+        </div>
 
 
-      <div class="col-xs-6 col-sm-12">
-        <dt><%= t '.category_filter_heading' %></dt>
-        <div class="filter-cat">
-          <%= render partial: 'category_filter_list', locals: {
-                                                            filter_objects: filter_categories, data_type: 'category'} %>
+        <div class="col-xs-6 col-sm-12">
+          <dt><%= t '.location_filter_heading' %></dt>
+          <div class="filter-location">
+            <%= render partial: 'filter_list',
+                       locals: { filter_objects: filter_locations, data_type: 'location'}
+            %>
+          </div>
         </div>
       </div>
+    </dl>
 
-
-      <div class="col-xs-6 col-sm-12">
-        <dt><%= t '.location_filter_heading' %></dt>
-        <div class="filter-location">
-          <%= render partial: 'filter_list', locals: {
-                                                   filter_objects: filter_locations, data_type: 'location'} %>
-        </div>
-      </div>
-    </div>
-  </dl>
-
+  </div>
 </div>
-</div>
-<div class="col-xs-12 col-sm-9 col-sm-pull-2">
