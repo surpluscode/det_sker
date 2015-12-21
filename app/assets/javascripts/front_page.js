@@ -39,17 +39,18 @@ function filterCategory(){
     var $allMatching = $('[data-toggle="' + filter + '"]');
     var type = $this.attr('data-filter-type');
     var filterArray;
+    var activeClasses = 'active tag label label-primary';
     if (type == 'category') {
         filterArray = activeCategories;
     } else if (type == 'location') {
         filterArray = activeLocations;
     }
     if (activeFilters.indexOf(filter) == -1) {
-        $this.addClass('active tag label label-primary');
+        $this.addClass(activeClasses);
         activeFilters.push(filter);
         filterArray.push(filter);
     } else if ($this.hasClass('active')){
-        $allMatching.removeClass('active tag label label-primary');
+        $allMatching.removeClass(activeClasses);
         activeFilters.remove(filter);
         filterArray.remove(filter);
     }
