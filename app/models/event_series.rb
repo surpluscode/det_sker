@@ -112,6 +112,9 @@ class EventSeries < ActiveRecord::Base
         days[day.downcase.to_sym] << series if days.has_key?(day.downcase.to_sym)
       end
     end
+    days.each do |day, events|
+      days[day] = events.sort { |a,b| a.start_time <=> b.start_time }
+    end
     days
   end
 
