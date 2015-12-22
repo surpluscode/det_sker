@@ -56,7 +56,7 @@ class Calendar
   # add it to the events for that day. Otherwise,
   # create a new Day object
   def get_coming_events
-    @events = Event.current_events
+    @events = (Event.current_non_repeating + Event.current_non_weekly)
     @events.each do |e|
       # if event has a start time < now
       # add to current event container

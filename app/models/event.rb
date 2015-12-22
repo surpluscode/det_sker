@@ -40,8 +40,29 @@ class Event < ActiveRecord::Base
     end 
   end
 
+  def weekly?
+    event_series.present? && event_series.rule == 'weekly'
+  end
+
   def self.current_events
-    self.includes(:user, :location).order(:start_time).where('end_time > ?', DateTime.now)
+    self.includes(:user, :location, :event_series)
+        .order(:start_time)
+        .where('events.end_time > ?', DateTime.now)
+  end
+
+  def self.current_non_weekly
+    self.includes(:user, :location)
+      .joins(:event_series)
+      .where.not('event_series.rule': 'weekly')
+      .order(:start_time)
+      .where('events.end_time > ?', DateTime.now)
+  end
+
+  def self.current_non_repeating
+    self.includes(:user, :location)
+      .where('end_time > ?', DateTime.now)
+      .where(event_series_id: nil)
+      .order(:start_time)
   end
 
   def self.featured_events
