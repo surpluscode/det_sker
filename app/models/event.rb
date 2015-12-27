@@ -12,6 +12,8 @@ class Event < ActiveRecord::Base
   validates_attachment_file_name :picture, matches: [/png\Z/, /jpe?g\Z/]
   validates_with AttachmentSizeValidator, attributes: :picture, less_than:  3.megabytes
 
+  scope :coming, -> { where('events.end_time > ?', DateTime.now) }
+
   def in_progress?
     start_time < DateTime.now && end_time > DateTime.now
   end
@@ -45,24 +47,24 @@ class Event < ActiveRecord::Base
   end
 
   def self.current_events
-    self.includes(:user, :location, :event_series)
-        .order(:start_time)
-        .where('events.end_time > ?', DateTime.now)
+    self.includes(:user, :location, :event_series).coming
+  end
+
+  def self.main_calendar
+    Event.current_non_repeating + Event.current_non_weekly
   end
 
   def self.current_non_weekly
     self.includes(:user, :location)
       .joins(:event_series)
       .where.not('event_series.rule': 'weekly')
-      .order(:start_time)
-      .where('events.end_time > ?', DateTime.now)
+      .coming
   end
 
   def self.current_non_repeating
     self.includes(:user, :location)
-      .where('end_time > ?', DateTime.now)
+      .coming
       .where(event_series_id: nil)
-      .order(:start_time)
   end
 
   def self.featured_events
