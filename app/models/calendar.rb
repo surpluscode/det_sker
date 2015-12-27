@@ -3,15 +3,13 @@ class Calendar
   attr_reader :filter_categories, :filter_locations, :events, :in_progress, :highlights, :weekly
 
   def initialize(type = :coming)
-    @days = {}
-    @in_progress = EventContainer.new
-    if type == :coming
-      get_coming_events
-      get_filter_categories
-      get_filter_locations
-      @highlights = Event.highlights(3)
-      @weekly = EventSeries.repeating_by_day
-    end
+    return unless type == :coming
+    @events =  Event.main_calendar
+    @in_progress, @days = Calendar.arrange(@events)
+    @filter_categories = Calendar.filter_categories_for(@events)
+    @filter_locations = Calendar.filter_locations_for(@events)
+    @highlights = Event.highlights(3)
+    @weekly = EventSeries.repeating_by_day
   end
 
   # Accessor method - convert the days hash we use
@@ -21,14 +19,12 @@ class Calendar
     @days.values.sort {|x,y| x.date <=> y.date}
   end
 
-  private
-
   # Create an Array of Arrays consisting of the locations
   # present within this calendar, together with
   # their count e.g. [[myplace, 2], [yours, 1]]
-  def get_filter_locations
+  def self.filter_locations_for(events)
     locations = {}
-    @events.each do |e|
+    events.each do |e|
       next unless e.location.present?
       if locations.has_key? e.location.display_name
         locations[e.location.display_name] += 1
@@ -36,18 +32,18 @@ class Calendar
         locations[e.location.display_name] = 1
       end
     end
-    @filter_locations = locations.sort_by(&:last).reverse
+    locations.sort_by(&:last).reverse
   end
 
   # Create an Array of Arrays consisting of the locations
   # present within this calendar, together with
   # their count e.g. [[party, 2], [demo, 1]]
-  def get_filter_categories
+  def self.filter_categories_for(events)
     categories = {}
-    Category.current_categories.each do |cat|
+    Category.categories_for(events).each do |cat|
      categories[cat['id']] = cat['num'].to_i
     end
-    @filter_categories = categories.sort_by(&:last).reverse
+    categories.sort_by(&:last).reverse
   end
 
   # Based on the dates of the events given
@@ -55,26 +51,24 @@ class Calendar
   # Day objects. If an event date is already present,
   # add it to the events for that day. Otherwise,
   # create a new Day object
-  def get_coming_events
-    @events = (Event.current_non_repeating + Event.current_non_weekly)
-    @events.each do |e|
+  def self.arrange(events)
+    days = {}
+    in_progress = EventContainer.new
+    events.each do |e|
       # if event has a start time < now
       # add to current event container
       if e.in_progress?
-        @in_progress.add_event(e)
+        in_progress.add_event(e)
       else
         start_date = e.start_time.to_date
-        if @days.has_key? start_date
-          @days[start_date].add_event(e)
+        if days.has_key? start_date
+          days[start_date].add_event(e)
         else
           d = Day.new(e)
-          @days.store(d.date, d)
+          days.store(d.date, d)
         end
       end
     end
-    self
+    [in_progress, days]
   end
-
-
-
 end
