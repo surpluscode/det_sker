@@ -6,8 +6,8 @@ class Calendar
     return unless type == :coming
     @events =  Event.main_calendar
     @in_progress, @days = Calendar.arrange(@events)
-    @filter_categories = Calendar.filter_categories_for(@events)
-    @filter_locations = Calendar.filter_locations_for(@events)
+    @filter_categories = Calendar.filter_categories_for(@events) || []
+    @filter_locations = Calendar.filter_locations_for(@events) || []
     @highlights = Event.highlights(3)
     @weekly = EventSeries.repeating_by_day
   end
@@ -23,6 +23,7 @@ class Calendar
   # present within this calendar, together with
   # their count e.g. [[myplace, 2], [yours, 1]]
   def self.filter_locations_for(events)
+    return if events.empty?
     locations = {}
     events.each do |e|
       next unless e.location.present?
@@ -39,6 +40,7 @@ class Calendar
   # present within this calendar, together with
   # their count e.g. [[party, 2], [demo, 1]]
   def self.filter_categories_for(events)
+    return if events.empty?
     categories = {}
     Category.categories_for(events).each do |cat|
      categories[cat['id']] = cat['num'].to_i

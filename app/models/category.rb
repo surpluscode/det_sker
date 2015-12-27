@@ -10,6 +10,7 @@ class Category < ActiveRecord::Base
   # (ruby iteration on in-mem object plus one query rather than n queries where n is num events)
   def self.categories_for(events)
     ids = events.collect(&:id)
+    return [] if ids.empty?
     ActiveRecord::Base.connection.execute(
         "SELECT category_id AS id, COUNT(event_id) AS num from categories_events
         WHERE event_id IN (#{ids.join(', ')}) GROUP BY category_id;"
