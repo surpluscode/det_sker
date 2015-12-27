@@ -65,6 +65,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'quiet_assets'
   gem 'rack-mini-profiler'
+  gem 'xray-rails'
+  gem 'byebug'
 end
 
 gem 'rails_12factor', group: :production
