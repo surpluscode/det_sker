@@ -2,13 +2,13 @@
    data_attrs = {
     categories: categories_as_string(event.categories),
     location: event.location.display_name.parameterize('_'),
-    role: 'event',
-    parent: parent_id.to_s
+    role: 'event'
    }
 %>
 <%  data_attrs.merge!(rule: 'weekly') if event.weekly?  %>
+<%  data_attrs.merge!(parent: parent_id.to_s) if defined? parent_id %>
 
-<%= content_tag :div, class: 'event-container', data: data_attrs do %>
+<%= content_tag :div, class: 'event-container row', data: data_attrs do %>
 
   <%= schema_json(event) %>
   <%# In mobile view the title line is broken up into two lines %>
