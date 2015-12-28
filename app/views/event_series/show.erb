@@ -26,4 +26,5 @@
         <%= link_to t(:back), event_series_index_path %>
       </div>
   <% end %>
+  <%= render partial: 'calendar/day', collection: @calendar.days  %>
 </div>
