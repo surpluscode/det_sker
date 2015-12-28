@@ -9,6 +9,7 @@ class EventSeriesController < ApplicationController
   end
 
   def show
+    @calendar = Calendar.for(@event_series)
   end
 
   def new
