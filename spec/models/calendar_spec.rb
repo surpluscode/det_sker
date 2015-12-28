@@ -14,7 +14,7 @@ describe Calendar do
       @event_tomorrow = FactoryGirl.create(:event_tomorrow, categories: [other_cat],
                                            location: l2)
       @event_yesterday = FactoryGirl.create(:event_yesterday, location: l2)
-      @cal = Calendar.new(:coming)
+      @cal = Calendar.new
     end
 
     it 'should return an array of days' do
@@ -41,7 +41,7 @@ describe Calendar do
 
     it 'should not crash if an event does not have a location' do
       Event.new(start_time: DateTime.now + 1.hour, end_time: DateTime.now + 2.hour).save(validate: false)
-      expect { Calendar.new(:coming) }.not_to raise_exception
+      expect { Calendar.new }.not_to raise_exception
     end
 
     describe 'filter_categories' do

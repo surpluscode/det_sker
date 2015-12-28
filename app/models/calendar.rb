@@ -2,9 +2,8 @@ class Calendar
 
   attr_reader :filter_categories, :filter_locations, :events, :in_progress, :highlights, :weekly
 
-  def initialize(type = :coming)
-    return unless type == :coming
-    @events =  Event.main_calendar
+  def initialize(events = Event.main_calendar)
+    @events = events
     @in_progress, @days = Calendar.arrange(@events)
     @filter_categories = Calendar.filter_categories_for(@events) || []
     @filter_locations = Calendar.filter_locations_for(@events) || []
@@ -17,6 +16,11 @@ class Calendar
   # sorted asc
   def days
     @days.values.sort {|x,y| x.date <=> y.date}
+  end
+
+  def self.for(event_series)
+    events = event_series.events.coming
+    Calendar.new(events)
   end
 
   # Create an Array of Arrays consisting of the locations

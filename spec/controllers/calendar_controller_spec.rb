@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CalendarController do
   describe 'GET#index' do
     before(:each) do
-      Calendar.new(:coming)
+      Calendar.new
     end
 
     it 'should return a calendar object' do
