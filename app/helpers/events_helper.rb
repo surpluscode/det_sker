@@ -129,14 +129,17 @@ module EventsHelper
   def schema_json(object)
     details = object.to_schema
     case object
-    when Event
+     when Event
       url = event_url(object)
       # we add the picture url here so that we can create a url
       details.merge!(image: image_url(object.best_picture.url(:original))) if object.best_picture.present?
-    when User
-      url = user_url(object)
-    when Location
-      url = location_url(object)
+      when User
+        return if object.is_anonymous?
+        url = user_url(object)
+      when Location
+        url = location_url(object)
+      else
+        return
     end
     details.merge!(url: url)
     content_tag(:script, details.to_json.html_safe, type: 'application/ld+json')
