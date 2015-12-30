@@ -9,7 +9,8 @@ set :output, '/var/vhosts/dukop/det_sker/log/cron.log'
 
 every :day, :at => '10:20pm' do
   fname = Time.now.strftime('%d_%m_%Y_dump.sql')
-  command "pg_dump -U dukop dukop -f #{fname}"
+  command "pg_dump -f #{fname}"
+  command "gzip #{fname}"
 end
 #
 # every 2.hours do

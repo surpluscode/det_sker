@@ -1,5 +1,5 @@
 <div>
-<%= schema_json(@user) %>
+<%= schema_json(@user) unless @user.is_anonymous? %>
   <h2><%= @user.username %></h2>
   <p><%= "#{t('member_since')}: #{format_date(@user.created_at.to_date)}" %></p>
   <p><%= @user.description %>
