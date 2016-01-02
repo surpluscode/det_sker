@@ -30,7 +30,7 @@
              locals: {filter_categories: @calendar.filter_categories,
                       filter_locations: @calendar.filter_locations }
   %>
-  <div class="col-xs-12 col-sm-9 col-sm-pull-2">
+  <div id="calendar-box" class="col-xs-12 col-sm-9 col-sm-pull-2">
     <% if @calendar.in_progress.size > 0 %>
         <%= render partial: 'day', object: @calendar.in_progress, locals: { id: 'inProgress' } %>
     <% end %>

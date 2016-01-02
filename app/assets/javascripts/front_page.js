@@ -8,6 +8,15 @@ $(document).ready(function() {
 
 function activateFrontPageListeners() {
     $('a[data-role="filter-link"]').click(filterCategory);
+    affixFilters();
+}
+
+function affixFilters(){
+    $('#sticky-filters').affix({
+        offset: {
+            top: $('#calendar-box').offset().top
+        }
+    });
 }
 
 
