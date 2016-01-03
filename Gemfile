@@ -14,11 +14,10 @@ gem 'rails_autolink'
 group :production do
   gem 'pg'
   gem 'rmagick', platforms: [:ruby]
-  gem 'unicorn', platforms: [:ruby]
-  gem 'unicorn-worker-killer', platforms: [:ruby]
 end
 
 gem 'humanizer'
+gem 'thin'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
