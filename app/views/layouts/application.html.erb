@@ -10,7 +10,11 @@
   <% if ENV['RAILS_ENV'] == 'production' && (ENV['STAGING'].blank? || ENV['STAGING'] != '1') %>
     <meta name="google-site-verification" content="RijEG_DoxoqsXGbLPFlLEx96pwlGfj1lYcWoRGmrk6s" />
   <% end %>
-  
+  <%# no point in indexing anon user pages - we don't want them to persist in the memory of the web %>
+  <% if assigns.has_key?('user') && assigns['user'].is_anonymous? %>
+    <meta name="robots" content="noindex">
+  <% end %>
+
   <script type="text/javascript">
       <%#
       Make our translations accessible to javascript
