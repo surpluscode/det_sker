@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   validates_attachment_file_name :picture, matches: [/png\Z/, /jpe?g\Z/]
   validates_with AttachmentSizeValidator, attributes: :picture, less_than:  3.megabytes
 
-  scope :coming, -> { where('events.end_time > ?', DateTime.now) }
+  scope :coming, -> { where('events.end_time > ?', DateTime.now).order('events.start_time') }
 
   def in_progress?
     start_time < DateTime.now && end_time > DateTime.now
