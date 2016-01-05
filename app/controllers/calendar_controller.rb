@@ -1,6 +1,6 @@
 class CalendarController < ApplicationController
   def index
-    @calendar = Calendar.new(:coming)
+    @calendar = Calendar.new
     @posts = Post.where(featured: true)
   end
 

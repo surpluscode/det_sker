@@ -12,6 +12,8 @@ class Event < ActiveRecord::Base
   validates_attachment_file_name :picture, matches: [/png\Z/, /jpe?g\Z/]
   validates_with AttachmentSizeValidator, attributes: :picture, less_than:  3.megabytes
 
+  scope :coming, -> { where('events.end_time > ?', DateTime.now) }
+
   def in_progress?
     start_time < DateTime.now && end_time > DateTime.now
   end
@@ -40,8 +42,60 @@ class Event < ActiveRecord::Base
     end 
   end
 
+  def weekly?
+    event_series.present? && event_series.rule == 'weekly'
+  end
+
   def self.current_events
-    self.includes(:user, :location, :comments).order(:start_time).where('end_time > ?', DateTime.now)
+    self.includes(:user, :location, :event_series).coming
+  end
+
+  def self.main_calendar
+    Event.current_non_repeating + Event.current_non_weekly
+  end
+
+  def self.current_non_weekly
+    self.includes(:user, :location)
+      .joins(:event_series)
+      .where.not('event_series.rule': 'weekly')
+      .coming
+  end
+
+  def self.current_non_repeating
+    self.includes(:user, :location)
+      .coming
+      .where(event_series_id: nil)
+  end
+
+  def self.featured_events
+    self.current_events.where(featured: true).limit(3)
+  end
+
+  def self.non_featured_events
+    self.current_events
+        .where.not(featured: true)
+        .where('event_series_id IS NULL')
+  end
+
+  # Highlights is composed of num events where
+  # these are composed of featured events and non-featured events
+  def self.highlights(num)
+    featured = self.featured_events
+    if featured.size < num
+      featured + self.non_featured_events.take(num - featured.size)
+    else
+      featured
+    end
+  end
+
+  # The repeating events that are occurring this week
+  def self.repeating_this_week
+    self.select('id, event_series_id')
+      .where('end_time > ?', DateTime.now)
+      .where('start_time >= ?', DateTime.now)
+      .where('start_time <= ?', DateTime.now + 1.week)
+      .where('event_series_id > 0')
+      .where('cancelled IS NULL OR cancelled = FALSE')
   end
 
   # Return Event object given a Date, Time, Time, attribute Hash

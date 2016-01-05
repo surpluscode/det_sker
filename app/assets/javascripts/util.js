@@ -64,3 +64,18 @@ Number.prototype.isNumeric = function() {
     return true
 };
 
+window.Util = function(){};
+Util.intersection = function(a, b) {
+        return a.filter(
+            function(el) {
+                return b.indexOf(el) >= 0;
+            }
+        );
+    };
+Util.arrayDiff = function(a, b) {
+        return a.filter(
+            function(el) {
+                return b.indexOf(el) < 0;
+            }
+        );
+    };

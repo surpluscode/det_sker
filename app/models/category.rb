@@ -5,14 +5,15 @@ class Category < ActiveRecord::Base
 
   # Return a grouped set of categories containing current events
   # we need to use raw SQL here because we don't have a CategoriesEvents model
-  # we can refer to.
-  # This is dangerous because the SQL might not be compatible across dbs
-  def self.current_categories
+  # we can refer to. It could also be possible to iterate through all events to
+  # load their associated categories, but this is presumed to be faster
+  # (ruby iteration on in-mem object plus one query rather than n queries where n is num events)
+  def self.categories_for(events)
+    ids = events.collect(&:id)
+    return [] if ids.empty?
     ActiveRecord::Base.connection.execute(
-         "SELECT c.id, COUNT(*) AS num from categories_events AS ce, events AS e, categories AS c
-          WHERE ce.event_id = e.id AND ce.category_id = c.id
-          AND e.end_time > '#{Time.now.to_s}'
-          GROUP BY c.id"
+        "SELECT category_id AS id, COUNT(event_id) AS num from categories_events
+        WHERE event_id IN (#{ids.join(', ')}) GROUP BY category_id;"
      )
   end
 

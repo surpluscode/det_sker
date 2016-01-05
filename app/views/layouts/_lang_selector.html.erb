@@ -1,9 +1,15 @@
 <% if I18n.locale == :en %>
     <li>
-      <%= link_to 'Dansk', url_for(locale: :da) %>
+      <%= link_to url_for(locale: :da) do %>
+          <%= bootstrap_glyphicon('asterisk') %>
+          Dansk
+      <% end %>
     </li>
 <% else %>
     <li>
-      <%= link_to 'English', url_for(locale: :en) %>
+      <%= link_to url_for(locale: :en) do %>
+          <%= bootstrap_glyphicon('asterisk') %>
+          English
+      <% end %>
     </li>
 <% end %>

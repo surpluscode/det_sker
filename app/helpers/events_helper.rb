@@ -36,7 +36,11 @@ module EventsHelper
   end
 
   def categories_as_string(categories, title = false)
-    categories.map { |cat| cat.send(t :language) }.join(' ')
+    categories.map { |cat| transl_cat(cat) }.join(' ')
+  end
+
+  def transl_cat(cat)
+    cat.send(t :language) rescue ''
   end
 
   def display_repetition_rule(series)
@@ -106,7 +110,7 @@ module EventsHelper
   # supply only the last component of the icon name
   # e.g. 'off', 'cog' etc
   def bootstrap_glyphicon(icon, classes = '')
-    content_tag(:span, nil, class: "glyphicon glyphicon-#{icon} #{classes}").html_safe
+    content_tag(:span, nil, class: "glyphicon glyphicon-#{icon} #{classes}", aria_hidden: true).html_safe
   end
 
   def bootstrap_success(message)

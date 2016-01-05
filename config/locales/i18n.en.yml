@@ -1,0 +1,4 @@
+en:
+  time:
+    formats:
+      header: ! '%A %B %e   %H.%M'

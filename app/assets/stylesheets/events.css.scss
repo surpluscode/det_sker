@@ -15,13 +15,6 @@ input, textarea, .select_group {
   padding: 10px 0px
 }
 
-.event-details {
-  margin-top: 5px;
-}
-
-.event-topbar_js {
-  cursor: pointer;
-}
 .event-category {
   border: 1px solid #000000;
   padding: 1px;
@@ -34,7 +27,7 @@ input, textarea, .select_group {
   display: none;
 }
 
-dl#filter-list_js {
+dl#filter-list {
   .active {
     color: #fff;
   }
@@ -103,4 +96,8 @@ dl#filter-list_js {
 .end-of-events {
   color: #ababab;
 
+}
+
+.affix {
+  top:0;
 }

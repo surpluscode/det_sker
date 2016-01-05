@@ -196,4 +196,5 @@ da:
       long: ! '%A d. %e. %B %Y, %H.%M'
       short: ! '%e. %b %Y, %H.%M'
       custom: ! '%a d. %d %b %Y'
+      header: ! '%A den %e. %B kl. %H.%M'
     pm: ''

@@ -94,6 +94,30 @@ class EventSeries < ActiveRecord::Base
     self.description = val
   end
 
+  # Returns the series objects with
+  # weekly events occurring this week
+  def self.active_weekly
+    self.where('start_date <= ?', DateTime.now)
+        .where('expiry >= ?', DateTime.now)
+      .includes(:categories)
+      .includes(:location)
+      .where("rule LIKE 'weekly'")
+      .order('categories.danish desc')
+  end
+
+  def self.repeating_by_day
+    days = Date::DAYS_INTO_WEEK.transform_values { |_| [] } # create hash in style { :dayname => [] }
+    self.active_weekly.each do |series|
+      series.days.split(',').each do |day|
+        days[day.downcase.to_sym] << series if days.has_key?(day.downcase.to_sym)
+      end
+    end
+    days.each do |day, events|
+      days[day] = events.sort { |a,b| a.start_time <=> b.start_time }
+    end
+    days
+  end
+
   private
 
   # Use Chronic to convert the rules to Date objects
