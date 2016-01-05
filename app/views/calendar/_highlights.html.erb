@@ -23,7 +23,8 @@
             </div>
           </div>
           <h3 class="upcoming-event-title"><%= link_to(event.title, event) %></a></h3>
-          <p><%= event.short_description.truncate_words(118) %></p>
+          <%# Somewhat clumsy, but using the Rails truncate_words method caused errors %>
+          <p><%= truncate(event.short_description, length: 450, separator: ' ') %></p>
         </div>
       </div>
   <% end %>
