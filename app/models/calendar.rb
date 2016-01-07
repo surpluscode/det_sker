@@ -7,7 +7,7 @@ class Calendar
     @in_progress, @days = Calendar.arrange(@events)
     @filter_categories = Calendar.filter_categories_for(@events) || []
     @filter_locations = Calendar.filter_locations_for(@events) || []
-    @highlights = Event.highlights(3)
+    @highlights = Event.highlights(5)
     @weekly = EventSeries.repeating_by_day
   end
 
