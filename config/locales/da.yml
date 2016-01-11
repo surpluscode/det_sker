@@ -48,6 +48,7 @@ da:
       security: "Sikkerhed på DukOp"
       categories: "Kategorier"
       new: "Nyt event"
+      link_to_root: "Navigèr til forsiden"
     created:
       message: "%{_class} \"%{name}\" oprettet!"
     updated:

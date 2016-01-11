@@ -80,7 +80,9 @@
     </div>
 
     <div class="site-logo">
-      <%= image_tag("dukopheader.png", alt:"Duk Op") %>
+      <%= link_to root_path do %>
+        <%= image_tag("dukopheader.png", alt: t('.link_to_root')) %>
+      <% end %>
     </div>
 
     <div class="navbar-main collapse navbar-collapse" id="navbar-main">
