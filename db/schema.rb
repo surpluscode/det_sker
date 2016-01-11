@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151121214109) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string   "danish",     limit: 255
     t.string   "english",    limit: 255
@@ -20,24 +23,24 @@ ActiveRecord::Schema.define(version: 20151121214109) do
     t.datetime "updated_at"
   end
 
-  add_index "categories", ["danish"], name: "index_categories_on_danish", unique: true
-  add_index "categories", ["english"], name: "index_categories_on_english", unique: true
+  add_index "categories", ["danish"], name: "index_categories_on_danish", unique: true, using: :btree
+  add_index "categories", ["english"], name: "index_categories_on_english", unique: true, using: :btree
 
   create_table "categories_event_series", id: false, force: :cascade do |t|
     t.integer "event_series_id"
     t.integer "category_id"
   end
 
-  add_index "categories_event_series", ["category_id"], name: "index_categories_event_series_on_category_id"
-  add_index "categories_event_series", ["event_series_id"], name: "index_categories_event_series_on_event_series_id"
+  add_index "categories_event_series", ["category_id"], name: "index_categories_event_series_on_category_id", using: :btree
+  add_index "categories_event_series", ["event_series_id"], name: "index_categories_event_series_on_event_series_id", using: :btree
 
   create_table "categories_events", id: false, force: :cascade do |t|
     t.integer "event_id"
     t.integer "category_id"
   end
 
-  add_index "categories_events", ["category_id"], name: "index_categories_events_on_category_id"
-  add_index "categories_events", ["event_id"], name: "index_categories_events_on_event_id"
+  add_index "categories_events", ["category_id"], name: "index_categories_events_on_category_id", using: :btree
+  add_index "categories_events", ["event_id"], name: "index_categories_events_on_event_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.text    "content"
@@ -46,26 +49,26 @@ ActiveRecord::Schema.define(version: 20151121214109) do
     t.integer "user_id"
   end
 
-  add_index "comments", ["event_id"], name: "index_comments_on_event_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["event_id"], name: "index_comments_on_event_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "event_series", force: :cascade do |t|
-    t.string   "title",                limit: 255
+    t.string   "title"
     t.text     "description"
-    t.string   "price",                limit: 255
+    t.string   "price"
     t.boolean  "cancelled"
     t.integer  "user_id"
     t.integer  "location_id"
     t.boolean  "comments_enabled"
-    t.string   "link",                 limit: 255
-    t.string   "picture_file_name",    limit: 255
-    t.string   "picture_content_type", limit: 255
+    t.string   "link"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "rule",                 limit: 255
-    t.string   "days",                 limit: 255
+    t.string   "rule"
+    t.string   "days"
     t.date     "expiry"
     t.date     "start_date"
     t.time     "start_time"
@@ -77,8 +80,8 @@ ActiveRecord::Schema.define(version: 20151121214109) do
     t.integer "category_id"
   end
 
-  add_index "event_series_categories", ["category_id"], name: "index_event_series_categories_on_category_id"
-  add_index "event_series_categories", ["event_series_id"], name: "index_event_series_categories_on_event_series_id"
+  add_index "event_series_categories", ["category_id"], name: "index_event_series_categories_on_category_id", using: :btree
+  add_index "event_series_categories", ["event_series_id"], name: "index_event_series_categories_on_event_series_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "title",                limit: 255
@@ -102,10 +105,10 @@ ActiveRecord::Schema.define(version: 20151121214109) do
     t.boolean  "featured",                         default: false
   end
 
-  add_index "events", ["event_series_id"], name: "index_events_on_event_series_id"
-  add_index "events", ["featured"], name: "index_events_on_featured"
-  add_index "events", ["location_id"], name: "index_events_on_location_id"
-  add_index "events", ["user_id"], name: "index_events_on_user_id"
+  add_index "events", ["event_series_id"], name: "index_events_on_event_series_id", using: :btree
+  add_index "events", ["featured"], name: "index_events_on_featured", using: :btree
+  add_index "events", ["location_id"], name: "index_events_on_location_id", using: :btree
+  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string  "name",           limit: 255
@@ -126,7 +129,7 @@ ActiveRecord::Schema.define(version: 20151121214109) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "posts", ["featured"], name: "index_posts_on_featured"
+  add_index "posts", ["featured"], name: "index_posts_on_featured", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -151,9 +154,9 @@ ActiveRecord::Schema.define(version: 20151121214109) do
     t.text     "description"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end
