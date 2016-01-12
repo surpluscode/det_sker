@@ -38,6 +38,7 @@ class EventSeries < ActiveRecord::Base
   # 1. update all existing events
   # 2. create new events - starting from the last existing event and ending at expiry
   def cascade_update
+    return unless coming_events.present?
     coming_events.all.each do |event|
       # We retain the existing date but update to reflect any changes to start time or end time
       start_time = DateTime.new(event.start_time.year, event.start_time.month, event.start_time.day, self.start_time.hour, self.start_time.min, 0, self.start_time.zone)
