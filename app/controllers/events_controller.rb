@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     event_params.merge!(user_id: current_user.id) if user_signed_in?
     # handle creation of recurring events here
     if params[:recurring] == 'yes'
-      series_params = event_params.merge(event_params[:event_series]).except(:event_series)
+      series_params = event_params.merge(event_params[:event_series]).except(:event_series, :featured)
       @event_series = EventSeries.new(series_params)
       saved = @event_series.save
       notice = I18n.t('event_series.created', name: @event_series.name, num_events: @event_series.coming_events.size)
