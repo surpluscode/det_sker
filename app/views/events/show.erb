@@ -6,22 +6,19 @@
     <%= image_tag @event.best_picture.url(:original), title: @event.title, alt: @event.title %>
   <% end %>
   <h3>
-  
-  
     <%= format_daterange(@event.start_time, @event.end_time) %>
-    <%#= format_datetime(@event.start_time) %>  <%#= format_datetime(@event.end_time) %>
   </h3>
   <h4> 
     <%= link_to(@event.location.full_address, location_path(@event.location)) %>
   </h4>
   <p>
-  
   <%= "#{t('events.event.posted_by')} #{link_to(username(@event.user), @event.user)  if @event.user}".html_safe %>
   </p>
+
   <% if @event.price.present? %>
       <p><strong><%= t 'simple_form.labels.event.price' %>: </strong><%= @event.price %></p>
   <% end %>
-
+  <p><%= link_to(display_repetition_rule(@event.event_series), @event.event_series) if @event.event_series.present? %></p>
   <p>
     <%= auto_link(simple_format(@event.short_description)) %>
     <%= auto_link(simple_format(@event.long_description)) %>
@@ -33,13 +30,13 @@
         <%= link_to(t('.link'), @event.link) %>
       </p>
   <% end %>
+
   <% if current_user && current_user.can_edit?(@event) %>
       <%= link_to t(:edit), edit_event_path(@event) %> |
       <%= link_to t(:delete), event_path(@event), method: :delete, data: { confirm: t('.delete_warning') } %>
   <% end %>
    <% if current_user && @event.event_series.present? && current_user.can_edit?(@event.event_series) %>
     <hr/>
-    <%= display_repetition_rule(@event.event_series) %>
     <div class="hidden-xs">
       <%= link_to t('event_series.edit_link'), edit_event_series_path(@event.event_series) %> 
       <br/>
