@@ -82,7 +82,10 @@ class Event < ActiveRecord::Base
   def self.highlights(num)
     featured = self.featured_events
     if featured.size < num
-      featured + self.non_featured_events.take(num - featured.size)
+      non_featured = self.non_featured_events + self.current_non_weekly
+      # we need to sort because we're adding the non_weeklies to the end of the non-featured set
+      non_featured.sort_by!(&:start_time)
+      featured + non_featured.take(num - featured.size)
     else
       featured
     end
