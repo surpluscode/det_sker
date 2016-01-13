@@ -237,6 +237,7 @@ en:
               or all at once by editing this series. 
     created: "%{name} created with %{num_events} occurrences"
     updated: "%{num_events} occurrences of %{name} updated"
+    deleted: "The series %{name} with %{num_events} occurrences has been deleted"
     events_deleted: "%{number} events slettet"
     form:
       choose_days: Choose one or more days
@@ -251,6 +252,9 @@ en:
                   You can't edit the repetition rule when there are still events active in the series.
                   If you want to change the rule, you should either delete all the remaining events
                   or create a new series. You can still change the start and end time as well as the other attributes.
+    show:
+      delete_warning: "Are you sure you want to delete the series? You will also delete %{num} child events."
+      delete: "Delete series"
   user:
     show:
       unconfirmed: "The user has not confirmed their account yet."

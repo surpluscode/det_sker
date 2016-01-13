@@ -289,6 +289,7 @@ da:
                   eller samlede ved at redigere i selv serien. 
     created: "Serie %{name} oprettet med %{num_events} forekomster!"
     updated: "Serie %{name} med %{num_events} forekomster opdateret."
+    deleted: "Serie %{name} og %{num_events} forekomster slettet."
     events_deleted: "%{number} events slettet"
     form:
       choose_days: 'Vælg en eller flere dage'
@@ -306,6 +307,9 @@ da:
                     Hvis du vil ændre på gentagelses reglen kan du enten <a href="%{url}">slette eksisterende forekomster</a> eller
                     oprette en ny serie. 
                     Du kan dog godt opdatere start og slut tid og alle andre attributer.
+    show:
+      delete_warning: "Er du sikker på du vil slette serien? Det vil også slette %{num} forekomster."
+      delete: "Slet serien"
   day_names:
      Sunday: søndag
      Monday: mandag

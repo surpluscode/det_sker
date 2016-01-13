@@ -54,9 +54,12 @@ class EventSeriesController < ApplicationController
   end
 
   def destroy
+    num = @event_series.events.size
     @event_series.destroy
     respond_to do |format|
-      format.html { redirect_to events_url }
+      format.html do
+        redirect_to root_path, notice: I18n.t('event_series.deleted', name: @event_series.name, num_events: num)
+      end
       format.json { head :no_content }
     end
   end
