@@ -30,6 +30,7 @@ class LocationsController < ApplicationController
   end
 
   def show
+    @calendar = Calendar.for(@location)
   end
 
   def edit

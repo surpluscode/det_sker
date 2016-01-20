@@ -12,10 +12,6 @@
   <% end %>
   <div>
     <h2><%= t :coming_events %></h2>
-    <% @location.coming_events.each do |event| %>
-      <% cache event do %>
-        <%= render partial: 'events/event', object: event, locals: { show_date: true } %>
-      <% end %>
-    <% end %>
+    <%= render partial: 'calendar/day', collection: @calendar.days  %>
   </div>
 </div>
