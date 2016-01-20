@@ -26,7 +26,7 @@ class EventSeriesController < ApplicationController
       if @event_series.save
         format.html {
          redirect_to root_path, notice: 
-          I18n.t('event_series.created', name: @event_series.name, num_events: @event_series.coming_events.size)
+          I18n.t('event_series.created',  link: url_for(@event_series), name: @event_series.name, num_events: @event_series.coming_events.size)
         }
         format.json { render action: 'show', status: :created, location: @event_series }
       else
@@ -41,7 +41,7 @@ class EventSeriesController < ApplicationController
       if @event_series.update(user_params)
         destroy_image?
         format.html { redirect_to root_path, notice: 
-          I18n.t('event_series.updated', name: @event_series.name, num_events: @event_series.coming_events.size) }
+          I18n.t('event_series.updated', link: url_for(@event_series), name: @event_series.name, num_events: @event_series.coming_events.size) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

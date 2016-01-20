@@ -124,8 +124,8 @@ en:
       edit_event: "Editing event"
     new:
       new_event: "New event"
-    event_updated: "Changes to <a href=\"#%{id}\" class='alert-link'>%{name}</a> saved!"
-    event_created: "Event <a href=\"#%{id}\" class='alert-link'>%{name}</a> created!"
+    event_updated: "Changes to <a href=\"%{link}\" class='alert-link'>%{name}</a> saved!"
+    event_created: "Event <a href=\"%{link}\" class='alert-link'>%{name}</a> created!"
     event_deleted: "Event deleted"
     show:
       link: "More info"
@@ -235,8 +235,8 @@ en:
               You are about to create an event series. This will create a number of events 
               defined by the rule you specify. You can then choose to edit the events individually
               or all at once by editing this series. 
-    created: "%{name} created with %{num_events} occurrences"
-    updated: "%{num_events} occurrences of %{name} updated"
+    created: "<a href=\"%{link}\">%{name}</a> created with %{num_events} occurrences"
+    updated: "%{num_events} occurrences of <a href=\"%{link}\">%{name}</a> updated"
     deleted: "The series %{name} with %{num_events} occurrences has been deleted"
     events_deleted: "%{number} events slettet"
     form:
