@@ -9,7 +9,7 @@ class EventSeries < ActiveRecord::Base
   # TODO: this duplicates functionality in Event.rb so it should be refactored, but modularization caused constant load errors 
   has_attached_file :picture, styles: { original: '500x500>', thumb: '100x100>'}, default_url: 'images/:st'
   validates_attachment_content_type :picture, :content_type => /\Aimage/
-  validates_attachment_file_name :picture, matches: [/png\Z/, /jpe?g\Z/]
+  validates_attachment_file_name :picture, matches: [/png\Z/i, /jpe?g\Z/i]
   validates_with AttachmentSizeValidator, attributes: :picture, less_than:  1.megabytes
 
   after_create :cascade_creation, if: :persisted?
