@@ -39,10 +39,21 @@ module EventsHelper
     categories.map { |cat| transl_cat(cat) }.join(' ')
   end
 
+  # Return the current language string for a category
+  # @param cat Category | String (id)
   def transl_cat(cat)
-    cat.send(t :language) rescue ''
+    cat = Category.find(cat) unless cat.is_a? Category
+    cat.send(t :language).titleize
+  rescue
+    ''
   end
 
+  def render_filter_link(id, name, total, type)
+    link_to "#{name} (#{total})", '',
+            data: { toggle: id, filter_type: type,
+                    role: 'filter-link'
+            }
+  end
   def display_repetition_rule(series)
     # translate the days and convert them to a string
     transl_days = series.day_array.collect { |d| I18n.t("day_names.#{d.titleize}", default: d) }.to_sentence(locale: I18n.locale)

@@ -1,9 +1,7 @@
 <% filter_objects.each do |arr| %>
     <dd>
-      <a href='#' data-toggle="<%= arr.first.to_s.parameterize('_') %>"
-         data-filter-type="<%= data_type %>" data-role="filter-link">
-        <%= arr.first.to_s.titleize  %>
-      (<%= arr.last %>)
-      </a>
+      <% loc_name, loc_total = arr %>
+      <% loc_id = loc_name.parameterize('_') %>
+      <%= render_filter_link(loc_id, loc_name, loc_total, data_type) %>
     </dd>
 <% end %>
