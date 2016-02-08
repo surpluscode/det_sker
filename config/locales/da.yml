@@ -47,7 +47,7 @@ da:
       users: "Brugere"
       security: "Sikkerhed på DukOp"
       categories: "Kategorier"
-      new: "Nyt event"
+      new: "Ny event"
       link_to_root: "Navigèr til forsiden"
     created:
       message: "%{_class} \"%{name}\" oprettet!"
@@ -56,12 +56,12 @@ da:
       basic_message: "Ændringer gemt!"
   calendar:
     index:
-      new_event: "Opret ny begivenhed"
+      new_event: "Opret ny event"
       describe_filters:
         base: Viser begivenheder
         categories: " med kategorier "
         locations: " i "
-      end_of_events: "Ikke flere begivenheder"
+      end_of_events: "Ikke flere events"
       title: "Hele kalenderen"
     filter_options:
       filter_header: "Vis kun"
@@ -73,7 +73,7 @@ da:
       title: "Den kommende tid"
     weekly:
       title: "Faste begivenheder"
-  coming_events: "Kommende begivenheder"
+  coming_events: "Kommende events"
   events:
     comments:
       list:
@@ -100,7 +100,7 @@ da:
         too_big: 'Denne fil er over 3MB!'
         wrong_format: 'Denne fil er ikke en JPEG eller en PNG!'
         ok: Denne fil er lige tilpas.
-      repeating_event: "Gentages begivenheden?"
+      repeating_event: "Gentages din event?"
       every_day: "Hver dag"
       every_week: "Hver uge"
       every_month: "Hver måned"
@@ -108,7 +108,7 @@ da:
       weeks: "uger"
       days: "dage"
       months: "måneder"
-      feature_event?: 'Skal eventen promoveres?'
+      feature_event?: 'Skal din event promoveres?'
     event:
       price: "Pris"
       start_time: "Starter"
@@ -232,7 +232,7 @@ da:
   accounts:
     login:
       title: 'Log ind på en eksisterende konto'
-      explanation: 'Hvis du allerede har en Duk op konto og gerne vil oprette dit event som denne bruger.'
+      explanation: 'Hvis du allerede har en Duk op konto og gerne vil oprette din event som denne bruger.'
     standard:
       title: 'Opret ny konto'
       explanation: >
