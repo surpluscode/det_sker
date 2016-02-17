@@ -88,4 +88,18 @@ FactoryGirl.define do
     content 'bla bla bla'
   end
 
+  factory :event_series do
+    description 'Sample description'
+    start_time DateTime.now
+    end_time DateTime.now + 2.hours
+    title 'Sample event series'
+    location
+    days 'Monday'
+    rule 'weekly'
+    start_date DateTime.now
+    expiry DateTime.now + 1.month
+    user_id 1
+    categories {[FactoryGirl.create(:random_category)]}
+  end
+
 end

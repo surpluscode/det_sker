@@ -52,6 +52,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
+  gem 'byebug'
 end
 
 group :test do
@@ -66,7 +67,6 @@ group :development do
   gem 'quiet_assets'
   gem 'rack-mini-profiler'
   gem 'xray-rails'
-  gem 'byebug'
 end
 
 gem 'rails_12factor', group: :production

@@ -46,14 +46,14 @@ class EventSeries < ActiveRecord::Base
       event.update(event_attributes.merge(start_time: start_time, end_time: end_time))
     end
     date_last_existing = coming_events.order(:start_time).last.start_time.to_date
-    create_events(date_last_existing, expiry)
+    create_events((date_last_existing + 1.day), expiry)
   end
   
   # using rule, create events for this series
   def create_events(start_d, expiry_d)
      if rule == 'weekly'
-      (start_d..expiry_d).each do |date|
-        date_name = Date::DAYNAMES[date.wday]
+       (start_d..expiry_d).each do |date|
+         date_name = Date::DAYNAMES[date.wday]
         if day_array.include? (date_name)
           # create an event on this date
           child = Event.from_date_and_times(date, start_time, end_time, event_attributes)
