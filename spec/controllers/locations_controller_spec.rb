@@ -18,6 +18,18 @@ describe LocationsController do
     end
   end
 
+  describe 'show RSS' do
+    render_views
+    it 'renders correct xml' do
+      l = FactoryGirl.create(:other_location)
+      l.events << FactoryGirl.create(:event)
+      get :show, id: l, format: 'rss'
+      expect {
+        Nokogiri::XML(response.body) { |config| config.strict }
+      }.not_to raise_error
+    end
+  end
+
   describe 'POST#create' do
     before(:each) do
       @user = FactoryGirl.create(:user)

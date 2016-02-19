@@ -1,13 +1,12 @@
 xml.instruct!
 xml.rss version: '2.0' do
   xml.channel do
-    xml.title @location.name
-    xml.link location_url(@location)
-    xml.description(@location.description)
+    xml.title @user.name
+    xml.link location_url(@user)
     xml.docs 'http://cyber.law.harvard.edu/rss/rss.html'
     xml.ttl '30'
 
-    @location.coming_events.each do |event|
+    @user.coming_events.each do |event|
       xml.item do
         xml.title title_display(event)
         xml.link event_url(event)

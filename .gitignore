@@ -20,3 +20,5 @@
 # Ignore uploaded files
 public/system/
 public/assets
+
+.byebug_history

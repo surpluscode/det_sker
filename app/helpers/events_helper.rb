@@ -27,6 +27,15 @@ module EventsHelper
     I18n.localize(d, format: :header)
   end
 
+  def rss_description(event)
+    description = ''
+    description << event.location.display_name
+    description <<  ', '
+    description << format_datetime(event.start_time)
+    description <<  "\n"
+    description << event.short_description
+  end
+
   def title_display(event)
     if event.cancelled?
       "<s>#{event.title}</s> - <span class='text-danger'>#{I18n.t('events.event.cancelled')}</span>".html_safe

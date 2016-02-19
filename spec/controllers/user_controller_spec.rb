@@ -25,6 +25,18 @@ describe UserController do
     end
   end
 
+  describe 'show RSS' do
+    render_views
+    it 'renders correct xml' do
+      u = FactoryGirl.create(:user)
+      u.events << FactoryGirl.create(:event)
+      get :show, id: u, format: 'rss'
+      expect {
+        Nokogiri::XML(response.body) { |config| config.strict }
+      }.not_to raise_error
+    end
+  end
+
   describe 'get#edit/:id' do
     before(:each) do
       @user = FactoryGirl.create(:user)
