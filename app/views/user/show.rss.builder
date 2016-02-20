@@ -2,7 +2,7 @@ xml.instruct!
 xml.rss version: '2.0' do
   xml.channel do
     xml.title @user.name
-    xml.link location_url(@user)
+    xml.link user_url(@user)
     xml.docs 'http://cyber.law.harvard.edu/rss/rss.html'
     xml.ttl '30'
 

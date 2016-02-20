@@ -1,4 +1,5 @@
 <%= schema_json @location %>
+<%= auto_discovery_link_tag(:rss, {format: :rss}, {title: "Feed for location #{@location.display_name}"}) %>
 <div class="event_show">
   <h1><%= @location.try(:display_name) %></h1>
   <h2><%= @location.address %></h2>
