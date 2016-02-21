@@ -95,11 +95,31 @@ FactoryGirl.define do
     title 'Sample event series'
     location
     days 'Monday'
-    rule 'weekly'
     start_date DateTime.now
-    expiry DateTime.now + 1.month
+    expiry DateTime.now + 2.month
     user_id 1
     categories {[FactoryGirl.create(:random_category)]}
+
+    factory :weekly_series do
+      rule 'weekly'
+      expiry DateTime.now + 1.month
+    end
+
+    factory :first_in_month do
+      rule 'first'
+    end
+
+    factory :second_in_month do
+      rule 'second'
+    end
+
+    factory :third_in_month do
+      rule 'third'
+    end
+    factory :last_in_month do
+      rule 'last'
+    end
+
   end
 
 end
