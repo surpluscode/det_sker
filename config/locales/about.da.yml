@@ -16,25 +16,23 @@ da:
 
        <h2><a name="policy">Vores policy</a></h2>
        <p>
-         Formålet af vores politik er at beskytte vores brugere fra overvågning af deres online aktivitet.
-         Hensyn til vores brugeres privatliv har haft stor indflydelse på vores udvikling af dukop.dk.
+          Vi ønsker at beskytte vores brugere mest muligt fra overvågning af deres online aktivitet. Dette hensyn har haft stor indflydelse på vores udvikling af dukop.dk.
        </p>
        <p>
-        Som langt de fleste hjemmesider, foretager vi logning af besøg og aktivitet på hjemmesiden inkl. IP adresser. Det er nødvendigt for at undersøge fejl og identificere angreb.
-        Vi sletter dog alle logfiler efter to dage og vi laver ikke forbindelser mellem IP adresser og brugere.
-        Hvis du vil skjule din IP adress mens du bruger Duk Op, anbefaler vi TOR, som <a href="#protect">beskrevet nedunder</a>.
+        Som langt de fleste hjemmesider, foretager vi logning af besøg og aktivitet på hjemmesiden inkl. IP adresser. Det er nødvendigt for at undersøge fejl og identificere angreb. Vi sletter dog alle logfiler efter to dage og vi laver ikke forbindelser mellem IP adresser og brugere. Hvis du vil skjule din IP adress mens du bruger Duk Op, anbefaler vi TOR, som <a href="#protect">beskrevet nedunder</a>.
        </p>
 
         <p>
-          Af samme grund har vi aktivt fravalgt at koble vores Duk Op login til fx Facebook- og Google-login, som er selskaber, man ikke kan stole på, når det handler om ens data og privacy.
+         Af samme grund har vi aktivt fravalgt at koble vores Duk Op login til fx Facebook- og Google-login, som er selskaber, man ikke kan stole på, når det handler om ens data og privacy.
         </p>
         <p>
           Vi gemmer vores brugeres email adresser i vores database. Det gøre vi for at bekræfte brugere når de opretter sig og for at gøre det muligt at ændre password.
+          Vi benytter også brugerens email til at kontake brugerne, hvis der f.eks. er fejl og mangler på events de har oprettet. Email adresserne er kun synlig for administratore og er ikke offentlige.
           Adgangskoder bliver gemt på et krypteret måde i vores database med brug af bcrypt algoritm. Det betyder at selvom vi har databasen,
           kan vi ikke læse din adgangskode; vi kan kun bekræfte at den du har indtastet er det rigtige når du logger ind.
         </p>
         <p>
-          Duk Op er kun tilgængelig over en sikker forbindelse. Det betyder at den data du sender til applikationen og omvendt bliver altid krypteret for at forhindre andre i at læse det.
+          Duk Op er kun tilgængelig over en sikker forbindelse (HTTPS). Det betyder at den data du sender til applikationen og omvendt bliver altid krypteret for at forhindre andre i at læse det.
         </p>
 
        <h2><a name="users">Duk Ops forskellige brugertyper</a></h2>
@@ -45,7 +43,7 @@ da:
        Alternativt kan du vælge at oprette begivenheder anonymt. Som anonymt bruger bliver du tildelt et automatisk brugernavn, og der kræves ikke et password eller en e-mail adresse. De oprettede begivenheder bliver vist som oprettet af brugeren "Anonymous". Vær opmærksom på, at du kun kan redigere i teksten eller slette begivenheden mens din session er i gang, og ikke efter.</p>
        <p>Sejt, ikke? Jo, men der er alligevel nogle ting du skal være opmærksom på, hvis du vil sikre dig på at der ikke er andre (fx din internetudbyder), der lytter med, når du bruger hjemmesiden, eller hvis du vil benytte dig af alle funktioner her på siden. Så læs videre om hvorfor du skal beskytte dig, eller hop direkte til hvordan du kan gøre det.</p>
 
-       <h4><a name="why">Hvorfor skal jeg tænke på internetsikkerhed?</a></h4>
+       <h2><a name="why">Hvorfor skal jeg tænke på internetsikkerhed?</a></h2>
        På trods at vi ikke registrerer din IP adresse når du besøger hjemmesiden, kan du som regel ikke stole på, at din internetudbyder eller andre aktører ikke følger med i hvad du laver på nettet. Derfor skal du være ekstra opmærksom på at beskytte dig og dit privatliv, når du fx inviterer andre mennekser til at deltage i politiske aktiviteter. Måske sidder du og tænker, at de aktiviteter, du opreklamerer her på Duk Op, er helt uskyldige, og at du ikke har brug for at bekymre dig om internetsikkerhed. Det kan du måske have ret i, men der er minimum to gode grunde til at beskytte dig, når du bruger Duk Op (og alle andre hjemmesider, også!).</p>
        <p>Den første grund handler om vaner: jo mere vi vænner os til at beskytte os i almindelige og &#8220;uskyldige&#8221; situationer på nettet, jo mindre vi bliver nødt til at ændre vores opførelsen når vi ren faktisk har brug for at være anonyme. Så kan det sagtens være at du ikke synes at det foredrag om svenske fuglearter du holder om to uger er noget farligt, men ved at agere på en sikker måde og beskytte dig i dag, kommer du ind i en god vane, og går ikke i panik eller begår fejl, når du skal invitere til en pirat fest eller en blokade om to måneder.</p>
        <p>Den anden gode grund handler om solidaritet: jo flere skjuler deres spor på nettet, jo mindre mistænkeligt ser det ud, når andre, der har mere brug for det end os, gør det. Derfor gør du både dig selv og dine kammerater en tjeneste, ved at passe på din sikkerhed på nettet!</p>
