@@ -19,7 +19,7 @@ describe EventSeries do
       end
       it 'should update the child events' do
         subject.update(description: 'A new description')
-        expect(subject.events.first.short_description).to eql 'A new description'
+        expect(subject.coming_events.first.short_description).to eql 'A new description'
       end
     end
   end
