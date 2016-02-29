@@ -1,5 +1,36 @@
 en:
   about:
+    dukop: |
+      <h1>About Duk Op</h1>
+
+      <p>
+        Duk Op is your guide to what happens in and around Copenhagen, whether you are looking for demonstrations, concerts, parties, meetings, soup kitchens, gardening days, workshops, art exhibitions, film screenings and much more.
+      </p>
+      <p>
+      The idea behind the calendar is that there is a need for a simple and accessible way to get involved and involve others in these cool activities. Money shouldn't be an issue, as you should not be dependent on having the "right" friends on Facebook or on checking ten different online calendars to get an overview of what's happening. Duk Op is a possibility to open up, gather and discover new and exciting projects.
+      </p>
+      <p>
+      The crew behind the homepage does not upload events to the calendar, so Duk Op is entirely dependent on you and your group contributing with your events and activities!
+      </p>
+      <p>
+      Duk Op is a political project. We dream of a different and better world. A world based on principles of freedom, equality and autonomy and without discrimination and oppression in all its forms. We get excited about activism, self-organisation and about initiatives and cultural projects that are more than something you can write on your CV or that you can earn money from. We wish to support places, groups and individuals who share these values. For this reason, events that for instance have a parlamentarian goal or that aim at commercial profit are not welcome on the calendar.
+      </p>
+      <p>
+      Generally, Duk Op aims at hosting open events. However, we do see exceptions, for example in the case of separatistic events that focus on gender. On the other hand, closed member-meetings and the like do not belong on the calendar, but belong to the organisation or group's own communication channels (e.g. mailing-list).
+      </p>
+      <p>
+      We hope that Duk Op can function as a mobilising platform, can make it easier to get involved and involve others and can inspire and motivate by showing all the great activities that are happening out there.
+      </p>
+      <p>
+      If you have questions regarding what you have just read, or about anything else, write as an e-mail to dukop@riseup.net
+      </p>
+      <p>To the security conscious: We have a <a href="https://pgp.mit.edu/pks/lookup?op=get&search=0xE74B09BA26CE1DD7">PGP key</a>.</p>
+
+      <p>
+        The key ID is 0x26CE1DD7. The full key fingerprint is:
+        <pre>Key fingerprint = 5832 0CBF 30E8 8572 F8A4 1943 E74B 09BA 26CE 1DD7</pre>
+      </p>
+
     security: |
       <h1>Duk Op and Online Security</h1>
 
