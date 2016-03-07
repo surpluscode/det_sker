@@ -1,10 +1,17 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :open_graph, :edit, :update, :destroy]
+  before_action :set_presenter, only: [:open_graph]
   #TODO: shouldn't we authenticate the user before the create action also?
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :authorised_user?, only: [:edit, :update, :destroy]
 
   def show
+  end
+
+  # this endpoint is only for a crawler so
+  # there's no point in rendering the application layout
+  def open_graph
+    render layout: false
   end
 
   def new
@@ -71,6 +78,10 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def set_presenter
+    @event_presenter = EventPresenter.new(@event, view_context)
   end
 
   def authorised_user?

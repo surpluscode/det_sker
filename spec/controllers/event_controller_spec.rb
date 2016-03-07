@@ -19,4 +19,21 @@ describe EventsController do
     end
   end
 
+  describe 'GET#open_graph' do
+    render_views
+    let(:event) { FactoryGirl.create(:event) }
+    before do
+      get :open_graph, id: event
+    end
+    it 'assigns an event presenter' do
+      expect(assigns(:event_presenter).object).to eql event
+    end
+
+    it 'includes the fb tags' do
+      expect(response.body).to include 'og:url'
+      expect(response.body).to include 'og:title'
+      expect(response.body).to include 'og:description'
+    end
+  end
+
 end
