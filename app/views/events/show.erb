@@ -1,6 +1,6 @@
+<%= @event_presenter.fb_tags %>
 <%= schema_json(@event) %>
 <%# Link to page with open graph tags for the Facebook URL Crawler %>
-<%= tag(:link, rel: 'opengraph', href: open_graph_event_url(@event)) %>
 <div class="event_show">
   <h1 ><%= @event.title %></h1>
   <%# If this event has a picture, show that, if not and it's part of a series with a picture, show that instead %>

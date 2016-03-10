@@ -32,7 +32,7 @@ FactoryGirl.define do
     start_time DateTime.now
     end_time DateTime.now + 5.hours
     location
-    user_id 1
+    user { FactoryGirl.create(:user) }
     categories {[FactoryGirl.create(:random_category)]}
 
     factory :event_yesterday do
