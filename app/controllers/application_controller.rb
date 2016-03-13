@@ -9,6 +9,14 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }
   end
 
+  def after_sign_in_path_for(user)
+    if user.is_admin?
+      admin_dashboard_path
+    else
+      stored_location_for(:user) || root_path
+    end
+  end
+
   protected
 
   def set_locale

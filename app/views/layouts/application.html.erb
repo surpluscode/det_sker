@@ -62,6 +62,11 @@
               <li>
                 <%= link_to t('.my_page'), current_user, class: '' %>
               </li>
+              <% if current_user && current_user.is_admin? %>
+                <li>
+                  <%= link_to 'Dashboard', admin_dashboard_path %>
+                </li>
+              <% end %>
               <li>
                 <%= link_to t('.logout'), destroy_user_session_path, method: :delete, class: '' %>
               </li>
@@ -99,10 +104,6 @@
             <%=  t('.locations') %>
           <% end %>
         </li>
-        <% if current_user.try(:is_admin?) %>
-            <li class="menu-text"><%= link_to t('.categories'), categories_path %></li>
-            <li class="menu-text"><%= link_to t('.users'), users_path %></li>
-        <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle menu-text" data-toggle="dropdown" role="button" aria-expanded="false">
             <%= bootstrap_glyphicon('info-sign') %>
