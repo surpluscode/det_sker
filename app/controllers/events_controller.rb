@@ -95,7 +95,7 @@ class EventsController < ApplicationController
   def user_params
     params.require(:event).permit(:title, :short_description, :long_description,
                                  :start_time, :end_time,  :location_id, :comments_enabled,
-                                 :price, :cancelled, :link, :picture, :featured,
+                                 :price, :cancelled, :link, :picture, :featured, :published,
                                  category_ids: [], event_series: [[:rule, :start_date, 
                                  :start_time, :expiry, :end_time, day_array: []]]).tap do |list|
       list[:category_ids].uniq!

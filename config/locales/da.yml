@@ -162,6 +162,8 @@ da:
         picture: Billede
         comments_enabled: Tillad kommentarer?
         description: Beskrivelse
+        published: Publicere event?
+        published_help: Slå fra hvis din event skal ikke være synligt på forsiden endnu.
       location:
         name: Navn
         street_address: Gadeadresse
@@ -176,6 +178,8 @@ da:
         start_date: Starter
         start_time: Fra
         end_time: Til
+        published: Publicere event serie?
+        published_help: Slå fra hvis din event serie skal ikke være synligt på forsiden endnu.
     placeholders:
       event:
         title: Navnet af begivenheden

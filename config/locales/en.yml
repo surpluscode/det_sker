@@ -148,9 +148,15 @@ en:
       delete_location: "Delete"
   simple_form:
     labels:
+      defaults:
+        published: Publish event?
+        published_help: Uncheck this box if you don't want your event to be visible on the front page yet.
       event:
         short_description: Description
         cancelled: Cancel event?
+      event_series:
+        published: Publish event series?
+        published_help: Uncheck this box if you don't want your event series to be visible on the front page yet.
     placeholders:
       event:
         title: The event's name

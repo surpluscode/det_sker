@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121214109) do
+ActiveRecord::Schema.define(version: 20160315194957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20151121214109) do
     t.date     "start_date"
     t.time     "start_time"
     t.time     "end_time"
+    t.boolean  "published",            default: true
   end
 
   create_table "event_series_categories", id: false, force: :cascade do |t|
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(version: 20151121214109) do
     t.datetime "picture_updated_at"
     t.integer  "event_series_id"
     t.boolean  "featured",                         default: false
+    t.boolean  "published",                        default: true
   end
 
   add_index "events", ["event_series_id"], name: "index_events_on_event_series_id", using: :btree
