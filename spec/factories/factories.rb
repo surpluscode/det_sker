@@ -34,6 +34,7 @@ FactoryGirl.define do
     location
     user { FactoryGirl.create(:user) }
     categories {[FactoryGirl.create(:random_category)]}
+    published true
 
     factory :event_yesterday do
       title 'This happened yesterday'
@@ -45,6 +46,10 @@ FactoryGirl.define do
       title 'This will happen tomorrow'
       start_time {DateTime.now + 1.day}
       end_time {DateTime.now + 1.day + 2.hours}
+    end
+
+    factory :unpublished_event do
+      published false
     end
   end
 

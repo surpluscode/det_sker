@@ -14,6 +14,7 @@ describe Calendar do
       @event_tomorrow = FactoryGirl.create(:event_tomorrow, categories: [other_cat],
                                            location: l2)
       @event_yesterday = FactoryGirl.create(:event_yesterday, location: l2)
+      @unpublished_event = FactoryGirl.create(:unpublished_event)
       @cal = Calendar.new
     end
 
@@ -37,6 +38,10 @@ describe Calendar do
 
     it 'should return in progress events' do
       expect(@cal.in_progress.first).to eql @event_now
+    end
+
+    it 'should not return unpublished events' do
+      expect(@cal.in_progress).not_to include @unpublished_event
     end
 
     it 'should not crash if an event does not have a location' do
