@@ -5,6 +5,7 @@ describe AdminController do
   describe 'dashboard' do
     context 'when admin user' do
       before do
+        Event.destroy_all
         admin = FactoryGirl.create(:admin_user)
         sign_in admin
         FactoryGirl.create(:event)
