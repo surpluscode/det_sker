@@ -85,7 +85,7 @@ describe UserController do
       admin = FactoryGirl.create(:admin_user)
       sign_in admin
       patch :make_admin, id: @user
-      user = User.find(@user)
+      user = User.find(@user.id)
       expect(user.is_admin?).to be_true
     end
   end

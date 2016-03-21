@@ -23,8 +23,6 @@ describe AdminController do
       it 'orders by created date descending' do
         first = assigns(:events).first
         last = assigns(:events).last
-        puts first.created_at
-        puts last.created_at
         expect(first.created_at).to be > last.created_at
       end
 
