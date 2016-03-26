@@ -5,6 +5,10 @@ module HasEvents
   end
 
   def coming_events
-    events.where('end_time > ?', DateTime.now).order(:start_time)
+    events.coming
+  end
+
+  def unpublished_events
+    events.unpublished
   end
 end

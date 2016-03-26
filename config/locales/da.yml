@@ -133,6 +133,7 @@ da:
                   Slet kun begivenheden hvis den er oprettet ved en fejl - 
                   hvis den er blevet aflyst er det bedre at klikke på Redigér og så Aflys. 
                   Derved kan dine gæster se at den er blevet aflyst.
+      unpublished_explanation: "Dette event er ikke publiceret endnu. Det betyder at den bliver ikke vist på forsiden men kan godt deles ved URL."
   comments:
     created_message: 'Kommentar oprettet!'
     form:
@@ -325,4 +326,5 @@ da:
   user:
     show:
       unconfirmed: "Brugeren har ikke bekræftet deres konto endnu"
+      unpublished_events: "Ikke publiceret events"
     email_must_match: "Du har tastet to forskellige værdier for din email"

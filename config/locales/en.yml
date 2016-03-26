@@ -134,6 +134,7 @@ en:
                   If your event has been cancelled it is better to edit your event
                   and click on cancel. In this way, your guests can see that the event
                   has been cancelled.
+      unpublished_explanation: "This event is not published yet. This means that it's not visible on the front page but can be shared using the URL."
   comments:
     form:
       writing_as: "Writing as"
@@ -264,6 +265,7 @@ en:
   user:
     show:
       unconfirmed: "The user has not confirmed their account yet."
+      unpublished_events: "Unpublished Events"
     email_must_match: "You have supplied two different email addresses!"
   day_names:
      Sunday: Sunday

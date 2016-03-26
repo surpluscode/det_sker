@@ -34,4 +34,8 @@ module ApplicationHelper
       user.username
     end
   end
+
+  def own_page?(user)
+    current_user && (current_user == user)
+  end
 end

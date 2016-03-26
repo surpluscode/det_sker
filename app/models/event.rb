@@ -14,7 +14,9 @@ class Event < ActiveRecord::Base
 
   scope :published, -> { where(published: true) }
   scope :future, -> { where('events.end_time > ?', DateTime.now) }
-  scope :coming, -> { future.published.order('events.start_time') }
+  scope :ordered, -> { order('events.start_time') }
+  scope :unpublished, -> { future.where(published: false).ordered }
+  scope :coming, -> { future.published.ordered }
 
   def in_progress?
     start_time < DateTime.now && end_time > DateTime.now
@@ -46,6 +48,10 @@ class Event < ActiveRecord::Base
 
   def weekly?
     event_series.present? && event_series.rule == 'weekly'
+  end
+
+  def unpublished?
+    !published?
   end
 
   def self.current_events

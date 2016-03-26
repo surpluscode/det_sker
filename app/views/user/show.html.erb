@@ -24,10 +24,10 @@
       <% end %>
   <% end %>
   <hr/>
-  <div>
-    <h2><%= t :coming_events %></h2>
-    <% @user.coming_events.each do |event| %>
-        <%= render partial: 'events/event', object: event, locals: { show_date: true } %>
-    <% end %>
-  </div>
+  <% if own_page?(@user) && @user.unpublished_events.present? %>
+      <h2><%= t('.unpublished_events')%></h2>
+    <%= render partial: 'events/event', collection: @user.unpublished_events, locals: { show_date: true } %>
+  <% end %>
+  <h2><%= t :coming_events %></h2>
+  <%= render partial: 'events/event', collection: @user.coming_events, locals: { show_date: true } %>
 </div>
