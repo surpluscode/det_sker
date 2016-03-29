@@ -7,7 +7,7 @@
         <div class="col-xs-4">
           <% if event.best_picture.present? %>
               <%= link_to event do %>
-                  <%= image_tag event.best_picture.url(:thumb), class: 'img-responsive center-block' %>
+                  <%= image_tag event.best_picture.url(:original), class: 'img-responsive center-block' %>
               <% end %>
           <% end %>
         </div>
