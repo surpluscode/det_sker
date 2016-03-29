@@ -109,6 +109,7 @@ class EventSeries < ActiveRecord::Base
         .includes(:categories)
         .includes(:location)
         .where("rule LIKE 'weekly'")
+        .where(published: true)
         .order('categories.danish desc')
   end
 

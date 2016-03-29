@@ -50,4 +50,20 @@ describe EventSeries do
     subject{ FactoryGirl.create(:last_in_month) }
     it_behaves_like 'series'
   end
+
+  describe '#active_weekly' do
+    subject { EventSeries.active_weekly }
+    context 'a normal series' do
+      it 'includes the active series' do
+        FactoryGirl.create(:weekly_series)
+        expect(subject.size).to eql 1
+      end
+    end
+    context 'an unpublished series' do
+      it 'is empty' do
+        FactoryGirl.create(:weekly_series, published: false)
+        expect(subject.size).to eql 0
+      end
+    end
+  end
 end
