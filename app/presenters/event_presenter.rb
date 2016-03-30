@@ -34,7 +34,7 @@ class EventPresenter
   end
 
   def fb_title
-    extended_title = "#{@object.title}, #{date_short}, #{@object.location.name}"
+    extended_title = "#{@object.title}, #{date_short}, #{@object.location.display_name}"
     fb_tag('title', extended_title)
   end
 
