@@ -24,6 +24,12 @@ describe EventPresenter, type: :view do
       expect(subject.fb_title).to include 'og:title'
       expect(subject.fb_title).to include event.title
     end
+    it 'includes the date in the title' do
+      expect(subject.fb_title).to include Date.today.strftime("%d")
+    end
+    it 'includes the location in the title' do
+      expect(subject.fb_title).to include 'Location'
+    end
     describe 'description' do
       let(:event) do
         content = (1..5).collect {|x| " Sentence #{x}."}.join

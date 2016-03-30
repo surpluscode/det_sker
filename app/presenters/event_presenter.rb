@@ -34,7 +34,8 @@ class EventPresenter
   end
 
   def fb_title
-    fb_tag('title', @object.title)
+    extended_title = "#{@object.title}, #{date_short}, #{@object.location.name}"
+    fb_tag('title', extended_title)
   end
 
   def fb_description
@@ -58,6 +59,10 @@ class EventPresenter
     else
       ''
     end
+  end
+
+  def date_short
+    I18n.localize(@object.start_time.to_date, format: :brief)
   end
 
   def fb_tag(type, content)
