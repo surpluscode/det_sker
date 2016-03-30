@@ -4,6 +4,7 @@
 <%= schema_json(@event) %>
 <div class="event_show">
   <% if @event.unpublished? %>
+    <% no_index_rule %>
     <%= bootstrap_info(t('.unpublished_explanation')) %>
   <% end %>
   <h1><%= @event.title %></h1>
