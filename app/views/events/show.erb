@@ -1,4 +1,6 @@
-<%= @event_presenter.fb_tags %>
+<% content_for :meta_tags do %>
+  <%= @event_presenter.fb_tags  %>
+<% end %>
 <%= schema_json(@event) %>
 <div class="event_show">
   <% if @event.unpublished? %>

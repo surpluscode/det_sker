@@ -14,6 +14,7 @@
   <% if assigns.has_key?('user') && assigns['user'].is_anonymous? %>
     <meta name="robots" content="noindex">
   <% end %>
+  <%= content_for :meta_tags %>
 
   <script type="text/javascript">
       <%#
