@@ -38,4 +38,21 @@ module ApplicationHelper
   def own_page?(user)
     current_user && (current_user == user)
   end
+
+  def no_index_rule
+    content_for :meta_tags do
+      '<meta name="robots" content="noindex">'.html_safe
+    end
+  end
+
+  def user_metadata(user)
+    concat(schema_json(user))
+    concat("\n")
+    concat(rss_link(user))
+    concat("\n")
+  end
+
+  def rss_link(user)
+    auto_discovery_link_tag(:rss, { format: :rss }, { title: "Feed for user #{user.username}" })
+  end
 end

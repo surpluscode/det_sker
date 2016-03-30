@@ -1,6 +1,7 @@
-<% unless @user.is_anonymous? %>
-    <%= schema_json(@user) %>
-    <%= auto_discovery_link_tag(:rss, {format: :rss}, {title: "Feed for user #{@user.username}"}) %>
+<% if @user.is_anonymous? %>
+  <% no_index_rule %>
+<% else %>
+  <% user_metadata(@user) %>
 <% end %>
 <div class="event_show">
   <h2><%= @user.username %></h2>
