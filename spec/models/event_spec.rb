@@ -65,4 +65,24 @@ describe Event do
     expect(e.link).to eql 'http://example.com'
   end
 
+  describe 'highlights' do
+    before do
+      @featured_event = FactoryGirl.create(:featured_event, start_time: DateTime.now + 40.minutes)
+      FactoryGirl.create(:event_tomorrow)
+      FactoryGirl.create(:event, start_time: DateTime.now + 23.minutes)
+      FactoryGirl.create(:event, start_time: DateTime.now + 20.minutes)
+      @past_event = FactoryGirl.create(:event_yesterday)
+      @unpublished = FactoryGirl.create(:unpublished_event)
+    end
+    subject { Event.highlights(5) }
+    it 'sorts by start time' do
+      expect(subject.first.start_time).to be < subject.second.start_time
+    end
+    it 'does not contain duplicates' do
+      expect(subject.size).to eql subject.uniq.size
+    end
+    it { should_not include @past_event }
+    it { should_not include @unpublished_event }
+    it { should include @featured_event }
+  end
 end

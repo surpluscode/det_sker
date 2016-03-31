@@ -43,7 +43,7 @@ class Event < ActiveRecord::Base
       event_series.picture
     else
       nil
-    end 
+    end
   end
 
   def weekly?
@@ -92,10 +92,10 @@ class Event < ActiveRecord::Base
     if featured.size < num
       non_featured = self.non_featured_events + self.current_non_weekly
       # we need to sort because we're adding the non_weeklies to the end of the non-featured set
-      non_featured.sort_by!(&:start_time)
-      featured + non_featured.take(num - featured.size)
+      highlights = (featured + non_featured.sort.take(num - featured.size))
+      highlights.uniq.sort
     else
-      featured
+      featured.sort
     end
   end
 
@@ -113,17 +113,17 @@ class Event < ActiveRecord::Base
   def self.from_date_and_times(date, start_time, end_time, attributes)
     event_start = DateTime.new(date.year, date.month, date.day, start_time.hour, start_time.min, 0, start_time.zone)
     event_end = DateTime.new(date.year, date.month, date.day, end_time.hour, end_time.min, 0, end_time.zone)
-    Event.new(attributes.merge(start_time: event_start, end_time: event_end))  
+    Event.new(attributes.merge(start_time: event_start, end_time: event_end))
   end
 
   def to_schema
     {
-      '@context': 'http://schema.org', 
+      '@context': 'http://schema.org',
       '@type': 'Event',
-      name: self.title, 
-      startDate: self.start_time.iso8601, 
-      endDate: self.end_time.iso8601, 
-      description: self.short_description, 
+      name: self.title,
+      startDate: self.start_time.iso8601,
+      endDate: self.end_time.iso8601,
+      description: self.short_description,
       sameAs: self.link,
       location: self.location.to_schema,
       organizer: self.user.to_schema

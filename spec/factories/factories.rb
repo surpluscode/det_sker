@@ -51,6 +51,11 @@ FactoryGirl.define do
     factory :unpublished_event do
       published false
     end
+
+    factory :featured_event do
+      title 'Featured event'
+      featured true
+    end
   end
 
   factory :category do
