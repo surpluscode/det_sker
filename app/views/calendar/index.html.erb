@@ -6,7 +6,7 @@
     <% end %>
 <% end %>
 
-<div class="container">
+<div class="container hidden-xs">
   <div class="row featured-container">
     <% if @calendar.highlights.size > 0 %>
         <%= render partial: 'highlights', object: @calendar.highlights %>
@@ -30,17 +30,19 @@
              locals: {filter_categories: @calendar.filter_categories,
                       filter_locations: @calendar.filter_locations }
   %>
-  <div id="calendar-box" class="col-xs-12 col-sm-9 col-sm-pull-2">
-    <% if @calendar.in_progress.size > 0 %>
-        <%= render partial: 'day', object: @calendar.in_progress, locals: { id: 'inProgress' } %>
-    <% end %>
+  <div class="container">
+    <div id="calendar-box" class="col-xs-12 col-sm-9 col-sm-pull-2">
+      <% if @calendar.in_progress.size > 0 %>
+          <%= render partial: 'day', object: @calendar.in_progress, locals: { id: 'inProgress' } %>
+      <% end %>
 
-    <% @calendar.days.each do |day| %>
-        <%= render partial: 'day', object: day, locals: { id: day.date}  %>
-    <% end %>
-    </br>
-    <div class="row center-block end-of-events">
-      <p class="text-center text-uppercase"><%= t '.end_of_events' %></p>
+      <% @calendar.days.each do |day| %>
+          <%= render partial: 'day', object: day, locals: { id: day.date}  %>
+      <% end %>
+      </br>
+      <div class="row center-block end-of-events">
+        <p class="text-center text-uppercase"><%= t '.end_of_events' %></p>
+      </div>
     </div>
   </div>
 </div>
