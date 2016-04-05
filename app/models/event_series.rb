@@ -6,7 +6,7 @@ class EventSeries < ActiveRecord::Base
   validates :title, :description, :location_id, :user_id, :categories,
             :day_array, :rule, :start_date, :start_time, :end_time, :expiry, presence: true
 
-  # TODO: this duplicates functionality in Event.rb so it should be refactored, but modularization caused constant load errors 
+  # TODO: this duplicates functionality in Event.rb so it should be refactored, but modularization caused constant load errors
   has_attached_file :picture, styles: { original: '500x500>', thumb: '100x100>'}, default_url: 'images/:st'
   validates_attachment_content_type :picture, :content_type => /\Aimage/
   validates_attachment_file_name :picture, matches: [/png\Z/i, /jpe?g\Z/i]
@@ -88,7 +88,7 @@ class EventSeries < ActiveRecord::Base
 
 
   # get the month numbers for the dates in question
-  # e.g. from Date1 to Date2 -> [10,11,12,1] 
+  # e.g. from Date1 to Date2 -> [10,11,12,1]
   def dates_to_months(date1, date2)
     (date1..date2).to_a.collect(&:month).uniq
   end
@@ -113,17 +113,20 @@ class EventSeries < ActiveRecord::Base
         .order('categories.danish desc')
   end
 
+  # Return a hash of days in the week with the
+  # current series events grouped as values
+  # e.g. { 'Monday' => [Event1, Event2], 'Wednesday' => ... }
   def self.repeating_by_day
-    days = Date::DAYS_INTO_WEEK.transform_values { |_| [] } # create hash in style { :dayname => [] }
-    self.active_weekly.each do |series|
-      series.days.split(',').each do |day|
-        days[day.downcase.to_sym] << series if days.has_key?(day.downcase.to_sym)
-      end
+    # create hash in style { 'Dayname' => [] }
+    day_hash = Date::DAYS_INTO_WEEK
+    day_hash.transform_values! { |_| [] }
+    day_hash.transform_keys! { |k| k.to_s.titleize }
+    Event.repeating_this_week.each do |event|
+      start_day = event.start_time.strftime('%A')
+      day_hash[start_day] << event
     end
-    days.each do |day, events|
-      days[day] = events.sort { |a,b| a.start_time <=> b.start_time }
-    end
-    days
+    day_hash.reject! {|_,v| v.empty? } # get rid of empty days
+    day_hash.transform_values(&:sort) # sort events internally
   end
 
   private

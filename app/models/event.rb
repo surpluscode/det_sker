@@ -101,10 +101,9 @@ class Event < ActiveRecord::Base
 
   # The repeating events that are occurring this week
   def self.repeating_this_week
-    self.select('id, event_series_id')
-      .where('end_time > ?', DateTime.now)
+    self.where('end_time > ?', DateTime.now)
       .where('start_time >= ?', DateTime.now)
-      .where('start_time <= ?', DateTime.now + 1.week)
+      .where('start_time <= ?', DateTime.now + 6.days)
       .where('event_series_id > 0')
       .where('cancelled IS NULL OR cancelled = FALSE')
   end

@@ -66,4 +66,20 @@ describe EventSeries do
       end
     end
   end
+  describe 'repeating_by_day' do
+    subject { EventSeries.repeating_by_day }
+    it { should be_a Hash }
+    it 'should not have empty values' do
+      expect(subject.values).not_to include []
+    end
+    context 'when there is a weekly series starting next week' do
+      before do
+        @today = DateTime.now.strftime '%A'
+        FactoryGirl.create(:weekly_series, days: @today, start_date: DateTime.now + 1.week)
+      end
+      it 'should not include events not starting within the current week' do
+        expect(subject.keys).not_to include @today
+      end
+    end
+  end
 end

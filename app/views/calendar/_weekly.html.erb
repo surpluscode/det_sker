@@ -1,20 +1,18 @@
 <div class="col-md-4">
   <h2 class="section-heading"><%= t '.title' %></h2>
-  <% weekly.each do |day, series_arr| %>
-      <% next if series_arr.blank? %>
-      <h4><%= I18n.t("day_names.#{day.to_s.titleize}") %></h4>
-  <% series_arr.each do |series| %>
+  <% weekly.each do |day, events| %>
+      <h4><%= I18n.t("day_names.#{day}") %></h4>
+    <% events.each do |event| %>
       <div class="recurring-event row">
         <div class="col-xs-12">
           <h5 class="recurring-event-title">
-            <%= link_to(series.title, series) %>
+            <%= link_to(title_display(event), event) %>
           </h5>
           <div class="event-place">
             <%= bootstrap_glyphicon 'map-marker' %>
-            <%= "#{series.location.display_name}, #{format_starttime(series.start_time)}" %>
+            <%= "#{event.location.display_name}, #{format_starttime(event.start_time)}" %>
           </div>
         </div>
-
       </div>
   <% end %>
   <% end %>
