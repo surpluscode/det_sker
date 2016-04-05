@@ -25,7 +25,7 @@ describe EventPresenter, type: :view do
       expect(subject.fb_title).to include event.title
     end
     it 'includes the date in the title' do
-      expect(subject.fb_title).to include Date.today.strftime("%d")
+      expect(subject.fb_title).to include Date.today.strftime("%e")
     end
     it 'includes the location in the title' do
       expect(subject.fb_title).to include 'Location'
