@@ -117,15 +117,13 @@ class EventSeries < ActiveRecord::Base
   # current series events grouped as values
   # e.g. { 'Monday' => [Event1, Event2], 'Wednesday' => ... }
   def self.repeating_by_day
-    # create hash in style { 'Dayname' => [] }
-    day_hash = Date::DAYS_INTO_WEEK
-    day_hash.transform_values! { |_| [] }
-    day_hash.transform_keys! { |k| k.to_s.titleize }
+    day_hash = {}
     Event.repeating_this_week.each do |event|
-      start_day = event.start_time.strftime('%A')
-      day_hash[start_day] << event
+      start_date = event.start_time.to_date
+      day_hash[start_date] = [] unless day_hash.has_key?(start_date)
+      day_hash[start_date] << event
     end
-    day_hash.reject! {|_,v| v.empty? } # get rid of empty days
+    day_hash.transform_keys! { |date| date.strftime('%A') }
     day_hash.transform_values(&:sort) # sort events internally
   end
 

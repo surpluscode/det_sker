@@ -72,13 +72,30 @@ describe EventSeries do
     it 'should not have empty values' do
       expect(subject.values).not_to include []
     end
-    context 'when there is a weekly series starting next week' do
-      before do
-        @today = DateTime.now.strftime '%A'
-        FactoryGirl.create(:weekly_series, days: @today, start_date: DateTime.now + 1.week)
+
+    let(:tomorrow) { (DateTime.now + 1.day).strftime '%A' }
+    let(:two_days_from_now ) { (DateTime.now + 2.day).strftime '%A' }
+    let(:start_date) { DateTime.now }
+    let(:rule) { tomorrow }
+    before do
+      FactoryGirl.create(:weekly_series, days: rule, start_date: start_date)
+    end
+    context 'when there is a weekly series starting tomorrow' do
+      it 'should have an event today' do
+        expect(subject[tomorrow]).to be_an Array
+        expect(subject[tomorrow].first).to be_an Event
       end
+    end
+    context 'when there is a weekly series starting next week' do
+      let(:start_date) { (DateTime.now + 1.day) + 1.week }
       it 'should not include events not starting within the current week' do
-        expect(subject.keys).not_to include @today
+        expect(subject.keys).not_to include tomorrow
+      end
+    end
+    context 'when there is a series running both tomorrow and the next day' do
+      let(:rule) { "#{tomorrow},#{two_days_from_now}" }
+      it 'should place tomorrow before the next day' do
+        expect(subject.keys.index(tomorrow)).to be < subject.keys.index(two_days_from_now)
       end
     end
   end

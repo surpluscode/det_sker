@@ -100,7 +100,7 @@ FactoryGirl.define do
 
   factory :event_series do
     description 'Sample description'
-    start_time DateTime.now
+    start_time DateTime.now + 1.hour
     end_time DateTime.now + 2.hours
     title 'Sample event series'
     location

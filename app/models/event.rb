@@ -15,6 +15,9 @@ class Event < ActiveRecord::Base
   scope :published, -> { where(published: true) }
   scope :future, -> { where('events.end_time > ?', DateTime.now) }
   scope :ordered, -> { order('events.start_time') }
+  scope :in_series, -> { where('event_series_id > 0') }
+  scope :not_started, -> { where('start_time >= ?', DateTime.now) }
+  scope :this_week, -> { where('start_time <= ?', DateTime.now + 6.days) }
   scope :unpublished, -> { future.where(published: false).ordered }
   scope :coming, -> { future.published.ordered }
 
@@ -101,11 +104,12 @@ class Event < ActiveRecord::Base
 
   # The repeating events that are occurring this week
   def self.repeating_this_week
-    self.where('end_time > ?', DateTime.now)
-      .where('start_time >= ?', DateTime.now)
-      .where('start_time <= ?', DateTime.now + 6.days)
-      .where('event_series_id > 0')
-      .where('cancelled IS NULL OR cancelled = FALSE')
+    self.coming
+      .in_series
+      .published
+      .this_week
+      .not_started
+      .ordered
   end
 
   # Return Event object given a Date, Time, Time, attribute Hash
