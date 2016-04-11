@@ -88,9 +88,11 @@
     <h2><%= t '.repetition_header' %></h2>
     <div id="repeating_control" class='form-inline row-fluid'>
     <%# we disable the rule controls if there are any events present as we don't know how to update the rules for existing events %>
-    <% coming_events = @event_series.coming_events.present? %> 
+    <% coming_events = @event_series.coming_events.present? %>
     <% if coming_events %>
-      <p class="text-danger"><%= t('.rule_disabled', url: delete_events_event_series_path(@event_series)).html_safe %></p>
+      <p class="text-danger">
+        <%= t('.rule_disabled', url: event_series_path(@event_series)).html_safe %>
+      </p>
     <% end %>
      <%= render partial: 'event_series/repeating_control', locals: { builder: f,  coming_events: coming_events } %>
      </div>
