@@ -130,7 +130,7 @@ en:
     show:
       link: "More info"
       delete_warning: >
-                  Only delete the event if it has been created by mistake. 
+                  Only delete the event if it has been created by mistake.
                   If your event has been cancelled it is better to edit your event
                   and click on cancel. In this way, your guests can see that the event
                   has been cancelled.
@@ -239,9 +239,9 @@ en:
     delete_events_warning: "You are about to delete %{number} events - are you sure you want to continue?"
     new:
       explanation: >
-              You are about to create an event series. This will create a number of events 
+              You are about to create an event series. This will create a number of events
               defined by the rule you specify. You can then choose to edit the events individually
-              or all at once by editing this series. 
+              or all at once by editing this series.
     created: "<a href=\"%{link}\">%{name}</a> created with %{num_events} occurrences"
     updated: "%{num_events} occurrences of <a href=\"%{link}\">%{name}</a> updated"
     deleted: "The series %{name} with %{num_events} occurrences has been deleted"
@@ -252,9 +252,9 @@ en:
       first_in_month: first week of the month
       last_in_month: last week of the month
       repetition_header: "Repeats"
-      date_explanation: > 
-                     You are only allowed to create events within the next three months. 
-                     You can renew the series if the event is still running after three months.
+      date_explanation: >
+                     You are only allowed to create events within the next six months. 
+                     You can renew the series if the event is still running after six months.
       rule_disabled: >
                   You can't edit the repetition rule when there are still events active in the series.
                   If you want to change the rule, you should either delete all the remaining events

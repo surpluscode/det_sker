@@ -129,9 +129,9 @@ da:
     event_deleted: "Event slettet"
     show:
       link: "Mere info"
-      delete_warning: > 
-                  Slet kun begivenheden hvis den er oprettet ved en fejl - 
-                  hvis den er blevet aflyst er det bedre at klikke på Redigér og så Aflys. 
+      delete_warning: >
+                  Slet kun begivenheden hvis den er oprettet ved en fejl -
+                  hvis den er blevet aflyst er det bedre at klikke på Redigér og så Aflys.
                   Derved kan dine gæster se at den er blevet aflyst.
       unpublished_explanation: "Dette event er ikke publiceret endnu. Det betyder at den bliver ikke vist på forsiden men kan godt deles ved URL."
   comments:
@@ -290,8 +290,8 @@ da:
       explanation: >
                   En event serie er en række events der gentages efter nogle bestemt regler.
                   Ved at oprette en serie med en bestemt regel opretter du flere events på de datoer
-                  givet i reglen. Efterfølgende kan du vælge at redigere disse forekomster enkeltvis 
-                  eller samlede ved at redigere i selv serien. 
+                  givet i reglen. Efterfølgende kan du vælge at redigere disse forekomster enkeltvis
+                  eller samlede ved at redigere i selv serien.
     created: "Serie <a href=\"%{link}\">%{name}</a> oprettet med %{num_events} forekomster!"
     updated: "Serie <a href=\"%{link}\">%{name}</a> med %{num_events} forekomster opdateret."
     deleted: "Serie %{name} og %{num_events} forekomster slettet."
@@ -304,13 +304,13 @@ da:
       second_in_month: anden uge i måneden
       third_in_month: tredje uge i måneden
       last_in_month: sidst uge i måneden
-      date_explanation: > 
-                      Du kan kun oprette events indenfor de næste tre måneder. 
-                      Du godt fornye serien senere hvis din serie stadig kører efter tre måneder.
-      rule_disabled: > 
-                    Du kan ikke redigere gentagelses reglen når der stadig er events i denne serie. 
+      date_explanation: >
+                      Du kan kun oprette events indenfor de næste seks måneder.
+                      Du godt fornye serien senere hvis din serie stadig kører efter seks måneder.
+      rule_disabled: >
+                    Du kan ikke redigere gentagelses reglen når der stadig er events i denne serie.
                     Hvis du vil ændre på gentagelses reglen kan du enten <a href="%{url}">slette eksisterende forekomster</a> eller
-                    oprette en ny serie. 
+                    oprette en ny serie.
                     Du kan dog godt opdatere start og slut tid og alle andre attributer.
     show:
       delete_warning: "Er du sikker på du vil slette serien? Det vil også slette %{num} forekomster."
