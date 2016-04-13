@@ -1,5 +1,3 @@
-<% @event_series.each do |series| %>
-    <div class="row">
-      <%= link_to series.name, series %>
-    </div>
-<% end %>
+<div class="container">
+  <%= render partial: 'calendar/weekly_events', locals: { weekly: @weekly } %>
+</div>

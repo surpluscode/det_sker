@@ -6,14 +6,13 @@
     <% end %>
 <% end %>
 
-<div class="container hidden-xs">
+<div class="container">
   <div class="row featured-container">
     <% if @calendar.highlights.size > 0 %>
-        <%= render partial: 'highlights', object: @calendar.highlights %>
+      <%= render partial: 'highlights', object: @calendar.highlights %>
     <% end %>
-
     <% if @calendar.weekly.size > 0 %>
-        <%= render partial: 'weekly', object: @calendar.weekly %>
+      <%= render partial: 'weekly', object: @calendar.weekly %>
     <% end %>
   </div>
 </div>

@@ -5,7 +5,7 @@ class EventSeriesController < ApplicationController
   before_action :authorised_user?, only: [:edit, :update, :destroy, :delete_events]
 
   def index
-    @event_series = EventSeries.all
+    @weekly = EventSeries.repeating_by_day
   end
 
   def show
@@ -20,12 +20,12 @@ class EventSeriesController < ApplicationController
     event_params = user_params
     # add the user id if we've got one
     event_params.merge!(user_id: current_user.id) if user_signed_in?
-    
+
     @event_series = EventSeries.new(event_params)
     respond_to do |format|
       if @event_series.save
         format.html {
-         redirect_to root_path, notice: 
+         redirect_to root_path, notice:
           I18n.t('event_series.created',  link: url_for(@event_series), name: @event_series.name, num_events: @event_series.coming_events.size)
         }
         format.json { render action: 'show', status: :created, location: @event_series }
@@ -40,7 +40,7 @@ class EventSeriesController < ApplicationController
     respond_to do |format|
       if @event_series.update(user_params)
         destroy_image?
-        format.html { redirect_to root_path, notice: 
+        format.html { redirect_to root_path, notice:
           I18n.t('event_series.updated', link: url_for(@event_series), name: @event_series.name, num_events: @event_series.coming_events.size) }
         format.json { head :no_content }
       else
@@ -67,7 +67,7 @@ class EventSeriesController < ApplicationController
   def delete_events
     num = @event_series.events.size
     @event_series.events.each(&:destroy)
-    redirect_to root_path,  notice: I18n.t('event_series.events_deleted', number: num) 
+    redirect_to root_path,  notice: I18n.t('event_series.events_deleted', number: num)
   end
 
   private
@@ -92,7 +92,7 @@ class EventSeriesController < ApplicationController
 
   def user_params
     params.require(:event_series).permit(:title, :description, :location_id, :comments_enabled,
-                                 :price, :cancelled, :link, :picture, :rule, :start_date, 
+                                 :price, :cancelled, :link, :picture, :rule, :start_date,
                                  :start_time, :expiry, :end_time, :published, day_array: [],
                                  category_ids: []).tap do |list|
       list[:category_ids].uniq!

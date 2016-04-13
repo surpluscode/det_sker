@@ -1,19 +1,8 @@
-<div class="col-md-4">
-  <h2 class="section-heading"><%= t '.title' %></h2>
-  <% weekly.each do |day, events| %>
-      <h4><%= I18n.t("day_names.#{day}") %></h4>
-    <% events.each do |event| %>
-      <div class="recurring-event row">
-        <div class="col-xs-12">
-          <h5 class="recurring-event-title">
-            <%= link_to(title_display(event), event) %>
-          </h5>
-          <div class="event-place">
-            <%= bootstrap_glyphicon 'map-marker' %>
-            <%= "#{event.location.display_name}, #{format_starttime(event.start_time)}" %>
-          </div>
-        </div>
-      </div>
-  <% end %>
-  <% end %>
+<div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+  <h2 class="section-heading section-heading-phone">
+    <%= link_to(t('calendar.weekly.title'), event_series_index_path) %>
+  </h2>
+</div>
+<div class="col-md-4 hidden-xs">
+  <%= render partial: 'calendar/weekly_events', locals: { weekly: weekly } %>
 </div>
