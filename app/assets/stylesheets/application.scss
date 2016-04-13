@@ -97,6 +97,12 @@ img {
   margin-bottom: 2px;
 }
 
+.event-container .categories {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .section-heading {
   color: #aaa;
   border-bottom: 1px solid #ddd;
