@@ -1,17 +1,19 @@
-<h2 class="section-heading"><%= t 'calendar.weekly.title' %></h2>
-<% weekly.each do |day, events| %>
-  <h4><%= I18n.t("day_names.#{day}") %></h4>
-  <% events.each do |event| %>
-    <div class="recurring-event row">
-      <div class="col-xs-12">
-        <h5 class="recurring-event-title">
-          <%= link_to(title_display(event), event) %>
-        </h5>
-        <div class="event-place">
-          <%= bootstrap_glyphicon 'map-marker' %>
-          <%= "#{event.location.display_name}, #{format_starttime(event.start_time)}" %>
+<div class="repeating-container">
+  <h2 class="section-heading"><%= t 'calendar.weekly.title' %></h2>
+  <% weekly.each do |day, events| %>
+    <h4><%= I18n.t("day_names.#{day}") %></h4>
+    <% events.each do |event| %>
+      <div class="recurring-event row">
+        <div class="col-xs-12">
+          <h5 class="recurring-event-title">
+            <%= link_to(title_display(event), event) %>
+          </h5>
+          <div class="event-place">
+            <%= bootstrap_glyphicon 'map-marker' %>
+            <%= "#{event.location.display_name}, #{format_starttime(event.start_time)}" %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
