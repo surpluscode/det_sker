@@ -253,7 +253,7 @@ en:
       last_in_month: last week of the month
       repetition_header: "Repeats"
       date_explanation: >
-                     You are only allowed to create events within the next six months. 
+                     You are only allowed to create events within the next six months.
                      You can renew the series if the event is still running after six months.
       rule_disabled: >
                   You can't edit the repetition rule when there are still events active in the series.
@@ -275,3 +275,9 @@ en:
      Thursday: Thursday
      Friday: Friday
      Saturday: Saturday
+  simple_captcha:
+    label: Enter the letters visible in the image above
+    placeholder: ""
+    refresh_button_text: "New image?"
+    message:
+      user: The code entered was incorrect. Please try again.

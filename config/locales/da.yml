@@ -328,3 +328,9 @@ da:
       unconfirmed: "Brugeren har ikke bekræftet deres konto endnu"
       unpublished_events: "Ikke publiceret events"
     email_must_match: "Du har tastet to forskellige værdier for din email"
+  simple_captcha:
+    placeholder: ""
+    label: Skriv de bogstaver du ser i billedet i feltet ovenfor
+    refresh_button_text: "Nyt billede?"
+    message:
+      user: Den indtastede kode passer ikke. Prøv venligst igen.

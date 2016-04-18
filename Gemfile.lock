@@ -89,7 +89,6 @@ GEM
       activesupport (>= 4.1.0)
     high_voltage (2.4.0)
     hike (1.2.3)
-    humanizer (2.6.2)
     i18n (0.7.0)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -192,6 +191,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simple_captcha2 (0.4.0)
+      rails (>= 4.1)
     simple_form (3.1.1)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -244,7 +245,6 @@ DEPENDENCIES
   devise
   factory_girl_rails
   high_voltage
-  humanizer
   jbuilder (~> 1.2)
   jquery-rails
   lograge
@@ -260,6 +260,7 @@ DEPENDENCIES
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.2)
   sdoc
+  simple_captcha2
   simple_form
   sqlite3
   therubyracer
@@ -269,4 +270,4 @@ DEPENDENCIES
   xray-rails
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

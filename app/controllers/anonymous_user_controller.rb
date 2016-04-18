@@ -8,7 +8,7 @@ class AnonymousUserController < ApplicationController
     allow_params_authentication!
     anon_params = AnonymousUser.attributes(whitelist_params)
     @user = User.new(anon_params)
-    if @user.save
+    if @user.save_with_captcha
       # since we're circumventing the usual Devise flow here
       # we need to sign in like this
       sign_in @user
@@ -22,6 +22,6 @@ class AnonymousUserController < ApplicationController
 
   private
   def whitelist_params
-    params.require(:user).permit(:humanizer_answer, :humanizer_question_id)
+    params.require(:user).permit(:captcha, :captcha_key)
   end
 end
