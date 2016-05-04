@@ -1,7 +1,28 @@
 require 'spec_helper'
 
 describe AdminController do
-
+  render_views
+  describe 'series' do
+    context 'when admin user' do
+      before do
+        EventSeries.destroy_all
+        admin = FactoryGirl.create(:admin_user)
+        sign_in admin
+        FactoryGirl.create(:expired_series)
+        FactoryGirl.create(:expiring_series)
+        get :series
+      end
+      it 'returns successfully' do
+        expect(response.code).to eql '200'
+      end
+      it 'includes expired events' do
+        expect(assigns(:expired).size).to eql 1
+      end
+      it 'includes expiring events' do
+        expect(assigns(:expiring).size).to eql 1
+      end
+    end
+  end
   describe 'dashboard' do
     context 'when admin user' do
       before do

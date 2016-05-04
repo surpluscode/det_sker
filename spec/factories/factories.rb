@@ -102,6 +102,7 @@ FactoryGirl.define do
     start_time DateTime.now + 1.hour
     end_time DateTime.now + 2.hours
     title 'Sample event series'
+    rule 'weekly'
     location
     days 'Monday'
     start_date DateTime.now
@@ -127,6 +128,13 @@ FactoryGirl.define do
     end
     factory :last_in_month do
       rule 'last'
+    end
+
+    factory :expired_series do
+      expiry DateTime.now - 2.days
+    end
+    factory :expiring_series do
+      expiry DateTime.now + 6.days
     end
 
   end

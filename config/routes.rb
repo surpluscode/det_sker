@@ -23,7 +23,10 @@ DetSker::Application.routes.draw do
   get 'news' => 'posts#index'
   get 'anonymous_user/new' => 'anonymous_user#new'
   match '/anonymous_user' => 'anonymous_user#create', via: :post
-  get 'admin/dashboard' => 'admin#dashboard'
+  scope 'admin', controller: :admin do
+    get :dashboard, as: :admin_dashboard
+    get :series, as: :admin_series
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

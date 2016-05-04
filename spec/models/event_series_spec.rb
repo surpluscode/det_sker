@@ -100,18 +100,23 @@ describe EventSeries do
     end
   end
 
-  describe 'expiring' do
-    subject { EventSeries.expiring }
-    context 'when there is a series expiring within a week' do
-      let(:series) { FactoryGirl.create(:weekly_series, expiry: DateTime.now + 6.days) }
-      it { should include series }
+  describe 'expiring scopes' do
+    let(:expiring_series) { FactoryGirl.create(:expiring_series) }
+    let(:expired_series) { FactoryGirl.create(:expired_series) }
+
+    describe 'expiring' do
+      subject { EventSeries.expiring }
+      context 'when there is a series expiring within a week' do
+        it { should include expiring_series }
+        it { should_not include expired_series }
+      end
     end
-  end
-  describe 'expired' do
-    subject { EventSeries.expired }
-    context 'when there is a series that expired yesterday' do
-      let(:series) { FactoryGirl.create(:weekly_series, expiry: DateTime.now - 1.day) }
-      it { should include series }
+    describe 'expired' do
+      subject { EventSeries.expired }
+      context 'when there is a series that expired yesterday' do
+        it { should include expired_series }
+        it { should_not include expiring_series }
+      end
     end
   end
 end

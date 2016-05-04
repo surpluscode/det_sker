@@ -1,30 +1,16 @@
-<div class="container">
-  <h1>Administrator Dashboard</h1>
-</div>
+<%= render partial: 'navigation' %>
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <ul class="list-inline">
-        <li>
-          <%= link_to(t('layouts.application.posts'), posts_path) %>
-        </li>
-        <li>
-        <%= link_to(t('layouts.application.users'), users_path) %>
-        </li>
-        <li>
-        <%= link_to(t('layouts.application.categories'), categories_path) %>
-        </li>
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <ul class="list-inline">
+    <div class="col-md-8">
+      <ul class="list-inline pull-right">
         <li><strong>Sortér efter:</strong></li>
         <% AdminController::SORT_TYPES.each do |type| %>
-          <%= dashboard_sort_link(type, @sort) %>
+            <%= dashboard_sort_link(type, @sort) %>
         <% end %>
       </ul>
     </div>
+
   </div>
   <hr/>
   <%= render partial: 'event', collection: @events %>

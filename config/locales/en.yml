@@ -49,6 +49,7 @@ en:
       new: "New Event"
       link_to_root: "Go to front page"
       posts: "News"
+      series: "Series"
     created:
       message: "%{_class} \"%{name}\" created!"
     updated:

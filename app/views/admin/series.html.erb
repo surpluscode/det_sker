@@ -1,0 +1,7 @@
+<%= render partial: 'navigation' %>
+<div class="container">
+    <h2>Events expiring within the next week</h2>
+    <%= render partial: 'series', collection: @expiring %>
+    <h2>Expired events</h2>
+    <%= render partial: 'series', collection: @expired %>
+</div>

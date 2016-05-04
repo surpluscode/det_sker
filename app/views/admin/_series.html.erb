@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-6">
+    <%= link_to(title_display(series), series) %>
+  </div>
+  <div class="col-md-6">
+      <%= "Expiry: #{time_ago_in_words(series.expiry)}".html_safe %>
+  </div>
+</div>
+<div class="row">
+  <hr/>
+</div>

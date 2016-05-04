@@ -10,6 +10,11 @@ class AdminController < ApplicationController
     @events = Event.future.order(@sort => :desc)
   end
 
+  def series
+    @expiring = EventSeries.expiring
+    @expired = EventSeries.expired
+  end
+
   def admin_user?
     unless current_user.is_admin?
       redirect_to denied_path, notice: 'Only for admin users'

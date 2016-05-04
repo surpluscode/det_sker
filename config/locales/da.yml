@@ -50,6 +50,7 @@ da:
       new: "Ny event"
       link_to_root: "Navigèr til forsiden"
       posts: "Nyheder"
+      series: "Serier"
     created:
       message: "%{_class} \"%{name}\" oprettet!"
     updated:
