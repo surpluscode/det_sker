@@ -46,7 +46,7 @@ class EventSeries < ActiveRecord::Base
       event.update(event_attributes.merge(start_time: start_time, end_time: end_time))
     end
     date_last_existing = coming_events.order(:start_time).last.start_time.to_date
-    create_events((date_last_existing + 1.day))
+    create_events((date_last_existing + 1.day)) if expiry_changed?
   end
 
   # using rule, create events for this series
