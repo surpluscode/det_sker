@@ -99,4 +99,19 @@ describe EventSeries do
       end
     end
   end
+
+  describe 'expiring' do
+    subject { EventSeries.expiring }
+    context 'when there is a series expiring within a week' do
+      let(:series) { FactoryGirl.create(:weekly_series, expiry: DateTime.now + 6.days) }
+      it { should include series }
+    end
+  end
+  describe 'expired' do
+    subject { EventSeries.expired }
+    context 'when there is a series that expired yesterday' do
+      let(:series) { FactoryGirl.create(:weekly_series, expiry: DateTime.now - 1.day) }
+      it { should include series }
+    end
+  end
 end

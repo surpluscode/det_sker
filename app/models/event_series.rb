@@ -14,6 +14,9 @@ class EventSeries < ActiveRecord::Base
 
   after_create :cascade_creation, if: :persisted?
   after_update :cascade_update
+
+  scope :expiring, -> { where('expiry < ?', DateTime.now + 1.week) }
+  scope :expired, -> { where('expiry < ?', DateTime.now) }
   # the name method is an alias used
   # by the page title helper
   def name
