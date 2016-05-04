@@ -49,6 +49,7 @@ da:
       categories: "Kategorier"
       new: "Ny event"
       link_to_root: "Navigèr til forsiden"
+      posts: "Nyheder"
     created:
       message: "%{_class} \"%{name}\" oprettet!"
     updated:

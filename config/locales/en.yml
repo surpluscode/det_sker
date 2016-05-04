@@ -48,6 +48,7 @@ en:
       categories: "Categories"
       new: "New Event"
       link_to_root: "Go to front page"
+      posts: "News"
     created:
       message: "%{_class} \"%{name}\" created!"
     updated:
