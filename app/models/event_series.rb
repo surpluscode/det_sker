@@ -10,7 +10,7 @@ class EventSeries < ActiveRecord::Base
   has_attached_file :picture, styles: { original: '500x500>', thumb: '100x100>'}, default_url: 'images/:st'
   validates_attachment_content_type :picture, :content_type => /\Aimage/
   validates_attachment_file_name :picture, matches: [/png\Z/i, /jpe?g\Z/i]
-  validates_with AttachmentSizeValidator, attributes: :picture, less_than:  1.megabytes
+  validates_with AttachmentSizeValidator, attributes: :picture, less_than:  3.megabytes
 
   after_create :cascade_creation, if: :persisted?
   after_update :cascade_update
