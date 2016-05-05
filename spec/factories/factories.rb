@@ -132,9 +132,17 @@ FactoryGirl.define do
 
     factory :expired_series do
       expiry DateTime.now - 2.days
+
+      factory :expired_series_expired_warning_sent do
+        expired_warning_sent true
+      end
     end
     factory :expiring_series do
       expiry DateTime.now + 6.days
+
+      factory :expiring_series_expiring_warning_sent do
+        expiring_warning_sent true
+      end
     end
 
   end

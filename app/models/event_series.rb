@@ -18,6 +18,8 @@ class EventSeries < ActiveRecord::Base
   scope :expiring, -> { where('expiry <= ?', DateTime.now + 1.week).where('expiry >= ?', DateTime.now).ordered }
   scope :expired, -> { where('expiry < ?', DateTime.now).ordered }
   scope :ordered, -> { order(expiry: :asc )}
+  scope :expiring_warning_not_sent, -> { where(expiring_warning_sent: false) }
+  scope :expired_warning_not_sent, -> { where(expired_warning_sent: false) }
   # the name method is an alias used
   # by the page title helper
   def name
@@ -148,7 +150,8 @@ class EventSeries < ActiveRecord::Base
   def event_attributes
     attributes.except(
         'id', 'expiry', 'days', 'rule', 'start_date', 'start_time', 'end_time',
-        'picture_file_size', 'picture_content_type', 'picture_updated_at', 'picture_file_name'
+        'picture_file_size', 'picture_content_type', 'picture_updated_at', 'picture_file_name',
+        'expired_warning_sent', 'expiring_warning_sent'
     ).merge(event_series_id: self.id, categories: categories)
   end
 end

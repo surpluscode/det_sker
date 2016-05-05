@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415175051) do
+ActiveRecord::Schema.define(version: 20160505081117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,7 +73,9 @@ ActiveRecord::Schema.define(version: 20160415175051) do
     t.date     "start_date"
     t.time     "start_time"
     t.time     "end_time"
-    t.boolean  "published",            default: true
+    t.boolean  "published",             default: true
+    t.boolean  "expiring_warning_sent", default: false
+    t.boolean  "expired_warning_sent",  default: false
   end
 
   create_table "event_series_categories", id: false, force: :cascade do |t|

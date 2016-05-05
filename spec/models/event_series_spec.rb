@@ -103,20 +103,30 @@ describe EventSeries do
   describe 'expiring scopes' do
     let(:expiring_series) { FactoryGirl.create(:expiring_series) }
     let(:expired_series) { FactoryGirl.create(:expired_series) }
+    let(:expiring_series_already_warned) { FactoryGirl.create(:expiring_series_expiring_warning_sent) }
+    let(:expired_series_already_warned) { FactoryGirl.create(:expired_series_expired_warning_sent) }
 
     describe 'expiring' do
       subject { EventSeries.expiring }
-      context 'when there is a series expiring within a week' do
-        it { should include expiring_series }
-        it { should_not include expired_series }
-      end
+      it { should include expiring_series }
+      it { should_not include expired_series }
     end
     describe 'expired' do
       subject { EventSeries.expired }
-      context 'when there is a series that expired yesterday' do
-        it { should include expired_series }
-        it { should_not include expiring_series }
-      end
+      it { should include expired_series }
+      it { should_not include expiring_series }
+    end
+    describe 'expiring.expiring_warning_not_sent' do
+      subject { EventSeries.expiring.expiring_warning_not_sent }
+      it { should include expiring_series }
+      it { should_not include expired_series }
+      it { should_not include expiring_series_already_warned }
+    end
+    describe 'expired.expiry_warning_not_sent' do
+      subject { EventSeries.expired.expired_warning_not_sent }
+      it { should include expired_series }
+      it { should_not include expiring_series }
+      it { should_not include expired_series_already_warned }
     end
   end
 end
