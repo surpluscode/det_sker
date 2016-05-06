@@ -43,22 +43,4 @@ describe User do
       it { should =~ [unpublished_event] }
     end
   end
-  # describe 'expiring event queries' do
-  #   let(:user) { FactoryGirl.create(:user) }
-  #   let(:expiring_series) { FactoryGirl.create(:expiring_series, user: user) }
-  #   let(:expired_series) { FactoryGirl.create(:expired_series, user: user) }
-  #   let(:active_series) { FactoryGirl.create(:weekly_series, user: user) }
-  #   describe 'expiring series' do
-  #     subject { User.expiring_series }
-  #     it { should include expiring_series }
-  #     it { should_not include expired_series }
-  #     it { should_not include active_series }
-  #   end
-  #   describe 'expired series' do
-  #     subject { User.expired_series }
-  #     it { should include expired_series }
-  #     it { should_not include expiring_series }
-  #     it { should_not include active_series }
-  #   end
-  # end
 end
