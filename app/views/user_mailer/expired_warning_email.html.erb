@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <style>
+      body {
+        font-family: "Helvetica Neue", "Arial", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><%= "Hej #{@user.username}," %></h1>
+    <p>
+      <%= "Din serie #{@series.title} er nu udløbet." %>
+      Hvis den stadig er i gang skal du <%= link_to('fornye det her', @url).html_safe  %>.
+    </p>
+    <p>
+      <%= "Your series #{@series.title} has now expired." %>
+      If the series is still in progress you should <%= link_to('renew it here', @url).html_safe %>.
+    </p>
+    <p>Med venlig hilsen / All the best,</p>
+    <p>Duk Op</p>
+  </body>
+</html>

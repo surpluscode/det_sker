@@ -107,7 +107,7 @@ FactoryGirl.define do
     days 'Monday'
     start_date DateTime.now
     expiry DateTime.now + 2.month
-    user_id 1
+    user { FactoryGirl.create(:user) }
     categories {[FactoryGirl.create(:random_category)]}
 
     factory :weekly_series do

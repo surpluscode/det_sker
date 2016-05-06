@@ -20,5 +20,6 @@ module DetSker
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :da
     config.autoload_paths << Rails.root.join('lib', 'simple_form')
+    config.autoload_paths << Rails.root.join('services')
   end
 end

@@ -33,4 +33,14 @@ namespace :det_sker do
     u.skip_confirmation!    
     raise "User could not be saved! #{u.errors.messages}" unless u.save
   end
+
+  desc 'email all users with series expiring within the week'
+  task :send_expiring_reminders => :environment do
+    ReminderService.send_expiring_reminders
+  end
+
+  desc 'email all users with expired series'
+  task :send_expiry_reminders => :environment do
+    ReminderService.send_expiry_reminders
+  end
 end
