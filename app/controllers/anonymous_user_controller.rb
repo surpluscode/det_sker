@@ -22,6 +22,6 @@ class AnonymousUserController < ApplicationController
 
   private
   def whitelist_params
-    params.require(:user).permit(:captcha, :captcha_key)
+    params.permit(:captcha, :captcha_key)
   end
 end
