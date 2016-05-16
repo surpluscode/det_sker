@@ -1,6 +1,6 @@
 <%= "Hej #{@user.username}," %>
 
-<%= "Din serie #{@series.title} udløber om #{distance_of_time_in_words_to_now(@series.expiry, locale: :da)}.
+<%= "Din gentagende event #{@series.title} udløber om #{distance_of_time_in_words_to_now(@series.expiry, locale: :da)}.
     Hvis den stadig er i gang skal du fornye det her: #{@url}" %>
 <%= "Your series #{@series.title} expires in #{distance_of_time_in_words_to_now(@series.expiry, locale: :en)}.
     If the series is still in progress you should renew it here: #{@url}" %>

@@ -11,7 +11,7 @@
   <body>
     <h1><%= "Hej #{@user.username}," %></h1>
     <p>
-      <%= "Din serie #{@series.title} udløber om #{distance_of_time_in_words_to_now(@series.expiry, locale: :da)}." %>
+      <%= "Din gentagende event #{@series.title} udløber om #{distance_of_time_in_words_to_now(@series.expiry, locale: :da)}." %>
       Hvis den stadig er i gang skal du <%= link_to('fornye det her', @url).html_safe  %>.
     </p>
     <p>
