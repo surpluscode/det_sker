@@ -26,6 +26,7 @@ DetSker::Application.routes.draw do
   scope 'admin', controller: :admin do
     get :dashboard, as: :admin_dashboard
     get :series, as: :admin_series
+    get :analytics, as: :admin_analytics
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

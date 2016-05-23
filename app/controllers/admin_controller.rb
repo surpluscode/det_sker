@@ -15,6 +15,10 @@ class AdminController < ApplicationController
     @expired = EventSeries.expired
   end
 
+  def analytics
+    @grouped_action = AnalyticsService.group_by(:name)
+  end
+
   def admin_user?
     unless current_user.is_admin?
       redirect_to denied_path, notice: 'Only for admin users'

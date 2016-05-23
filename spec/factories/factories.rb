@@ -147,4 +147,16 @@ FactoryGirl.define do
 
   end
 
+  factory :ahoy_event_frontpage, class: Ahoy::Event do
+    name 'calendar#index'
+    time  DateTime.now - 2.minutes
+    properties({ 'locale' => 'da', 'controller' => 'calendar', 'action' => 'index' })
+    visit_id nil
+    user_id nil
+
+    factory :ahoy_location_show do
+      name 'locations#show'
+    end
+  end
+
 end
