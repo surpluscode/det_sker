@@ -17,12 +17,17 @@
       </thead>
       <% @grouped_action.each do |action, values|  %>
         <tr>
-          <td><%= action %></td>
+          <td><%= link_to(action, analytics_timeseries_path(view: action, interval: 'week')) %></td>
           <td><%= values.first %></td>
           <td><%= "#{values.second.round(2)}%" %></td>
           <td><%= t("analytics.notes.#{action}", default: '') %></td>
         </tr>
       <% end  %>
+      <tr>
+        <td><%= link_to 'Total', analytics_timeseries_path(interval: 'week') %></td>
+        <td><%= @grouped_action.values.collect(&:first).inject(&:+) %></td>
+        <td><%= "#{@grouped_action.values.collect(&:second).inject(&:+).round(2)}%"%></td>
+      </tr>
     </table>
   </div>
 </div>

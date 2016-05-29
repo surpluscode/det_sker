@@ -19,6 +19,12 @@ class AdminController < ApplicationController
     @grouped_action = AnalyticsService.group_by(:name)
   end
 
+  def timeseries
+    @interval = params[:interval] || 'week'
+    @view = params[:view]
+    @timeseries = AnalyticsService.time_series(@view, @interval)
+  end
+
   def admin_user?
     unless current_user.is_admin?
       redirect_to denied_path, notice: 'Only for admin users'

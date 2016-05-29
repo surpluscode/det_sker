@@ -28,4 +28,30 @@ describe AnalyticsService do
       expect(subject.values.collect(&:last).inject(&:+)).to eql 100.0
     end
   end
+
+  describe 'timeseries' do
+    before do
+      FactoryGirl.create(:ahoy_event_frontpage, time: DateTime.now - 1.week)
+      FactoryGirl.create(:ahoy_event_frontpage)
+      FactoryGirl.create(:ahoy_location_show)
+    end
+    let(:interval) { 'week' }
+    let(:field) { 'calendar#index' }
+    subject { described_class.time_series(field, interval) }
+    it { should be_a Hash }
+    it 'should group by date' do
+      expect(subject.keys.size).to eql 2
+    end
+    it 'should only include the relevant events' do
+      expect(subject.values).to eql %w(1 1)
+    end
+    context 'when given an invalid interval' do
+      let(:interval) { 'invalid' }
+      it { should eql({}) }
+    end
+    context 'when given a sql injection attempt' do
+      let(:field) { "calendar#index'; SELECT * FROM ahoy_events;'"}
+      it { should eql({})}
+    end
+  end
 end
