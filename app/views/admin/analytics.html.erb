@@ -9,7 +9,10 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Action</th><th>Absolute</th><th>Percentage</th>
+          <th>Action</th>
+          <th>Absolute</th>
+          <th>Percentage</th>
+          <th>Note</th>
         </tr>
       </thead>
       <% @grouped_action.each do |action, values|  %>
@@ -17,6 +20,7 @@
           <td><%= action %></td>
           <td><%= values.first %></td>
           <td><%= "#{values.second.round(2)}%" %></td>
+          <td><%= t("analytics.notes.#{action}", default: '') %></td>
         </tr>
       <% end  %>
     </table>
