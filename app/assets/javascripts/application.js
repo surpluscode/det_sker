@@ -20,4 +20,5 @@
 
 //= require bootstrap-datetimepicker
 //= require typeahead.bundle.min
+//= require chartkick
 //= require_tree .

@@ -44,6 +44,7 @@ gem 'simple_form'
 gem 'momentjs-rails', '>= 2.8.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 gem 'simple_captcha2', require: 'simple_captcha'
+gem 'chartkick'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

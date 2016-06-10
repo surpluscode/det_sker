@@ -1,0 +1,31 @@
+<%= render partial: 'navigation' %>
+<h2>Event creation trends <%= "#{@start_date.strftime('%D')} - #{@end_date.strftime('%D')}" %></h2>
+<div class="timeseriesOptions">
+  <%= form_tag(analytics_events_path, method: :get, authenticity_token: false) do %>
+      <div>
+        <label for="start_date">From:</label>
+        <%= select_date(@start_date, order: [:day, :month, :year], prefix: :start_date) %>
+      </div>
+      <div>
+        <label for="end_date">Until:</label>
+        <%= select_date(@end_date, order: [:day, :month, :year], prefix: :end_date) %>
+      </div>
+      <%= submit_tag 'Go' %>
+  <% end  %>
+</div>
+
+<%= line_chart @timeseries %>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Visits</th>
+  </tr>
+  </thead>
+  <% @timeseries.each do |date, count|  %>
+      <tr>
+        <td><%= date %></td>
+        <td><%= count %></td>
+      </tr>
+  <% end   %>
+</table>

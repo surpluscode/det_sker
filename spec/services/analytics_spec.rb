@@ -54,4 +54,28 @@ describe AnalyticsService do
       it { should eql({})}
     end
   end
+
+  describe 'event_creation' do
+    before do
+      FactoryGirl.create(:event, created_at: DateTime.now - 4.weeks)
+      FactoryGirl.create(:event, created_at: DateTime.now - 2.weeks)
+    end
+    let(:interval) { 'week' }
+    subject { described_class.events_created(interval) }
+    it { should be_a Hash }
+    it 'should group by date' do
+      expect(subject.keys.size).to eql 2
+    end
+    it 'should only include the relevant events' do
+      expect(subject.values).to eql %w(1 1)
+    end
+    context 'when supplied a start date and end date' do
+      let(:start_date) { DateTime.now - 2.weeks }
+      let(:end_date) { DateTime.now + 3.weeks }
+      subject { described_class.events_created(interval, start_date) }
+      it 'should only include events within the scope' do
+        expect(subject.keys.size).to eql 1
+      end
+    end
+  end
 end
