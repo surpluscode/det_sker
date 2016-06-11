@@ -29,6 +29,7 @@ DetSker::Application.routes.draw do
     get :analytics, as: :admin_analytics
     scope 'analytics', controller: :admin do
       get 'timeseries', as: :analytics_timeseries
+      get 'events', as: :analytics_events
     end
   end
 
