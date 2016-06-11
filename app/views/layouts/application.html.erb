@@ -4,7 +4,8 @@
   <title><%= page_title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "https://www.google.com/jsapi" %>
+  <%# We get some special js for admins  %>
+  <%= content_for :special_scripts %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <%# Add Google verification tag for production only %>
