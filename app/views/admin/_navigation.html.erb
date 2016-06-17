@@ -1,3 +1,5 @@
+<%= admin_scripts %>
+
 <div class="container">
   <h1>Administrator Dashboard</h1>
 </div>
@@ -20,6 +22,9 @@
         </li>
         <li>
           <%= link_to(t('layouts.application.series'), admin_series_path) %>
+        </li>
+        <li>
+          <%= link_to('Analytics', admin_analytics_path) %>
         </li>
       </ul>
     </div>

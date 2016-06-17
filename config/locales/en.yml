@@ -283,3 +283,11 @@ en:
     refresh_button_text: "New image?"
     message:
       user: The code entered was incorrect. Please try again.
+  analytics:
+    notes:
+      calendar#index: Front page
+      pages#show: Static pages
+      sessions#create: Create user
+      sessions#new: Login
+      locations#show: Location pages
+      events#show: Event pages

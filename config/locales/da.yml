@@ -336,3 +336,11 @@ da:
     refresh_button_text: "Nyt billede?"
     message:
       user: Den indtastede kode passer ikke. Prøv venligst igen.
+  analytics:
+    notes:
+      calendar#index: Forside
+      pages#show: Statiske sider
+      sessions#create: Opret bruger
+      sessions#new: Login
+      locations#show: Lokation sider
+      events#show: Event sider
