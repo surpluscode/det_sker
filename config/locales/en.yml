@@ -136,7 +136,7 @@ en:
                   If your event has been cancelled it is better to edit your event
                   and click on cancel. In this way, your guests can see that the event
                   has been cancelled.
-      unpublished_explanation: "This event is not published yet. This means that it's not visible on the front page but can be shared using the URL."
+      unpublished_explanation: "This event is not published yet. This means that it's not visible on the front page but can be seen on the user's page and shared using the URL."
   comments:
     form:
       writing_as: "Writing as"

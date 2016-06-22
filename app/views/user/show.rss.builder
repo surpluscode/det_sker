@@ -6,7 +6,7 @@ xml.rss version: '2.0' do
     xml.docs 'http://cyber.law.harvard.edu/rss/rss.html'
     xml.ttl '30'
 
-    @user.coming_events.each do |event|
+    @calendar.events.each do |event|
       xml.item do
         xml.title title_display(event)
         xml.link event_url(event)

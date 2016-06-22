@@ -18,8 +18,15 @@ class Calendar
     @days.values.sort {|x,y| x.date <=> y.date}
   end
 
-  def self.for(event_series)
-    events = event_series.events.coming
+  def self.for(object)
+    events = object.events.coming
+    Calendar.new(events)
+  end
+
+  # Special method to enable display of
+  # hidden events on user's show page
+  def self.for_user(user)
+    events = user.events.future.ordered
     Calendar.new(events)
   end
 

@@ -20,7 +20,7 @@ class UserController < ApplicationController
   end
 
   def show
-    @calendar = Calendar.for(@user)
+    @calendar = Calendar.for_user(@user)
   end
 
   def edit

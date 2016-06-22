@@ -73,4 +73,19 @@ describe Calendar do
       end
     end
   end
+  describe 'Calendar.for_user' do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:published) { FactoryGirl.create(:event, user: user) }
+    let(:unpublished) { FactoryGirl.create(:unpublished_event, user: user) }
+    subject { Calendar.for_user(user) }
+    # make sure everything is initialized
+    before { published && unpublished }
+
+    it 'should include unpublished events' do
+      expect(subject.events).to include unpublished
+    end
+    it 'should include published events' do
+      expect(subject.events).to include published
+    end
+  end
 end
