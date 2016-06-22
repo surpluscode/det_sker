@@ -33,7 +33,7 @@ module EventsHelper
     description <<  ', '
     description << format_datetime(event.start_time)
     description <<  "\n"
-    description << event.short_description
+    description << simple_format(event.short_description)
   end
 
   def title_display(event)
