@@ -27,10 +27,8 @@
       <% end %>
   <% end %>
   <hr/>
-  <% if own_page?(@user) && @user.unpublished_events.present? %>
-      <h2><%= t('.unpublished_events')%></h2>
-    <%= render partial: 'events/event', collection: @user.unpublished_events, locals: { show_date: true } %>
-  <% end %>
-  <h2><%= t :coming_events %></h2>
-  <%= render partial: 'events/event', collection: @user.coming_events, locals: { show_date: true } %>
+  <div>
+    <h2><%= t :coming_events %></h2>
+    <%= render partial: 'calendar/day', collection: @calendar.days  %>
+  </div>
 </div>
