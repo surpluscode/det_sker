@@ -49,6 +49,14 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def has_picture?
+    best_picture.present?
+  end
+
+  def picture_url
+    best_picture.url(:original)
+  end
+
   def weekly?
     event_series.present? && event_series.rule == 'weekly'
   end

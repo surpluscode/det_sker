@@ -36,6 +36,15 @@ module EventsHelper
     description << simple_format(event.short_description)
   end
 
+  def rss_image_attrs(event)
+    {
+        url: image_url(event.picture_url),
+        title: event.title,
+        alt: event.title,
+        type: event.picture_content_type
+    }
+  end
+
   def title_display(event)
     if event.cancelled?
       "<s>#{event.title}</s> - <span class='text-danger'>#{I18n.t('events.event.cancelled')}</span>".html_safe
@@ -169,8 +178,8 @@ module EventsHelper
     details.merge!(url: url)
     content_tag(:script, details.to_json.html_safe, type: 'application/ld+json')
   end
-end
 
-def image_url(file)
-  request.protocol + request.host_with_port + file
+  def image_url(file)
+    request.protocol + request.host_with_port + file
+  end
 end
