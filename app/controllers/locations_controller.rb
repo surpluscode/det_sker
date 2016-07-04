@@ -30,7 +30,7 @@ class LocationsController < ApplicationController
   end
 
   def show
-    @calendar = Calendar.for(@location)
+    @calendar = Calendar.with_hidden(@location)
   end
 
   def edit

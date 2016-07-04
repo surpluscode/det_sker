@@ -25,8 +25,8 @@ class Calendar
 
   # Special method to enable display of
   # hidden events on user's show page
-  def self.for_user(user)
-    events = user.events.future.ordered
+  def self.with_hidden(object)
+    events = object.events.future.ordered
     Calendar.new(events)
   end
 

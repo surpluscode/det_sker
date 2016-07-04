@@ -77,7 +77,7 @@ describe Calendar do
     let(:user) { FactoryGirl.create(:user) }
     let(:published) { FactoryGirl.create(:event, user: user) }
     let(:unpublished) { FactoryGirl.create(:unpublished_event, user: user) }
-    subject { Calendar.for_user(user) }
+    subject { Calendar.with_hidden(user) }
     # make sure everything is initialized
     before { published && unpublished }
 
