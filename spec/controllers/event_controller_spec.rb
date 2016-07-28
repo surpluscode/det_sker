@@ -35,9 +35,12 @@ describe EventsController do
     end
   end
 
-  describe 'GET#open_graph' do
-
-
+  describe 'GET#debug' do
+    let(:event) { FactoryGirl.create(:event) }
+    it 'should load a page' do
+      get :debug, id: event
+      expect(response.status).to eql 200
+    end
   end
 
 end

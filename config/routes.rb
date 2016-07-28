@@ -5,6 +5,7 @@ DetSker::Application.routes.draw do
   match 'users/:id' => 'user#destroy', via: :delete, as: :admin_destroy_user
   root 'calendar#index'
   resources :events, except: [:index] do
+    member { get 'debug' }
     resources :comments, except: [:new, :delete]
   end
   resources :event_series, controller: :event_series do

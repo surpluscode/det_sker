@@ -1,11 +1,14 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :debug]
   before_action :set_presenter, only: [:show]
   #TODO: shouldn't we authenticate the user before the create action also?
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :authorised_user?, only: [:edit, :update, :destroy]
 
   def show
+  end
+
+  def debug
   end
 
   def new

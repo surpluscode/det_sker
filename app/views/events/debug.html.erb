@@ -1,0 +1,21 @@
+<% no_index_rule %>
+<div class="container">
+  <div class="event_show">
+    <h1>Debug View</h1>
+    <h2>Timing</h2>
+    <table class="table">
+      <tr>
+        <td>Current time</td><td><%= DateTime.now %></td>
+      </tr>
+      <tr>
+        <td>Event start</td><td><%= @event.start_time %></td>
+      </tr>
+      <tr>
+        <td>Event end</td><td><%= @event.end_time %></td>
+      </tr>
+    </table>
+    <h2>Event Details</h2>
+    <code>
+      <%= @event.to_json.gsub(',"', ",<br/>").html_safe %>
+    </code>
+  </div></div>

@@ -55,4 +55,8 @@
         <%= render partial: 'events/comments/list', locals: { comments: @event.comments } %>
         <%= render partial: 'comments/form', locals: { event: @event, show_form: false } if user_signed_in? %>
   <% end %>
+  <% if current_user && current_user.is_admin?  %>
+    | <%= link_to('Debug', debug_event_path(@event))   %>
+  <% end %>
+
 </div>

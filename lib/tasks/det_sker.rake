@@ -7,6 +7,7 @@ namespace :det_sker do
   end
   
   desc 'create an admin user given an email, username and password'
+  # Invoke as follows: rake "det_sker:create_admin[user@example.com,user,secretpassword]"
   task :create_admin, [:email, :username, :password] => :environment do |t, args|
     create_user(args[:email], args[:username], args[:password], true)
     puts "Admin user #{args[:username]} created with email #{args[:email]} and password #{args[:password]}"
