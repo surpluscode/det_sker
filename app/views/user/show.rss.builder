@@ -12,7 +12,7 @@ xml.rss version: '2.0' do
         xml.link event_url(event)
         xml.guid event_url(event)
         xml.description rss_description(event)
-        xml.pubDate event.created_at.rfc2822
+        xml.pubDate rss_pub_date(event)
         xml.enclosure(rss_image_attrs(event)) if event.has_picture?
         event.categories.each do |category|
           xml.category transl_cat(category)
