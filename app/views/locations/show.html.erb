@@ -13,6 +13,9 @@
   <% end %>
   <div>
     <h2><%= t :coming_events %></h2>
+    <% if @calendar.in_progress.size > 0 %>
+        <%= render partial: 'calendar/day', object: @calendar.in_progress, locals: { id: 'inProgress' } %>
+    <% end %>
     <%= render partial: 'calendar/day', collection: @calendar.days  %>
   </div>
 </div>

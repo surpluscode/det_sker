@@ -11,19 +11,30 @@ describe LocationsController do
   end
 
   describe 'GET#show' do
+    before do
+      @location = FactoryGirl.create(:other_location)
+      @event = FactoryGirl.create(:event, start_time: DateTime.now, end_time: DateTime.now + 1.day)
+      @location.events << @event
+    end
     it 'assigns the correct location' do
-      l = FactoryGirl.create(:other_location)
-      get :show, id: l
-      expect(assigns(:location)).to eq l
+      get :show, id: @location
+      expect(assigns(:location)).to eq @location
+    end
+    it 'includes in progress events in a calendar' do
+      get :show, id: @location
+      expect(assigns(:calendar)).to be_a Calendar
+      expect(assigns(:calendar).in_progress).to include @event
     end
   end
 
   describe 'show RSS' do
     render_views
+    before do
+      @location = FactoryGirl.create(:other_location)
+      @location.events << FactoryGirl.create(:event)
+    end
     it 'renders correct xml' do
-      l = FactoryGirl.create(:other_location)
-      l.events << FactoryGirl.create(:event)
-      get :show, id: l, format: 'rss'
+      get :show, id: @location, format: 'rss'
       expect {
         Nokogiri::XML(response.body) { |config| config.strict }
       }.not_to raise_error
