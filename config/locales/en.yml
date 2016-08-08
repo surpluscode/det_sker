@@ -111,6 +111,7 @@ en:
       weeks: "weeks"
       days: "days"
       months: "months"
+      invalid_duration: End time must be after start time.
     event:
       price: "Price"
       start_time: "Starts"

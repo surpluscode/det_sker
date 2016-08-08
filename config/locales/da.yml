@@ -111,6 +111,7 @@ da:
       days: "dage"
       months: "måneder"
       feature_event?: 'Skal din event promoveres?'
+      invalid_duration: Sluttiden skal være efter starttiden
     event:
       price: "Pris"
       start_time: "Starter"

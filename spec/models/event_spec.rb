@@ -36,6 +36,11 @@ describe Event do
     expect(Event.create(@party_details).valid?).not_to be_true
   end
 
+  it 'should not save an event with an end time before the start time' do
+    mixed_up = Event.new(@party_details.merge(start_time: DateTime.now, end_time: DateTime.now - 1.hour))
+    expect(mixed_up).not_to be_valid
+  end
+
   describe 'Event.in_progress?' do
     it 'should return true when an event is in progress' do
       e = FactoryGirl.create(:event)

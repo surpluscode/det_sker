@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   validates :title, :short_description, :start_time, :end_time, :location_id, :user_id, :categories, presence: true
+  validate :must_be_valid_duration
 
   belongs_to :user
   belongs_to :location
@@ -20,6 +21,12 @@ class Event < ActiveRecord::Base
   scope :this_week, -> { where('start_time <= ?', DateTime.now + 6.days) }
   scope :unpublished, -> { future.where(published: false).ordered }
   scope :coming, -> { future.published.ordered }
+
+  def must_be_valid_duration
+    unless end_time > start_time
+      errors.add(:end_time, I18n.t('events.form.invalid_duration'))
+    end
+  end
 
   def in_progress?
     start_time < DateTime.now && end_time > DateTime.now
