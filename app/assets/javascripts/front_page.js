@@ -12,9 +12,11 @@ function activateFrontPageListeners() {
 }
 
 function affixFilters(){
+    $calendarBox =  $('#calendar-box');
     $('#sticky-filters').affix({
         offset: {
-            top: $('#calendar-box').offset().top
+            top: $calendarBox.offset().top,
+            left: $calendarBox.offset().left
         }
     });
 }
