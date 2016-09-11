@@ -62,6 +62,24 @@ class EventSeries < ActiveRecord::Base
         date_name = Date::DAYNAMES[date.wday]
         create_child(date) if date_name.in? day_array
       end
+    elsif rule == 'biweekly_odd'
+      (start_d..expiry).each do |date|
+        date_name = Date::DAYNAMES[date.wday]
+        if date_name.in? day_array
+          if (date.cweek % 2) == 1
+            create_child(date)
+          end
+        end
+      end
+    elsif rule == 'biweekly_even'
+      (start_d..expiry).each do |date|
+        date_name = Date::DAYNAMES[date.wday]
+        if date_name.in? day_array
+          if (date.cweek % 2) == 0
+            create_child(date)
+          end
+        end
+      end
     else
       # for each month, get the matching dates for each day specified using the rule specified
       dates_to_months(start_d, expiry).each do |month|

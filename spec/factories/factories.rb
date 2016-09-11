@@ -115,6 +115,16 @@ FactoryGirl.define do
       expiry DateTime.now + 1.month
     end
 
+    factory :biweekly_series_odd do
+      rule 'biweekly_odd'
+      expiry DateTime.now + 1.month
+    end
+
+    factory :biweekly_series_even do
+      rule 'biweekly_even'
+      expiry DateTime.now + 1.month
+    end
+
     factory :first_in_month do
       rule 'first'
     end

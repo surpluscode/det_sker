@@ -34,6 +34,30 @@ describe EventSeries do
       end
     end
 
+    describe 'biweekly series (even weeks)' do
+      subject { FactoryGirl.create(:biweekly_series_even) }
+      it_behaves_like 'series'
+      it 'should create events with two weeks between them in even weeks' do
+        first_time = subject.events.first.start_time
+        second_time = subject.events.second.start_time
+        expect(first_time + 2.week).to eql second_time
+        expect(first_time.to_datetime.cweek % 2).to eql 0
+        expect(second_time.to_datetime.cweek % 2).to eql 0
+      end
+    end
+
+    describe 'biweekly series (odd weeks)' do
+      subject { FactoryGirl.create(:biweekly_series_odd) }
+      it_behaves_like 'series'
+      it 'should create events with two weeks between them in odd weeks' do
+        first_time = subject.events.first.start_time
+        second_time = subject.events.second.start_time
+        expect(first_time + 2.week).to eql second_time
+        expect(first_time.to_datetime.cweek % 2).to eql 1
+        expect(second_time.to_datetime.cweek % 2).to eql 1
+      end
+    end
+
     describe 'updating a first in month series' do
       subject{ FactoryGirl.create(:first_in_month) }
       it_behaves_like 'series'

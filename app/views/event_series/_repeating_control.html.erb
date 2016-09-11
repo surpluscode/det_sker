@@ -6,6 +6,8 @@
 <%= builder.input :rule,
 collection: [
   [t('event_series.form.every_week'), 'weekly'],
+  [t('event_series.form.every_other_odd_week'), 'biweekly_odd'],
+  [t('event_series.form.every_other_even_week'), 'biweekly_even'],
   [t('event_series.form.first_in_month'), 'first'],
   [t('event_series.form.second_in_month'), 'second'],
   [t('event_series.form.third_in_month'), 'third'],

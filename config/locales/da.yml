@@ -105,6 +105,7 @@ da:
       repeating_event: "Gentages din event?"
       every_day: "Hver dag"
       every_week: "Hver uge"
+      every_other_week: "Hver anden uge"
       every_month: "Hver måned"
       for_time: "i"
       weeks: "uger"
@@ -280,6 +281,8 @@ da:
   event_series:
     monthly_display_rule: "Gentages den %{rule} %{days} i måneden."
     weekly_display_rule: "Hver %{days}"
+    biweekly_odd_display_rule: "Hver anden %{days} (i ulige uger)"
+    biweekly_even_display_rule: "Hver anden %{days} (i lige uger)"
     first: første
     second: anden
     third: tredje
@@ -302,6 +305,8 @@ da:
     form:
       choose_days: 'Vælg en eller flere dage'
       every_week: "hver uge"
+      every_other_even_week: "hver anden uge (lige uger)"
+      every_other_odd_week: "hver anden uge (ulige uger)"
       repetition_header: "Gentages"
       first_in_month: først uge i måneden
       second_in_month: anden uge i måneden

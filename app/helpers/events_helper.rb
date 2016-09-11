@@ -59,6 +59,10 @@ module EventsHelper
     transl_days = series.day_array.collect { |d| I18n.t("day_names.#{d.titleize}", default: d) }.to_sentence(locale: I18n.locale)
     if series.rule == 'weekly'
       I18n.t('event_series.weekly_display_rule', days: transl_days)
+    elsif series.rule == 'biweekly_odd'
+      I18n.t('event_series.biweekly_odd_display_rule', days: transl_days)
+    elsif series.rule == 'biweekly_even'
+      I18n.t('event_series.biweekly_even_display_rule', days: transl_days)
     else
       transl_rule = I18n.t("event_series.#{series.rule}", default: series.rule)
       I18n.t('event_series.monthly_display_rule', days: transl_days, rule: transl_rule)

@@ -237,6 +237,8 @@ en:
   event_series:
     monthly_display_rule: "Repeats on the %{rule} %{days} in the month."
     weekly_display_rule: "Every %{days}"
+    biweekly_odd_display_rule: "Every other %{days} in odd weeks"
+    biweekly_even_display_rule: "Every other %{days} in even weeks"
     edit_link: Edit series
     delete_events_link: Delete all occurrences of this series
     delete_events_warning: "You are about to delete %{number} events - are you sure you want to continue?"
@@ -252,6 +254,8 @@ en:
     form:
       choose_days: Choose one or more days
       every_week: "every week"
+      every_other_odd_week: "every other week (odd weeks)"
+      every_other_even_week: "every other week (even weeks)"
       first_in_month: first week of the month
       last_in_month: last week of the month
       repetition_header: "Repeats"
