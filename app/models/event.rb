@@ -23,6 +23,7 @@ class Event < ActiveRecord::Base
   scope :coming, -> { future.published.ordered }
 
   def must_be_valid_duration
+    return unless end_time.present? && start_time.present?
     unless end_time > start_time
       errors.add(:end_time, I18n.t('events.form.invalid_duration'))
     end
