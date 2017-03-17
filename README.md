@@ -12,7 +12,7 @@ You can see the Roadmap to see our vision for the full release while the [Issue 
 
 
 # Try it out
-If you want to try it out, you will need a ruby 2.0 development environment, rails 4 and git.
+If you want to try it out, you will need a ruby development environment (see exact version in our setup notes below), rails 4 and git.
 If this fills you with doubt and confusion, have a look at the [Railsbridge install guide](http://docs.railsbridge.org/installfest/)
 and follow relevant points for your platform (ignore all that guff about Heroku).
 Once you have cloned the project you will need to install all gems and system dependencies. Some gems have dependencies on system libraries, the following list works for me but you might very depending on your platform and pre-existing libraries.
