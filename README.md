@@ -50,7 +50,7 @@ Nice read: https://gorails.com/setup/ubuntu/14.04
 
     ```
     sudo apt-get install libgmp-dev
-    sudo apt-get install libmagicwand-dev
+    sudo apt-get install libmagickwand-dev
     ```
  1. Install rvm:
 
