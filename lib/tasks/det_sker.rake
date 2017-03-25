@@ -23,8 +23,8 @@ namespace :det_sker do
     u = User.new(
       is_admin: admin, email: email, email_confirmation: email,
       username: username, password: password, password_confirmation: password,
-    )  
-    u.skip_confirmation!    
+    )
+    u.skip_confirmation!
     raise "User could not be saved! #{u.errors.messages}" unless u.save
   end
 
@@ -36,5 +36,10 @@ namespace :det_sker do
   desc 'email all users with expired series'
   task :send_expiry_reminders => :environment do
     ReminderService.send_expiry_reminders
+  end
+
+  desc 'convert all events to use utc time and update'
+  task :repair_all => :environment do
+    DateRepair.repair_all
   end
 end
