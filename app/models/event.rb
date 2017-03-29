@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   validates :title, :short_description, :start_time, :end_time, :location_id, :user_id, :categories, presence: true
+  validate :must_be_future_event
   validate :must_be_valid_duration
 
   belongs_to :user
@@ -26,6 +27,15 @@ class Event < ActiveRecord::Base
     return unless end_time.present? && start_time.present?
     unless end_time > start_time
       errors.add(:end_time, I18n.t('events.form.invalid_duration'))
+    end
+  end
+
+  def must_be_future_event
+    return if persisted?
+    if start_time < DateTime.now
+      errors.add(:start_time, I18n.t('events.form.past_event'))
+    elsif end_time < DateTime.now
+      errors.add(:end_time, I18n.t('events.form.past_event'))
     end
   end
 

@@ -41,6 +41,17 @@ describe Event do
     expect(mixed_up).not_to be_valid
   end
 
+  it 'should not save a new event with a start time in the past' do
+    past_event = Event.new(@party_details.merge(start_time: DateTime.now - 1.day, end_time: DateTime.now - 23.hours))
+    expect(past_event).not_to be_valid
+  end
+
+  it 'should allow editing an event that was in the past' do
+    mixed_up = Event.new(@party_details.merge(start_time: DateTime.now - 1.day, end_time: DateTime.now - 23.hours))
+    mixed_up.save!(validate: false)
+    expect { mixed_up.update!(title: 'A different title')}.to_not raise_error
+  end
+
   describe 'Event.in_progress?' do
     it 'should return true when an event is in progress' do
       e = FactoryGirl.create(:event)

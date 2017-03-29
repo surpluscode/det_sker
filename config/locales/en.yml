@@ -112,6 +112,7 @@ en:
       days: "days"
       months: "months"
       invalid_duration: End time must be after start time.
+      past_event: Cannot be in the past
     event:
       price: "Price"
       start_time: "Starts"

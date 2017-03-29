@@ -113,6 +113,7 @@ da:
       months: "måneder"
       feature_event?: 'Skal din event promoveres?'
       invalid_duration: Sluttiden skal være efter starttiden
+      past_event: kan ikke være før nu
     event:
       price: "Pris"
       start_time: "Starter"

@@ -15,9 +15,6 @@
 //= require jquery_ujs
 //= require bootstrap.min
 //= require bootstrap-select.min
-//= require moment
-//= require moment/da
 
-//= require bootstrap-datetimepicker
 //= require typeahead.bundle.min
 //= require_tree .

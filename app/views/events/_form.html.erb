@@ -101,21 +101,15 @@
         <h2><%= t 'event_series.form.repetition_header' %></h2>
         <%= f.simple_fields_for :event_series do |s| %>
          <%= render partial: 'event_series/repeating_control', locals: { builder: s,  coming_events: false } %>
-        <% end %> 
+        <% end %>
       </div>
     <% end %>
 
 
-    <div class="row" id="standard_time_control">
-      <div class="col-xs-12 col-sm-5">
-        <%= f.input :start_time, as: :string, input_html: { data:{
-         function: 'datetime-picker', 'date-format' => 'YYYY/MM/DD HH:mm', side_by_side: true, role: 'start-time', listener: '#event_end_time' }} %>
-       </div>
-       <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-        <%= f.input :end_time, as: :string, input_html: { data: {
-         function: 'datetime-picker', 'date-format' => 'YYYY/MM/DD HH:mm', side_by_side: true }} %>
-       </div>
-     </div>
+     <div class="row">
+      <%= f.input :start_time, start_year: Date.today.year, end_year: Date.today.year + 1, minute_step: 15 %>
+      <%= f.input :end_time, start_year: Date.today.year, end_year: Date.today.year + 1, minute_step: 15 %>
+      </div>
 
      <div class="row">
       <div class="col-xs-12">
