@@ -13,7 +13,6 @@ function activateFrontPageListeners() {
 
 function affixFilters(){
     $calendarBox =  $('#calendar-box');
-    if ($calendarBox.length == 0) return;
     $('#sticky-filters').affix({
         offset: {
             top: $calendarBox.offset().top,

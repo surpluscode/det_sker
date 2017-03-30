@@ -84,6 +84,7 @@ function showListener(){
 
 function activateFormListeners() {
     modalFormListener();
+    initDateTimePicker();
 
     categoryTagListener();
     showListener();
@@ -114,6 +115,32 @@ function activateFormListeners() {
             return false;
         }
     })
+}
+
+function initDateTimePicker(){
+    // Initialise all inputs with the given data attribute and value
+    $('[data-function="datetime-picker"]').each(function(){
+        var data = $.extend($(this).data(), {language: locale, minuteStepping: 15});
+        delete data.function;
+        $(this).datetimepicker(data);
+    });
+
+    // For each start time, setup a listener action on the
+    // corresponding end time
+    $('[data-role="start-time"]').each(function(){
+        $start = $(this);
+        $end = $($start.data('listener'));
+        if ($end.length == 0) return;
+        $start.data('DateTimePicker').setMinDate(new Date());
+        $end.data('DateTimePicker').setMinDate(new Date());
+        // set the end time to be the start date
+        $start.on('dp.change', function(e){
+            $end.data("DateTimePicker").setMinDate(e.date);
+            $end.data("DateTimePicker").setDate(e.date);
+        });
+    });
+    // kill the clock link - this could be problematic if we need it somewhere else!
+    $('li.picker-switch a').remove();
 }
 
 // add the remove button with listener after adding the file
