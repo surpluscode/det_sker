@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :user do
-    email 'test@example.com'
+    sequence(:email){|n| "user#{n}@factory.com" }
     email_confirmation { email }
     password 'f4k3p455w0rd'
-    username 'f4kIr'
+    sequence(:username) { |n| "user#{n}" }
     confirmed_at DateTime.now
 
     factory :admin_user do
@@ -21,7 +21,6 @@ FactoryGirl.define do
       email 'anon@secrets.org'
       username 'anon'
       is_anonymous true
-      skip_humanizer true
     end
   end
 
@@ -32,8 +31,9 @@ FactoryGirl.define do
     start_time DateTime.now
     end_time DateTime.now + 5.hours
     location
-    user_id 1
+    user { FactoryGirl.create(:user) }
     categories {[FactoryGirl.create(:random_category)]}
+    published true
 
     factory :event_yesterday do
       title 'This happened yesterday'
@@ -45,6 +45,15 @@ FactoryGirl.define do
       title 'This will happen tomorrow'
       start_time {DateTime.now + 1.day}
       end_time {DateTime.now + 1.day + 2.hours}
+    end
+
+    factory :unpublished_event do
+      published false
+    end
+
+    factory :featured_event do
+      title 'Featured event'
+      featured true
     end
   end
 
@@ -86,6 +95,78 @@ FactoryGirl.define do
 
   factory :comment do
     content 'bla bla bla'
+  end
+
+  factory :event_series do
+    description 'Sample description'
+    start_time DateTime.now + 1.hour
+    end_time DateTime.now + 2.hours
+    title 'Sample event series'
+    rule 'weekly'
+    location
+    days 'Monday'
+    start_date DateTime.now
+    expiry DateTime.now + 2.month
+    user { FactoryGirl.create(:user) }
+    categories {[FactoryGirl.create(:random_category)]}
+
+    factory :weekly_series do
+      rule 'weekly'
+      expiry DateTime.now + 1.month
+    end
+
+    factory :biweekly_series_odd do
+      rule 'biweekly_odd'
+      expiry DateTime.now + 1.month
+    end
+
+    factory :biweekly_series_even do
+      rule 'biweekly_even'
+      expiry DateTime.now + 1.month
+    end
+
+    factory :first_in_month do
+      rule 'first'
+    end
+
+    factory :second_in_month do
+      rule 'second'
+    end
+
+    factory :third_in_month do
+      rule 'third'
+    end
+    factory :last_in_month do
+      rule 'last'
+    end
+
+    factory :expired_series do
+      expiry DateTime.now - 2.days
+
+      factory :expired_series_expired_warning_sent do
+        expired_warning_sent true
+      end
+    end
+    factory :expiring_series do
+      expiry DateTime.now + 6.days
+
+      factory :expiring_series_expiring_warning_sent do
+        expiring_warning_sent true
+      end
+    end
+
+  end
+
+  factory :ahoy_event_frontpage, class: Ahoy::Event do
+    name 'calendar#index'
+    time  DateTime.now - 2.minutes
+    properties({ 'locale' => 'da', 'controller' => 'calendar', 'action' => 'index' })
+    visit_id nil
+    user_id nil
+
+    factory :ahoy_location_show do
+      name 'locations#show'
+    end
   end
 
 end

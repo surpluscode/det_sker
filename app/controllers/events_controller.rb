@@ -1,10 +1,14 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :debug]
+  before_action :set_presenter, only: [:show]
   #TODO: shouldn't we authenticate the user before the create action also?
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :authorised_user?, only: [:edit, :update, :destroy]
 
   def show
+  end
+
+  def debug
   end
 
   def new
@@ -17,14 +21,14 @@ class EventsController < ApplicationController
     event_params.merge!(user_id: current_user.id) if user_signed_in?
     # handle creation of recurring events here
     if params[:recurring] == 'yes'
-      series_params = event_params.merge(event_params[:event_series]).except(:event_series)
+      series_params = event_params.merge(event_params[:event_series]).except(:event_series, :featured)
       @event_series = EventSeries.new(series_params)
       saved = @event_series.save
-      notice = I18n.t('event_series.created', name: @event_series.name, num_events: @event_series.coming_events.size)
+      notice = I18n.t('event_series.created', link: url_for(@event_series), name: @event_series.name, num_events: @event_series.coming_events.size)
     else
       @event = Event.new(event_params.except('event_series'))
       saved = @event.save
-      notice = I18n.t('events.event_created', name: @event.name, id: @event.id)
+      notice = I18n.t('events.event_created', link: url_for(@event), name: @event.name)
     end
 
     respond_to do |format|
@@ -46,7 +50,7 @@ class EventsController < ApplicationController
       if @event.update(user_params)
         destroy_image?
         format.html {
-          redirect_to root_path, notice: I18n.t('events.event_updated', name: @event.name, id: @event.id)
+          redirect_to root_path, notice: I18n.t('events.event_updated', link: url_for(@event), name: @event.name)
         }
         format.json { head :no_content }
       else
@@ -73,6 +77,10 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def set_presenter
+    @event_presenter = EventPresenter.new(@event, view_context)
+  end
+
   def authorised_user?
     unless current_user.can_edit? @event
       redirect_to root_path, alert: I18n.t('general.permission_denied')
@@ -90,7 +98,7 @@ class EventsController < ApplicationController
   def user_params
     params.require(:event).permit(:title, :short_description, :long_description,
                                  :start_time, :end_time,  :location_id, :comments_enabled,
-                                 :price, :cancelled, :link, :picture, :featured,
+                                 :price, :cancelled, :link, :picture, :featured, :published,
                                  category_ids: [], event_series: [[:rule, :start_date, 
                                  :start_time, :expiry, :end_time, day_array: []]]).tap do |list|
       list[:category_ids].uniq!

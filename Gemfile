@@ -18,8 +18,6 @@ group :production do
   gem 'unicorn-worker-killer', platforms: [:ruby]
 end
 
-gem 'humanizer'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 
@@ -45,6 +43,8 @@ gem 'devise'
 gem 'simple_form'
 gem 'momentjs-rails', '>= 2.8.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
+gem 'simple_captcha2', require: 'simple_captcha'
+gem 'chartkick'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -52,6 +52,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
+  gem 'byebug'
 end
 
 group :test do
@@ -66,11 +67,13 @@ group :development do
   gem 'quiet_assets'
   gem 'rack-mini-profiler'
   gem 'xray-rails'
-  gem 'byebug'
 end
 
 gem 'rails_12factor', group: :production
+# Ruby interface to CRON
 gem 'whenever', require: false
+# Analytics
+gem 'ahoy_matey'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

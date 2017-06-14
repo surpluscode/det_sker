@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-6">
+    <%= "Serie:" if event.event_series.present? %>
+    <%= link_to(title_display(event), event) %>
+  </div>
+  <div class="col-md-6">
+    <% if @sort == 'created_at' %>
+      <%= "Oprettet for #{link_to(username(event.user), event.user)} #{distance_of_time_in_words(DateTime.now, event.created_at)} siden".html_safe %>
+    <% else %>
+      <%= "Opdateret for #{distance_of_time_in_words(DateTime.now, event.updated_at)} siden" %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <hr/>
+</div>

@@ -1,14 +1,33 @@
+<div class="generic_form anonymous_user">
+  <h2><%= t '.title' %></h2>
+  <% if @user.errors.messages[:captcha].present? %>
+    <%= @user.errors.messages[:captcha].join(' ') %>
+  <% end  %>
+  <%= simple_form_for @user, url: url_for(controller: 'anonymous_user', action: 'create') do |f| %>
+      <%= f.input :password, as: :hidden %>
+      <div class='simple_captcha'>
+        <div class='simple_captcha_image form-group'>
+          <%= simple_captcha_options[:image] %>
+        </div>
 
-<h2><%= t '.title' %></h2>
-<%= simple_form_for @user, url: url_for(controller: 'anonymous_user', action: 'create') do |f| %>
-    <%= f.input :password, as: :hidden %>
-    <%= f.input :humanizer_answer, label: @user.humanizer_question %>
-    <%= f.hint t('humanizer.explanation') %>
-    <br/>
-    <%= f.input  :humanizer_question_id, as: :hidden %>
-    <%= f.submit t('.create'), class: 'btn btn-primary' %>
-<% end %>
-<div class="row col-sm-8">
-<%= t '.explanation' %>
+        <div class='form-group'>
+          <label for="captcha">Code</label>
+          <%= simple_captcha_options[:field] %>
+        </div>
+
+        <div class='form-group text-info'>
+          <%= simple_captcha_options[:label] %>
+        </div>
+      </div>
+      <div class="btn btn-warning">
+        <%= simple_captcha_options[:refresh_button] %>
+      </div>
+
+      <%= f.submit t('.create'), class: 'btn btn-primary' %>
+  <% end %>
+    <div class="row">
+      <p>
+        <%= t '.explanation' %>
+      </p>
+    </div>
 </div>
-

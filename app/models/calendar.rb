@@ -7,7 +7,7 @@ class Calendar
     @in_progress, @days = Calendar.arrange(@events)
     @filter_categories = Calendar.filter_categories_for(@events) || []
     @filter_locations = Calendar.filter_locations_for(@events) || []
-    @highlights = Event.highlights(3)
+    @highlights = Event.highlights(5)
     @weekly = EventSeries.repeating_by_day
   end
 
@@ -18,8 +18,15 @@ class Calendar
     @days.values.sort {|x,y| x.date <=> y.date}
   end
 
-  def self.for(event_series)
-    events = event_series.events.coming
+  def self.for(object)
+    events = object.events.coming
+    Calendar.new(events)
+  end
+
+  # Special method to enable display of
+  # hidden events on user's show page
+  def self.with_hidden(object)
+    events = object.events.future.ordered
     Calendar.new(events)
   end
 

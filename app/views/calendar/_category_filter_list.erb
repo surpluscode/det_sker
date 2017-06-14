@@ -1,10 +1,8 @@
 <% filter_objects.each do |arr| %>
     <dd>
-      <% cat_name = Category.find(arr.first).send(t(:language)) %>
-      <a href='#' data-toggle="<%= cat_name.gsub(' ', '_') %>"
-         data-filter-type="<%= data_type %>" data-role="filter-link">
-        <%= cat_name.titleize %>
-      (<%= arr.last %>)
-      </a>
+      <% cat_id, cat_total = arr %>
+      <% cat_name = transl_cat(cat_id) %>
+      <% next if cat_name.blank? %>
+      <%= render_filter_link(cat_id, cat_name, cat_total, data_type) %>
     </dd>
 <% end %>

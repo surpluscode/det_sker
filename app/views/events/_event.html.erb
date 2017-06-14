@@ -1,6 +1,6 @@
 <%
    data_attrs = {
-    categories: categories_as_string(event.categories),
+    categories: event.categories.collect(&:id).join(' '),
     location: event.location.display_name.parameterize('_'),
     role: 'event'
    }
@@ -24,11 +24,9 @@
         <%= format_starttime(event.start_time) %>
     <% end %>
   </span>
-      
-  <span class="col-md-2 hidden-xs">
-    <% event.categories.each do |cat| %>
-        <%= cat.send(t(:language)).titleize %>
-    <% end %>
+
+  <span class="col-md-2 hidden-xs categories">
+    <%= categories_as_string(event.categories) %>
   </span>
   <span class="col-md-2 pull-right">
   <a href="<%= url_for(event.location) %>"title="<%= event.location.description.truncate(120) %>"

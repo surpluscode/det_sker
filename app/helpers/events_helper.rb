@@ -39,15 +39,30 @@ module EventsHelper
     categories.map { |cat| transl_cat(cat) }.join(' ')
   end
 
+  # Return the current language string for a category
+  # @param cat Category | String (id)
   def transl_cat(cat)
-    cat.send(t :language) rescue ''
+    cat = Category.find(cat) unless cat.is_a? Category
+    cat.send(t :language).titleize
+  rescue
+    ''
   end
 
+  def render_filter_link(id, name, total, type)
+    link_to "#{name} (#{total})", '',
+            data: { toggle: id, filter_type: type,
+                    role: 'filter-link'
+            }
+  end
   def display_repetition_rule(series)
     # translate the days and convert them to a string
     transl_days = series.day_array.collect { |d| I18n.t("day_names.#{d.titleize}", default: d) }.to_sentence(locale: I18n.locale)
     if series.rule == 'weekly'
       I18n.t('event_series.weekly_display_rule', days: transl_days)
+    elsif series.rule == 'biweekly_odd'
+      I18n.t('event_series.biweekly_odd_display_rule', days: transl_days)
+    elsif series.rule == 'biweekly_even'
+      I18n.t('event_series.biweekly_even_display_rule', days: transl_days)
     else
       transl_rule = I18n.t("event_series.#{series.rule}", default: series.rule)
       I18n.t('event_series.monthly_display_rule', days: transl_days, rule: transl_rule)
@@ -110,7 +125,8 @@ module EventsHelper
   # supply only the last component of the icon name
   # e.g. 'off', 'cog' etc
   def bootstrap_glyphicon(icon, classes = '')
-    content_tag(:span, nil, class: "glyphicon glyphicon-#{icon} #{classes}", aria_hidden: true).html_safe
+    html_class = ['glyphicon', "glyphicon-#{icon}", classes].select(&:present?).join(' ')
+    content_tag(:span, nil, class: html_class, 'aria-hidden': true).html_safe
   end
 
   def bootstrap_success(message)
@@ -148,8 +164,8 @@ module EventsHelper
     details.merge!(url: url)
     content_tag(:script, details.to_json.html_safe, type: 'application/ld+json')
   end
-end
 
-def image_url(file)
-  request.protocol + request.host_with_port + file
+  def image_url(file)
+    request.protocol + request.host_with_port + file
+  end
 end

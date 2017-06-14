@@ -4,13 +4,25 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
+  after_action :track
 
   def self.default_url_options(options={})
     { locale: I18n.locale }
   end
 
+  def after_sign_in_path_for(user)
+    if user.is_admin?
+      admin_dashboard_path
+    else
+      stored_location_for(:user) || root_path
+    end
+  end
+
   protected
 
+  def track
+    ahoy.track "#{controller_name}##{action_name}", request.filtered_parameters
+  end
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end

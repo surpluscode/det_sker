@@ -27,7 +27,10 @@ DetSker::Application.configure do
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
   # config.action_dispatch.rack_cache = true
-  config.action_mailer.default_url_options = { host: ENV['MAILER_HOST'] }
+  config.action_mailer.default_url_options = {
+      host: ENV['MAILER_HOST'],
+      protocol: 'https'
+  }
   config.action_mailer.smtp_settings = {
       :address        => ENV['MAILER_ADDRESS'],
       :port           => ENV['MAILER_PORT'],

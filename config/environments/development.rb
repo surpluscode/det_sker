@@ -14,6 +14,8 @@ DetSker::Application.configure do
   config.action_controller.perform_caching = false
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # Mailcatcher setup (See https://mailcatcher.me/)
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
@@ -27,5 +29,4 @@ DetSker::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-  config.action_controller.perform_caching = true
 end

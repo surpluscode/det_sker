@@ -47,7 +47,10 @@ da:
       users: "Brugere"
       security: "Sikkerhed på DukOp"
       categories: "Kategorier"
-      new: "Nyt event"
+      new: "Ny event"
+      link_to_root: "Navigèr til forsiden"
+      posts: "Nyheder"
+      series: "Serier"
     created:
       message: "%{_class} \"%{name}\" oprettet!"
     updated:
@@ -55,12 +58,12 @@ da:
       basic_message: "Ændringer gemt!"
   calendar:
     index:
-      new_event: "Opret ny begivenhed"
+      new_event: "Opret ny event"
       describe_filters:
         base: Viser begivenheder
         categories: " med kategorier "
         locations: " i "
-      end_of_events: "Ikke flere begivenheder"
+      end_of_events: "Ikke flere events"
       title: "Hele kalenderen"
     filter_options:
       filter_header: "Vis kun"
@@ -72,7 +75,7 @@ da:
       title: "Den kommende tid"
     weekly:
       title: "Faste begivenheder"
-  coming_events: "Kommende begivenheder"
+  coming_events: "Kommende events"
   events:
     comments:
       list:
@@ -99,15 +102,18 @@ da:
         too_big: 'Denne fil er over 3MB!'
         wrong_format: 'Denne fil er ikke en JPEG eller en PNG!'
         ok: Denne fil er lige tilpas.
-      repeating_event: "Gentages begivenheden?"
+      repeating_event: "Gentages din event?"
       every_day: "Hver dag"
       every_week: "Hver uge"
+      every_other_week: "Hver anden uge"
       every_month: "Hver måned"
       for_time: "i"
       weeks: "uger"
       days: "dage"
       months: "måneder"
-      feature_event?: 'Skal eventen promoveres?'
+      feature_event?: 'Skal din event promoveres?'
+      invalid_duration: Sluttiden skal være efter starttiden
+      past_event: kan ikke være før nu
     event:
       price: "Pris"
       start_time: "Starter"
@@ -123,15 +129,16 @@ da:
       edit_event: "Redigerer begivenhed"
     new:
       new_event: "Opret begivenhed"
-    event_updated: "Ændringer til <a href=\"#%{id}\" class='alert-link'>%{name}</a> gemt!"
-    event_created: "Event <a href=\"#%{id}\" class='alert-link'>%{name}</a> oprettet!"
+    event_updated: "Ændringer til <a href=\"%{link}\" class='alert-link'>%{name}</a> gemt!"
+    event_created: "Event <a href=\"%{link}\" class='alert-link'>%{name}</a> oprettet!"
     event_deleted: "Event slettet"
     show:
       link: "Mere info"
-      delete_warning: > 
-                  Slet kun begivenheden hvis den er oprettet ved en fejl - 
-                  hvis den er blevet aflyst er det bedre at klikke på Redigér og så Aflys. 
+      delete_warning: >
+                  Slet kun begivenheden hvis den er oprettet ved en fejl -
+                  hvis den er blevet aflyst er det bedre at klikke på Redigér og så Aflys.
                   Derved kan dine gæster se at den er blevet aflyst.
+      unpublished_explanation: "Dette event er ikke publiceret endnu. Det betyder at den bliver ikke vist på forsiden men kan godt ses på brugerens side og deles ved URL."
   comments:
     created_message: 'Kommentar oprettet!'
     form:
@@ -161,6 +168,8 @@ da:
         picture: Billede
         comments_enabled: Tillad kommentarer?
         description: Beskrivelse
+        published: Publicere event?
+        published_help: Slå fra hvis din event skal ikke være synligt på forsiden endnu.
       location:
         name: Navn
         street_address: Gadeadresse
@@ -175,6 +184,8 @@ da:
         start_date: Starter
         start_time: Fra
         end_time: Til
+        published: Publicere event serie?
+        published_help: Slå fra hvis din event serie skal ikke være synligt på forsiden endnu.
     placeholders:
       event:
         title: Navnet af begivenheden
@@ -231,7 +242,7 @@ da:
   accounts:
     login:
       title: 'Log ind på en eksisterende konto'
-      explanation: 'Hvis du allerede har en Duk op konto og gerne vil oprette dit event som denne bruger.'
+      explanation: 'Hvis du allerede har en Duk op konto og gerne vil oprette din event som denne bruger.'
     standard:
       title: 'Opret ny konto'
       explanation: >
@@ -271,6 +282,8 @@ da:
   event_series:
     monthly_display_rule: "Gentages den %{rule} %{days} i måneden."
     weekly_display_rule: "Hver %{days}"
+    biweekly_odd_display_rule: "Hver anden %{days} (i ulige uger)"
+    biweekly_even_display_rule: "Hver anden %{days} (i lige uger)"
     first: første
     second: anden
     third: tredje
@@ -284,27 +297,33 @@ da:
       explanation: >
                   En event serie er en række events der gentages efter nogle bestemt regler.
                   Ved at oprette en serie med en bestemt regel opretter du flere events på de datoer
-                  givet i reglen. Efterfølgende kan du vælge at redigere disse forekomster enkeltvis 
-                  eller samlede ved at redigere i selv serien. 
-    created: "Serie %{name} oprettet med %{num_events} forekomster!"
-    updated: "Serie %{name} med %{num_events} forekomster opdateret."
+                  givet i reglen. Efterfølgende kan du vælge at redigere disse forekomster enkeltvis
+                  eller samlede ved at redigere i selv serien.
+    created: "Serie <a href=\"%{link}\">%{name}</a> oprettet med %{num_events} forekomster!"
+    updated: "Serie <a href=\"%{link}\">%{name}</a> med %{num_events} forekomster opdateret."
+    deleted: "Serie %{name} og %{num_events} forekomster slettet."
     events_deleted: "%{number} events slettet"
     form:
       choose_days: 'Vælg en eller flere dage'
       every_week: "hver uge"
+      every_other_even_week: "hver anden uge (lige uger)"
+      every_other_odd_week: "hver anden uge (ulige uger)"
       repetition_header: "Gentages"
       first_in_month: først uge i måneden
       second_in_month: anden uge i måneden
       third_in_month: tredje uge i måneden
       last_in_month: sidst uge i måneden
-      date_explanation: > 
-                      Du kan kun oprette events indenfor de næste tre måneder. 
-                      Du godt fornye serien senere hvis din serie stadig kører efter tre måneder.
-      rule_disabled: > 
-                    Du kan ikke redigere gentagelses reglen når der stadig er events i denne serie. 
+      date_explanation: >
+                      Du kan kun oprette events indenfor de næste seks måneder.
+                      Du godt fornye serien senere hvis din serie stadig kører efter seks måneder.
+      rule_disabled: >
+                    Du kan ikke redigere gentagelses reglen når der stadig er events i denne serie.
                     Hvis du vil ændre på gentagelses reglen kan du enten <a href="%{url}">slette eksisterende forekomster</a> eller
-                    oprette en ny serie. 
+                    oprette en ny serie.
                     Du kan dog godt opdatere start og slut tid og alle andre attributer.
+    show:
+      delete_warning: "Er du sikker på du vil slette serien? Det vil også slette %{num} forekomster."
+      delete: "Slet serien"
   day_names:
      Sunday: søndag
      Monday: mandag
@@ -316,4 +335,19 @@ da:
   user:
     show:
       unconfirmed: "Brugeren har ikke bekræftet deres konto endnu"
+      unpublished_events: "Ikke publiceret events"
     email_must_match: "Du har tastet to forskellige værdier for din email"
+  simple_captcha:
+    placeholder: ""
+    label: Skriv de bogstaver du ser i billedet i feltet ovenfor
+    refresh_button_text: "Nyt billede?"
+    message:
+      user: Den indtastede kode passer ikke. Prøv venligst igen.
+  analytics:
+    notes:
+      calendar#index: Forside
+      pages#show: Statiske sider
+      sessions#create: Opret bruger
+      sessions#new: Login
+      locations#show: Lokation sider
+      events#show: Event sider

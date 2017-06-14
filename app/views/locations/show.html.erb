@@ -1,4 +1,5 @@
 <%= schema_json @location %>
+<%= auto_discovery_link_tag(:rss, {format: :rss}, {title: "Feed for location #{@location.display_name}"}) %>
 <div class="event_show">
   <h1><%= @location.try(:display_name) %></h1>
   <h2><%= @location.address %></h2>
@@ -12,10 +13,9 @@
   <% end %>
   <div>
     <h2><%= t :coming_events %></h2>
-    <% @location.coming_events.each do |event| %>
-      <% cache event do %>
-        <%= render partial: 'events/event', object: event, locals: { show_date: true } %>
-      <% end %>
+    <% if @calendar.in_progress.size > 0 %>
+        <%= render partial: 'calendar/day', object: @calendar.in_progress, locals: { id: 'inProgress' } %>
     <% end %>
+    <%= render partial: 'calendar/day', collection: @calendar.days  %>
   </div>
 </div>

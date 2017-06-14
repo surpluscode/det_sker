@@ -6,9 +6,10 @@
 @import "typeaheadjs";
 @import "bootstrap-select.min";
 
-@import "events.css.scss";
+@import "events";
 @import "fonts";
-@import "new_event.css.scss";
+@import "new_event";
+@import "anonymous_user";
 
 
 
@@ -87,11 +88,20 @@ img {
 }
 
 .recurring-event {
-  margin-bottom: 1em;
+  margin-bottom: 0.3em;
 }
+
+.repeating-container h4 { margin-bottom: 5px; }
 
 .recurring-event-title {
   margin-top: 5px;
+  margin-bottom: 2px;
+}
+
+.event-container .categories {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .section-heading {
@@ -99,7 +109,9 @@ img {
   border-bottom: 1px solid #ddd;
   font-size: 2rem;
   padding-bottom: .3em;
+
 }
+.section-heading-phone { border-bottom: none;   }
 .no-gutter > [class*='col-'] {
   padding-right:0;
   padding-left:0;
@@ -108,4 +120,9 @@ img {
 .small-gutter > [class*='col-'] {
   padding-right:5px;
   padding-left:5px;
+}
+
+
+.timeseriesOptions  {
+  input, select { display: inline; }
 }

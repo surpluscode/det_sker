@@ -88,9 +88,11 @@
     <h2><%= t '.repetition_header' %></h2>
     <div id="repeating_control" class='form-inline row-fluid'>
     <%# we disable the rule controls if there are any events present as we don't know how to update the rules for existing events %>
-    <% coming_events = @event_series.coming_events.present? %> 
+    <% coming_events = @event_series.coming_events.present? %>
     <% if coming_events %>
-      <p class="text-danger"><%= t('.rule_disabled', url: delete_events_event_series_path(@event_series)).html_safe %></p>
+      <p class="text-danger">
+        <%= t('.rule_disabled', url: event_series_path(@event_series)).html_safe %>
+      </p>
     <% end %>
      <%= render partial: 'event_series/repeating_control', locals: { builder: f,  coming_events: coming_events } %>
      </div>
@@ -126,6 +128,15 @@
         name="event_series[comments_enabled]" value="1" type="checkbox">
         <%= t 'simple_form.labels.defaults.comments_enabled' %>
       </label>
+    </div>
+    <div class="input boolean optional checkbox">
+      <label class="boolean optional control-label override checkbox" for="event_published">
+        <%= f.input_field :published, boolean_style: :inline, class: 'checkbox no-form-control' %>
+        <%= t 'simple_form.labels.event_series.published' %>
+      </label>
+      <span class="text-info">
+        <%= t('simple_form.labels.event_series.published_help') %>
+      </span>
     </div>
     <br/>
     <div class="row">

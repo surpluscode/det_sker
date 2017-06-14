@@ -47,6 +47,9 @@ en:
       security: "Security on DukOp"
       categories: "Categories"
       new: "New Event"
+      link_to_root: "Go to front page"
+      posts: "News"
+      series: "Series"
     created:
       message: "%{_class} \"%{name}\" created!"
     updated:
@@ -108,6 +111,8 @@ en:
       weeks: "weeks"
       days: "days"
       months: "months"
+      invalid_duration: End time must be after start time.
+      past_event: Cannot be in the past
     event:
       price: "Price"
       start_time: "Starts"
@@ -123,16 +128,17 @@ en:
       edit_event: "Editing event"
     new:
       new_event: "New event"
-    event_updated: "Changes to <a href=\"#%{id}\" class='alert-link'>%{name}</a> saved!"
-    event_created: "Event <a href=\"#%{id}\" class='alert-link'>%{name}</a> created!"
+    event_updated: "Changes to <a href=\"%{link}\" class='alert-link'>%{name}</a> saved!"
+    event_created: "Event <a href=\"%{link}\" class='alert-link'>%{name}</a> created!"
     event_deleted: "Event deleted"
     show:
       link: "More info"
       delete_warning: >
-                  Only delete the event if it has been created by mistake. 
+                  Only delete the event if it has been created by mistake.
                   If your event has been cancelled it is better to edit your event
                   and click on cancel. In this way, your guests can see that the event
                   has been cancelled.
+      unpublished_explanation: "This event is not published yet. This means that it's not visible on the front page but can be seen on the user's page and shared using the URL."
   comments:
     form:
       writing_as: "Writing as"
@@ -147,9 +153,15 @@ en:
       delete_location: "Delete"
   simple_form:
     labels:
+      defaults:
+        published: Publish event?
+        published_help: Uncheck this box if you don't want your event to be visible on the front page yet.
       event:
         short_description: Description
         cancelled: Cancel event?
+      event_series:
+        published: Publish event series?
+        published_help: Uncheck this box if you don't want your event series to be visible on the front page yet.
     placeholders:
       event:
         title: The event's name
@@ -226,33 +238,42 @@ en:
   event_series:
     monthly_display_rule: "Repeats on the %{rule} %{days} in the month."
     weekly_display_rule: "Every %{days}"
+    biweekly_odd_display_rule: "Every other %{days} in odd weeks"
+    biweekly_even_display_rule: "Every other %{days} in even weeks"
     edit_link: Edit series
     delete_events_link: Delete all occurrences of this series
     delete_events_warning: "You are about to delete %{number} events - are you sure you want to continue?"
     new:
       explanation: >
-              You are about to create an event series. This will create a number of events 
+              You are about to create an event series. This will create a number of events
               defined by the rule you specify. You can then choose to edit the events individually
-              or all at once by editing this series. 
-    created: "%{name} created with %{num_events} occurrences"
-    updated: "%{num_events} occurrences of %{name} updated"
+              or all at once by editing this series.
+    created: "<a href=\"%{link}\">%{name}</a> created with %{num_events} occurrences"
+    updated: "%{num_events} occurrences of <a href=\"%{link}\">%{name}</a> updated"
+    deleted: "The series %{name} with %{num_events} occurrences has been deleted"
     events_deleted: "%{number} events slettet"
     form:
       choose_days: Choose one or more days
       every_week: "every week"
+      every_other_odd_week: "every other week (odd weeks)"
+      every_other_even_week: "every other week (even weeks)"
       first_in_month: first week of the month
       last_in_month: last week of the month
       repetition_header: "Repeats"
-      date_explanation: > 
-                     You are only allowed to create events within the next three months. 
-                     You can renew the series if the event is still running after three months.
+      date_explanation: >
+                     You are only allowed to create events within the next six months.
+                     You can renew the series if the event is still running after six months.
       rule_disabled: >
                   You can't edit the repetition rule when there are still events active in the series.
                   If you want to change the rule, you should either delete all the remaining events
                   or create a new series. You can still change the start and end time as well as the other attributes.
+    show:
+      delete_warning: "Are you sure you want to delete the series? You will also delete %{num} child events."
+      delete: "Delete series"
   user:
     show:
       unconfirmed: "The user has not confirmed their account yet."
+      unpublished_events: "Unpublished Events"
     email_must_match: "You have supplied two different email addresses!"
   day_names:
      Sunday: Sunday
@@ -262,3 +283,17 @@ en:
      Thursday: Thursday
      Friday: Friday
      Saturday: Saturday
+  simple_captcha:
+    label: Enter the letters visible in the image above
+    placeholder: ""
+    refresh_button_text: "New image?"
+    message:
+      user: The code entered was incorrect. Please try again.
+  analytics:
+    notes:
+      calendar#index: Front page
+      pages#show: Static pages
+      sessions#create: Create user
+      sessions#new: Login
+      locations#show: Location pages
+      events#show: Event pages

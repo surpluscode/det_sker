@@ -22,14 +22,25 @@ describe User do
     end
   end
 
-  describe 'coming events' do
-    it 'shows the users coming events only' do
-      u = FactoryGirl.create(:user)
-      u.events.clear
-      u.events << FactoryGirl.create(:event_yesterday)
-      u.events << FactoryGirl.create(:event_tomorrow)
-      expect(u.events.length).to eql 2
-      expect(u.coming_events.length).to eql 1
+  describe 'events' do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:future_event) { FactoryGirl.create(:event_tomorrow) }
+    let(:past_event) { FactoryGirl.create(:event_yesterday) }
+    let(:unpublished_event) { FactoryGirl.create(:unpublished_event) }
+    before do
+      user.events.clear
+      user.events << future_event << past_event << unpublished_event
+    end
+    describe 'coming events' do
+      subject { user.coming_events }
+      it { should include future_event }
+      it { should_not include past_event }
+      it { should_not include unpublished_event }
+    end
+
+    describe 'unpublished events' do
+      subject { user.unpublished_events }
+      it { should =~ [unpublished_event] }
     end
   end
 end

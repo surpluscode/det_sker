@@ -5,6 +5,7 @@ DetSker::Application.routes.draw do
   match 'users/:id' => 'user#destroy', via: :delete, as: :admin_destroy_user
   root 'calendar#index'
   resources :events, except: [:index] do
+    member { get 'debug' }
     resources :comments, except: [:new, :delete]
   end
   resources :event_series, controller: :event_series do
@@ -23,6 +24,15 @@ DetSker::Application.routes.draw do
   get 'news' => 'posts#index'
   get 'anonymous_user/new' => 'anonymous_user#new'
   match '/anonymous_user' => 'anonymous_user#create', via: :post
+  scope 'admin', controller: :admin do
+    get :dashboard, as: :admin_dashboard
+    get :series, as: :admin_series
+    get :analytics, as: :admin_analytics
+    scope 'analytics', controller: :admin do
+      get 'timeseries', as: :analytics_timeseries
+      get 'events', as: :analytics_events
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

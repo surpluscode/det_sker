@@ -1,9 +1,6 @@
 class User < ActiveRecord::Base
   include HasEvents
-  include Humanizer
-  # humanizer validation will trigger only for anonymous users except for test users
-  attr_accessor :skip_humanizer
-  require_human_on :create, if: :is_anonymous?, unless: :skip_humanizer
+  apply_simple_captcha
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -35,12 +32,12 @@ class User < ActiveRecord::Base
 
   def to_schema
     unless self.is_anonymous?
-      { 
+      {
         '@context': 'http://schema.org',
-        '@type': 'Person', 
+        '@type': 'Person',
         name: self.username,
         description: self.description
-      } 
+      }
     end
   end
 

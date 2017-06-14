@@ -23,8 +23,10 @@
   <% if current_user && current_user.can_edit?(@event_series) %>
       <div class="hidden-xs">
         <%= link_to t(:edit), edit_event_series_path(@event_series) %> |
-        <%= link_to t(:back), event_series_index_path %>
+        <%= link_to t('event_series.delete_events_link'), delete_events_event_series_path(@event_series), method: :delete, data: { confirm: t('event_series.delete_events_warning', number: @event_series.events.size) } %> |
+        <%= link_to t('.delete'), event_series_path(@event_series), method: :delete, data: { confirm: t('.delete_warning', num: @event_series.events.size)} %> |
       </div>
   <% end %>
+
   <%= render partial: 'calendar/day', collection: @calendar.days  %>
 </div>

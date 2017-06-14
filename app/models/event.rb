@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
   validates :title, :short_description, :start_time, :end_time, :location_id, :user_id, :categories, presence: true
+  validate :must_be_future_event
+  validate :must_be_valid_duration
 
   belongs_to :user
   belongs_to :location
@@ -9,10 +11,33 @@ class Event < ActiveRecord::Base
   has_attached_file :picture, styles: { original: '500x500>', thumb: '100x100>'}, default_url: 'images/:st'
 
   validates_attachment_content_type :picture, :content_type => /\Aimage/
-  validates_attachment_file_name :picture, matches: [/png\Z/, /jpe?g\Z/]
+  validates_attachment_file_name :picture, matches: [/png\Z/i, /jpe?g\Z/i]
   validates_with AttachmentSizeValidator, attributes: :picture, less_than:  3.megabytes
 
-  scope :coming, -> { where('events.end_time > ?', DateTime.now) }
+  scope :published, -> { where(published: true) }
+  scope :future, -> { where('events.end_time > ?', DateTime.now) }
+  scope :ordered, -> { order('events.start_time') }
+  scope :in_series, -> { where('event_series_id > 0') }
+  scope :not_started, -> { where('start_time >= ?', DateTime.now) }
+  scope :this_week, -> { where('start_time <= ?', DateTime.now + 6.days) }
+  scope :unpublished, -> { future.where(published: false).ordered }
+  scope :coming, -> { future.published.ordered }
+
+  def must_be_valid_duration
+    return unless end_time.present? && start_time.present?
+    unless end_time > start_time
+      errors.add(:end_time, I18n.t('events.form.invalid_duration'))
+    end
+  end
+
+  def must_be_future_event
+    return if persisted?
+    if start_time < DateTime.now
+      errors.add(:start_time, I18n.t('events.form.past_event'))
+    elsif end_time < DateTime.now
+      errors.add(:end_time, I18n.t('events.form.past_event'))
+    end
+  end
 
   def in_progress?
     start_time < DateTime.now && end_time > DateTime.now
@@ -39,11 +64,23 @@ class Event < ActiveRecord::Base
       event_series.picture
     else
       nil
-    end 
+    end
+  end
+
+  def has_picture?
+    best_picture.present?
+  end
+
+  def picture_url
+    best_picture.url(:original)
   end
 
   def weekly?
     event_series.present? && event_series.rule == 'weekly'
+  end
+
+  def unpublished?
+    !published?
   end
 
   def self.current_events
@@ -82,37 +119,40 @@ class Event < ActiveRecord::Base
   def self.highlights(num)
     featured = self.featured_events
     if featured.size < num
-      featured + self.non_featured_events.take(num - featured.size)
+      non_featured = self.non_featured_events + self.current_non_weekly
+      # we need to sort because we're adding the non_weeklies to the end of the non-featured set
+      highlights = (featured + non_featured.sort.take(num - featured.size))
+      highlights.uniq.sort
     else
-      featured
+      featured.sort
     end
   end
 
   # The repeating events that are occurring this week
   def self.repeating_this_week
-    self.select('id, event_series_id')
-      .where('end_time > ?', DateTime.now)
-      .where('start_time >= ?', DateTime.now)
-      .where('start_time <= ?', DateTime.now + 1.week)
-      .where('event_series_id > 0')
-      .where('cancelled IS NULL OR cancelled = FALSE')
+    self.coming
+      .in_series
+      .published
+      .this_week
+      .not_started
+      .ordered
   end
 
   # Return Event object given a Date, Time, Time, attribute Hash
   def self.from_date_and_times(date, start_time, end_time, attributes)
     event_start = DateTime.new(date.year, date.month, date.day, start_time.hour, start_time.min, 0, start_time.zone)
     event_end = DateTime.new(date.year, date.month, date.day, end_time.hour, end_time.min, 0, end_time.zone)
-    Event.new(attributes.merge(start_time: event_start, end_time: event_end))  
+    Event.new(attributes.merge(start_time: event_start, end_time: event_end))
   end
 
   def to_schema
     {
-      '@context': 'http://schema.org', 
+      '@context': 'http://schema.org',
       '@type': 'Event',
-      name: self.title, 
-      startDate: self.start_time.iso8601, 
-      endDate: self.end_time.iso8601, 
-      description: self.short_description, 
+      name: self.title,
+      startDate: self.start_time.iso8601,
+      endDate: self.end_time.iso8601,
+      description: self.short_description,
       sameAs: self.link,
       location: self.location.to_schema,
       organizer: self.user.to_schema
