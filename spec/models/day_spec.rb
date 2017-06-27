@@ -21,11 +21,6 @@ describe Day do
     expect(@day.events).to include(e)
   end
 
-  it 'should throw an exception given a day with a different date' do
-    e = FactoryGirl.create(:event, start_time: DateTime.now - 5.days)
-    expect { @day.add_event(e) }.to raise_error
-  end
-
   it 'should sort by date ascending' do
     e = FactoryGirl.create(:event_tomorrow)
     tomorrow = Day.new(e)

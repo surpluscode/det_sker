@@ -8,12 +8,16 @@ describe Calendar do
       l2 = FactoryGirl.create(:other_location, street_address: 'Strandvejen 49')
       @cat = FactoryGirl.create(:random_category)
       other_cat = FactoryGirl.create(:random_category)
-      @event_now = FactoryGirl.create(:event, categories: [@cat], location: l1)
+      @event_now = FactoryGirl.build(
+        :event, start_time: DateTime.now - 5.minutes, categories: [@cat], location: l1
+      )
+      @event_now.save(validate: false)
       FactoryGirl.create(:event, start_time: DateTime.now + 1.hour,
                          categories: [@cat], location: l1)
       @event_tomorrow = FactoryGirl.create(:event_tomorrow, categories: [other_cat],
                                            location: l2)
-      @event_yesterday = FactoryGirl.create(:event_yesterday, location: l2)
+      @event_yesterday = FactoryGirl.build(:event_yesterday, location: l2)
+      @event_yesterday.save
       @unpublished_event = FactoryGirl.create(:unpublished_event)
       @cal = Calendar.new
     end

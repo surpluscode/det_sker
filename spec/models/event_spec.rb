@@ -4,7 +4,7 @@ describe Event do
   before(:each) do
     @party_details = {
         title: 'Massive party', short_description: 'The Best Party Ever!',
-        start_time: DateTime.new, end_time: DateTime.new + 10.minutes, location_id: '1',
+        start_time: DateTime.now + 1.minute, end_time: DateTime.now + 10.minutes, location_id: '1',
         user_id: '1', categories: [Category.create(danish: 'ost', english: 'cheese')]
     }
   end
@@ -54,12 +54,12 @@ describe Event do
 
   describe 'Event.in_progress?' do
     it 'should return true when an event is in progress' do
-      e = FactoryGirl.create(:event)
+      e = FactoryGirl.build(:event, start_time: DateTime.now)
       expect(e.in_progress?).to be_true
     end
 
     it 'should return false when an event has already finished' do
-      e = FactoryGirl.create(:event_yesterday)
+      e = FactoryGirl.build(:event_yesterday)
       expect(e.in_progress?).to be_false
     end
 
@@ -87,7 +87,8 @@ describe Event do
       FactoryGirl.create(:event_tomorrow)
       FactoryGirl.create(:event, start_time: DateTime.now + 23.minutes)
       FactoryGirl.create(:event, start_time: DateTime.now + 20.minutes)
-      @past_event = FactoryGirl.create(:event_yesterday)
+      @past_event = FactoryGirl.build(:event_yesterday)
+      @past_event.save
       @unpublished = FactoryGirl.create(:unpublished_event)
     end
     subject { Event.highlights(5) }

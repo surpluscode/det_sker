@@ -25,7 +25,7 @@ describe User do
   describe 'events' do
     let(:user) { FactoryGirl.create(:user) }
     let(:future_event) { FactoryGirl.create(:event_tomorrow) }
-    let(:past_event) { FactoryGirl.create(:event_yesterday) }
+    let(:past_event) { f = FactoryGirl.build(:event_yesterday); f.save(validate: false); f }
     let(:unpublished_event) { FactoryGirl.create(:unpublished_event) }
     before do
       user.events.clear

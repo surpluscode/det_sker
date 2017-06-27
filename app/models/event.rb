@@ -32,6 +32,7 @@ class Event < ActiveRecord::Base
 
   def must_be_future_event
     return if persisted?
+    return unless end_time.present? && start_time.present?
     if start_time < DateTime.now
       errors.add(:start_time, I18n.t('events.form.past_event'))
     elsif end_time < DateTime.now

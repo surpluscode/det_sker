@@ -28,7 +28,7 @@ FactoryGirl.define do
     title 'Fun party'
     short_description 'really fun party'
     long_description "I'm telling you it's going to be fun!"
-    start_time DateTime.now
+    start_time DateTime.now + 10.minutes
     end_time DateTime.now + 5.hours
     location
     user { FactoryGirl.create(:user) }

@@ -13,7 +13,8 @@ describe LocationsController do
   describe 'GET#show' do
     before do
       @location = FactoryGirl.create(:other_location)
-      @event = FactoryGirl.create(:event, start_time: DateTime.now, end_time: DateTime.now + 1.day)
+      @event = FactoryGirl.build(:event, start_time: DateTime.now, end_time: DateTime.now + 1.day)
+      @event.save(validate: false)
       @location.events << @event
     end
     it 'assigns the correct location' do
