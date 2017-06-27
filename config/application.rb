@@ -22,6 +22,5 @@ module DetSker
     config.i18n.default_locale = :da
     config.autoload_paths << Rails.root.join('lib', 'simple_form')
     config.autoload_paths << Rails.root.join('services')
-    config.active_record.raise_in_transactional_callbacks = true
   end
 end

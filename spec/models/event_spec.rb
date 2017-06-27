@@ -10,30 +10,30 @@ describe Event do
   end
   it 'should create an event' do
     event = Event.create(@party_details)
-    expect(event.valid?).to be_true
+    expect(event.valid?).to be true
     expect(event.title).to match('Massive party')
   end
   it 'should not save an event without a title' do
     @party_details.delete(:title)
-    expect(Event.create(@party_details).valid?).not_to be_true
+    expect(Event.create(@party_details).valid?).not_to be true
   end
   it 'should not save an event without a location' do
     @party_details.delete(:location_id)
-    expect(Event.create(@party_details).valid?).not_to be_true
+    expect(Event.create(@party_details).valid?).not_to be true
   end
   it 'should not save an event without a short description' do
     @party_details.delete(:short_description)
-    expect(Event.create(@party_details).valid?).not_to be_true
+    expect(Event.create(@party_details).valid?).not_to be true
   end
 
   it 'should not save an event without a start_time' do
     @party_details.delete(:start_time)
-    expect(Event.create(@party_details).valid?).not_to be_true
+    expect(Event.create(@party_details).valid?).not_to be true
   end
 
   it 'should not save an event without an end_time' do
     @party_details.delete(:end_time)
-    expect(Event.create(@party_details).valid?).not_to be_true
+    expect(Event.create(@party_details).valid?).not_to be true
   end
 
   it 'should not save an event with an end time before the start time' do
@@ -55,17 +55,17 @@ describe Event do
   describe 'Event.in_progress?' do
     it 'should return true when an event is in progress' do
       e = FactoryGirl.build(:event, start_time: DateTime.now)
-      expect(e.in_progress?).to be_true
+      expect(e.in_progress?).to be true
     end
 
     it 'should return false when an event has already finished' do
       e = FactoryGirl.build(:event_yesterday)
-      expect(e.in_progress?).to be_false
+      expect(e.in_progress?).to be false
     end
 
     it 'should return false when an event has not started' do
       e = FactoryGirl.create(:event_tomorrow)
-      expect(e.in_progress?).to be_false
+      expect(e.in_progress?).to be false
     end
   end
 

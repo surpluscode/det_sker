@@ -44,7 +44,7 @@ describe AnalyticsService do
       expect(subject.keys.size).to eql 2
     end
     it 'should only include the relevant events' do
-      expect(subject.values).to eql %w(1 1)
+      expect(subject.values).to eql [ 1, 1 ]
     end
     context 'when given an invalid interval' do
       let(:interval) { 'invalid' }
@@ -68,7 +68,7 @@ describe AnalyticsService do
       expect(subject.keys.size).to eql 2
     end
     it 'should only include the relevant events' do
-      expect(subject.values).to eql %w(1 1)
+      expect(subject.values).to eql [1, 1]
     end
     context 'when supplied a start date and end date' do
       let(:start_date) { DateTime.now - 3.weeks }

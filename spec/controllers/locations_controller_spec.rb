@@ -18,11 +18,11 @@ describe LocationsController do
       @location.events << @event
     end
     it 'assigns the correct location' do
-      get :show, id: @location
+      get :show, params: { id: @location }
       expect(assigns(:location)).to eq @location
     end
     it 'includes in progress events in a calendar' do
-      get :show, id: @location
+      get :show, params: { id: @location }
       expect(assigns(:calendar)).to be_a Calendar
       expect(assigns(:calendar).in_progress).to include @event
     end
@@ -35,7 +35,7 @@ describe LocationsController do
       @location.events << FactoryGirl.create(:event)
     end
     it 'renders correct xml' do
-      get :show, id: @location, format: 'rss'
+      get :show, params: { id: @location, format: 'rss' }
       expect {
         Nokogiri::XML(response.body) { |config| config.strict }
       }.not_to raise_error
@@ -49,7 +49,7 @@ describe LocationsController do
     end
     it 'should create a location' do
       expect {
-        post :create, location: FactoryGirl.attributes_for(:location)
+        post :create, params: { location: FactoryGirl.attributes_for(:location) }
       }.to change(Location, :count).by(1)
     end
   end
@@ -61,13 +61,13 @@ describe LocationsController do
       sign_in @user
     end
     it 'should assign the correct location' do
-      put :update, id: @location, location: FactoryGirl.attributes_for(:location)
+      put :update, params: { id: @location, location: FactoryGirl.attributes_for(:location) }
       expect(assigns(:location).id).to eq @location.id
     end
 
     it 'should update the location' do
       l_mod = FactoryGirl.attributes_for(:location, description: 'A new description')
-      put :update, id: @location, location: l_mod
+      put :update, params: { id: @location, location: l_mod }
       @location.reload
       expect(@location.description).to eq('A new description')
     end
@@ -82,12 +82,12 @@ describe LocationsController do
 
     it 'deletes the location' do
       expect {
-        delete :destroy, id: @location
+        delete :destroy, params: { id: @location }
       }.to change(Location, :count).by(-1)
     end
 
     it 'redirects to index' do
-      delete :destroy, id: @location
+      delete :destroy, params: { id: @location }
       expect(response).to redirect_to locations_url
     end
   end
