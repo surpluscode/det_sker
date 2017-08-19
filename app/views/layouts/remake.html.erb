@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<title><%= page_title %></title>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0,initial-scale=1.0" />
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <div class="lock-body" id="js-lock-body">
+
+      <header>
+          <div class="page-container">
+              <div class="header">
+                  <div class="header__logo">
+                      <%= render partial: 'shared/logo' %>
+                  </div>
+                  <div class="header__burger js-toggle" data-element="js-controls">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                  </div>
+                  <%= link_to t('.new'), new_event_path, class: 'header__link' %>
+                  <%= link_to t('.login'), user_session_path, class: 'header__link' %>
+
+              </div>
+          </div>
+      </header>
+      <% @calendar.highlights.each do |event| %>
+          <%= present(event).card_view %>
+      <% end %>
+
+  </div>
+

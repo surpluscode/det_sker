@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
   after_action :track
+  layout 'remake'
 
   def self.default_url_options(options={})
     { locale: I18n.locale }

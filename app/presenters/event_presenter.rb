@@ -11,6 +11,35 @@ class EventPresenter
     @object.short_description
   end
 
+  def card_view
+    render partial: '/events/card.html.erb', locals: { presenter: self }
+  end
+
+  def location
+    @object.location.display_name
+  end
+
+  def date
+    I18n.localize(@object.start_time, format: :header)
+  end
+
+  def card_title
+    if @object.cancelled?
+      "<s>#{@object.title}</s> - <span class='text-danger'>#{I18n.t('events.event.cancelled')}</span>".html_safe
+    else
+      @object.title
+    end
+  end
+
+  def teaser
+    truncate(@object.short_description, length: 450, separator: ' ')
+  end
+
+  def more_description
+    @object.short_description
+
+  end
+
   def fb_tags
     tags = []
     tags << fb_url
