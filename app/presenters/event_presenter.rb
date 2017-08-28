@@ -19,11 +19,15 @@ class EventPresenter
     @object.location.display_name
   end
 
+  def time
+    @object.start_time.strftime('%H:%M')
+  end
+
   def date
     I18n.localize(@object.start_time, format: :header)
   end
 
-  def card_title
+  def title
     if @object.cancelled?
       "<s>#{@object.title}</s> - <span class='text-danger'>#{I18n.t('events.event.cancelled')}</span>".html_safe
     else
@@ -88,6 +92,10 @@ class EventPresenter
     else
       ''
     end
+  end
+
+  def picture_tag
+    image_tag(@object.best_picture, alt: '') if @object.best_picture.present?
   end
 
   def date_short

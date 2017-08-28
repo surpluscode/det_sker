@@ -1,12 +1,9 @@
 class Calendar
 
-  attr_reader :filter_categories, :filter_locations, :events, :in_progress, :highlights, :weekly
+  attr_reader :events, :in_progress, :highlights, :weekly
 
   def initialize(events = Event.main_calendar)
     @events = events
-    @in_progress, @days = Calendar.arrange(@events)
-    @filter_categories = Calendar.filter_categories_for(@events) || []
-    @filter_locations = Calendar.filter_locations_for(@events) || []
     @highlights = Event.highlights(5)
     @weekly = EventSeries.repeating_by_day
   end

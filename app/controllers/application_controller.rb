@@ -4,11 +4,17 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
+  before_action :set_posts
+
   after_action :track
   layout 'remake'
 
   def self.default_url_options(options={})
     { locale: I18n.locale }
+  end
+
+  def set_posts
+    @posts = Post.where(featured: true)
   end
 
   def after_sign_in_path_for(user)

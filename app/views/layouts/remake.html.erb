@@ -1,115 +1,53 @@
 <!DOCTYPE html>
 <title><%= page_title %></title>
 <meta name="viewport" content="width=device-width, minimum-scale=1.0,initial-scale=1.0" />
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-  <div class="lock-body" id="js-lock-body">
+<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<div class="lock-body" id="js-lock-body">
 
-      <header>
-          <div class="page-container">
-              <div class="header">
-                  <div class="header__logo">
-                      <%= render partial: 'shared/logo' %>
-                  </div>
-                  <div class="header__burger js-toggle" data-element="js-controls">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                  </div>
-                  <%= link_to t('.new'), new_event_path, class: 'header__link' %>
-                  <%= link_to t('.login'), user_session_path, class: 'header__link' %>
+    <header>
+        <div class="page-container">
+            <div class="header">
+                <div class="header__logo">
+                    <%= render partial: 'shared/logo' %>
+                </div>
+                <div class="header__burger js-toggle" data-element="js-controls">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <%= link_to t('.new'), new_event_path, class: 'header__link' %>
+                <%= link_to t('.login'), user_session_path, class: 'header__link' %>
 
-              </div>
-          </div>
-      </header>
-      <% @calendar.highlights.each do |event| %>
-          <%= present(event).card_view %>
-      <% end %>
+            </div>
+        </div>
+    </header>
+    <%= yield %>
 
-      <div class="page-container">
-          <h1 class="title title--space">Det sker <span class="title__bold">også i dag</span></h1>
-          <div class="timeline">
-              <div class="timeline__event timeline__event--right" data-text="sdfjlsdf"></div>
-              <div class="timeline__event timeline__event--left" data-text="sdfjls sdfsdf sdf sdf df" style="margin-left: 55%; width: 33%;"></div>
-              <div class="timeline__event timeline__event--color1 timeline__event--left" data-text="Vigtigt møde" style="margin-left: 55%;"></div>
-              <div class="timeline__event timeline__event--color2" style="margin-left: 25%; width: 33%;">test 2</div>
-              <div class="timeline__event timeline__event--color3 timeline__event--right" style="margin-left: 75%;" data-text="Duk dig ikke"></div>
-              <div class="timeline__scale">
-                  <div class="timeline__min">
-                      08:00
-                  </div>
-                  <div class="timeline__max">
-                      24:00
-                  </div>
-                  <div class="timeline__now" id="timeline__now"></div>
-              </div>
-          </div>
-      </div>
-      <div class="overlay" id="js-overlay">
-      </div>
-  </div>
-  <script>
-function closeAll() {
-    document.getElementById('js-overlay').classList.remove('js-active');
-    document.getElementById('js-lock-body').classList.remove('js-active');
-    var allActive = document.getElementsByClassName('js-active');
-
-    Array.prototype.forEach.call(allActive, function(el) {
-            el.classList.remove('js-active');
-            });
-}
-
-function ready(event) {
-    function addEventListenerList(list, event, fn) {
-        for (var i = 0, len = list.length; i < len; i++) {
-            list[i].addEventListener(event, fn, false);
-        }
-    }
-
-    function toggleActive() {
-        var dataElement = this.dataset.element;
-        var group = document.getElementsByClassName(this.dataset.group);
-        var element = document.getElementById(dataElement);
-        element.classList.toggle('js-active');
-    }
-
-    function toggleCard() {
-        this.parentNode.classList.toggle('js-active')
-            document.getElementById('js-overlay').classList.toggle('js-active');
-        document.getElementById('js-lock-body').classList.toggle('js-active');
-    }
-
-    function toggleBurger() {
-        var controls = document.getElementById('js-controls');
-        controls.classList.toggle('js-active');
-    }
-
-    var listJsToggle = document.getElementsByClassName('js-toggle');
-    addEventListenerList(listJsToggle, 'click', toggleActive);
-
-    var listJsToggleCard = document.getElementsByClassName('js-toggle-card');
-    addEventListenerList(listJsToggleCard, 'click', toggleCard);
-
-    var now = new Date;
-    var nowElement = document.getElementById('timeline__now');
-    var timeAsNumber = now.getHours() + (now.getMinutes() / 60)
-        nowElement.style.marginLeft = (timeAsNumber - 8) * 6.25 + '%'
-        // clean up event binding
-        window.removeEventListener('DOMContentLoaded', ready);
-}
-// bind to the load event
-window.addEventListener('DOMContentLoaded', ready);
-
-document.onkeydown = function(evt) {
-    evt = evt || window.event;
-    var isEscape = false;
-    if ("key" in evt) {
-        isEscape = (evt.key == "Escape" || evt.key == "Esc");
-    } else {
-        isEscape = (evt.keyCode == 27);
-    }
-    if (isEscape) {
-        closeAll()
-    }
-};
-  </script>
+    <footer>
+        <div class="page-container">
+            <div class="footer">
+                <div class="footer__content">
+                    <div class="footer__about">
+                        <h2 class="title title--footer">Om os</h2>
+                        <p><%= t ('about.short') %></p>
+                    </div>
+                    <div class="footer__news">
+                        <h2 class="title title--footer">Nyt</h2>
+                        <div class="news">
+                            <% @posts.each do |post| %>
+                                <a href="<%= post_path(post) %>" class="news__link">
+                                <div class="news__date">
+                                    <%= post.created_at.strftime('%d.%m.%y') %>
+                                </div>
+                                <div class="news__title">
+                                    <%= post.title %>
+                                </div>
+                            </a>
+                        <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>

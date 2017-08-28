@@ -1,7 +1,7 @@
 <div class="card" href="#">
     <div class="card__layout">
         <div class="card__media">
-            <img src="http://lorempixel.com/450/305">
+            <%= presenter.picture_tag %>
         </div>
         <div class="card__text">
             <div class="card__header">
@@ -14,7 +14,7 @@
             </div>
             <div class="card__main">
                 <h1 class="card__title">
-                    <%= presenter.card_title %>
+                    <%= presenter.title %>
                 </h1>
                 <%= presenter.teaser %>
                 <div class="card__more">
