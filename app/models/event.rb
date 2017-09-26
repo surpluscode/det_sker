@@ -115,6 +115,11 @@ class Event < ActiveRecord::Base
         .where('event_series_id IS NULL')
   end
 
+  def self.latest_added(num)
+    num ||= 25
+    Event.all.order("created_at DESC").limit(num)
+  end
+
   # Highlights is composed of num events where
   # these are composed of featured events and non-featured events
   def self.highlights(num)

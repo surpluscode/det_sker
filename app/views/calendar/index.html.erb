@@ -1,5 +1,16 @@
-<% @calendar.highlights.each do |event| %>
-    <%= present(event).card_view %>
+<div class="page-container">
+  <%# TODO surpluscode: translation/internationalisation, move links to some place more fitting, new CSS class? %>
+  <%= link_to 'kommende events', request.params.merge(latest: nil), { :class => "header__link" } %><%= link_to 'senest oprettede events', request.params.merge(latest: ""), { :class => "header__link" } %>
+</div>
+<% if params.has_key? "latest" %>
+  <%# TODO surpluscode: paginate? %>
+  <% @calendar.latest_added.each do |event| %>
+      <%= present(event).card_view %>
+  <% end %>
+<% else %>
+  <% @calendar.highlights.each do |event| %>
+      <%= present(event).card_view %>
+  <% end %>
 <% end %>
 
 <div class="page-container">

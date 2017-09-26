@@ -1,10 +1,11 @@
 class Calendar
 
-  attr_reader :events, :in_progress, :highlights, :weekly
+  attr_reader :events, :in_progress, :highlights, :weekly, :latest_added
 
   def initialize(events = Event.main_calendar)
     @events = events
     @highlights = Event.highlights(5)
+    @latest_added = Event.latest_added(25)
     @weekly = EventSeries.repeating_by_day
   end
 
